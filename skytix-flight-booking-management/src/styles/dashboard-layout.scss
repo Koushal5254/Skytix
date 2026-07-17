@@ -1,0 +1,146 @@
+.dashboard-wrapper {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 250px;
+
+  gap: 24px;
+  align-items: start;
+}
+
+/* ========================= */
+/* MAIN CONTENT */
+/* ========================= */
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ========================= */
+/* RIGHT SIDEBAR */
+/* ========================= */
+
+.dashboard-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  position: sticky;
+  top: 20px;
+}
+
+/* ========================= */
+/* STATS */
+/* ========================= */
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* ========================= */
+/* CHARTS */
+/* ========================= */
+
+.chart-row {
+  display: grid;
+  grid-template-columns: 46% 54%;
+  gap: 20px;
+
+  align-items: start;
+}
+
+/* ========================= */
+/* DESTINATION + BOOKINGS */
+/* ========================= */
+
+.booking-row {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  gap: 20px;
+
+  align-items: start;
+}
+
+/* ========================= */
+/* PAYMENT */
+/* ========================= */
+
+.payment-row {
+  width: 100%;
+}
+
+/* ================================================= */
+/* DASHBOARD SECTION 2 (SCROLL DOWN PART) */
+/* ================================================= */
+
+.dashboard-section-two {
+  margin-top: 40px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Revenue + Customer Growth */
+
+.section-two-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+/* Top Routes + Flight Schedule */
+
+.section-two-middle {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 20px;
+}
+
+/* Payment History V2 */
+
+.section-two-bottom {
+  width: 100%;
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media (max-width: 1400px) {
+
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 1200px) {
+
+  .dashboard-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-sidebar {
+    position: static;
+    order: 2;
+  }
+
+  .chart-row,
+  .booking-row,
+  .section-two-top,
+  .section-two-middle {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .stats-row {
+    grid-template-columns: 1fr;
+  }
+
+}

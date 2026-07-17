@@ -1,0 +1,106 @@
+.routes-card {
+  height: 400px;
+}
+
+.routes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 18px;
+}
+
+.routes-header h5 {
+  margin: 0;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.routes-header button {
+  border: none;
+  background: transparent;
+
+  color: #999;
+
+  cursor: pointer;
+
+  font-size: 18px;
+}
+
+.routes-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.route-item {
+  padding-bottom: 12px;
+
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.route-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.passengers {
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-size: 10px;
+
+  color: #a1a1a1;
+}
+
+.route-item h6 {
+  margin: 0 0 8px;
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  line-height: 1.4;
+}
+
+.route-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.route-progress {
+  flex: 1;
+
+  height: 5px;
+
+  background: #eeeeee;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+}
+
+.route-progress span {
+  display: block;
+
+  height: 100%;
+
+  background: #e4c66d;
+
+  border-radius: 20px;
+}
+
+.route-meta strong {
+  min-width: 60px;
+
+  text-align: right;
+
+  font-size: 10px;
+
+  color: #666;
+}
+

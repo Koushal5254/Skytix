@@ -1,0 +1,107 @@
+@import "@/styles/abstracts/variables";
+
+.header {
+  height: 70px;
+  background: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 24px;
+
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.header-left {
+  min-width: 120px;
+}
+
+.header-left h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.header-center {
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+}
+
+.header-search {
+  width: 420px;
+  height: 42px;
+
+  background: #f7f8fc;
+
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 0 16px;
+}
+
+.header-search input {
+  flex: 1;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.header-right button {
+  width: 40px;
+  height: 40px;
+
+  border: none;
+
+  background: #f7f8fc;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+
+  background: #e4c66d;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 600;
+}
+
+.user-box h6 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.user-box small {
+  color: #888;
+}

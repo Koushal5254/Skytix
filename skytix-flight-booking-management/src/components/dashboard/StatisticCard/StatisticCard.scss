@@ -1,0 +1,72 @@
+.stat-card {
+  background: #ffffff;
+
+  height: 88px;
+
+  padding: 14px 16px;
+
+  border: 1px solid #f3f3f3;
+  border-radius: 14px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.stat-left p {
+  margin: 0 0 6px;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  color: #8d8d8d;
+}
+
+.stat-left h3 {
+  margin: 0;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  line-height: 1;
+}
+
+.stat-badge {
+  display: inline-block;
+
+  margin-top: 8px;
+
+  padding: 3px 8px;
+
+  background: #f7e4a8;
+
+  color: #7d6413;
+
+  border-radius: 6px;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.icon-box {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #222222;
+
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .stat-card {
+    height: auto;
+  }
+}

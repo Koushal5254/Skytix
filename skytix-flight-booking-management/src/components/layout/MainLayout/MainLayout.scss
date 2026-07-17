@@ -1,0 +1,24 @@
+@import "@/styles/abstracts/variables";
+
+.main-layout {
+  display: flex;
+  background: #f7f8fc;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 240px;
+  min-height: 100vh;
+  background: #f7f8fc;
+}
+
+main {
+  padding: 24px;
+}
+
+@media (max-width: 991px) {
+  .main-content {
+    margin-left: 0;
+  }
+}

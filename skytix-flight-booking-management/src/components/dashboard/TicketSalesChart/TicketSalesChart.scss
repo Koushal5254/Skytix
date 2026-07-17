@@ -1,0 +1,25 @@
+.ticket-sales {
+  height: 100%;
+}
+
+.ticket-sales .chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 16px;
+}
+
+.ticket-sales h5 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.ticket-sales .amount {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.ticket-sales .custom-card{
+  height:320px;
+}

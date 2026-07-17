@@ -1,0 +1,45 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+@import "./reset";
+@import "./typography";
+@import "../pages/dashboard";
+
+body{
+
+background:$background;
+
+font-family:$font;
+
+color:$text;
+
+}
+
+button{
+
+border:none;
+
+outline:none;
+
+background:none;
+
+cursor:pointer;
+
+font-family:$font;
+
+}
+
+input{
+
+outline:none;
+
+font-family:$font;
+
+}
+
+.container-fluid{
+
+padding-left:30px;
+
+padding-right:30px;
+
+}
