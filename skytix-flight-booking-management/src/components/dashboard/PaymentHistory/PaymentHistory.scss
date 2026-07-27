@@ -17,6 +17,14 @@
   font-weight: 700;
 }
 
+.payment-row {
+  width: 100%;
+}
+
+.payment-row .custom-card {
+  min-height: 280px;
+}
+
 .payment-actions {
   display: flex;
   gap: 12px;

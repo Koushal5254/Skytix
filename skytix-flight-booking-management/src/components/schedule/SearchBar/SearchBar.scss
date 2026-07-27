@@ -1,0 +1,167 @@
+.search-bar {
+  height: 72px;
+
+  background: #ffffff;
+
+  border: 1px solid #ececec;
+
+  border-radius: 18px;
+
+  display: grid;
+
+  grid-template-columns:
+    1.4fr
+    72px
+    1.4fr
+    1fr
+    1fr
+    78px;
+
+  overflow: hidden;
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+}
+
+/* ================================= */
+
+.search-item {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 22px;
+
+  border-right: 1px solid #ececec;
+
+  gap: 14px;
+
+  background: #fff;
+}
+
+.search-item:last-of-type {
+  border-right: none;
+}
+
+/* ================================= */
+
+.icon {
+  display: none;
+}
+
+/* ================================= */
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.content span {
+  font-size: 13px;
+
+  color: #9d9d9d;
+
+  margin-bottom: 4px;
+}
+
+.content h4 {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  color: #1a1a1a;
+
+  line-height: 1.2;
+}
+
+/* ================================= */
+
+.swap-btn {
+  height: 100%;
+
+  border: none;
+
+  background: #fff;
+
+  border-right: 1px solid #ececec;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.swap-btn:hover {
+  background: #fafafa;
+}
+
+.swap-btn svg {
+  font-size: 22px;
+
+  color: #666;
+}
+
+/* ================================= */
+
+.search-btn {
+  height: 72px;
+
+  border: none;
+
+  background: #1f1f1f;
+
+  color: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.search-btn:hover {
+  background: #111;
+}
+
+.search-btn span {
+  display: none;
+}
+
+.search-btn svg {
+  font-size: 24px;
+}
+
+/* ================================= */
+
+@media (max-width: 1200px) {
+  .search-bar {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .search-item {
+    height: 72px;
+
+    border-right: none;
+
+    border-bottom: 1px solid #ececec;
+  }
+
+  .swap-btn {
+    height: 72px;
+
+    border-right: none;
+
+    border-bottom: 1px solid #ececec;
+  }
+
+  .search-btn {
+    width: 100%;
+  }
+}

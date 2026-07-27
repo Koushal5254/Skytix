@@ -1,0 +1,122 @@
+.filter-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.filter-card {
+  background: #fff;
+
+  border: 1px solid #ececec;
+
+  border-radius: 24px;
+
+  padding: 24px;
+}
+
+.filter-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.filter-title h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.filter-title svg {
+  font-size: 20px;
+}
+
+.filter-card label {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 18px;
+
+  font-size: 16px;
+
+  color: #555;
+}
+
+.filter-card input[type="checkbox"] {
+  accent-color: #e4c66d;
+}
+
+.price-slider {
+  width: 100%;
+  accent-color: #e4c66d;
+
+  margin: 12px 0 18px;
+}
+
+.price-boxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 14px;
+}
+
+.price-boxes div {
+  background: #fafafa;
+
+  border-radius: 16px;
+
+  padding: 14px;
+}
+
+.price-boxes span {
+  font-size: 12px;
+  color: #999;
+}
+
+.price-boxes h4 {
+  margin-top: 8px;
+
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.time-range {
+  text-align: center;
+
+  margin-bottom: 16px;
+
+  font-size: 15px;
+
+  color: #555;
+}
+
+.airline-actions {
+  display: flex;
+
+  gap: 12px;
+
+  margin-bottom: 20px;
+}
+
+.airline-actions button {
+  flex: 1;
+
+  height: 44px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background: #f5f5f5;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.airline-actions .clear {
+  background: #e4c66d;
+}   

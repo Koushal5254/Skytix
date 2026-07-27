@@ -8,7 +8,11 @@ import Footer from "../Footer/Footer";
 
 import "./MainLayout.scss";
 
-export default function MainLayout({ children }) {
+export default function MainLayout({
+  children,
+  showHeader = true,
+  showFooter = true,
+}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -16,10 +20,13 @@ export default function MainLayout({ children }) {
       <Sidebar open={open} />
 
       <div className="main-content">
-        <Header setOpen={setOpen} />
+
+        {showHeader && <Header setOpen={setOpen} />}
 
         <main>{children}</main>
-        <Footer />
+
+        {showFooter && <Footer />}
+
       </div>
     </div>
   );

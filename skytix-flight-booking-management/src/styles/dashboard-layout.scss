@@ -1,32 +1,24 @@
 .dashboard-wrapper {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 250px;
-
-  gap: 24px;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 16px;
   align-items: start;
 }
-
-/* ========================= */
-/* MAIN CONTENT */
-/* ========================= */
 
 .dashboard-content {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 }
-
-/* ========================= */
-/* RIGHT SIDEBAR */
-/* ========================= */
 
 .dashboard-sidebar {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
+}
 
-  position: sticky;
-  top: 20px;
+.dashboard-sidebar > * {
+  width: 100%;
 }
 
 /* ========================= */
@@ -36,31 +28,29 @@
 .stats-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 12px;
 }
 
 /* ========================= */
-/* CHARTS */
+/* ROW 1 */
+/* Ticket + Schedule */
 /* ========================= */
 
 .chart-row {
   display: grid;
-  grid-template-columns: 46% 54%;
+  grid-template-columns: 34% 66%;
   gap: 20px;
-
-  align-items: start;
 }
 
 /* ========================= */
-/* DESTINATION + BOOKINGS */
+/* ROW 2 */
+/* Destination + Bookings */
 /* ========================= */
 
 .booking-row {
   display: grid;
-  grid-template-columns: 35% 65%;
-  gap: 20px;
-
-  align-items: start;
+  grid-template-columns: 36% 64%;
+  gap: 16px;
 }
 
 /* ========================= */
@@ -71,76 +61,33 @@
   width: 100%;
 }
 
-/* ================================================= */
-/* DASHBOARD SECTION 2 (SCROLL DOWN PART) */
-/* ================================================= */
-
-.dashboard-section-two {
-  margin-top: 40px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-/* Revenue + Customer Growth */
-
-.section-two-top {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
-}
-
-/* Top Routes + Flight Schedule */
-
-.section-two-middle {
-  display: grid;
-  grid-template-columns: 340px 1fr;
-  gap: 20px;
-}
-
-/* Payment History V2 */
-
-.section-two-bottom {
-  width: 100%;
-}
-
 /* ========================= */
 /* RESPONSIVE */
 /* ========================= */
 
-@media (max-width: 1400px) {
-
-  .stats-row {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-}
-
-@media (max-width: 1200px) {
-
+@media (max-width: 1300px) {
   .dashboard-wrapper {
     grid-template-columns: 1fr;
   }
 
   .dashboard-sidebar {
-    position: static;
-    order: 2;
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .chart-row,
-  .booking-row,
-  .section-two-top,
-  .section-two-middle {
+  .booking-row {
     grid-template-columns: 1fr;
   }
-
 }
 
-@media (max-width: 768px) {
-
+@media (max-width: 600px) {
   .stats-row {
     grid-template-columns: 1fr;
   }
-
 }

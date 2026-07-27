@@ -1,0 +1,212 @@
+.flight-summary {
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 24px;
+
+  padding: 22px 28px;
+  margin-top: 24px;
+
+  display: grid;
+  grid-template-columns: 2.4fr 180px 180px 220px;
+  align-items: center;
+
+  column-gap: 30px;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+}
+
+/* ================= LEFT ================= */
+
+.summary-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  padding-right: 30px;
+  border-right: 1px solid #efefef;
+}
+
+.summary-logo {
+  width: 54px;
+  height: 54px;
+
+  border-radius: 14px;
+  background: #f8f8f8;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+.summary-logo svg {
+  font-size: 30px;
+  color: #2b6cf6;
+}
+
+.summary-airline h3 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1b1b1b;
+}
+
+.meta {
+  margin-top: 8px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.meta span:first-child {
+  font-size: 15px;
+  color: #9f9f9f;
+}
+
+.status {
+  background: #edd072;
+
+  padding: 5px 12px;
+
+  border-radius: 8px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #1a1a1a;
+}
+
+/* ================= MIDDLE ================= */
+
+.summary-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.summary-block span {
+  font-size: 13px;
+  color: #9d9d9d;
+}
+
+.summary-block h4 {
+  margin: 0;
+
+  font-size: 22px;
+  font-weight: 700;
+  color: #222;
+}
+
+/* ================= PASSENGERS ================= */
+
+.passengers {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  background: #ead38a;
+  border: 3px solid #fff;
+
+  margin-left: -8px;
+}
+
+.avatar:first-child {
+  margin-left: 0;
+}
+
+.passengers strong {
+  margin-left: 10px;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  color: #444;
+}
+
+/* ================= RIGHT ================= */
+
+.summary-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 24px;
+}
+
+.summary-right h2 {
+  margin: 0;
+
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1;
+
+  color: #e2bc51;
+}
+
+.summary-right h2 span {
+  font-size: 16px;
+  font-weight: 500;
+
+  margin-bottom: 5px;
+
+  color: #8f8f8f;
+}
+
+.summary-right button {
+  width: 86px;
+  height: 54px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: #e5bf57;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  color: #1a1a1a;
+
+  cursor: pointer;
+
+  transition: .25s;
+}
+
+.summary-right button:hover {
+  background: #d9b147;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1200px) {
+  .flight-summary {
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+  }
+
+  .summary-left {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .summary-right {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 768px) {
+  .summary-right {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

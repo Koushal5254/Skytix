@@ -1,0 +1,65 @@
+.flight-toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:24px;
+}
+
+.toolbar-title h2{
+    margin:0;
+    font-size:30px;
+    font-weight:700;
+    color:#222;
+}
+
+.toolbar-title span{
+    margin-left:10px;
+    font-size:15px;
+    font-weight:400;
+    color:#9b9b9b;
+}
+
+.toolbar-actions{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.toolbar-select{
+    height:46px;
+    padding:0 18px;
+    border:1px solid #ececec;
+    background:#fff;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    cursor:pointer;
+    font-size:14px;
+    color:#555;
+    transition:.25s;
+}
+
+.toolbar-select:hover{
+    border-color:#e4c66d;
+}
+
+.toolbar-add{
+    height:46px;
+    padding:0 20px;
+    border:none;
+    border-radius:14px;
+    background:#E4C66D;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:600;
+    color:#222;
+    transition:.25s;
+}
+
+.toolbar-add:hover{
+    background:#dcb955;
+}

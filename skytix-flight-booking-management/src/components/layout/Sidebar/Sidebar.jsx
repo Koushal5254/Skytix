@@ -13,6 +13,7 @@ export default function Sidebar({ open }) {
 
   return (
     <aside className={`sidebar ${open ? "show" : ""}`}>
+
       <div className="sidebar-logo">
         <FaPlaneDeparture />
         <span>Skytix</span>
@@ -24,8 +25,8 @@ export default function Sidebar({ open }) {
 
           return (
             <Link
-              href={item.link}
               key={item.id}
+              href={item.link}
               className={pathname === item.link ? "active" : ""}
             >
               <Icon />
@@ -39,8 +40,11 @@ export default function Sidebar({ open }) {
         <h5>Explore Premium</h5>
         <p>Unlock all dashboard features</p>
 
-        <button>Upgrade</button>
+        <button>
+          Upgrade
+        </button>
       </div>
+
     </aside>
   );
 }

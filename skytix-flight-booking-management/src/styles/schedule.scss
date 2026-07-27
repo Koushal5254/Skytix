@@ -1,0 +1,36 @@
+.schedule-page{
+  width:100%;
+  max-width:13200px;
+  margin:0 auto;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:32px;
+}
+
+.schedule-content{
+    display:grid;
+    grid-template-columns:270px 1fr;
+    gap:24px;
+    align-items:start;
+}
+
+.left-panel{
+    width:100%;
+}
+
+.right-panel{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+    min-width:0;
+}
+
+@media (max-width:1200px){
+
+.schedule-content{
+grid-template-columns:1fr;
+}
+
+}

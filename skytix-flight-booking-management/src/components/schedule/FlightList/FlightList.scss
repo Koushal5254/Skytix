@@ -1,0 +1,134 @@
+.flight-list {
+  width: 100%;
+}
+
+/* ================================= */
+
+.flight-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 24px;
+}
+
+/* ================================= */
+
+.header-left {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.header-left h2 {
+  margin: 0;
+
+  font-size: 22px;
+  font-weight: 700;
+
+  color: #1a1a1a;
+}
+
+.header-left span {
+  font-size: 15px;
+
+  color: #9d9d9d;
+}
+
+/* ================================= */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.header-actions select {
+  width: 120px;
+  height: 46px;
+
+  border: 1px solid #ececec;
+
+  border-radius: 14px;
+
+  padding: 0 14px;
+
+  background: #ffffff;
+
+  font-size: 14px;
+
+  color: #555;
+
+  cursor: pointer;
+
+  outline: none;
+}
+
+.header-actions select:focus {
+  border-color: #e4c66d;
+}
+
+/* ================================= */
+
+.add-flight-btn {
+  height: 46px;
+
+  padding: 0 22px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background: #e4c66d;
+
+  color: #1a1a1a;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.add-flight-btn:hover {
+  background: #d6b44f;
+}
+
+/* ================================= */
+
+.flight-list-cards {
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+/* ================================= */
+
+@media (max-width: 991px) {
+  .flight-list-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 16px;
+  }
+
+  .header-actions {
+    width: 100%;
+
+    flex-wrap: wrap;
+  }
+
+  .header-actions select {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .add-flight-btn {
+    width: 100%;
+  }
+}

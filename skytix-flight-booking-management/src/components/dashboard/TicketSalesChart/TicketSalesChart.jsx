@@ -75,7 +75,7 @@ export default function TicketSalesChart() {
         options={options}
         series={series}
         type="bar"
-        height={200}
+        height={180}
       />
 
     </Card>

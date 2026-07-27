@@ -1,98 +1,175 @@
 @import "@/styles/abstracts/variables";
 
-.sidebar {
-  width: $sidebar-width;
-  height: 100vh;
+.sidebar{
 
-  background: #fff;
+width:260px;
 
-  position: fixed;
-  left: 0;
-  top: 0;
+height:100vh;
 
-  border-right: 1px solid $border;
+background:#ffffff;
 
-  padding: 12px;
+position:fixed;
 
-  display: flex;
-  flex-direction: column;
+left:0;
+
+top:0;
+
+padding:24px 18px;
+
+border-right:1px solid #ececec;
+
+display:flex;
+
+flex-direction:column;
+
+overflow-y:auto;
+
+z-index:100;
+
 }
 
-.sidebar-logo {
-  font-size: 14px;
-  font-weight: 700;
+/* ===================== */
+/* LOGO */
+/* ===================== */
 
-  margin-bottom: 24px;
+.sidebar-logo{
 
-  display: flex;
-  align-items: center;
-  gap: 8px;
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+font-size:24px;
+
+font-weight:700;
+
+margin-bottom:34px;
+
+color:#222;
+
 }
 
-.sidebar-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.sidebar-logo svg{
+
+font-size:28px;
+
+color:#e4c66d;
+
 }
 
-.sidebar-menu a {
-  min-height: 34px;
-
-  display: flex;
-  align-items: center;
-
-  gap: 8px;
-
-  padding: 0 10px;
-
-  border-radius: 8px;
-
-  font-size: 11px;
-
-  color: $text;
-
-  transition: .3s;
+.sidebar-logo svg {
+  color: #e4c66d;
+  font-size: 20px;
 }
 
-.sidebar-menu a.active {
-  background: $primary;
+/* ===================== */
+/* MENU */
+/* ===================== */
+
+.sidebar-menu{
+
+display:flex;
+
+flex-direction:column;
+
+gap:8px;
+
 }
 
-.sidebar-menu a svg {
-  font-size: 13px;
+.sidebar-menu a{
+
+height:46px;
+
+padding:0 16px;
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+border-radius:14px;
+
+color:#707070;
+
+font-size:14px;
+
+font-weight:500;
+
+transition:.3s;
+
 }
 
-.upgrade-card {
-  margin-top: auto;
+.sidebar-menu a svg{
 
-  background: #1f1f1f;
+font-size:18px;
 
-  color: white;
-
-  border-radius: 12px;
-
-  padding: 12px;
 }
 
-.upgrade-card h4 {
-  font-size: 11px;
-  margin-bottom: 6px;
+.sidebar-menu a:hover {
+  background: #f7f7f7;
+}
+
+.sidebar-menu a.active{
+
+background:#e4c66d;
+
+color:#222;
+
+font-weight:600;
+
+}
+/* ===================== */
+/* UPGRADE CARD */
+/* ===================== */
+
+.upgrade-card{
+
+margin-top:auto;
+
+background:#202020;
+
+color:#fff;
+
+border-radius:18px;
+
+padding:20px;
+
+}
+
+.upgrade-card h5 {
+  margin: 0 0 8px;
+
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .upgrade-card p {
-  font-size: 10px;
-  margin-bottom: 10px;
+  margin: 0 0 14px;
+
+  font-size: 12px;
+  line-height: 1.5;
+
+  color: rgba(255,255,255,.7);
 }
 
-.upgrade-card button {
-  width: 100%;
-  height: 30px;
+.upgrade-card button{
 
-  border: none;
+margin-top:18px;
 
-  border-radius: 6px;
+width:100%;
 
-  background: $primary;
+height:42px;
 
-  font-size: 11px;
+border:none;
+
+border-radius:12px;
+
+background:#e4c66d;
+
+font-weight:600;
+
+cursor:pointer;
+
 }

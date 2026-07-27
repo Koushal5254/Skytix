@@ -1,0 +1,289 @@
+.profile-details-header {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+/* ========================================
+   BACK BUTTON
+======================================== */
+
+.profile-back-button {
+  width: fit-content;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #8d8d8d;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.profile-back-button svg {
+  width: 17px;
+  height: 17px;
+}
+
+.profile-back-button:hover {
+  color: #202020;
+}
+
+/* ========================================
+   MAIN HEADER
+======================================== */
+
+.profile-header-main {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: minmax(300px, 1fr) auto;
+
+  align-items: center;
+
+  gap: 32px;
+}
+
+.profile-header-main h1 {
+  margin: 0;
+
+  color: #1d1d1d;
+
+  font-size: 42px;
+  line-height: 1.1;
+  font-weight: 700;
+
+  letter-spacing: -1.2px;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   CONTROLS
+======================================== */
+
+.profile-header-controls {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+/* ========================================
+   SEARCH
+======================================== */
+
+.profile-member-search {
+  width: 300px;
+  height: 54px;
+
+  padding: 0 18px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e5e5;
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  transition: border-color 0.2s ease;
+}
+
+.profile-member-search > svg {
+  flex: 0 0 auto;
+
+  width: 18px;
+  height: 18px;
+
+  color: #999999;
+}
+
+.profile-member-search input {
+  width: 100%;
+  min-width: 0;
+
+  padding: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: #292929;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.profile-member-search input::placeholder {
+  color: #9c9c9c;
+
+  opacity: 1;
+}
+
+.profile-member-search:focus-within {
+  border-color: #d8bb5d;
+}
+
+/* ========================================
+   FILTERS
+======================================== */
+
+.profile-filter {
+  position: relative;
+
+  width: 120px;
+  height: 54px;
+
+  flex: 0 0 auto;
+}
+
+.profile-period-filter {
+  width: 154px;
+}
+
+.profile-status-filter {
+  width: 128px;
+}
+
+.profile-filter select {
+  width: 100%;
+  height: 100%;
+
+  padding: 0 42px 0 17px;
+
+  border: 1px solid #e5e5e5;
+  border-radius: 16px;
+
+  outline: none;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  background: #ffffff;
+
+  color: #292929;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: border-color 0.2s ease;
+}
+
+.profile-filter > svg {
+  position: absolute;
+
+  top: 50%;
+  right: 16px;
+
+  transform: translateY(-50%);
+
+  width: 16px;
+  height: 16px;
+
+  color: #999999;
+
+  pointer-events: none;
+}
+
+.profile-filter:focus-within select {
+  border-color: #d8bb5d;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1450px) {
+  .profile-header-main {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+  .profile-header-controls {
+    width: 100%;
+  }
+
+  .profile-member-search {
+    flex: 1;
+
+    width: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .profile-header-main h1 {
+    font-size: 38px;
+  }
+
+  .profile-header-controls {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .profile-member-search {
+    width: 100%;
+
+    grid-column: 1 / -1;
+  }
+
+  .profile-filter,
+  .profile-period-filter,
+  .profile-status-filter {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .profile-details-header {
+    gap: 16px;
+  }
+
+  .profile-header-main {
+    gap: 18px;
+  }
+
+  .profile-header-main h1 {
+    font-size: 34px;
+
+    letter-spacing: -0.8px;
+
+    white-space: normal;
+  }
+
+  .profile-header-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-member-search {
+    grid-column: auto;
+  }
+
+  .profile-member-search,
+  .profile-filter {
+    height: 50px;
+  }
+}

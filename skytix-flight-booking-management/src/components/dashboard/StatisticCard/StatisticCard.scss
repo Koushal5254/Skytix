@@ -1,72 +1,58 @@
 .stat-card {
-  background: #ffffff;
+  background: #fff;
 
-  height: 88px;
+  border-radius: 16px;
 
   padding: 14px 16px;
 
-  border: 1px solid #f3f3f3;
-  border-radius: 14px;
+  min-height: 76px;
 
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f2f2f2;
+
+  box-shadow: 0 4px 15px rgba(0,0,0,.03);
 }
 
 .stat-left p {
-  margin: 0 0 6px;
-
   font-size: 11px;
-  font-weight: 500;
-
-  color: #8d8d8d;
+  color: #999;
+  margin-bottom: 6px;
 }
 
 .stat-left h3 {
-  margin: 0;
-
   font-size: 24px;
   font-weight: 700;
-
-  line-height: 1;
+  margin: 0;
 }
 
 .stat-badge {
-  display: inline-block;
-
   margin-top: 8px;
 
-  padding: 3px 8px;
+  display: inline-flex;
 
-  background: #f7e4a8;
-
-  color: #7d6413;
+  padding: 4px 8px;
 
   border-radius: 6px;
 
+  background: rgba(228,198,109,.18);
+
   font-size: 10px;
-  font-weight: 600;
 }
 
 .icon-box {
   width: 40px;
   height: 40px;
 
-  border-radius: 50%;
+  border-radius: 12px;
 
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
-  color: #222222;
+  color: #fff;
 
-  font-size: 16px;
-}
-
-@media (max-width: 768px) {
-  .stat-card {
-    height: auto;
-  }
+  font-size: 18px;
 }

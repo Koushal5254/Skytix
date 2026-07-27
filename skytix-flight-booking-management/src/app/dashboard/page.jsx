@@ -16,25 +16,18 @@ import AllBookings from "@/components/dashboard/AllBookings/AllBookings";
 import TopRoutes from "@/components/dashboard/TopRoutes/TopRoutes";
 import RecentActivity from "@/components/dashboard/RecentActivity/RecentActivity";
 import PaymentHistory from "@/components/dashboard/PaymentHistory/PaymentHistory";
-import FlightScheduleV2 from "@/components/dashboard/FlightScheduleV2/FlightScheduleV2";
 
-/* DASHBOARD PART 2 */
-import RevenueGrowth from "@/components/dashboard/RevenueGrowth/RevenueGrowth";
-import CustomerGrowth from "@/components/dashboard/CustomerGrowth/CustomerGrowth";
-import TopFlightRoutesV2 from "@/components/dashboard/TopFlightRoutesV2/TopFlightRoutesV2";
+
+
 
 import "@/styles/dashboard-layout.scss";
 
 export default function Dashboard() {
   return (
     <MainLayout>
-
       <div className="dashboard-wrapper">
 
-        {/* ===================== */}
         {/* LEFT CONTENT */}
-        {/* ===================== */}
-
         <div className="dashboard-content">
 
           {/* STATS */}
@@ -92,47 +85,22 @@ export default function Dashboard() {
 
           </div>
 
-          {/* PAYMENT HISTORY */}
+          {/* PAYMENT */}
           <div className="payment-row">
 
             <PaymentHistory />
 
           </div>
 
-          {/* ===================================== */}
-          {/* DASHBOARD SECTION 2 */}
-          {/* ===================================== */}
+          {/* ================================= */}
+          {/* DASHBOARD PART 2 */}
+          {/* ================================= */}
 
-          <section className="dashboard-section-two">
-
-            {/* TOP ROW */}
-
-            <div className="section-two-top">
-
-              <RevenueGrowth />
-
-              <CustomerGrowth />
-
-            </div>
-
-            {/* MIDDLE ROW */}
-
-            <div className="section-two-middle">
-
-              <TopFlightRoutesV2 />
-
-              <FlightScheduleV2 />
-
-            </div>
-
-          </section>
+        
 
         </div>
 
-        {/* ===================== */}
         {/* RIGHT SIDEBAR */}
-        {/* ===================== */}
-
         <div className="dashboard-sidebar">
 
           <PopularAirlines />
@@ -144,7 +112,6 @@ export default function Dashboard() {
         </div>
 
       </div>
-
     </MainLayout>
   );
 }
