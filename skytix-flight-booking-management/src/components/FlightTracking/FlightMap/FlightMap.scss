@@ -1,0 +1,660 @@
+/* ========================================
+   FLIGHT MAP
+======================================== */
+
+.flight-map {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+  min-height: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f5f7f7 0%,
+      #f1f4f3 100%
+    );
+
+  overflow: hidden;
+}
+
+/* ========================================
+   EMPTY
+======================================== */
+
+.flight-map-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #999999;
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* ========================================
+   CANVAS
+======================================== */
+
+.flight-map-canvas {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  transform-origin: center;
+
+  transition:
+    transform 0.25s ease;
+}
+
+/* ========================================
+   GRID
+======================================== */
+
+.flight-map-grid {
+  position: absolute;
+
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(120, 130, 130, 0.055) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(120, 130, 130, 0.055) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    60px 60px;
+
+  pointer-events: none;
+}
+
+/* ========================================
+   WORLD MAP
+======================================== */
+
+.flight-map-world {
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0.8;
+
+  pointer-events: none;
+}
+
+.map-land {
+  position: absolute;
+
+  display: block;
+
+  background: #dde3e0;
+
+  opacity: 0.72;
+}
+
+/* NORTH AMERICA */
+
+.map-land-north-america {
+  left: 4%;
+  top: 18%;
+
+  width: 27%;
+  height: 29%;
+
+  border-radius:
+    50% 45% 55% 42% /
+    45% 60% 40% 55%;
+
+  transform:
+    rotate(-9deg)
+    skewX(-7deg);
+}
+
+/* SOUTH AMERICA */
+
+.map-land-south-america {
+  left: 25%;
+  top: 49%;
+
+  width: 12%;
+  height: 35%;
+
+  border-radius:
+    60% 45% 65% 40% /
+    30% 50% 70% 60%;
+
+  transform:
+    rotate(13deg)
+    skewY(8deg);
+}
+
+/* EUROPE */
+
+.map-land-europe {
+  left: 46%;
+  top: 25%;
+
+  width: 12%;
+  height: 14%;
+
+  border-radius:
+    55% 60% 45% 60%;
+
+  transform:
+    rotate(-5deg);
+}
+
+/* AFRICA */
+
+.map-land-africa {
+  left: 47%;
+  top: 40%;
+
+  width: 15%;
+  height: 34%;
+
+  border-radius:
+    45% 55% 60% 50% /
+    30% 40% 65% 70%;
+
+  transform:
+    rotate(5deg);
+}
+
+/* ASIA */
+
+.map-land-asia {
+  left: 56%;
+  top: 20%;
+
+  width: 36%;
+  height: 35%;
+
+  border-radius:
+    50% 35% 55% 40% /
+    40% 45% 55% 60%;
+
+  transform:
+    rotate(3deg)
+    skewX(-4deg);
+}
+
+/* AUSTRALIA */
+
+.map-land-australia {
+  left: 79%;
+  top: 68%;
+
+  width: 15%;
+  height: 16%;
+
+  border-radius:
+    55% 50% 55% 50%;
+
+  transform:
+    rotate(-8deg);
+}
+
+/* ========================================
+   ROUTE
+======================================== */
+
+.flight-route-line {
+  position: absolute;
+
+  z-index: 4;
+
+  height: 2px;
+
+  transform-origin: left center;
+
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      #c8a63f 0,
+      #c8a63f 6px,
+      transparent 6px,
+      transparent 11px
+    );
+
+  pointer-events: none;
+}
+
+/* ========================================
+   AIRPORT POINT
+======================================== */
+
+.flight-map-point {
+  position: absolute;
+
+  z-index: 6;
+
+  transform:
+    translate(-50%, -50%);
+}
+
+/* ========================================
+   MARKER
+======================================== */
+
+.flight-map-marker {
+  position: relative;
+
+  width: 13px;
+  height: 13px;
+
+  display: block;
+
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+
+  background: #d1ae45;
+
+  box-shadow:
+    0 0 0 1px
+      rgba(177, 145, 48, 0.28),
+    0 2px 7px
+      rgba(0, 0, 0, 0.14);
+}
+
+.flight-map-marker::before {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 25px;
+  height: 25px;
+
+  border: 1px solid
+    rgba(198, 165, 65, 0.25);
+
+  border-radius: 50%;
+
+  transform:
+    translate(-50%, -50%);
+}
+
+/* ========================================
+   AIRPORT LABEL
+======================================== */
+
+.flight-map-airport-label {
+  position: absolute;
+
+  top: 18px;
+  left: 50%;
+
+  min-width: 76px;
+
+  padding: 6px 8px;
+
+  border: 1px solid #e4e4e4;
+  border-radius: 8px;
+
+  background:
+    rgba(255, 255, 255, 0.94);
+
+  box-shadow:
+    0 5px 14px
+    rgba(0, 0, 0, 0.06);
+
+  transform:
+    translateX(-50%);
+
+  text-align: center;
+}
+
+.flight-map-airport-label strong {
+  display: block;
+
+  color: #333333;
+
+  font-size: 9px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.flight-map-airport-label span {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #999999;
+
+  font-size: 7px;
+  line-height: 1.2;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   AIRCRAFT
+======================================== */
+
+.flight-map-plane {
+  position: absolute;
+
+  z-index: 8;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+
+  background: #dfbd51;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #292929;
+
+  font-size: 15px;
+  line-height: 1;
+
+  box-shadow:
+    0 4px 12px
+    rgba(153, 122, 29, 0.22);
+
+  user-select: none;
+
+  transition:
+    left 0.3s ease,
+    top 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* ========================================
+   FLIGHT INFO CARD
+======================================== */
+
+.flight-map-info {
+  position: absolute;
+
+  z-index: 20;
+
+  top: 16px;
+  left: 16px;
+
+  min-width: 190px;
+
+  padding: 10px;
+
+  border: 1px solid #e5e5e5;
+  border-radius: 11px;
+
+  background:
+    rgba(255, 255, 255, 0.95);
+
+  box-shadow:
+    0 7px 22px
+    rgba(0, 0, 0, 0.06);
+
+  display: grid;
+
+  grid-template-columns:
+    34px
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+/* ========================================
+   INFO ICON
+======================================== */
+
+.flight-map-info-icon {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 9px;
+
+  background: #faf7eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #b79532;
+
+  font-size: 14px;
+}
+
+/* ========================================
+   INFO CONTENT
+======================================== */
+
+.flight-map-info-content {
+  min-width: 0;
+}
+
+.flight-map-info-content span {
+  display: block;
+
+  color: #999999;
+
+  font-size: 7px;
+  line-height: 1.2;
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flight-map-info-content strong {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #333333;
+
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+/* ========================================
+   MAP STATUS
+======================================== */
+
+.flight-map-status {
+  min-height: 21px;
+
+  padding: 0 6px;
+
+  border-radius: 6px;
+
+  display: inline-flex;
+  align-items: center;
+
+  font-size: 7px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.flight-map-status-on-time {
+  background: #edf7ef;
+
+  color: #68a175;
+}
+
+.flight-map-status-delayed {
+  background: #fff4e6;
+
+  color: #c48b43;
+}
+
+.flight-map-status-in-air {
+  background: #edf4fb;
+
+  color: #658fae;
+}
+
+.flight-map-status-scheduled {
+  background: #f2f2f2;
+
+  color: #818181;
+}
+
+.flight-map-status-cancelled {
+  background: #fbecec;
+
+  color: #bb6868;
+}
+
+/* ========================================
+   MAP CONTROLS
+======================================== */
+
+.flight-map-controls {
+  position: absolute;
+
+  z-index: 20;
+
+  top: 16px;
+  right: 16px;
+
+  padding: 4px;
+
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+
+  background:
+    rgba(255, 255, 255, 0.95);
+
+  box-shadow:
+    0 5px 18px
+    rgba(0, 0, 0, 0.06);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.flight-map-controls button {
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 7px;
+
+  outline: 0;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #777777;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.flight-map-controls button:hover {
+  background: #f4f4f4;
+
+  color: #292929;
+}
+
+.flight-map-controls button:focus-visible {
+  outline: 2px solid
+    rgba(217, 186, 89, 0.5);
+}
+
+.flight-map-controls button svg {
+  width: 14px;
+  height: 14px;
+}
+
+.flight-map-controls > span {
+  width: 20px;
+  height: 1px;
+
+  margin: 2px auto;
+
+  background: #eeeeee;
+}
+
+/* ========================================
+   FULLSCREEN
+======================================== */
+
+.flight-map-fullscreen {
+  position: fixed;
+
+  inset: 20px;
+
+  z-index: 1000;
+
+  width: auto;
+  height: auto;
+
+  border: 1px solid #e5e5e5;
+  border-radius: 18px;
+
+  box-shadow:
+    0 25px 70px
+    rgba(0, 0, 0, 0.18);
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1000px) {
+  .flight-map-info {
+    top: 13px;
+    left: 13px;
+  }
+
+  .flight-map-controls {
+    top: 13px;
+    right: 13px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+  .flight-map-info {
+    min-width: 175px;
+  }
+
+  .flight-map-fullscreen {
+    inset: 10px;
+
+    border-radius: 14px;
+  }
+}

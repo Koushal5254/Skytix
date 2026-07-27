@@ -7,58 +7,71 @@ import {
   FiChevronDown,
 } from "react-icons/fi";
 
-import { FaReact } from "react-icons/fa";
-
 import "./ScheduleHeader.scss";
 
 export default function ScheduleHeader() {
   return (
-    <div className="schedule-header">
+    <header className="schedule-header">
 
-      <div className="header-left">
+      {/* PAGE TITLE */}
 
+      <div className="schedule-header-title">
         <h1>Schedule</h1>
-
-        <p>
-          Manage your flights, bookings and schedules.
-        </p>
-
       </div>
 
-      <div className="header-right">
+      {/* HEADER ACTIONS */}
 
-        <button className="icon-btn">
+      <div className="schedule-header-actions">
+
+        <button
+          type="button"
+          className="schedule-header-icon-btn schedule-notification-btn"
+          aria-label="Notifications"
+        >
+          <FiBell />
+
+          <span className="schedule-notification-dot" />
+        </button>
+
+        <button
+          type="button"
+          className="schedule-header-icon-btn"
+          aria-label="Help"
+        >
           <FiHelpCircle />
         </button>
 
-        <button className="icon-btn">
-          <FiBell />
-        </button>
-
-        <button className="icon-btn">
+        <button
+          type="button"
+          className="schedule-header-icon-btn"
+          aria-label="Settings"
+        >
           <FiSettings />
         </button>
 
-        <div className="profile-card">
+        {/* PROFILE */}
 
-          <div className="avatar">
-            <FaReact />
-          </div>
+        <button
+          type="button"
+          className="schedule-profile"
+        >
+          <span
+            className="schedule-profile-avatar"
+            aria-hidden="true"
+          />
 
-          <div className="profile-info">
+          <span className="schedule-profile-info">
+            <strong>Martin Septimus</strong>
+            <small>Admin</small>
+          </span>
 
-            <h4>John Doe</h4>
-
-            <span>Administrator</span>
-
-          </div>
-
-          <FiChevronDown />
-
-        </div>
+          <FiChevronDown
+            className="schedule-profile-arrow"
+          />
+        </button>
 
       </div>
 
-    </div>
+    </header>
   );
 }

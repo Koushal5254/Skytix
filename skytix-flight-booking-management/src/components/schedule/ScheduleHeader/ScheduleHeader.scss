@@ -1,160 +1,280 @@
-.schedule-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+/* ========================================
+   SCHEDULE HEADER
+======================================== */
 
-  margin-bottom: 24px;
+.schedule-header {
+  width: 100%;
+  min-width: 0;
+
+  min-height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
 }
 
-/* ====================== */
+/* ========================================
+   TITLE
+======================================== */
 
-.header-left h1 {
+.schedule-header-title {
+  min-width: 0;
+}
+
+.schedule-header-title h1 {
   margin: 0;
 
-  font-size: 64px;
+  color: #252525;
+
+  font-size: 22px;
+  line-height: 1.15;
   font-weight: 700;
 
-  line-height: 1;
-
-  color: #1a1a1a;
+  letter-spacing: -0.3px;
 }
 
-.header-left p {
-  margin-top: 10px;
+/* ========================================
+   RIGHT ACTIONS
+======================================== */
 
-  font-size: 16px;
-  font-weight: 400;
+.schedule-header-actions {
+  flex-shrink: 0;
 
-  color: #8a8a8a;
-}
-
-/* ====================== */
-
-.header-right {
   display: flex;
   align-items: center;
 
-  gap: 12px;
+  gap: 8px;
 }
 
-/* ====================== */
+/* ========================================
+   ICON BUTTONS
+======================================== */
 
-.icon-btn {
-  width: 38px;
-  height: 38px;
+.schedule-header-icon-btn {
+  position: relative;
+
+  width: 36px;
+  height: 36px;
+
+  flex: 0 0 36px;
+
+  padding: 0;
+
+  border: 1px solid #eeeeee;
+  border-radius: 9px;
 
   background: #ffffff;
 
-  border: 1px solid #ececec;
-
-  border-radius: 12px;
-
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  color: #292929;
 
   cursor: pointer;
 
-  transition: 0.25s ease;
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease;
 }
 
-.icon-btn:hover {
-  border-color: #e4c66d;
+.schedule-header-icon-btn svg {
+  width: 15px;
+  height: 15px;
+
+  stroke-width: 1.8;
 }
 
-.icon-btn svg {
-  font-size: 18px;
-  color: #555;
+.schedule-header-icon-btn:hover {
+  border-color: #dedede;
+
+  background: #fafafa;
 }
 
-/* ====================== */
+/* ========================================
+   NOTIFICATION
+======================================== */
 
-.profile-card {
-  height: 64px;
+.schedule-notification-dot {
+  position: absolute;
 
-  background: #ffffff;
+  top: 7px;
+  right: 7px;
 
-  border: 1px solid #ececec;
+  width: 6px;
+  height: 6px;
 
-  border-radius: 18px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
 
-  padding: 0 16px;
+  background: #ef5350;
+}
+
+/* ========================================
+   PROFILE
+======================================== */
+
+.schedule-profile {
+  height: 44px;
+
+  min-width: 172px;
+
+  margin-left: 2px;
+  padding: 4px 9px 4px 5px;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: transparent;
 
   display: flex;
   align-items: center;
 
-  gap: 12px;
+  gap: 9px;
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  text-align: left;
 }
 
-/* ====================== */
+/* ========================================
+   PROFILE AVATAR
+======================================== */
 
-.avatar {
-  width: 40px;
-  height: 40px;
+.schedule-profile-avatar {
+  width: 36px;
+  height: 36px;
 
-  border-radius: 12px;
+  flex: 0 0 36px;
 
-  background: #f8f8f8;
+  border-radius: 8px;
+
+  background: #f3e5ad;
+}
+
+/* ========================================
+   PROFILE INFO
+======================================== */
+
+.schedule-profile-info {
+  min-width: 0;
+
+  flex: 1;
 
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 
-  flex-shrink: 0;
+  gap: 2px;
 }
 
-.avatar svg {
-  font-size: 24px;
-  color: #61dafb;
-}
+.schedule-profile-info strong {
+  overflow: hidden;
 
-/* ====================== */
+  color: #292929;
 
-.profile-info h4 {
-  margin: 0;
-
-  font-size: 17px;
+  font-size: 11px;
+  line-height: 1.2;
   font-weight: 600;
 
-  color: #1a1a1a;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-.profile-info span {
-  display: block;
+.schedule-profile-info small {
+  color: #999999;
 
-  margin-top: 2px;
-
-  font-size: 13px;
-
-  color: #9b9b9b;
+  font-size: 8px;
+  line-height: 1.2;
+  font-weight: 400;
 }
 
-/* ====================== */
+/* ========================================
+   PROFILE ARROW
+======================================== */
 
-.profile-card > svg {
-  margin-left: 6px;
+.schedule-profile-arrow {
+  width: 13px;
+  height: 13px;
 
-  font-size: 18px;
+  flex: 0 0 13px;
 
-  color: #777;
+  color: #555555;
+
+  stroke-width: 1.7;
 }
 
-/* ====================== */
+/* ========================================
+   FOCUS
+======================================== */
 
-@media (max-width: 992px) {
+.schedule-header-icon-btn:focus-visible,
+.schedule-profile:focus-visible {
+  outline: 2px solid
+    rgba(228, 198, 109, 0.65);
+
+  outline-offset: 2px;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
   .schedule-header {
+    gap: 16px;
+  }
+
+  .schedule-profile {
+    min-width: 150px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .schedule-header {
+    align-items: flex-start;
+
     flex-direction: column;
-
-    gap: 20px;
   }
 
-  .header-right {
+  .schedule-header-actions {
     width: 100%;
-
-    flex-wrap: wrap;
   }
 
-  .header-left h1 {
-    font-size: 48px;
+  .schedule-profile {
+    margin-left: auto;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+  .schedule-header-actions {
+    gap: 6px;
+  }
+
+  .schedule-profile {
+    min-width: 0;
+
+    margin-left: auto;
+
+    padding-right: 5px;
+  }
+
+  .schedule-profile-info {
+    display: none;
+  }
+
+  .schedule-profile-arrow {
+    display: none;
   }
 }

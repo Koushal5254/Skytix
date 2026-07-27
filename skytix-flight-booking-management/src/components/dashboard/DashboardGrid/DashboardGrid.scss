@@ -1,17 +1,78 @@
+/* ========================================
+   DASHBOARD GRID
+======================================== */
+
 .dashboard-grid {
+  width: 100%;
+  min-width: 0;
+
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+
+  /*
+   * Main dashboard content area.
+   *
+   * The original design uses:
+   * - 4 equal statistic cards across the top
+   * - tighter spacing between cards
+   * - responsive reduction on smaller screens
+   */
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
 }
 
-@media (max-width: 1200px) {
+/* ========================================
+   DIRECT GRID CHILDREN
+======================================== */
+
+.dashboard-grid > * {
+  min-width: 0;
+}
+
+/* ========================================
+   LARGE DESKTOP
+======================================== */
+
+@media (min-width: 1600px) {
   .dashboard-grid {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
   }
 }
 
-@media (max-width: 768px) {
+/* ========================================
+   STANDARD LAPTOP
+======================================== */
+
+@media (max-width: 1400px) {
   .dashboard-grid {
-    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+/* ========================================
+   SMALL LAPTOP / TABLET
+======================================== */
+
+@media (max-width: 1100px) {
+  .dashboard-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .dashboard-grid {
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 12px;
   }
 }

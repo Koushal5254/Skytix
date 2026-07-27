@@ -1,107 +1,199 @@
-.schedule-footer {
-  margin-top: 40px;
+/* ========================================
+   SCHEDULE FOOTER
+======================================== */
 
-  padding-top: 24px;
-  padding-bottom: 10px;
+.schedule-footer {
+  width: 100%;
+  min-width: 0;
+
+  margin-top: 12px;
+
+  padding: 18px 0 4px;
 
   border-top: 1px solid #ececec;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
 
-  gap: 20px;
-}
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr);
 
-/* ================================= */
-
-.footer-left {
-  font-size: 13px;
-
-  color: #9d9d9d;
-
-  font-weight: 500;
-}
-
-/* ================================= */
-
-.footer-center {
-  display: flex;
   align-items: center;
 
   gap: 24px;
 }
 
-.footer-center a {
+/* ========================================
+   COPYRIGHT
+======================================== */
+
+.schedule-footer-copyright {
+  justify-self: start;
+
+  color: #999999;
+
+  font-size: 10px;
+  line-height: 1.4;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   LINKS
+======================================== */
+
+.schedule-footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 22px;
+}
+
+.schedule-footer-links a {
+  color: #777777;
+
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 400;
+
   text-decoration: none;
 
-  color: #777;
+  white-space: nowrap;
 
-  font-size: 13px;
-
-  font-weight: 500;
-
-  transition: 0.25s;
+  transition: color 0.18s ease;
 }
 
-.footer-center a:hover {
-  color: #e4c66d;
+.schedule-footer-links a:hover {
+  color: #222222;
 }
 
-/* ================================= */
+/* ========================================
+   SOCIAL LINKS
+======================================== */
 
-.footer-right {
+.schedule-footer-social {
+  justify-self: end;
+
   display: flex;
   align-items: center;
 
-  gap: 10px;
+  gap: 8px;
 }
 
-.footer-right a {
-  width: 34px;
-  height: 34px;
-
-  border-radius: 10px;
-
-  background: #ffffff;
+.schedule-footer-social a {
+  width: 28px;
+  height: 28px;
 
   border: 1px solid #ececec;
+  border-radius: 7px;
+
+  background: #ffffff;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  color: #666;
+  color: #777777;
 
-  transition: 0.25s;
+  text-decoration: none;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
 }
 
-.footer-right a svg {
-  font-size: 14px;
+.schedule-footer-social a svg {
+  width: 11px;
+  height: 11px;
 }
 
-.footer-right a:hover {
-  background: #e4c66d;
+/* ========================================
+   HOVER
+======================================== */
 
+.schedule-footer-social a:hover {
   border-color: #e4c66d;
 
-  color: #1a1a1a;
+  background: #e4c66d;
+
+  color: #222222;
 }
 
-/* ================================= */
+/* ========================================
+   FOCUS
+======================================== */
 
-@media (max-width: 992px) {
+.schedule-footer-links a:focus-visible,
+.schedule-footer-social a:focus-visible {
+  outline: 2px solid rgba(228, 198, 109, 0.75);
+  outline-offset: 3px;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
   .schedule-footer {
-    flex-direction: column;
+    grid-template-columns:
+      minmax(0, 1fr)
+      auto;
 
-    text-align: center;
-
-    gap: 18px;
+    row-gap: 16px;
   }
 
-  .footer-center {
+  .schedule-footer-copyright {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .schedule-footer-social {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .schedule-footer-links {
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    justify-content: flex-start;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+  .schedule-footer {
+    margin-top: 8px;
+
+    padding-top: 16px;
+
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 14px;
+  }
+
+  .schedule-footer-copyright,
+  .schedule-footer-links,
+  .schedule-footer-social {
+    grid-column: 1;
+    grid-row: auto;
+
+    justify-self: start;
+  }
+
+  .schedule-footer-links {
     flex-wrap: wrap;
 
-    justify-content: center;
+    justify-content: flex-start;
+
+    gap: 12px 18px;
   }
 }

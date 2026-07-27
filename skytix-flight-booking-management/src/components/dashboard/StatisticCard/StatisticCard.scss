@@ -1,58 +1,273 @@
+/* ========================================
+   STATISTIC CARD
+======================================== */
+
 .stat-card {
-  background: #fff;
+  width: 100%;
+  min-width: 0;
 
+  min-height: 92px;
+
+  padding: 15px 16px;
+
+  background: #ffffff;
+
+  border: 1px solid #eeeeee;
   border-radius: 16px;
-
-  padding: 14px 16px;
-
-  min-height: 76px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  border: 1px solid #f2f2f2;
+  gap: 12px;
 
-  box-shadow: 0 4px 15px rgba(0,0,0,.03);
+  box-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.025);
+
+  box-sizing: border-box;
 }
 
-.stat-left p {
-  font-size: 11px;
-  color: #999;
-  margin-bottom: 6px;
+/* ========================================
+   LEFT SIDE
+======================================== */
+
+.stat-left {
+  min-width: 0;
+
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
 }
 
-.stat-left h3 {
-  font-size: 24px;
-  font-weight: 700;
+/* ========================================
+   TITLE
+======================================== */
+
+.stat-title {
+  width: 100%;
+
+  margin: 0 0 10px;
+
+  color: #969696;
+
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ========================================
+   VALUE ROW
+======================================== */
+
+.stat-value-row {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+/* ========================================
+   VALUE
+======================================== */
+
+.stat-value {
   margin: 0;
+
+  min-width: 0;
+
+  color: #202020;
+
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+
+  white-space: nowrap;
 }
+
+/* ========================================
+   PERCENTAGE BADGE
+======================================== */
 
 .stat-badge {
-  margin-top: 8px;
+  flex: 0 0 auto;
 
-  display: inline-flex;
+  min-height: 20px;
 
-  padding: 4px 8px;
+  padding: 4px 6px;
 
   border-radius: 6px;
 
-  background: rgba(228,198,109,.18);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  font-size: 10px;
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 600;
+
+  white-space: nowrap;
 }
 
-.icon-box {
-  width: 40px;
-  height: 40px;
+/* POSITIVE */
 
-  border-radius: 12px;
+.stat-badge-positive {
+  background: #faf5e3;
+
+  color: #9c812c;
+}
+
+/* NEGATIVE */
+
+.stat-badge-negative {
+  background: #fff0f0;
+
+  color: #cf6262;
+}
+
+/* ========================================
+   ICON BOX
+======================================== */
+
+.stat-icon-box {
+  width: 42px;
+  height: 42px;
+
+  flex: 0 0 42px;
+
+  border-radius: 11px;
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
-  color: #fff;
+  color: #ffffff;
+}
 
-  font-size: 18px;
+/* ========================================
+   ICON
+======================================== */
+
+.stat-icon-box svg {
+  width: 18px;
+  height: 18px;
+
+  stroke-width: 1.8;
+}
+
+/* ========================================
+   STANDARD LAPTOP
+======================================== */
+
+@media (max-width: 1450px) {
+
+  .stat-card {
+    min-height: 88px;
+
+    padding: 14px;
+  }
+
+  .stat-title {
+    margin-bottom: 9px;
+
+    font-size: 9px;
+  }
+
+  .stat-value {
+    font-size: 20px;
+  }
+
+  .stat-value-row {
+    gap: 6px;
+  }
+
+  .stat-badge {
+    min-height: 19px;
+
+    padding: 3px 5px;
+
+    font-size: 7px;
+  }
+
+  .stat-icon-box {
+    width: 39px;
+    height: 39px;
+
+    flex-basis: 39px;
+
+    border-radius: 10px;
+  }
+
+  .stat-icon-box svg {
+    width: 17px;
+    height: 17px;
+  }
+}
+
+/* ========================================
+   SMALL LAPTOP
+======================================== */
+
+@media (max-width: 1200px) {
+
+  .stat-card {
+    min-height: 92px;
+
+    padding: 15px 16px;
+  }
+
+  .stat-title {
+    font-size: 10px;
+  }
+
+  .stat-value {
+    font-size: 22px;
+  }
+
+  .stat-badge {
+    font-size: 8px;
+  }
+
+  .stat-icon-box {
+    width: 42px;
+    height: 42px;
+
+    flex-basis: 42px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+
+  .stat-card {
+    min-height: 88px;
+
+    padding: 14px 15px;
+  }
+
+  .stat-value {
+    font-size: 21px;
+  }
+
+  .stat-icon-box {
+    width: 40px;
+    height: 40px;
+
+    flex-basis: 40px;
+  }
 }

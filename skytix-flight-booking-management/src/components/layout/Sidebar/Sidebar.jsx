@@ -2,47 +2,116 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaPlaneDeparture } from "react-icons/fa";
+
+import {
+  FaPlaneDeparture,
+} from "react-icons/fa";
 
 import menu from "./menu";
 
 import "./Sidebar.scss";
 
-export default function Sidebar({ open }) {
+export default function Sidebar({
+  open = false,
+}) {
   const pathname = usePathname();
 
-  return (
-    <aside className={`sidebar ${open ? "show" : ""}`}>
+  const isActive = (link) => {
+    if (link === "/dashboard") {
+      return pathname === "/dashboard";
+    }
 
-      <div className="sidebar-logo">
+    return (
+      pathname === link ||
+      pathname.startsWith(`${link}/`)
+    );
+  };
+
+  return (
+    <aside
+      className={`main-sidebar ${
+        open ? "show" : ""
+      }`}
+    >
+
+      {/* =====================================
+          LOGO
+      ====================================== */}
+
+      <div className="sidebar-brand">
+
         <FaPlaneDeparture />
-        <span>Skytix</span>
+
+        <span>
+          Skytix
+        </span>
+
       </div>
 
-      <nav className="sidebar-menu">
+      {/* =====================================
+          MENU
+      ====================================== */}
+
+      <nav
+        className="sidebar-navigation"
+        aria-label="Main navigation"
+      >
         {menu.map((item) => {
           const Icon = item.icon;
+
+          const active =
+            isActive(item.link);
 
           return (
             <Link
               key={item.id}
               href={item.link}
-              className={pathname === item.link ? "active" : ""}
+              className={`sidebar-navigation-item ${
+                active ? "active" : ""
+              }`}
             >
-              <Icon />
-              <span>{item.title}</span>
+
+              <Icon
+                className="sidebar-navigation-icon"
+              />
+
+              <span className="sidebar-navigation-label">
+                {item.title}
+              </span>
+
+              {item.badge && (
+                <span className="sidebar-navigation-badge">
+                  {item.badge}
+                </span>
+              )}
+
             </Link>
           );
         })}
       </nav>
 
-      <div className="upgrade-card">
-        <h5>Explore Premium</h5>
-        <p>Unlock all dashboard features</p>
+      {/* =====================================
+          UPGRADE
+      ====================================== */}
 
-        <button>
-          Upgrade
+      <div className="sidebar-upgrade">
+
+        <h5>
+          Explore the Enhanced Features!
+        </h5>
+
+        <p>
+          Unlock a world of enhanced
+          capabilities.
+        </p>
+
+        <button
+          type="button"
+          className="sidebar-upgrade-button"
+        >
+          Upgrade Now
         </button>
+
       </div>
 
     </aside>

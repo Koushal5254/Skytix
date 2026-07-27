@@ -1,40 +1,133 @@
-@import "@/styles/abstracts/variables";
+/* ========================================
+   MAIN LAYOUT
+======================================== */
 
 .main-layout {
-  display: flex;
-
+  width: 100%;
   min-height: 100vh;
 
   background: #f7f8fc;
 }
 
-/* Content Area */
+/* ========================================
+   MAIN CONTENT
 
-.main-content{
+   Must match sidebar width: 210px
+======================================== */
 
-flex:1;
+.main-content {
+  width: calc(100% - 210px);
+  min-width: 0;
+  min-height: 100vh;
 
-margin-left:260px;
+  margin-left: 210px;
 
-min-height:100vh;
+  padding:
+    0
+    18px
+    18px;
 
-padding:34px;
+  background: #f7f8fc;
 
-background:#F8F9FD;
+  display: flex;
+  flex-direction: column;
 
-overflow-x:hidden;
-
-}
-/* Mobile */
-
-@media (max-width:992px){
-
-.main-content{
-
-margin-left:0;
-
-padding:20px;
-
+  overflow-x: hidden;
 }
 
+/* ========================================
+   PAGE CONTENT
+======================================== */
+
+.main-page-content {
+  width: 100%;
+  min-width: 0;
+
+  flex: 1;
+
+  margin: 0;
+  padding: 0;
+}
+
+/* ========================================
+   MOBILE OVERLAY
+======================================== */
+
+.main-layout-overlay {
+  display: none;
+}
+
+/* ========================================
+   LARGE DESKTOP
+======================================== */
+
+@media (min-width: 1600px) {
+  .main-content {
+    padding:
+      0
+      20px
+      20px;
+  }
+}
+
+/* ========================================
+   LAPTOP
+======================================== */
+
+@media (max-width: 1200px) {
+  .main-content {
+    padding:
+      0
+      16px
+      16px;
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .main-content {
+    width: 100%;
+
+    margin-left: 0;
+
+    padding:
+      0
+      16px
+      16px;
+  }
+
+  .main-layout-overlay {
+    position: fixed;
+
+    z-index: 90;
+
+    inset: 0;
+
+    display: block;
+
+    padding: 0;
+
+    border: 0;
+    outline: 0;
+
+    background: rgba(0, 0, 0, 0.25);
+
+    cursor: pointer;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .main-content {
+    padding:
+      0
+      12px
+      12px;
+  }
 }

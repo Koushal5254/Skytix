@@ -12,22 +12,58 @@ export default function MainLayout({
   children,
   showHeader = true,
   showFooter = true,
+  title = "Dashboard",
 }) {
-  const [open, setOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] =
+    useState(false);
 
   return (
     <div className="main-layout">
-      <Sidebar open={open} />
+
+      {/* =====================================
+          SIDEBAR
+      ====================================== */}
+
+      <Sidebar open={sidebarOpen} />
+
+      {/* =====================================
+          MOBILE SIDEBAR OVERLAY
+      ====================================== */}
+
+      {sidebarOpen && (
+        <button
+          type="button"
+          className="main-layout-overlay"
+          aria-label="Close navigation"
+          onClick={() =>
+            setSidebarOpen(false)
+          }
+        />
+      )}
+
+      {/* =====================================
+          MAIN CONTENT
+      ====================================== */}
 
       <div className="main-content">
 
-        {showHeader && <Header setOpen={setOpen} />}
+        {showHeader && (
+          <Header
+            title={title}
+            setOpen={setSidebarOpen}
+          />
+        )}
 
-        <main>{children}</main>
+        <main className="main-page-content">
+          {children}
+        </main>
 
-        {showFooter && <Footer />}
+        {showFooter && (
+          <Footer />
+        )}
 
       </div>
+
     </div>
   );
 }

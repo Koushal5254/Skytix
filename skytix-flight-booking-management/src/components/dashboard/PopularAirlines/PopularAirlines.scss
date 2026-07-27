@@ -1,76 +1,236 @@
-.airlines-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+/* ========================================
+   POPULAR AIRLINES
+======================================== */
 
-  margin-bottom:10px;
+.popular-airlines-card {
+  width: 100%;
+  min-width: 0;
+
+  min-height: 340px;
+
+  display: flex;
+  flex-direction: column;
 }
 
-.airlines-header h5{
-  margin:0;
-  font-size:15px;
-  font-weight:600;
+/* ========================================
+   HEADER
+======================================== */
+
+.airlines-header {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
 }
 
-.airlines-header button{
-  border:none;
-  background:none;
-  cursor:pointer;
+.airlines-header h5 {
+  margin: 0;
+
+  color: #292929;
+
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 700;
 }
 
-.airlines-chart{
-  position:relative;
+/* ========================================
+   MORE BUTTON
+======================================== */
+
+.airlines-more {
+  width: 28px;
+  height: 28px;
+
+  flex: 0 0 28px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 7px;
+  outline: 0;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #999999;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
 }
 
-.airlines-center-icon{
-  position:absolute;
-
-  top:50%;
-  left:50%;
-
-  transform:translate(-50%,-50%);
-
-  width:74px;
-  height:74px;
-
-  border-radius:50%;
-
-  background:#E4C66D;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-size:24px;
+.airlines-more svg {
+  width: 16px;
+  height: 16px;
 }
 
-.airlines-list{
-  margin-top:10px;
+.airlines-more:hover {
+  background: #f6f6f6;
+
+  color: #444444;
 }
 
-.airline-row{
-  display:flex;
-  justify-content:space-between;
+/* ========================================
+   CHART
+======================================== */
 
-  padding:8px 0;
+.airlines-chart {
+  position: relative;
 
-  font-size:12px;
+  width: 170px;
+  height: 170px;
+
+  max-width: 100%;
+
+  margin: 8px auto 5px;
 }
 
-.airline-row div{
-  display:flex;
-  align-items:center;
-  gap:8px;
+/* ========================================
+   CENTER ICON
+======================================== */
+
+.airlines-center-icon {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 66px;
+  height: 66px;
+
+  border-radius: 50%;
+
+  background: #e4c66d;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #292929;
+
+  font-size: 21px;
+
+  pointer-events: none;
+
+  transform:
+    translate(-50%, -50%);
 }
 
-.dot{
-  width:10px;
-  height:10px;
-  border-radius:2px;
+.airlines-center-icon svg {
+  width: 21px;
+  height: 21px;
 }
 
+/* ========================================
+   LIST
+======================================== */
 
-.yellow{background:#E4C66D;}
-.black{background:#1F1F1F;}
-.gray{background:#8C8C8C;}
-.light{background:#D9D9D9;}
+.airlines-list {
+  width: 100%;
+
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.airline-row {
+  width: 100%;
+
+  min-height: 32px;
+
+  padding: 7px 0;
+
+  border-bottom: 1px solid #f2f2f2;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+.airline-row:last-child {
+  border-bottom: 0;
+}
+
+.airline-name {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+}
+
+.airline-name > span:last-child {
+  min-width: 0;
+
+  color: #666666;
+
+  font-size: 9px;
+  line-height: 1.2;
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.airline-row strong {
+  flex: 0 0 auto;
+
+  color: #292929;
+
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* ========================================
+   DOTS
+======================================== */
+
+.airline-dot {
+  width: 8px;
+  height: 8px;
+
+  flex: 0 0 8px;
+
+  border-radius: 2px;
+}
+
+.airline-dot.yellow {
+  background: #e4c66d;
+}
+
+.airline-dot.black {
+  background: #252525;
+}
+
+.airline-dot.gray {
+  background: #8c8c8c;
+}
+
+.airline-dot.light {
+  background: #d9d9d9;
+}
+
+/* ========================================
+   SMALL LAPTOP
+======================================== */
+
+@media (max-width: 1200px) {
+  .popular-airlines-card {
+    min-height: 330px;
+  }
+}

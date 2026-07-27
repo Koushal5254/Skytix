@@ -1,143 +1,283 @@
-.booking-filters{
+/* ========================================
+   BOOKING FILTER BAR
+======================================== */
 
-display:flex;
+.booking-filters {
+  width: 100%;
+  min-width: 0;
 
-justify-content:space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-align-items:center;
+  gap: 16px;
 
-margin-bottom:18px;
-
+  margin-bottom: 14px;
 }
 
-.filters-left{
+/* ========================================
+   LEFT FILTERS
+======================================== */
 
-display:flex;
+.booking-filters-left {
+  min-width: 0;
 
-gap:10px;
+  display: flex;
+  align-items: center;
 
+  gap: 7px;
+
+  flex-wrap: wrap;
 }
 
-.filter-btn{
+/* ========================================
+   FILTER BUTTON
+======================================== */
 
-height:40px;
+.booking-filter-btn {
+  height: 34px;
 
-padding:0 16px;
+  padding: 0 11px;
 
-border:none;
+  border: 0;
+  border-radius: 7px;
 
-border-radius:10px;
+  background: #ffffff;
 
-background:white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-display:flex;
+  gap: 6px;
 
-align-items:center;
+  color: #444444;
 
-gap:8px;
+  font-family: inherit;
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 500;
 
-font-size:14px;
+  white-space: nowrap;
 
-font-weight:500;
+  cursor: pointer;
 
-cursor:pointer;
+  box-shadow:
+    0 2px 7px
+    rgba(0, 0, 0, 0.02);
 
-box-shadow:0 2px 8px rgba(0,0,0,.03);
-
-transition:.25s;
-
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease;
 }
 
-.filter-btn svg{
-
-font-size:15px;
-
+.booking-filter-btn:hover {
+  background: #fafafa;
 }
 
-.filter-btn.active{
-
-background:#e5c768;
-
+.booking-filter-btn:active {
+  transform: scale(0.98);
 }
 
-.filters-right{
+/* ========================================
+   DATE FILTER
+======================================== */
 
-display:flex;
+.booking-date-filter {
+  padding-left: 10px;
+  padding-right: 9px;
 
-align-items:center;
+  background: #e4c66d;
 
-gap:10px;
-
+  color: #252525;
 }
 
-.circle-btn{
-
-width:40px;
-
-height:40px;
-
-border:none;
-
-background:white;
-
-border-radius:10px;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-cursor:pointer;
-
-box-shadow:0 2px 8px rgba(0,0,0,.03);
-
-transition:.25s;
-
+.booking-date-filter:hover {
+  background: #dfc164;
 }
 
-.circle-btn:hover{
+/* ========================================
+   FILTER ICONS
+======================================== */
 
-transform:translateY(-2px);
+.booking-filter-btn svg {
+  width: 11px;
+  height: 11px;
 
+  flex: 0 0 11px;
+
+  stroke-width: 1.7;
 }
 
-.circle-btn svg{
-
-font-size:18px;
-
+.booking-filter-btn .filter-leading-icon {
+  color: #777777;
 }
 
-.add-booking-btn{
+.booking-filter-btn .filter-chevron {
+  width: 10px;
+  height: 10px;
 
-height:40px;
+  margin-left: 1px;
 
-padding:0 18px;
-
-border:none;
-
-border-radius:10px;
-
-background:#e5c768;
-
-display:flex;
-
-align-items:center;
-
-gap:8px;
-
-font-size:14px;
-
-font-weight:600;
-
-cursor:pointer;
-
-transition:.25s;
-
+  color: #777777;
 }
 
-.add-booking-btn:hover{
+.booking-date-filter .filter-chevron {
+  color: #292929;
+}
 
-transform:translateY(-2px);
+/* ========================================
+   RIGHT SIDE
+======================================== */
 
-}   
+.booking-filters-right {
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+}
+
+/* ========================================
+   SEARCH / FILTER ACTIONS
+======================================== */
+
+.booking-filter-action {
+  width: 34px;
+  height: 34px;
+
+  flex: 0 0 34px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #292929;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 2px 7px
+    rgba(0, 0, 0, 0.02);
+
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease;
+}
+
+.booking-filter-action svg {
+  width: 14px;
+  height: 14px;
+
+  stroke-width: 1.8;
+}
+
+.booking-filter-action:hover {
+  background: #f7f7f7;
+}
+
+.booking-filter-action:active {
+  transform: scale(0.96);
+}
+
+/* ========================================
+   ADD BOOKING
+======================================== */
+
+.booking-add-btn {
+  height: 34px;
+
+  padding: 0 13px;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: #e4c66d;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  color: #202020;
+
+  font-family: inherit;
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease;
+}
+
+.booking-add-btn svg {
+  width: 12px;
+  height: 12px;
+
+  stroke-width: 1.8;
+}
+
+.booking-add-btn:hover {
+  background: #dfc164;
+}
+
+.booking-add-btn:active {
+  transform: scale(0.98);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1100px) {
+  .booking-filters {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .booking-filters-right {
+    width: 100%;
+
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 650px) {
+  .booking-filters {
+    gap: 10px;
+
+    margin-bottom: 12px;
+  }
+
+  .booking-filters-left {
+    width: 100%;
+  }
+
+  .booking-date-filter {
+    width: 100%;
+
+    justify-content: flex-start;
+  }
+
+  .booking-date-filter .filter-chevron {
+    margin-left: auto;
+  }
+
+  .booking-filters-right {
+    justify-content: flex-start;
+  }
+}

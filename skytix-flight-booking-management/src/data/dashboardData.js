@@ -26,6 +26,10 @@ export const airlineDistribution = [
   15,
 ];
 
+/* ========================================
+   TOP ROUTES
+======================================== */
+
 export const topRoutes = [
   {
     passengers: "140,000",
@@ -52,28 +56,37 @@ export const topRoutes = [
     progress: 65,
   },
 ];
+
+/* ========================================
+   RECENT ACTIVITY
+======================================== */
+
 export const activities = [
   {
     id: 1,
-    text: "New booking created",
-    time: "2 min ago",
+    text: "Passenger booked flight CloudNine Airlines (CDG-JFK)",
+    time: "23 Jul, 2024",
   },
   {
     id: 2,
-    text: "Flight AI-202 departed",
-    time: "15 min ago",
-  },
-  {
-    id: 3,
-    text: "Payment confirmed",
+    text: "Ellen Winston upgraded seat for flight QW-HKG-BKK",
     time: "1 hour ago",
   },
   {
+    id: 3,
+    text: "Roger Piston requested cancellation for flight SH-FRA-BKK",
+    time: "2 hours ago",
+  },
+  {
     id: 4,
-    text: "Schedule updated",
+    text: "Paula Ortega completed payment for flight FLY-LAX-HND",
     time: "3 hours ago",
   },
 ];
+
+/* ========================================
+   BOOKINGS
+======================================== */
 
 export const bookings = [
   {
@@ -156,6 +169,10 @@ export const bookings = [
     duration: "13 hours",
   },
 ];
+
+/* ========================================
+   PAYMENTS
+======================================== */
 
 export const payments = [
   {

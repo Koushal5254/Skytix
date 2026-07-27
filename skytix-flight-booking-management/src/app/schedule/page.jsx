@@ -11,22 +11,27 @@ import "@/styles/schedule.scss";
 
 export default function SchedulePage() {
   return (
-    <MainLayout showHeader={false} showFooter={false}>
+    <MainLayout
+      showHeader={false}
+      showFooter={false}
+    >
       <section className="schedule-page">
 
         <ScheduleHeader />
 
-        <section className="schedule-content">
+        <div className="schedule-content">
 
-          <aside className="left-panel">
+          {/* FILTER SIDEBAR */}
+
+          <aside className="schedule-left-panel">
             <FilterSidebar />
           </aside>
 
-          <main className="right-panel">
+          {/* MAIN RESULTS */}
+
+          <div className="schedule-right-panel">
 
             <SearchBar />
-
-            {/* <FlightListHeader /> */}
 
             <FlightList />
 
@@ -34,9 +39,9 @@ export default function SchedulePage() {
 
             <ScheduleFooter />
 
-          </main>
+          </div>
 
-        </section>
+        </div>
 
       </section>
     </MainLayout>

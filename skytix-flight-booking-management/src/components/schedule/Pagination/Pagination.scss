@@ -1,50 +1,147 @@
-.pagination-wrapper {
+/* ========================================
+   SCHEDULE PAGINATION
+======================================== */
+
+.schedule-pagination {
+  width: 100%;
+
+  margin: 18px 0 6px;
+
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
-  gap: 14px;
-
-  margin-top: 36px;
-  margin-bottom: 20px;
+  gap: 7px;
 }
 
-.page-btn {
-  width: 50px;
-  height: 50px;
+/* ========================================
+   PAGE GROUP
+======================================== */
 
-  border: 1px solid #ececec;
+.schedule-pagination-pages {
+  display: flex;
+  align-items: center;
 
-  border-radius: 16px;
+  gap: 7px;
+}
 
-  background: #fff;
+/* ========================================
+   BUTTON
+======================================== */
 
-  color: #1a1a1a;
+.schedule-pagination-btn {
+  width: 32px;
+  height: 32px;
 
-  font-size: 18px;
-  font-weight: 600;
+  flex: 0 0 32px;
+
+  padding: 0;
+
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #555555;
+
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 500;
 
   cursor: pointer;
 
-  transition: all 0.25s ease;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
 }
 
-.page-btn:hover {
+/* ========================================
+   HOVER
+======================================== */
+
+.schedule-pagination-btn:not(:disabled):hover {
   border-color: #e4c66d;
+
+  background: #faf8ef;
+
+  color: #222222;
 }
 
-.page-btn.active {
+/* ========================================
+   ACTIVE
+======================================== */
+
+.schedule-pagination-btn.active {
+  border-color: #e4c66d;
+
   background: #e4c66d;
 
-  border-color: #e4c66d;
+  color: #222222;
 
-  color: #1a1a1a;
+  font-weight: 600;
 }
 
-.arrow {
-  font-size: 24px;
-}   
+/* ========================================
+   ARROWS
+======================================== */
+
+.schedule-pagination-arrow svg {
+  width: 14px;
+  height: 14px;
+
+  stroke-width: 1.8;
+}
+
+/* ========================================
+   DISABLED
+======================================== */
+
+.schedule-pagination-btn:disabled {
+  background: #fafafa;
+
+  color: #c7c7c7;
+
+  cursor: not-allowed;
+
+  opacity: 0.65;
+}
+
+/* ========================================
+   FOCUS
+======================================== */
+
+.schedule-pagination-btn:focus-visible {
+  outline: 2px solid rgba(228, 198, 109, 0.75);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 500px) {
+  .schedule-pagination {
+    gap: 5px;
+
+    margin-top: 14px;
+  }
+
+  .schedule-pagination-pages {
+    gap: 5px;
+  }
+
+  .schedule-pagination-btn {
+    width: 30px;
+    height: 30px;
+
+    flex-basis: 30px;
+
+    border-radius: 7px;
+  }
+}

@@ -1,175 +1,324 @@
-@import "@/styles/abstracts/variables";
+/* ========================================
+   SIDEBAR
+======================================== */
 
-.sidebar{
+.main-sidebar {
+  position: fixed;
 
-width:260px;
+  z-index: 100;
 
-height:100vh;
+  top: 0;
+  left: 0;
 
-background:#ffffff;
+  width: 210px;
+  height: 100vh;
 
-position:fixed;
+  padding:
+    24px
+    16px
+    18px;
 
-left:0;
+  background: #ffffff;
 
-top:0;
+  border-right: 1px solid #eeeeee;
 
-padding:24px 18px;
+  display: flex;
+  flex-direction: column;
 
-border-right:1px solid #ececec;
+  overflow-x: hidden;
+  overflow-y: auto;
 
-display:flex;
+  transition:
+    transform 0.25s ease;
 
-flex-direction:column;
-
-overflow-y:auto;
-
-z-index:100;
-
+  scrollbar-width: thin;
+  scrollbar-color:
+    #dddddd
+    transparent;
 }
 
-/* ===================== */
-/* LOGO */
-/* ===================== */
+/* ========================================
+   SCROLLBAR
+======================================== */
 
-.sidebar-logo{
-
-display:flex;
-
-align-items:center;
-
-gap:10px;
-
-font-size:24px;
-
-font-weight:700;
-
-margin-bottom:34px;
-
-color:#222;
-
+.main-sidebar::-webkit-scrollbar {
+  width: 4px;
 }
 
-.sidebar-logo svg{
-
-font-size:28px;
-
-color:#e4c66d;
-
+.main-sidebar::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.sidebar-logo svg {
-  color: #e4c66d;
+.main-sidebar::-webkit-scrollbar-thumb {
+  background: #dddddd;
+
+  border-radius: 10px;
+}
+
+/* ========================================
+   BRAND
+======================================== */
+
+.sidebar-brand {
+  height: 38px;
+
+  flex: 0 0 38px;
+
+  padding: 0 8px;
+
+  margin-bottom: 28px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #202020;
+}
+
+.sidebar-brand svg {
+  width: 22px;
+  height: 22px;
+
+  flex: 0 0 22px;
+
+  color: #e1bd50;
+}
+
+.sidebar-brand span {
+  color: #202020;
+
   font-size: 20px;
+  line-height: 1;
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
 }
 
-/* ===================== */
-/* MENU */
-/* ===================== */
+/* ========================================
+   NAVIGATION
+======================================== */
 
-.sidebar-menu{
+.sidebar-navigation {
+  width: 100%;
 
-display:flex;
+  display: flex;
+  flex-direction: column;
 
-flex-direction:column;
-
-gap:8px;
-
+  gap: 6px;
 }
 
-.sidebar-menu a{
+/* ========================================
+   NAVIGATION ITEM
+======================================== */
 
-height:46px;
+.sidebar-navigation-item {
+  position: relative;
 
-padding:0 16px;
+  width: 100%;
+  height: 42px;
 
-display:flex;
+  padding: 0 13px;
 
-align-items:center;
+  border-radius: 10px;
 
-gap:14px;
+  display: flex;
+  align-items: center;
 
-border-radius:14px;
+  gap: 12px;
 
-color:#707070;
+  color: #777777;
 
-font-size:14px;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 500;
 
-font-weight:500;
+  text-decoration: none;
 
-transition:.3s;
-
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
 }
 
-.sidebar-menu a svg{
-
-font-size:18px;
-
-}
-
-.sidebar-menu a:hover {
+.sidebar-navigation-item:hover {
   background: #f7f7f7;
+
+  color: #292929;
 }
 
-.sidebar-menu a.active{
+/* ========================================
+   ICON
+======================================== */
 
-background:#e4c66d;
+.sidebar-navigation-icon {
+  width: 16px;
+  height: 16px;
 
-color:#222;
+  flex: 0 0 16px;
 
-font-weight:600;
-
-}
-/* ===================== */
-/* UPGRADE CARD */
-/* ===================== */
-
-.upgrade-card{
-
-margin-top:auto;
-
-background:#202020;
-
-color:#fff;
-
-border-radius:18px;
-
-padding:20px;
-
+  stroke-width: 1.7;
 }
 
-.upgrade-card h5 {
-  margin: 0 0 8px;
+/* ========================================
+   LABEL
+======================================== */
 
-  font-size: 16px;
+.sidebar-navigation-label {
+  min-width: 0;
+
+  flex: 1;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ========================================
+   ACTIVE
+======================================== */
+
+.sidebar-navigation-item.active {
+  background: #e4c66d;
+
+  color: #292929;
+
   font-weight: 600;
 }
 
-.upgrade-card p {
-  margin: 0 0 14px;
-
-  font-size: 12px;
-  line-height: 1.5;
-
-  color: rgba(255,255,255,.7);
+.sidebar-navigation-item.active
+.sidebar-navigation-icon {
+  color: #292929;
 }
 
-.upgrade-card button{
+/* ========================================
+   BADGE
+======================================== */
 
-margin-top:18px;
+.sidebar-navigation-badge {
+  min-width: 17px;
+  height: 17px;
 
-width:100%;
+  padding: 0 5px;
 
-height:42px;
+  flex: 0 0 auto;
 
-border:none;
+  border-radius: 50px;
 
-border-radius:12px;
+  background: #e86c6c;
 
-background:#e4c66d;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-font-weight:600;
+  color: #ffffff;
 
-cursor:pointer;
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 700;
+}
 
+/* ========================================
+   UPGRADE CARD
+======================================== */
+
+.sidebar-upgrade {
+  width: 100%;
+
+  margin-top: auto;
+
+  padding: 16px;
+
+  border-radius: 14px;
+
+  background: #202020;
+
+  color: #ffffff;
+}
+
+.sidebar-upgrade h5 {
+  margin: 0 0 7px;
+
+  color: #ffffff;
+
+  font-size: 12px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.sidebar-upgrade p {
+  margin: 0 0 14px;
+
+  color: #bcbcbc;
+
+  font-size: 8px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* ========================================
+   UPGRADE BUTTON
+======================================== */
+
+.sidebar-upgrade-button {
+  width: 100%;
+  height: 34px;
+
+  padding: 0 12px;
+
+  border: 0;
+  border-radius: 8px;
+  outline: 0;
+
+  background: #e4c66d;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #202020;
+
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease;
+}
+
+.sidebar-upgrade-button:hover {
+  background: #dbbc5f;
+}
+
+.sidebar-upgrade-button:active {
+  transform: scale(0.98);
+}
+
+.sidebar-upgrade-button:focus-visible {
+  outline: 2px solid
+    rgba(228, 198, 109, 0.6);
+
+  outline-offset: 3px;
+}
+
+/* ========================================
+   TABLET / MOBILE
+======================================== */
+
+@media (max-width: 900px) {
+  .main-sidebar {
+    transform: translateX(-100%);
+
+    box-shadow:
+      8px 0 30px
+      rgba(0, 0, 0, 0.08);
+  }
+
+  .main-sidebar.show {
+    transform: translateX(0);
+  }
 }

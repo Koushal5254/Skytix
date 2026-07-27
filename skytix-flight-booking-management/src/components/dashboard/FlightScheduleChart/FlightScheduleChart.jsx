@@ -1,38 +1,58 @@
 "use client";
 
 import Chart from "react-apexcharts";
+
+import {
+  FiChevronDown,
+} from "react-icons/fi";
+
 import Card from "@/components/common/Card/Card";
-import { FiChevronDown } from "react-icons/fi";
+
+import "./FlightScheduleChart.scss";
 
 export default function FlightScheduleChart() {
-
   const options = {
     chart: {
       toolbar: {
         show: false,
       },
+
       zoom: {
         enabled: false,
       },
+
+      parentHeightOffset: 0,
     },
 
     stroke: {
       curve: "smooth",
-      width: 3,
+
+      width: [
+        2.5,
+        2.5,
+      ],
     },
 
     fill: {
       type: "gradient",
+
       gradient: {
-        shadeIntensity: 1,
-        opacityFrom: 0.25,
-        opacityTo: 0.02,
+        shadeIntensity: 0,
+
+        opacityFrom: 0.18,
+        opacityTo: 0.01,
+
+        stops: [
+          0,
+          90,
+          100,
+        ],
       },
     },
 
     colors: [
       "#E4C66D",
-      "#1F1F1F",
+      "#292929",
     ],
 
     dataLabels: {
@@ -44,13 +64,24 @@ export default function FlightScheduleChart() {
     },
 
     grid: {
-      borderColor: "#F2F2F2",
+      borderColor: "#EEEEEE",
+
       strokeDashArray: 4,
+
+      padding: {
+        top: 5,
+        right: 4,
+        bottom: -3,
+        left: 2,
+      },
     },
 
     markers: {
-      size: 4,
-      strokeWidth: 0,
+      size: 0,
+
+      hover: {
+        size: 5,
+      },
     },
 
     xaxis: {
@@ -74,17 +105,23 @@ export default function FlightScheduleChart() {
 
       labels: {
         style: {
-          colors: "#999",
-          fontSize: "12px",
+          colors: "#999999",
+          fontSize: "9px",
+          fontWeight: 400,
         },
       },
     },
 
     yaxis: {
+      min: 0,
+
+      tickAmount: 4,
+
       labels: {
         style: {
-          colors: "#999",
-          fontSize: "12px",
+          colors: "#999999",
+          fontSize: "9px",
+          fontWeight: 400,
         },
       },
     },
@@ -97,34 +134,79 @@ export default function FlightScheduleChart() {
   const series = [
     {
       name: "Completed",
-      data: [20, 30, 28, 45, 38, 55, 48],
+      data: [
+        20,
+        30,
+        28,
+        45,
+        38,
+        55,
+        48,
+      ],
     },
+
     {
       name: "Pending",
-      data: [15, 22, 20, 35, 30, 42, 37],
+      data: [
+        15,
+        22,
+        20,
+        35,
+        30,
+        42,
+        37,
+      ],
     },
   ];
 
   return (
-    <Card>
+    <Card className="flight-schedule-card">
 
-      <div className="chart-header">
+      {/* HEADER */}
 
-        <h5>Flight Schedule</h5>
+      <div className="flight-schedule-header">
 
-        <button className="chart-filter">
-          This Week
+        <div className="flight-schedule-title">
+          <h5>Flight Schedule</h5>
+
+          <div className="flight-schedule-legend">
+
+            <span>
+              <i className="completed" />
+
+              Completed
+            </span>
+
+            <span>
+              <i className="pending" />
+
+              Pending
+            </span>
+
+          </div>
+        </div>
+
+        <button
+          type="button"
+          className="flight-schedule-filter"
+        >
+          <span>This Week</span>
+
           <FiChevronDown />
         </button>
 
       </div>
 
-      <Chart
-        options={options}
-        series={series}
-        type="area"
-        height={200}
-      />
+      {/* CHART */}
+
+      <div className="flight-schedule-chart">
+        <Chart
+          options={options}
+          series={series}
+          type="area"
+          height="100%"
+        />
+      </div>
 
     </Card>
   );

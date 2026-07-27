@@ -1,107 +1,134 @@
-import { FaReact } from "react-icons/fa";
 import { FiArrowRight } from "react-icons/fi";
 
 import "./BookingCard.scss";
 
 export default function BookingCard({ booking }) {
+  const statusClass =
+    booking.status?.toLowerCase() || "";
+
   return (
-    <div className="booking-card">
+    <article className="booking-card">
 
-      {/* Airline */}
+      {/* =====================================
+          AIRLINE
+      ====================================== */}
 
-      <div className="airline-block">
+      <div className="booking-card-airline">
 
-        <div className="airline-logo">
-          <FaReact />
+        <div className="booking-airline-logo">
+          <span className="booking-airline-mark">
+            {booking.airline
+              .split(" ")
+              .map((word) => word[0])
+              .join("")
+              .slice(0, 2)}
+          </span>
         </div>
 
-        <div className="airline-details">
+        <div className="booking-airline-info">
           <h4>{booking.airline}</h4>
+
           <p>{booking.code}</p>
         </div>
 
       </div>
 
-      {/* Flight */}
+      {/* =====================================
+          FLIGHT INFORMATION
+      ====================================== */}
 
-      <div className="flight-block">
+      <div className="booking-flight-panel">
 
-        <div className="time-box">
+        {/* Departure */}
 
-          <h3>{booking.fromTime}</h3>
+        <div className="booking-flight-time">
+          <strong>{booking.fromTime}</strong>
 
-          <p>{booking.from}</p>
-
+          <span>{booking.from}</span>
         </div>
 
-        <div className="route-box">
+        {/* Route */}
 
-          <span>{booking.fromCode}</span>
+        <div className="booking-route">
 
-          <div className="route-line">
+          <span className="booking-airport-code">
+            {booking.fromCode}
+          </span>
 
-            <div className="line">
+          <div className="booking-route-center">
 
-              <FiArrowRight />
+            <div className="booking-route-track">
+
+              <span className="booking-route-start" />
+
+              <span className="booking-route-middle" />
+
+              <span className="booking-route-end">
+                <FiArrowRight />
+              </span>
 
             </div>
 
             <small>
-
               Duration {booking.duration}
-
             </small>
 
           </div>
 
-          <span>{booking.toCode}</span>
+          <span className="booking-airport-code">
+            {booking.toCode}
+          </span>
 
         </div>
 
-        <div className="time-box">
+        {/* Arrival */}
 
-          <h3>{booking.toTime}</h3>
+        <div className="booking-flight-time">
+          <strong>{booking.toTime}</strong>
 
-          <p>{booking.to}</p>
-
+          <span>{booking.to}</span>
         </div>
 
       </div>
 
-      {/* Date */}
+      {/* =====================================
+          DATE
+      ====================================== */}
 
-      <div className="date-block">
+      <div className="booking-date">
 
         <span>Date</span>
 
-        <p>2028-07-02</p>
+        <strong>{booking.date}</strong>
 
       </div>
 
-      {/* Passengers */}
+      {/* =====================================
+          PASSENGERS
+      ====================================== */}
 
-      <div className="passenger-block">
+      <div className="booking-passengers">
 
-        <div className="avatars">
-
-          <span></span>
-          <span></span>
-          <span></span>
-
+        <div className="booking-passenger-avatars">
+          <span />
+          <span />
+          <span />
         </div>
 
-        <small>{booking.seats}</small>
+        <strong>{booking.seats}</strong>
 
       </div>
 
-      {/* Status */}
+      {/* =====================================
+          STATUS
+      ====================================== */}
 
       <div
-        className={`status ${booking.status.toLowerCase()}`}
+        className={`booking-status booking-status-${statusClass}`}
       >
         {booking.status}
       </div>
 
-    </div>
+    </article>
   );
 }

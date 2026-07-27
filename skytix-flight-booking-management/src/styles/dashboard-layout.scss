@@ -1,93 +1,380 @@
+/* ========================================
+   DASHBOARD LAYOUT
+======================================== */
+
 .dashboard-wrapper {
+  width: 100%;
+  min-width: 0;
+
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 260px;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    260px;
+
   gap: 16px;
+
   align-items: start;
 }
 
+/* ========================================
+   MAIN CONTENT
+======================================== */
+
 .dashboard-content {
+  width: 100%;
+  min-width: 0;
+
   display: flex;
   flex-direction: column;
+
   gap: 16px;
 }
 
+/* ========================================
+   RIGHT SIDEBAR
+======================================== */
+
 .dashboard-sidebar {
+  width: 100%;
+  min-width: 0;
+
   display: flex;
   flex-direction: column;
+
   gap: 16px;
 }
 
 .dashboard-sidebar > * {
   width: 100%;
+  min-width: 0;
 }
 
-/* ========================= */
-/* STATS */
-/* ========================= */
+/* ========================================
+   STATISTICS
+======================================== */
 
 .stats-row {
+  width: 100%;
+  min-width: 0;
+
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
   gap: 12px;
+
+  align-items: stretch;
 }
 
-/* ========================= */
-/* ROW 1 */
-/* Ticket + Schedule */
-/* ========================= */
+.stats-row > * {
+  width: 100%;
+  min-width: 0;
+}
+
+/* ========================================
+   CHART ROW
+======================================== */
 
 .chart-row {
+  width: 100%;
+  min-width: 0;
+
   display: grid;
-  grid-template-columns: 34% 66%;
-  gap: 20px;
+
+  /*
+   * Ticket Sales is intentionally narrower.
+   * Flight Schedule gets the larger section.
+   */
+
+  grid-template-columns:
+    minmax(280px, 36%)
+    minmax(0, 64%);
+
+  gap: 16px;
+
+  align-items: stretch;
 }
 
-/* ========================= */
-/* ROW 2 */
-/* Destination + Bookings */
-/* ========================= */
+/* ========================================
+   CHART ITEMS
+======================================== */
+
+.dashboard-chart-item {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+}
+
+.dashboard-chart-item > * {
+  width: 100%;
+  min-width: 0;
+}
+
+/*
+ * Both cards in this row should have
+ * identical outer heights.
+ */
+
+.dashboard-chart-item > .custom-card {
+  min-height: 285px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================================
+   DESTINATION + BOOKINGS
+======================================== */
 
 .booking-row {
+  width: 100%;
+  min-width: 0;
+
   display: grid;
-  grid-template-columns: 36% 64%;
+
+  grid-template-columns:
+    minmax(300px, 36%)
+    minmax(0, 64%);
+
   gap: 16px;
+
+  align-items: stretch;
 }
 
-/* ========================= */
-/* PAYMENT */
-/* ========================= */
+/* ========================================
+   DESTINATION ITEM
+======================================== */
+
+.dashboard-destination-item {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+}
+
+.dashboard-destination-item > * {
+  width: 100%;
+  min-width: 0;
+}
+
+/* ========================================
+   BOOKINGS ITEM
+======================================== */
+
+.dashboard-bookings-item {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+}
+
+.dashboard-bookings-item > * {
+  width: 100%;
+  min-width: 0;
+}
+
+/* ========================================
+   EQUAL BOOKING ROW HEIGHT
+======================================== */
+
+.dashboard-destination-item > .custom-card,
+.dashboard-bookings-item > .custom-card {
+  min-height: 430px;
+}
+
+/* ========================================
+   PAYMENT HISTORY
+======================================== */
 
 .payment-row {
   width: 100%;
+  min-width: 0;
 }
 
-/* ========================= */
-/* RESPONSIVE */
-/* ========================= */
+.payment-row > * {
+  width: 100%;
+  min-width: 0;
+}
 
-@media (max-width: 1300px) {
+/* ========================================
+   LARGE DESKTOP
+======================================== */
+
+@media (min-width: 1600px) {
+
   .dashboard-wrapper {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      minmax(0, 1fr)
+      280px;
+
+    gap: 18px;
   }
 
+  .dashboard-content,
   .dashboard-sidebar {
-    display: none;
+    gap: 18px;
   }
-}
 
-@media (max-width: 900px) {
   .stats-row {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
 
   .chart-row,
   .booking-row {
-    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .dashboard-chart-item > .custom-card {
+    min-height: 300px;
   }
 }
 
-@media (max-width: 600px) {
+/* ========================================
+   NORMAL DESKTOP / LAPTOP
+======================================== */
+
+@media (max-width: 1450px) {
+
+  .dashboard-wrapper {
+    grid-template-columns:
+      minmax(0, 1fr)
+      245px;
+
+    gap: 14px;
+  }
+
+  .dashboard-content,
+  .dashboard-sidebar {
+    gap: 14px;
+  }
+
   .stats-row {
-    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .chart-row,
+  .booking-row {
+    gap: 14px;
+  }
+
+  .chart-row {
+    grid-template-columns:
+      minmax(260px, 35%)
+      minmax(0, 65%);
+  }
+
+  .booking-row {
+    grid-template-columns:
+      minmax(285px, 36%)
+      minmax(0, 64%);
+  }
+}
+
+/* ========================================
+   SMALL LAPTOP
+======================================== */
+
+@media (max-width: 1200px) {
+
+  .dashboard-wrapper {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  /*
+   * Right-side cards move underneath the
+   * primary dashboard instead of disappearing.
+   */
+
+  .dashboard-sidebar {
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 14px;
+  }
+
+  .stats-row {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+  }
+
+  .chart-row {
+    grid-template-columns:
+      minmax(260px, 38%)
+      minmax(0, 62%);
+  }
+
+  .booking-row {
+    grid-template-columns:
+      minmax(280px, 38%)
+      minmax(0, 62%);
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+  .dashboard-wrapper,
+  .dashboard-content {
+    gap: 14px;
+  }
+
+  .chart-row,
+  .booking-row {
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 14px;
+  }
+
+  .dashboard-chart-item > .custom-card {
+    min-height: auto;
+  }
+
+  .dashboard-destination-item > .custom-card,
+  .dashboard-bookings-item > .custom-card {
+    min-height: auto;
+  }
+
+  .dashboard-sidebar {
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 14px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+
+  .dashboard-wrapper,
+  .dashboard-content,
+  .dashboard-sidebar {
+    gap: 12px;
+  }
+
+  .stats-row {
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 12px;
+  }
+
+  .chart-row,
+  .booking-row {
+    gap: 12px;
   }
 }

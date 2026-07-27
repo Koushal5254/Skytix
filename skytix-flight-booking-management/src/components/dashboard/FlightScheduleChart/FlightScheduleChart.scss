@@ -1,8 +1,174 @@
-.flight-chart {
-  height: 100%;
+/* ========================================
+   FLIGHT SCHEDULE
+======================================== */
+
+.flight-schedule-card {
+  min-height: 285px;
+
+  display: flex;
+  flex-direction: column;
 }
 
-.flight-chart h5 {
-  margin-bottom: 20px;
+/* ========================================
+   HEADER
+======================================== */
+
+.flight-schedule-header {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  margin-bottom: 8px;
 }
 
+/* ========================================
+   TITLE
+======================================== */
+
+.flight-schedule-title {
+  min-width: 0;
+}
+
+.flight-schedule-title h5 {
+  margin: 0 0 10px;
+
+  color: #292929;
+
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+/* ========================================
+   LEGEND
+======================================== */
+
+.flight-schedule-legend {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+}
+
+.flight-schedule-legend span {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 5px;
+
+  color: #929292;
+
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+.flight-schedule-legend i {
+  width: 7px;
+  height: 7px;
+
+  flex: 0 0 7px;
+
+  border-radius: 50%;
+}
+
+.flight-schedule-legend i.completed {
+  background: #e4c66d;
+}
+
+.flight-schedule-legend i.pending {
+  background: #292929;
+}
+
+/* ========================================
+   FILTER
+======================================== */
+
+.flight-schedule-filter {
+  height: 30px;
+
+  flex: 0 0 auto;
+
+  padding: 0 9px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  color: #777777;
+
+  font-family: inherit;
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.flight-schedule-filter svg {
+  width: 11px;
+  height: 11px;
+}
+
+.flight-schedule-filter:hover {
+  background: #fafafa;
+}
+
+/* ========================================
+   CHART
+======================================== */
+
+.flight-schedule-chart {
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  flex: 1;
+
+  height: 190px;
+}
+
+/* ========================================
+   APEXCHARTS
+======================================== */
+
+.flight-schedule-chart .apexcharts-canvas,
+.flight-schedule-chart .apexcharts-svg {
+  width: 100% !important;
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .flight-schedule-card {
+    min-height: 270px;
+  }
+
+  .flight-schedule-header {
+    gap: 10px;
+  }
+
+  .flight-schedule-legend {
+    gap: 9px;
+  }
+
+  .flight-schedule-chart {
+    height: 175px;
+  }
+}

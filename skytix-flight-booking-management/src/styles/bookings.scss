@@ -1,11 +1,44 @@
-.bookings-page{
+/* ========================================
+   BOOKINGS PAGE
+======================================== */
 
-width:100%;
+.bookings-page {
+  width: 100%;
+  min-width: 0;
 
-max-width:1400px;
+  margin: 0;
+  padding: 0;
 
-margin:auto;
+  display: flex;
+  flex-direction: column;
+}
 
-padding:0;
+/* ========================================
+   DESKTOP
+======================================== */
 
+@media (min-width: 1600px) {
+  .bookings-page {
+    width: 100%;
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .bookings-page {
+    width: 100%;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .bookings-page {
+    width: 100%;
+  }
 }

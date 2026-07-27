@@ -1,30 +1,61 @@
 "use client";
 
 import Chart from "react-apexcharts";
-import { FaPlaneDeparture } from "react-icons/fa";
-import { FiMoreHorizontal } from "react-icons/fi";
+
+import {
+  FaPlaneDeparture,
+} from "react-icons/fa";
+
+import {
+  FiMoreHorizontal,
+} from "react-icons/fi";
 
 import Card from "@/components/common/Card/Card";
 
 import "./PopularAirlines.scss";
 
-export default function PopularAirlines() {
+const airlines = [
+  {
+    name: "SkyHigh Airlines",
+    value: 35,
+    className: "yellow",
+  },
+  {
+    name: "FlyFast Airways",
+    value: 30,
+    className: "black",
+  },
+  {
+    name: "AeroJet",
+    value: 20,
+    className: "gray",
+  },
+  {
+    name: "Nimbus Airlines",
+    value: 15,
+    className: "light",
+  },
+];
 
-  const series = [35, 30, 20, 15];
+export default function PopularAirlines() {
+  const series = airlines.map(
+    (airline) => airline.value
+  );
 
   const options = {
     chart: {
       toolbar: {
         show: false,
       },
+
+      sparkline: {
+        enabled: true,
+      },
     },
 
-    labels: [
-      "SkyHigh Airlines",
-      "FlyFast Airways",
-      "AeroJet",
-      "Nimbus Airlines",
-    ],
+    labels: airlines.map(
+      (airline) => airline.name
+    ),
 
     legend: {
       show: false,
@@ -38,32 +69,53 @@ export default function PopularAirlines() {
       width: 0,
     },
 
+    tooltip: {
+      y: {
+        formatter: (value) =>
+          `${value}%`,
+      },
+    },
+
     plotOptions: {
       pie: {
+        expandOnClick: false,
+
         donut: {
-          size: "68%",
+          size: "72%",
         },
       },
     },
 
     colors: [
       "#E4C66D",
-      "#1F1F1F",
+      "#252525",
       "#8C8C8C",
       "#D9D9D9",
     ],
   };
 
   return (
-    <Card>
+    <Card className="popular-airlines-card">
+
+      {/* HEADER */}
 
       <div className="airlines-header">
-        <h5>Popular Airlines</h5>
 
-        <button>
+        <h5>
+          Popular Airlines
+        </h5>
+
+        <button
+          type="button"
+          className="airlines-more"
+          aria-label="More airline options"
+        >
           <FiMoreHorizontal />
         </button>
+
       </div>
+
+      {/* DONUT */}
 
       <div className="airlines-chart">
 
@@ -71,7 +123,8 @@ export default function PopularAirlines() {
           options={options}
           series={series}
           type="donut"
-          height={240}
+          width="100%"
+          height="100%"
         />
 
         <div className="airlines-center-icon">
@@ -80,39 +133,34 @@ export default function PopularAirlines() {
 
       </div>
 
+      {/* AIRLINES */}
+
       <div className="airlines-list">
 
-        <div className="airline-row">
-          <div>
-            <span className="dot yellow"></span>
-            SkyHigh Airlines
-          </div>
-          <strong>35%</strong>
-        </div>
+        {airlines.map((airline) => (
+          <div
+            className="airline-row"
+            key={airline.name}
+          >
 
-        <div className="airline-row">
-          <div>
-            <span className="dot black"></span>
-            FlyFast Airways
-          </div>
-          <strong>30%</strong>
-        </div>
+            <div className="airline-name">
 
-        <div className="airline-row">
-          <div>
-            <span className="dot gray"></span>
-            AeroJet
-          </div>
-          <strong>20%</strong>
-        </div>
+              <span
+                className={`airline-dot ${airline.className}`}
+              />
 
-        <div className="airline-row">
-          <div>
-            <span className="dot light"></span>
-            Nimbus Airlines
+              <span>
+                {airline.name}
+              </span>
+
+            </div>
+
+            <strong>
+              {airline.value}%
+            </strong>
+
           </div>
-          <strong>15%</strong>
-        </div>
+        ))}
 
       </div>
 

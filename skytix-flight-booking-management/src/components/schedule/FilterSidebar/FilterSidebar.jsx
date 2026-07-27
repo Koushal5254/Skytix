@@ -1,142 +1,286 @@
 "use client";
 
+import { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
+
 import "./FilterSidebar.scss";
 
+const airlines = [
+  "CloudNine Airlines",
+  "QuickWing Air",
+  "SkyHigh Airlines",
+  "FlyFast Airways",
+  "AeroJet",
+  "Nimbus Airlines",
+  "JetStream Aviation",
+  "SuperJet Airways",
+];
+
 export default function FilterSidebar() {
+  const [sections, setSections] = useState({
+    transit: true,
+    price: true,
+    departure: true,
+    airline: true,
+  });
+
+  const [transit, setTransit] = useState({
+    direct: true,
+    oneTransit: false,
+    twoTransit: false,
+  });
+
+  const [maxPrice, setMaxPrice] = useState(650);
+  const [departureTime, setDepartureTime] = useState(70);
+
+  const [selectedAirlines, setSelectedAirlines] = useState(airlines);
+
+  const toggleSection = (section) => {
+    setSections((current) => ({
+      ...current,
+      [section]: !current[section],
+    }));
+  };
+
+  const handleTransit = (name) => {
+    setTransit((current) => ({
+      ...current,
+      [name]: !current[name],
+    }));
+  };
+
+  const handleAirline = (airline) => {
+    setSelectedAirlines((current) =>
+      current.includes(airline)
+        ? current.filter((item) => item !== airline)
+        : [...current, airline]
+    );
+  };
+
+  const selectAllAirlines = () => {
+    setSelectedAirlines(airlines);
+  };
+
+  const clearAllAirlines = () => {
+    setSelectedAirlines([]);
+  };
+
   return (
-    <aside className="filter-sidebar">
+    <aside className="schedule-filter-sidebar">
 
-      {/* Transit */}
-
-      <div className="filter-card">
-
-        <div className="filter-title">
-
+      {/* TRANSIT */}
+      <section className="schedule-filter-card">
+        <button
+          type="button"
+          className="schedule-filter-title"
+          onClick={() => toggleSection("transit")}
+        >
           <h3>Transit</h3>
 
-          <FiChevronDown />
+          <FiChevronDown
+            className={sections.transit ? "open" : ""}
+          />
+        </button>
 
-        </div>
+        {sections.transit && (
+          <div className="schedule-filter-body schedule-transit-options">
 
-        <label>
-          <input type="checkbox" defaultChecked />
-          Direct
-        </label>
+            <label className="schedule-checkbox-row">
+              <input
+                type="checkbox"
+                checked={transit.direct}
+                onChange={() => handleTransit("direct")}
+              />
 
-        <label>
-          <input type="checkbox" />
-          1 Transit
-        </label>
+              <span className="schedule-custom-checkbox" />
 
-        <label>
-          <input type="checkbox" />
-          2+ Transit
-        </label>
+              <span>Direct</span>
+            </label>
 
-      </div>
+            <label className="schedule-checkbox-row">
+              <input
+                type="checkbox"
+                checked={transit.oneTransit}
+                onChange={() => handleTransit("oneTransit")}
+              />
 
-      {/* Price */}
+              <span className="schedule-custom-checkbox" />
 
-      <div className="filter-card">
+              <span>1 Transit</span>
+            </label>
 
-        <div className="filter-title">
+            <label className="schedule-checkbox-row">
+              <input
+                type="checkbox"
+                checked={transit.twoTransit}
+                onChange={() => handleTransit("twoTransit")}
+              />
 
+              <span className="schedule-custom-checkbox" />
+
+              <span>2+ Transit</span>
+            </label>
+
+          </div>
+        )}
+      </section>
+
+      {/* PRICE RANGE */}
+      <section className="schedule-filter-card">
+        <button
+          type="button"
+          className="schedule-filter-title"
+          onClick={() => toggleSection("price")}
+        >
           <h3>Price Range</h3>
 
-          <FiChevronDown />
+          <FiChevronDown
+            className={sections.price ? "open" : ""}
+          />
+        </button>
 
-        </div>
+        {sections.price && (
+          <div className="schedule-filter-body">
 
-        <input
-          type="range"
-          min="350"
-          max="1000"
-          defaultValue="650"
-          className="price-slider"
-        />
+            <div className="schedule-range-wrapper">
+              <input
+                type="range"
+                min="350"
+                max="1000"
+                step="10"
+                value={maxPrice}
+                onChange={(event) =>
+                  setMaxPrice(Number(event.target.value))
+                }
+                className="schedule-range-input"
+                style={{
+                  "--range-progress": `${
+                    ((maxPrice - 350) / (1000 - 350)) * 100
+                  }%`,
+                }}
+              />
+            </div>
 
-        <div className="price-boxes">
+            <div className="schedule-price-boxes">
 
-          <div>
-            <span>Start</span>
-            <h4>$350</h4>
+              <div className="schedule-price-box">
+                <span>Start</span>
+                <strong>$350</strong>
+              </div>
+
+              <div className="schedule-price-box">
+                <span>Up To</span>
+                <strong>${maxPrice}</strong>
+              </div>
+
+            </div>
+
           </div>
+        )}
+      </section>
 
-          <div>
-            <span>Up To</span>
-            <h4>$1000</h4>
-          </div>
-
-        </div>
-
-      </div>
-
-      {/* Departure */}
-
-      <div className="filter-card">
-
-        <div className="filter-title">
-
+      {/* DEPARTURE TIMES */}
+      <section className="schedule-filter-card">
+        <button
+          type="button"
+          className="schedule-filter-title"
+          onClick={() => toggleSection("departure")}
+        >
           <h3>Departure Times</h3>
 
-          <FiChevronDown />
+          <FiChevronDown
+            className={sections.departure ? "open" : ""}
+          />
+        </button>
 
-        </div>
+        {sections.departure && (
+          <div className="schedule-filter-body">
 
-        <div className="time-range">
-          05:00 AM – 06:00 PM
-        </div>
+            <p className="schedule-time-range">
+              05:00 AM – 06:00 PM
+            </p>
 
-        <input
-          type="range"
-          min="0"
-          max="100"
-          defaultValue="70"
-          className="price-slider"
-        />
+            <div className="schedule-range-wrapper">
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={departureTime}
+                onChange={(event) =>
+                  setDepartureTime(Number(event.target.value))
+                }
+                className="schedule-range-input"
+                style={{
+                  "--range-progress": `${departureTime}%`,
+                }}
+              />
+            </div>
 
-      </div>
+          </div>
+        )}
+      </section>
 
-      {/* Airline */}
-
-      <div className="filter-card">
-
-        <div className="filter-title">
-
+      {/* AIRLINE */}
+      <section className="schedule-filter-card schedule-airline-card">
+        <button
+          type="button"
+          className="schedule-filter-title"
+          onClick={() => toggleSection("airline")}
+        >
           <h3>Airline</h3>
 
-          <FiChevronDown />
+          <FiChevronDown
+            className={sections.airline ? "open" : ""}
+          />
+        </button>
 
-        </div>
+        {sections.airline && (
+          <div className="schedule-filter-body">
 
-        <div className="airline-actions">
+            <div className="schedule-airline-actions">
 
-          <button>Select All</button>
+              <button
+                type="button"
+                onClick={selectAllAirlines}
+                className="schedule-select-all"
+              >
+                Select All
+              </button>
 
-          <button className="clear">
-            Clear All
-          </button>
+              <button
+                type="button"
+                onClick={clearAllAirlines}
+                className="schedule-clear-all"
+              >
+                Clear All
+              </button>
 
-        </div>
+            </div>
 
-        {[
-          "CloudNine Airlines",
-          "QuickWing Air",
-          "SkyHigh Airlines",
-          "FlyFast Airways",
-          "AeroJet",
-          "Nimbus Airlines",
-          "JetStream Aviation",
-          "SuperJet Airways",
-        ].map((airline) => (
-          <label key={airline}>
-            <input type="checkbox" defaultChecked />
-            {airline}
-          </label>
-        ))}
+            <div className="schedule-airline-list">
 
-      </div>
+              {airlines.map((airline) => (
+                <label
+                  key={airline}
+                  className="schedule-checkbox-row"
+                >
+                  <input
+                    type="checkbox"
+                    checked={selectedAirlines.includes(airline)}
+                    onChange={() => handleAirline(airline)}
+                  />
+
+                  <span className="schedule-custom-checkbox" />
+
+                  <span>{airline}</span>
+                </label>
+              ))}
+
+            </div>
+
+          </div>
+        )}
+      </section>
 
     </aside>
   );

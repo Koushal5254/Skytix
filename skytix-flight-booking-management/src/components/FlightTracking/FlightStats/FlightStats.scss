@@ -1,0 +1,99 @@
+.flight-stats {
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+
+  padding: 16px 17px;
+
+  background: #ffffff;
+}
+
+.flight-stats h3 {
+  margin: 0 0 13px;
+
+  color: #303030;
+
+  font-size: 11px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.flight-stats-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+.flight-stat {
+  min-width: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    31px
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.flight-stat-icon {
+  width: 31px;
+  height: 31px;
+
+  border-radius: 8px;
+
+  background: #faf7eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #bd9d3c;
+}
+
+.flight-stat-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.flight-stat-content {
+  min-width: 0;
+}
+
+.flight-stat-content span {
+  display: block;
+
+  color: #9c9c9c;
+
+  font-size: 7px;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+.flight-stat-content strong {
+  display: flex;
+  align-items: baseline;
+
+  gap: 4px;
+
+  margin-top: 2px;
+
+  color: #3d3d3d;
+
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.flight-stat-content small {
+  color: #999999;
+
+  font-size: 7px;
+  font-weight: 500;
+}

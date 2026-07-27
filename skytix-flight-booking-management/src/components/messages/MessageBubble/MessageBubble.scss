@@ -1,0 +1,120 @@
+/* ========================================
+   MESSAGE ROW
+======================================== */
+
+.message-bubble-row {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+}
+
+/* CUSTOMER */
+
+.message-bubble-row.incoming {
+  justify-content: flex-start;
+}
+
+/* ADMIN */
+
+.message-bubble-row.outgoing {
+  justify-content: flex-end;
+}
+
+/* ========================================
+   MESSAGE BUBBLE
+======================================== */
+
+.message-bubble {
+  width: fit-content;
+
+  max-width: 68%;
+
+  padding:
+    10px
+    13px
+    8px;
+
+  border-radius: 13px;
+
+  overflow-wrap: anywhere;
+}
+
+/* ========================================
+   INCOMING
+======================================== */
+
+.message-bubble-row.incoming
+  .message-bubble {
+  background: #ffffff;
+
+  border: 1px solid #e9e9e9;
+
+  border-bottom-left-radius: 4px;
+
+  color: #4c4c4c;
+}
+
+/* ========================================
+   OUTGOING
+======================================== */
+
+.message-bubble-row.outgoing
+  .message-bubble {
+  background: #e2c15c;
+
+  border: 1px solid #e2c15c;
+
+  border-bottom-right-radius: 4px;
+
+  color: #292929;
+}
+
+/* ========================================
+   MESSAGE TEXT
+======================================== */
+
+.message-bubble p {
+  margin: 0;
+
+  color: inherit;
+
+  font-size: 11px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* ========================================
+   MESSAGE TIME
+======================================== */
+
+.message-bubble span {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #9a9a9a;
+
+  font-size: 8px;
+  line-height: 1.2;
+  font-weight: 500;
+
+  text-align: right;
+
+  white-space: nowrap;
+}
+
+.message-bubble-row.outgoing
+  .message-bubble span {
+  color: rgba(41, 41, 41, 0.58);
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+  .message-bubble {
+    max-width: 84%;
+  }
+}

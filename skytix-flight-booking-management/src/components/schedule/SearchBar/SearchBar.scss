@@ -1,167 +1,296 @@
-.search-bar {
-  height: 72px;
+/* ========================================
+   SCHEDULE SEARCH BAR
+======================================== */
 
-  background: #ffffff;
-
-  border: 1px solid #ececec;
-
-  border-radius: 18px;
+.schedule-search-bar {
+  width: 100%;
+  min-width: 0;
+  height: 64px;
 
   display: grid;
 
   grid-template-columns:
-    1.4fr
-    72px
-    1.4fr
-    1fr
-    1fr
-    78px;
+    minmax(180px, 1.35fr)
+    64px
+    minmax(180px, 1.35fr)
+    minmax(160px, 0.95fr)
+    minmax(120px, 0.8fr)
+    70px;
+
+  background: #ffffff;
+
+  border: 1px solid #eeeeee;
+  border-radius: 16px;
+
+  overflow: hidden;
+}
+
+/* ========================================
+   SEARCH ITEM
+======================================== */
+
+.schedule-search-item {
+  min-width: 0;
+  height: 100%;
+
+  padding: 0 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-right: 1px solid #eeeeee;
+
+  background: #ffffff;
+}
+
+/* ========================================
+   LABEL
+======================================== */
+
+.schedule-search-label {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #9a9a9a;
+
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   VALUE
+======================================== */
+
+.schedule-search-value {
+  max-width: 100%;
+
+  margin: 0;
 
   overflow: hidden;
 
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
-}
+  color: #161616;
 
-/* ================================= */
-
-.search-item {
-  height: 100%;
-
-  display: flex;
-  align-items: center;
-
-  padding: 0 22px;
-
-  border-right: 1px solid #ececec;
-
-  gap: 14px;
-
-  background: #fff;
-}
-
-.search-item:last-of-type {
-  border-right: none;
-}
-
-/* ================================= */
-
-.icon {
-  display: none;
-}
-
-/* ================================= */
-
-.content {
-  display: flex;
-  flex-direction: column;
-}
-
-.content span {
-  font-size: 13px;
-
-  color: #9d9d9d;
-
-  margin-bottom: 4px;
-}
-
-.content h4 {
-  margin: 0;
-
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 1.2;
   font-weight: 600;
 
-  color: #1a1a1a;
-
-  line-height: 1.2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-/* ================================= */
+/* ========================================
+   SWAP BUTTON
+======================================== */
 
-.swap-btn {
+.schedule-swap-btn {
+  width: 100%;
   height: 100%;
 
-  border: none;
+  padding: 0;
 
-  background: #fff;
+  border: 0;
+  border-right: 1px solid #eeeeee;
 
-  border-right: 1px solid #ececec;
+  background: #ffffff;
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  color: #6d6d6d;
 
   cursor: pointer;
 
-  transition: 0.25s;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
 }
 
-.swap-btn:hover {
+.schedule-swap-btn svg {
+  width: 19px;
+  height: 19px;
+
+  stroke-width: 1.8;
+
+  transition: transform 0.25s ease;
+}
+
+.schedule-swap-btn:hover {
   background: #fafafa;
+
+  color: #222222;
 }
 
-.swap-btn svg {
-  font-size: 22px;
-
-  color: #666;
+.schedule-swap-btn:hover svg {
+  transform: rotate(180deg);
 }
 
-/* ================================= */
+/* ========================================
+   SEARCH BUTTON
+======================================== */
 
-.search-btn {
-  height: 72px;
+.schedule-search-submit {
+  width: 100%;
+  height: 100%;
 
-  border: none;
+  padding: 0;
 
-  background: #1f1f1f;
+  border: 0;
 
-  color: #fff;
+  background: #202020;
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
 
   cursor: pointer;
 
-  transition: 0.3s;
+  transition: background 0.18s ease;
 }
 
-.search-btn:hover {
-  background: #111;
+.schedule-search-submit svg {
+  width: 21px;
+  height: 21px;
+
+  stroke-width: 1.8;
 }
 
-.search-btn span {
-  display: none;
+.schedule-search-submit:hover {
+  background: #111111;
 }
 
-.search-btn svg {
-  font-size: 24px;
+/* ========================================
+   KEYBOARD FOCUS
+======================================== */
+
+.schedule-swap-btn:focus-visible,
+.schedule-search-submit:focus-visible {
+  position: relative;
+
+  outline: 2px solid rgba(228, 198, 109, 0.8);
+  outline-offset: -3px;
+
+  z-index: 2;
 }
 
-/* ================================= */
+/* ========================================
+   SMALL LAPTOP
+======================================== */
 
-@media (max-width: 1200px) {
-  .search-bar {
-    grid-template-columns: 1fr;
+@media (max-width: 1350px) {
+  .schedule-search-bar {
+    grid-template-columns:
+      minmax(155px, 1.25fr)
+      54px
+      minmax(155px, 1.25fr)
+      minmax(145px, 1fr)
+      minmax(110px, 0.75fr)
+      64px;
+  }
+
+  .schedule-search-item {
+    padding: 0 16px;
+  }
+
+  .schedule-search-value {
+    font-size: 13px;
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .schedule-search-bar {
     height: auto;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      54px
+      minmax(0, 1fr);
+
+    border-radius: 14px;
   }
 
-  .search-item {
-    height: 72px;
-
-    border-right: none;
-
-    border-bottom: 1px solid #ececec;
+  .schedule-search-item {
+    height: 64px;
   }
 
-  .swap-btn {
-    height: 72px;
-
-    border-right: none;
-
-    border-bottom: 1px solid #ececec;
+  .schedule-search-from {
+    border-bottom: 1px solid #eeeeee;
   }
 
-  .search-btn {
+  .schedule-search-to {
+    border-right: 0;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .schedule-swap-btn {
+    height: 64px;
+
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .schedule-search-date {
+    grid-column: 1 / 2;
+  }
+
+  .schedule-search-class {
+    grid-column: 2 / 3;
+  }
+
+  .schedule-search-submit {
+    grid-column: 3 / 4;
+
+    min-height: 64px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+  .schedule-search-bar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .schedule-search-item {
+    height: 60px;
+
+    padding: 0 16px;
+
+    border-right: 0;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .schedule-search-from,
+  .schedule-search-to,
+  .schedule-search-date,
+  .schedule-search-class {
+    grid-column: auto;
+  }
+
+  .schedule-swap-btn {
     width: 100%;
+    height: 48px;
+
+    border-right: 0;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .schedule-search-submit {
+    grid-column: auto;
+
+    height: 56px;
+    min-height: 56px;
   }
 }

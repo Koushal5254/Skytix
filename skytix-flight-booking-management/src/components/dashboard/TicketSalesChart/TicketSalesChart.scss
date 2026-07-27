@@ -1,25 +1,153 @@
-.ticket-sales {
-  height: 100%;
-}
+/* ========================================
+   TICKET SALES CARD
+======================================== */
 
-.ticket-sales .chart-header {
+.ticket-sales-card {
+  min-height: 285px;
+
   display: flex;
+  flex-direction: column;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.ticket-sales-header {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  align-items: flex-start;
   justify-content: space-between;
-  align-items: center;
 
-  margin-bottom: 16px;
+  gap: 12px;
+
+  margin-bottom: 8px;
 }
 
-.ticket-sales h5 {
-  margin: 0;
-  font-size: 16px;
+/* ========================================
+   HEADING
+======================================== */
+
+.ticket-sales-heading {
+  min-width: 0;
 }
 
-.ticket-sales .amount {
-  font-size: 24px;
+.ticket-sales-heading h5 {
+  margin: 0 0 12px;
+
+  color: #292929;
+
+  font-size: 13px;
+  line-height: 1.2;
   font-weight: 700;
 }
 
-.ticket-sales .custom-card{
-  height:320px;
+/* ========================================
+   VALUE
+======================================== */
+
+.ticket-sales-value {
+  display: flex;
+  align-items: baseline;
+
+  gap: 6px;
+}
+
+.ticket-sales-value strong {
+  color: #202020;
+
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 700;
+
+  letter-spacing: -0.4px;
+}
+
+.ticket-sales-value span {
+  color: #999999;
+
+  font-size: 8px;
+  line-height: 1.2;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   FILTER
+======================================== */
+
+.ticket-sales-filter {
+  height: 30px;
+
+  flex: 0 0 auto;
+
+  padding: 0 9px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  color: #777777;
+
+  font-family: inherit;
+  font-size: 8px;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.ticket-sales-filter svg {
+  width: 11px;
+  height: 11px;
+}
+
+.ticket-sales-filter:hover {
+  background: #fafafa;
+}
+
+/* ========================================
+   CHART
+======================================== */
+
+.ticket-sales-chart {
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  flex: 1;
+
+  height: 180px;
+}
+
+/* ========================================
+   APEXCHARTS
+======================================== */
+
+.ticket-sales-chart .apexcharts-canvas,
+.ticket-sales-chart .apexcharts-svg {
+  width: 100% !important;
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .ticket-sales-card {
+    min-height: 270px;
+  }
+
+  .ticket-sales-chart {
+    height: 170px;
+  }
 }

@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 import {
   FiBell,
   FiHelpCircle,
@@ -8,40 +12,90 @@ import {
 import "./BookingHeader.scss";
 
 export default function BookingHeader() {
-  return (
-    <div className="booking-header">
+  const [profileOpen, setProfileOpen] = useState(false);
 
-      <div className="booking-title">
+  return (
+    <div className="booking-page-header">
+
+      <div className="booking-page-title">
         <h1>Bookings</h1>
       </div>
 
-      <div className="header-right">
+      <div className="booking-header-right">
 
-        <button className="icon-btn">
+        <button
+          type="button"
+          className="booking-header-icon-btn"
+          aria-label="Notifications"
+        >
           <FiBell />
-          <span className="notification-dot"></span>
+          <span className="booking-notification-dot" />
         </button>
 
-        <button className="icon-btn">
+        <button
+          type="button"
+          className="booking-header-icon-btn"
+          aria-label="Help"
+        >
           <FiHelpCircle />
         </button>
 
-        <button className="icon-btn">
+        <button
+          type="button"
+          className="booking-header-icon-btn"
+          aria-label="Settings"
+        >
           <FiSettings />
         </button>
 
-        <div className="profile-box">
+        <div className="booking-profile-wrapper">
 
-          <div className="profile-avatar">
-            ⚛️
-          </div>
+          <button
+            type="button"
+            className="booking-profile-box"
+            onClick={() =>
+              setProfileOpen((current) => !current)
+            }
+            aria-expanded={profileOpen}
+          >
+            <div className="booking-profile-avatar" />
 
-          <div className="profile-info">
-            <h4>Martin Septimus</h4>
-            <p>Admin</p>
-          </div>
+            <div className="booking-profile-info">
+              <h4>Martin Septimus</h4>
+              <p>Admin</p>
+            </div>
 
-          <FiChevronDown />
+            <FiChevronDown
+              className={`booking-profile-chevron ${
+                profileOpen ? "open" : ""
+              }`}
+            />
+          </button>
+
+          {profileOpen && (
+            <div className="booking-profile-dropdown">
+              <button
+                type="button"
+                onClick={() => setProfileOpen(false)}
+              >
+                My Profile
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setProfileOpen(false)}
+              >
+                Settings
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setProfileOpen(false)}
+              >
+                Sign Out
+              </button>
+            </div>
+          )}
 
         </div>
 

@@ -1,111 +1,142 @@
 "use client";
 
+import Link from "next/link";
+
 import {
   FiWifi,
   FiCoffee,
   FiBriefcase,
 } from "react-icons/fi";
 
-import { FaReact } from "react-icons/fa";
-
-import Link from "next/link";
+import { FaPlane } from "react-icons/fa";
 
 import "./FlightCard.scss";
 
 export default function FlightCard({ flight }) {
   return (
-    <article className="flight-card">
+    <article className="schedule-flight-card">
 
-      <div className="card-top">
+      {/* =====================================
+          MAIN FLIGHT INFORMATION
+      ====================================== */}
 
-        {/* Airline */}
+      <div className="schedule-flight-main">
 
-        <div className="airline-section">
+        {/* AIRLINE */}
 
-          <div className="airline-logo">
-            <FaReact />
+        <div className="schedule-flight-airline">
+
+          <div
+            className="schedule-flight-airline-logo"
+            aria-hidden="true"
+          >
+            <FaPlane />
           </div>
 
-          <div className="airline-info">
+          <div className="schedule-flight-airline-info">
             <h4>{flight.airline}</h4>
             <span>{flight.code}</span>
           </div>
 
         </div>
 
-        {/* Departure */}
+        {/* DEPARTURE */}
 
-        <div className="time-block">
+        <div className="schedule-flight-time">
 
-          <h2>{flight.departure}</h2>
+          <strong>
+            {flight.departure}
+          </strong>
 
-          <span>{flight.fromCode}</span>
+          <span>
+            {flight.fromCode}
+          </span>
 
         </div>
 
-        {/* Route */}
+        {/* ROUTE */}
 
-        <div className="route-block">
+        <div className="schedule-flight-route">
 
-          <div className="route-line">
+          <div className="schedule-flight-route-line">
 
-            <span className="dot"></span>
+            <span className="schedule-route-point" />
 
-            <div className="plane-circle">✈</div>
+            <span className="schedule-route-plane">
+              <FaPlane />
+            </span>
 
-            <span className="dot"></span>
+            <span className="schedule-route-point" />
 
           </div>
 
-          <small>3 hours • Direct</small>
+          <small>
+            {flight.duration || "3 hours"} •{" "}
+            {flight.transit || "Direct"}
+          </small>
 
         </div>
 
-        {/* Arrival */}
+        {/* ARRIVAL */}
 
-        <div className="time-block">
+        <div className="schedule-flight-time">
 
-          <h2>{flight.arrival}</h2>
+          <strong>
+            {flight.arrival}
+          </strong>
 
-          <span>{flight.toCode}</span>
+          <span>
+            {flight.toCode}
+          </span>
 
         </div>
 
-        {/* Price */}
+        {/* PRICE */}
 
-        <div className="price-section">
+        <div className="schedule-flight-price">
 
-          <small>Starting From</small>
+          <div className="schedule-flight-price-value">
+            <small>Starting From</small>
 
-          <h3>${flight.price}</h3>
+            <strong>
+              ${flight.price}
+            </strong>
+          </div>
 
-          <Link href={`/schedule/${flight.id}`}>
-          <button>
+          <Link
+            href={`/schedule/${flight.id}`}
+            className="schedule-flight-detail-btn"
+          >
             View Detail
-          </button>
           </Link>
 
         </div>
 
       </div>
 
-      <div className="card-bottom">
+      {/* =====================================
+          FACILITIES
+      ====================================== */}
 
-        <span>Facilities:</span>
+      <div className="schedule-flight-facilities">
 
-        <div>
+        <span className="schedule-facilities-title">
+          Facilities:
+        </span>
+
+        <div className="schedule-facility">
           <FiBriefcase />
-          <p>1 Baggage</p>
+          <span>1 Baggage</span>
         </div>
 
-        <div>
+        <div className="schedule-facility">
           <FiCoffee />
-          <p>No Meal</p>
+          <span>No Meal</span>
         </div>
 
-        <div>
+        <div className="schedule-facility">
           <FiWifi />
-          <p>Free WiFi</p>
+          <span>Free WiFi</span>
         </div>
 
       </div>

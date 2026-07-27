@@ -1,81 +1,186 @@
+/* ========================================
+   TOP ROUTES
+======================================== */
+
 .routes-card {
-  height: 400px;
+  width: 100%;
+  min-width: 0;
+
+  min-height: 355px;
+
+  display: flex;
+  flex-direction: column;
 }
 
-.routes-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* ========================================
+   HEADER
+======================================== */
 
-  margin-bottom: 18px;
+.routes-header {
+  width: 100%;
+
+  margin-bottom: 13px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
 }
 
 .routes-header h5 {
   margin: 0;
 
-  font-size: 14px;
+  color: #292929;
+
+  font-size: 13px;
+  line-height: 1.2;
   font-weight: 700;
 }
 
-.routes-header button {
-  border: none;
+/* ========================================
+   MORE BUTTON
+======================================== */
+
+.routes-more {
+  width: 28px;
+  height: 28px;
+
+  flex: 0 0 28px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 7px;
+  outline: 0;
+
   background: transparent;
 
-  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #999999;
 
   cursor: pointer;
 
-  font-size: 18px;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
 }
+
+.routes-more svg {
+  width: 16px;
+  height: 16px;
+}
+
+.routes-more:hover {
+  background: #f6f6f6;
+
+  color: #444444;
+}
+
+/* ========================================
+   LIST
+======================================== */
 
 .routes-list {
+  width: 100%;
+  min-width: 0;
+
+  flex: 1;
+
   display: flex;
   flex-direction: column;
-
-  gap: 12px;
 }
 
-.route-item {
-  padding-bottom: 12px;
+/* ========================================
+   ROUTE
+======================================== */
 
-  border-bottom: 1px solid #f3f3f3;
+.route-item {
+  width: 100%;
+  min-width: 0;
+
+  flex: 1 1 0;
+
+  padding: 11px 0;
+
+  border-bottom: 1px solid #f1f1f1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.route-item:first-child {
+  padding-top: 2px;
 }
 
 .route-item:last-child {
-  border-bottom: none;
   padding-bottom: 0;
+
+  border-bottom: 0;
 }
 
-.passengers {
+/* ========================================
+   PASSENGERS
+======================================== */
+
+.route-passengers {
   display: block;
 
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 
-  font-size: 10px;
+  color: #a0a0a0;
 
-  color: #a1a1a1;
+  font-size: 8px;
+  line-height: 1.2;
+  font-weight: 400;
 }
+
+/* ========================================
+   ROUTE NAME
+======================================== */
 
 .route-item h6 {
   margin: 0 0 8px;
 
-  font-size: 12px;
+  color: #3c3c3c;
 
-  font-weight: 500;
-
+  font-size: 9px;
   line-height: 1.4;
+  font-weight: 600;
+
+  overflow-wrap: anywhere;
 }
+
+/* ========================================
+   META
+======================================== */
 
 .route-meta {
+  width: 100%;
+  min-width: 0;
+
   display: flex;
   align-items: center;
-  gap: 10px;
+
+  gap: 9px;
 }
 
-.route-progress {
-  flex: 1;
+/* ========================================
+   PROGRESS
+======================================== */
 
-  height: 5px;
+.route-progress {
+  position: relative;
+
+  min-width: 0;
+
+  height: 4px;
+
+  flex: 1;
 
   background: #eeeeee;
 
@@ -91,16 +196,35 @@
 
   background: #e4c66d;
 
-  border-radius: 20px;
+  border-radius: inherit;
 }
 
+/* ========================================
+   DISTANCE
+======================================== */
+
 .route-meta strong {
-  min-width: 60px;
+  min-width: 50px;
+
+  flex: 0 0 auto;
+
+  color: #777777;
+
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 600;
 
   text-align: right;
 
-  font-size: 10px;
-
-  color: #666;
+  white-space: nowrap;
 }
 
+/* ========================================
+   SMALL LAPTOP
+======================================== */
+
+@media (max-width: 1200px) {
+  .routes-card {
+    min-height: 330px;
+  }
+}

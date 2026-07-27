@@ -1,37 +1,85 @@
+"use client";
+
+import { useState } from "react";
+import {
+  FiChevronLeft,
+  FiChevronRight,
+} from "react-icons/fi";
+
 import "./Pagination.scss";
 
 export default function Pagination() {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = 5;
+
+  const handlePrevious = () => {
+    setCurrentPage((page) => Math.max(1, page - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentPage((page) =>
+      Math.min(totalPages, page + 1)
+    );
+  };
+
   return (
-    <div className="pagination-wrapper">
+    <nav
+      className="schedule-pagination"
+      aria-label="Flight list pagination"
+    >
+      {/* PREVIOUS */}
 
-      <button className="page-btn arrow">
-        ‹
+      <button
+        type="button"
+        className="schedule-pagination-btn schedule-pagination-arrow"
+        onClick={handlePrevious}
+        disabled={currentPage === 1}
+        aria-label="Previous page"
+      >
+        <FiChevronLeft />
       </button>
 
-      <button className="page-btn active">
-        1
-      </button>
+      {/* PAGES */}
 
-      <button className="page-btn">
-        2
-      </button>
+      <div className="schedule-pagination-pages">
+        {Array.from(
+          { length: totalPages },
+          (_, index) => {
+            const page = index + 1;
 
-      <button className="page-btn">
-        3
-      </button>
+            return (
+              <button
+                type="button"
+                key={page}
+                className={`schedule-pagination-btn ${
+                  currentPage === page ? "active" : ""
+                }`}
+                onClick={() => setCurrentPage(page)}
+                aria-current={
+                  currentPage === page
+                    ? "page"
+                    : undefined
+                }
+              >
+                {page}
+              </button>
+            );
+          }
+        )}
+      </div>
 
-      <button className="page-btn">
-        4
-      </button>
+      {/* NEXT */}
 
-      <button className="page-btn">
-        5
+      <button
+        type="button"
+        className="schedule-pagination-btn schedule-pagination-arrow"
+        onClick={handleNext}
+        disabled={currentPage === totalPages}
+        aria-label="Next page"
+      >
+        <FiChevronRight />
       </button>
-
-      <button className="page-btn arrow">
-        ›
-      </button>
-
-    </div>
+    </nav>
   );
 }

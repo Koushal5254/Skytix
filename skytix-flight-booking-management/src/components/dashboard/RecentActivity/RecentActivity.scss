@@ -1,51 +1,217 @@
-.activity-card {
-  height: 340px;
-}
+/* ========================================
+   RECENT ACTIVITY
+======================================== */
 
-.activity-list {
+.activity-card {
+  width: 100%;
+  min-width: 0;
+
+  min-height: 285px;
+
   display: flex;
   flex-direction: column;
-
-  gap: 16px;
 }
 
-.activity-item {
+/* ========================================
+   HEADER
+======================================== */
+
+.activity-header {
+  width: 100%;
+
+  margin-bottom: 14px;
+
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   gap: 12px;
-
-  align-items: flex-start;
 }
 
-.dot {
-  width: 10px;
-  height: 10px;
+.activity-header h5 {
+  margin: 0;
 
-  margin-top: 5px;
+  color: #292929;
 
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+/* ========================================
+   MORE BUTTON
+======================================== */
+
+.activity-more {
+  width: 28px;
+  height: 28px;
+
+  flex: 0 0 28px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 7px;
+  outline: 0;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #999999;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.activity-more svg {
+  width: 16px;
+  height: 16px;
+}
+
+.activity-more:hover {
+  background: #f6f6f6;
+
+  color: #444444;
+}
+
+/* ========================================
+   LIST
+======================================== */
+
+.activity-list {
+  width: 100%;
+  min-width: 0;
+
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================================
+   ITEM
+======================================== */
+
+.activity-item {
+  width: 100%;
+  min-width: 0;
+
+  flex: 1 1 0;
+
+  display: grid;
+
+  grid-template-columns:
+    12px
+    minmax(0, 1fr);
+
+  gap: 9px;
+}
+
+/* ========================================
+   TIMELINE
+======================================== */
+
+.activity-timeline {
+  position: relative;
+
+  width: 12px;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+}
+
+/* IMPORTANT:
+   JSX uses activity-dot, not dot.
+*/
+
+.activity-dot {
+  position: relative;
+  z-index: 2;
+
+  width: 7px;
+  height: 7px;
+
+  flex: 0 0 7px;
+
+  margin-top: 3px;
+
+  border: 2px solid #ffffff;
   border-radius: 50%;
 
   background: #e4c66d;
 
-  flex-shrink: 0;
+  box-shadow:
+    0 0 0 1px #e4c66d;
 }
 
-.activity-item p {
+.activity-line {
+  position: absolute;
+
+  z-index: 1;
+
+  top: 12px;
+  bottom: -3px;
+  left: 50%;
+
+  width: 1px;
+
+  background: #eeeeee;
+
+  transform: translateX(-50%);
+}
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.activity-content {
+  min-width: 0;
+
+  padding-bottom: 13px;
+}
+
+.activity-content p {
   margin: 0;
 
-  font-size: 12px;
+  color: #444444;
 
-  line-height: 18px;
+  font-size: 9px;
+  line-height: 1.5;
+  font-weight: 500;
 
-  color: #222;
+  overflow-wrap: anywhere;
 }
 
-.activity-item small {
+.activity-content small {
   display: block;
 
   margin-top: 4px;
 
-  font-size: 11px;
+  color: #a0a0a0;
 
-  color: #999;
+  font-size: 8px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.activity-item:last-child
+.activity-content {
+  padding-bottom: 0;
+}
+
+/* ========================================
+   SMALL LAPTOP
+======================================== */
+
+@media (max-width: 1200px) {
+  .activity-card {
+    min-height: 330px;
+  }
 }

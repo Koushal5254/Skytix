@@ -12,12 +12,18 @@ export default function ScheduleFooter() {
   return (
     <footer className="schedule-footer">
 
-      <div className="footer-left">
-        © 2024 Peterdraw. All Rights Reserved.
+      {/* COPYRIGHT */}
+
+      <div className="schedule-footer-copyright">
+        © 2028 Skytix. All Rights Reserved.
       </div>
 
-      <div className="footer-center">
+      {/* LINKS */}
 
+      <nav
+        className="schedule-footer-links"
+        aria-label="Footer links"
+      >
         <a href="#">
           Privacy Policy
         </a>
@@ -27,22 +33,32 @@ export default function ScheduleFooter() {
         </a>
 
         <a href="#">
-          Contact Us
+          Contact
         </a>
+      </nav>
 
-      </div>
+      {/* SOCIAL */}
 
-      <div className="footer-right">
+      <div className="schedule-footer-social">
 
-        <a href="#">
+        <a
+          href="#"
+          aria-label="Facebook"
+        >
           <FaFacebookF />
         </a>
 
-        <a href="#">
+        <a
+          href="#"
+          aria-label="Twitter"
+        >
           <FaTwitter />
         </a>
 
-        <a href="#">
+        <a
+          href="#"
+          aria-label="Instagram"
+        >
           <FaInstagram />
         </a>
 

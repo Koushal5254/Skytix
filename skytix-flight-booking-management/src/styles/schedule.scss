@@ -1,36 +1,135 @@
-.schedule-page{
-  width:100%;
-  max-width:13200px;
-  margin:0 auto;
+/* ========================================
+   SCHEDULE PAGE
+======================================== */
 
-  display:flex;
-  flex-direction:column;
+.schedule-page {
+  width: 100%;
+  min-width: 0;
 
-  gap:32px;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
 }
 
-.schedule-content{
-    display:grid;
-    grid-template-columns:270px 1fr;
-    gap:24px;
-    align-items:start;
+/* ========================================
+   MAIN SCHEDULE CONTENT
+
+   Figma:
+   Filter sidebar | Flight results
+======================================== */
+
+.schedule-content {
+  width: 100%;
+  min-width: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    250px
+    minmax(0, 1fr);
+
+  gap: 18px;
+
+  align-items: start;
 }
 
-.left-panel{
-    width:100%;
+/* ========================================
+   LEFT FILTER PANEL
+======================================== */
+
+.schedule-left-panel {
+  width: 100%;
+  min-width: 0;
 }
 
-.right-panel{
-    display:flex;
-    flex-direction:column;
-    gap:24px;
-    min-width:0;
+/* ========================================
+   RIGHT CONTENT
+======================================== */
+
+.schedule-right-panel {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
 }
 
-@media (max-width:1200px){
+/* ========================================
+   LARGE DESKTOP
+======================================== */
 
-.schedule-content{
-grid-template-columns:1fr;
+@media (min-width: 1600px) {
+  .schedule-content {
+    grid-template-columns:
+      260px
+      minmax(0, 1fr);
+
+    gap: 20px;
+  }
 }
 
+/* ========================================
+   LAPTOP
+======================================== */
+
+@media (max-width: 1300px) {
+  .schedule-content {
+    grid-template-columns:
+      230px
+      minmax(0, 1fr);
+
+    gap: 16px;
+  }
+}
+
+/* ========================================
+   SMALL LAPTOP / TABLET
+
+   Move filters above results once there
+   is not enough horizontal space.
+======================================== */
+
+@media (max-width: 1050px) {
+  .schedule-page {
+    gap: 16px;
+  }
+
+  .schedule-content {
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 16px;
+  }
+
+  .schedule-left-panel {
+    width: 100%;
+  }
+
+  .schedule-right-panel {
+    gap: 14px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .schedule-page {
+    gap: 14px;
+  }
+
+  .schedule-content {
+    gap: 14px;
+  }
+
+  .schedule-right-panel {
+    gap: 12px;
+  }
 }

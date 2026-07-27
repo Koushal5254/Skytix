@@ -5,7 +5,9 @@ export default function Card({
   className = "",
 }) {
   return (
-    <div className={`custom-card ${className}`}>
+    <div
+      className={`custom-card ${className}`.trim()}
+    >
       {children}
     </div>
   );

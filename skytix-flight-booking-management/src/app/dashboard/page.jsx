@@ -1,37 +1,53 @@
 import MainLayout from "@/components/layout/MainLayout/MainLayout";
 
-import { FiUsers } from "react-icons/fi";
-import { FaPlaneDeparture } from "react-icons/fa6";
-import { MdOutlinePayments } from "react-icons/md";
-import { RiFlightTakeoffLine } from "react-icons/ri";
+import {
+  FiUsers,
+} from "react-icons/fi";
+
+import {
+  FaPlaneDeparture,
+} from "react-icons/fa6";
+
+import {
+  MdOutlinePayments,
+} from "react-icons/md";
+
+import {
+  RiFlightTakeoffLine,
+} from "react-icons/ri";
 
 import StatisticCard from "@/components/dashboard/StatisticCard/StatisticCard";
 
 import TicketSalesChart from "@/components/dashboard/TicketSalesChart/TicketSalesChart";
 import FlightScheduleChart from "@/components/dashboard/FlightScheduleChart/FlightScheduleChart";
 
-import PopularAirlines from "@/components/dashboard/PopularAirlines/PopularAirlines";
 import PopularDestination from "@/components/dashboard/PopularDestination/PopularDestination";
 import AllBookings from "@/components/dashboard/AllBookings/AllBookings";
-import TopRoutes from "@/components/dashboard/TopRoutes/TopRoutes";
-import RecentActivity from "@/components/dashboard/RecentActivity/RecentActivity";
 import PaymentHistory from "@/components/dashboard/PaymentHistory/PaymentHistory";
 
-
-
+import PopularAirlines from "@/components/dashboard/PopularAirlines/PopularAirlines";
+import TopRoutes from "@/components/dashboard/TopRoutes/TopRoutes";
+import RecentActivity from "@/components/dashboard/RecentActivity/RecentActivity";
 
 import "@/styles/dashboard-layout.scss";
 
 export default function Dashboard() {
   return (
     <MainLayout>
+
       <div className="dashboard-wrapper">
 
-        {/* LEFT CONTENT */}
-        <div className="dashboard-content">
+        {/* =====================================
+            MAIN CONTENT
+        ====================================== */}
 
-          {/* STATS */}
-          <div className="stats-row">
+        <main className="dashboard-content">
+
+          {/* ===================================
+              STATISTICS
+          ==================================== */}
+
+          <section className="stats-row">
 
             <StatisticCard
               title="Completed Flights"
@@ -65,43 +81,55 @@ export default function Dashboard() {
               color="#E4C66D"
             />
 
-          </div>
+          </section>
 
-          {/* CHARTS */}
-          <div className="chart-row">
+          {/* ===================================
+              TICKET SALES + FLIGHT SCHEDULE
+          ==================================== */}
 
-            <TicketSalesChart />
+          <section className="chart-row">
 
-            <FlightScheduleChart />
+            <div className="dashboard-chart-item dashboard-ticket-sales">
+              <TicketSalesChart />
+            </div>
 
-          </div>
+            <div className="dashboard-chart-item dashboard-flight-schedule">
+              <FlightScheduleChart />
+            </div>
 
-          {/* DESTINATION + BOOKINGS */}
-          <div className="booking-row">
+          </section>
 
-            <PopularDestination />
+          {/* ===================================
+              DESTINATION + BOOKINGS
+          ==================================== */}
 
-            <AllBookings />
+          <section className="booking-row">
 
-          </div>
+            <div className="dashboard-destination-item">
+              <PopularDestination />
+            </div>
 
-          {/* PAYMENT */}
-          <div className="payment-row">
+            <div className="dashboard-bookings-item">
+              <AllBookings />
+            </div>
 
+          </section>
+
+          {/* ===================================
+              PAYMENT HISTORY
+          ==================================== */}
+
+          <section className="payment-row">
             <PaymentHistory />
+          </section>
 
-          </div>
+        </main>
 
-          {/* ================================= */}
-          {/* DASHBOARD PART 2 */}
-          {/* ================================= */}
+        {/* =====================================
+            RIGHT SIDEBAR
+        ====================================== */}
 
-        
-
-        </div>
-
-        {/* RIGHT SIDEBAR */}
-        <div className="dashboard-sidebar">
+        <aside className="dashboard-sidebar">
 
           <PopularAirlines />
 
@@ -109,9 +137,10 @@ export default function Dashboard() {
 
           <RecentActivity />
 
-        </div>
+        </aside>
 
       </div>
+
     </MainLayout>
   );
 }

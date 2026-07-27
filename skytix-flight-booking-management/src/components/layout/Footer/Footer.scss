@@ -1,15 +1,69 @@
-@import "@/styles/abstracts/variables";
+/* ========================================
+   FOOTER
+======================================== */
 
-.footer {
-  height: 60px;
+.layout-footer {
+  width: 100%;
+  min-width: 0;
+
+  min-height: 46px;
+
+  margin-top: 16px;
+  padding: 14px 6px 4px;
+
+  background: transparent;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
+}
 
-  background: $white;
+/* ========================================
+   COPYRIGHT
+======================================== */
 
-  border-top: 1px solid $border;
+.layout-footer p {
+  margin: 0;
+
+  color: #999999;
+
+  font-size: 10px;
+  line-height: 1.4;
+  font-weight: 400;
+
+  text-align: center;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .layout-footer {
+    min-height: 42px;
+
+    margin-top: 14px;
+    padding-top: 12px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .layout-footer {
+    min-height: 40px;
+
+    margin-top: 12px;
+
+    padding:
+      10px
+      4px
+      2px;
+  }
+
+  .layout-footer p {
+    font-size: 9px;
+  }
 }

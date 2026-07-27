@@ -8,25 +8,57 @@ import "./BookingFooter.scss";
 
 export default function BookingFooter() {
   return (
-    <footer className="booking-footer">
+    <footer className="booking-page-footer">
 
-      <p>
+      {/* COPYRIGHT */}
+
+      <p className="booking-footer-copyright">
         © 2028 Skytix. All Rights Reserved.
       </p>
 
-      <div className="footer-links">
+      {/* LINKS */}
 
-        <span>Privacy Policy</span>
-        <span>Terms & Conditions</span>
-        <span>Contact</span>
+      <nav
+        className="booking-footer-links"
+        aria-label="Footer navigation"
+      >
+        <button type="button">
+          Privacy Policy
+        </button>
 
-      </div>
+        <button type="button">
+          Terms & Conditions
+        </button>
 
-      <div className="footer-social">
+        <button type="button">
+          Contact
+        </button>
+      </nav>
 
-        <FaFacebookF />
-        <FaTwitter />
-        <FaInstagram />
+      {/* SOCIAL */}
+
+      <div className="booking-footer-social">
+
+        <button
+          type="button"
+          aria-label="Facebook"
+        >
+          <FaFacebookF />
+        </button>
+
+        <button
+          type="button"
+          aria-label="Twitter"
+        >
+          <FaTwitter />
+        </button>
+
+        <button
+          type="button"
+          aria-label="Instagram"
+        >
+          <FaInstagram />
+        </button>
 
       </div>
 
