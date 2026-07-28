@@ -16,77 +16,140 @@ export default function PaymentActionMenu({
   onClose,
   paymentId,
 }) {
-
   const router = useRouter();
-
   const menuRef = useRef(null);
 
+  /* ========================================
+     CLOSE WHEN CLICKING OUTSIDE
+  ======================================== */
+
   useEffect(() => {
+    if (!open) return;
 
-    function handleClick(e) {
-
+    const handleOutsideClick = (event) => {
       if (
         menuRef.current &&
-        !menuRef.current.contains(e.target)
+        !menuRef.current.contains(event.target)
       ) {
         onClose();
       }
+    };
 
-    }
+    document.addEventListener(
+      "mousedown",
+      handleOutsideClick
+    );
 
-    document.addEventListener("mousedown", handleClick);
-
-    return () =>
+    return () => {
       document.removeEventListener(
         "mousedown",
-        handleClick
+        handleOutsideClick
       );
+    };
+  }, [open, onClose]);
 
-  }, [onClose]);
+  /* ========================================
+     CLOSE WITH ESCAPE
+  ======================================== */
 
-  if (!open) return null;
+  useEffect(() => {
+    if (!open) return;
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener(
+      "keydown",
+      handleEscape
+    );
+
+    return () => {
+      document.removeEventListener(
+        "keydown",
+        handleEscape
+      );
+    };
+  }, [open, onClose]);
+
+  /* ========================================
+     VIEW
+  ======================================== */
+
+  const handleView = () => {
+    router.push(`/payments/${paymentId}`);
+
+    onClose();
+  };
+
+  /* ========================================
+     EDIT
+
+     We keep this functional without
+     inventing a separate edit page.
+  ======================================== */
+
+  const handleEdit = () => {
+    router.push(`/payments/${paymentId}?mode=edit`);
+
+    onClose();
+  };
+
+  /* ========================================
+     DELETE
+
+     Actual deletion will be connected when
+     transaction state is moved to the page.
+  ======================================== */
+
+  const handleDelete = () => {
+    onClose();
+  };
+
+  if (!open) {
+    return null;
+  }
 
   return (
-
     <div
       ref={menuRef}
       className="payment-action-menu"
+      role="menu"
     >
-
       <button
-        onClick={() => {
-
-          router.push(`/payments/${paymentId}`);
-
-          onClose();
-
-        }}
+        type="button"
+        role="menuitem"
+        onClick={handleView}
       >
-
         <FiEye />
 
-        View
-
+        <span>View</span>
       </button>
 
-      <button>
-
+      <button
+        type="button"
+        role="menuitem"
+        onClick={handleEdit}
+      >
         <FiEdit2 />
 
-        Edit
-
+        <span>Edit</span>
       </button>
 
-      <button className="delete">
+      <div className="payment-action-divider" />
 
+      <button
+        type="button"
+        role="menuitem"
+        className="payment-action-delete"
+        onClick={handleDelete}
+      >
         <FiTrash2 />
 
-        Delete
-
+        <span>Delete</span>
       </button>
-
     </div>
-
   );
-
 }

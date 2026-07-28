@@ -1,72 +1,66 @@
 "use client";
 
 import {
-  FiSearch,
-  FiCalendar,
+  FiBell,
+  FiHelpCircle,
+  FiSettings,
   FiChevronDown,
 } from "react-icons/fi";
 
 import "./PaymentHeader.scss";
 
-export default function PaymentHeader({
-  search,
-  setSearch,
-  status,
-  setStatus,
-}) {
+export default function PaymentHeader() {
   return (
-    <section className="payment-header">
+    <section className="payment-page-header">
 
-      <div className="payment-title">
-
+      <div className="payment-page-title">
         <h1>Payments</h1>
 
+        <p>
+          Manage and track all payment transactions.
+        </p>
       </div>
 
-      <div className="payment-header-actions">
+      <div className="payment-page-header-actions">
 
-        {/* Search */}
-
-        <div className="header-search">
-
-          <FiSearch />
-
-          <input
-            type="text"
-            placeholder="Search airline, flight number, etc"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-
-        </div>
-
-        {/* Date */}
-
-        <button className="header-date">
-
-          <FiCalendar />
-
-          <span>1 - 8 July 2028</span>
-
-          <FiChevronDown />
-
+        <button
+          type="button"
+          className="payment-header-icon-btn"
+          aria-label="Help"
+        >
+          <FiHelpCircle />
         </button>
 
-        {/* Status */}
+        <button
+          type="button"
+          className="payment-header-icon-btn payment-notification-btn"
+          aria-label="Notifications"
+        >
+          <FiBell />
 
-        <div className="header-status">
+          <span className="payment-notification-dot" />
+        </button>
 
-          <select
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
-          >
-            <option value="All">Status</option>
-            <option value="Confirmed">Confirmed</option>
-            <option value="Pending">Pending</option>
-            <option value="Cancelled">Cancelled</option>
-          </select>
+        <button
+          type="button"
+          className="payment-header-icon-btn"
+          aria-label="Settings"
+        >
+          <FiSettings />
+        </button>
 
-          <FiChevronDown />
+        <div className="payment-profile">
+
+          <div className="payment-profile-avatar">
+            M
+          </div>
+
+          <div className="payment-profile-info">
+            <h4>Martin Septimus</h4>
+            <span>Admin</span>
+          </div>
+
+          <FiChevronDown className="payment-profile-arrow" />
 
         </div>
 

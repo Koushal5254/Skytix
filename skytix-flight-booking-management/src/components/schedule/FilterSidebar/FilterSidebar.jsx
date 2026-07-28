@@ -1,84 +1,62 @@
 "use client";
 
-import { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
 
 import "./FilterSidebar.scss";
 
-const airlines = [
-  "CloudNine Airlines",
-  "QuickWing Air",
-  "SkyHigh Airlines",
-  "FlyFast Airways",
-  "AeroJet",
-  "Nimbus Airlines",
-  "JetStream Aviation",
-  "SuperJet Airways",
-];
+export default function FilterSidebar({
+  sections,
+  transit,
+  maxPrice,
+  departureTime,
+  selectedAirlines,
+  airlines = [],
 
-export default function FilterSidebar() {
-  const [sections, setSections] = useState({
-    transit: true,
-    price: true,
-    departure: true,
-    airline: true,
-  });
+  onToggleSection,
+  onTransitChange,
+  onMaxPriceChange,
+  onDepartureTimeChange,
+  onAirlineChange,
+  onSelectAllAirlines,
+  onClearAllAirlines,
+  onResetFilters,
+}) {
+  const allAirlinesSelected =
+    airlines.length > 0 &&
+    selectedAirlines.length === airlines.length;
 
-  const [transit, setTransit] = useState({
-    direct: true,
-    oneTransit: false,
-    twoTransit: false,
-  });
-
-  const [maxPrice, setMaxPrice] = useState(650);
-  const [departureTime, setDepartureTime] = useState(70);
-
-  const [selectedAirlines, setSelectedAirlines] = useState(airlines);
-
-  const toggleSection = (section) => {
-    setSections((current) => ({
-      ...current,
-      [section]: !current[section],
-    }));
-  };
-
-  const handleTransit = (name) => {
-    setTransit((current) => ({
-      ...current,
-      [name]: !current[name],
-    }));
-  };
-
-  const handleAirline = (airline) => {
-    setSelectedAirlines((current) =>
-      current.includes(airline)
-        ? current.filter((item) => item !== airline)
-        : [...current, airline]
-    );
-  };
-
-  const selectAllAirlines = () => {
-    setSelectedAirlines(airlines);
-  };
-
-  const clearAllAirlines = () => {
-    setSelectedAirlines([]);
-  };
+  const hasActiveFilters =
+    !transit.direct ||
+    transit.oneTransit ||
+    transit.twoTransit ||
+    maxPrice !== 1000 ||
+    departureTime !== 100 ||
+    !allAirlinesSelected;
 
   return (
     <aside className="schedule-filter-sidebar">
 
-      {/* TRANSIT */}
+      {/* ========================================
+          TRANSIT
+      ======================================== */}
+
       <section className="schedule-filter-card">
+
         <button
           type="button"
           className="schedule-filter-title"
-          onClick={() => toggleSection("transit")}
+          onClick={() =>
+            onToggleSection("transit")
+          }
         >
           <h3>Transit</h3>
 
           <FiChevronDown
-            className={sections.transit ? "open" : ""}
+            className={
+              sections.transit
+                ? "open"
+                : ""
+            }
           />
         </button>
 
@@ -86,56 +64,97 @@ export default function FilterSidebar() {
           <div className="schedule-filter-body schedule-transit-options">
 
             <label className="schedule-checkbox-row">
+
               <input
                 type="checkbox"
                 checked={transit.direct}
-                onChange={() => handleTransit("direct")}
+                onChange={() =>
+                  onTransitChange(
+                    "direct"
+                  )
+                }
               />
 
               <span className="schedule-custom-checkbox" />
 
-              <span>Direct</span>
+              <span>
+                Direct
+              </span>
+
             </label>
 
             <label className="schedule-checkbox-row">
+
               <input
                 type="checkbox"
-                checked={transit.oneTransit}
-                onChange={() => handleTransit("oneTransit")}
+                checked={
+                  transit.oneTransit
+                }
+                onChange={() =>
+                  onTransitChange(
+                    "oneTransit"
+                  )
+                }
               />
 
               <span className="schedule-custom-checkbox" />
 
-              <span>1 Transit</span>
+              <span>
+                1 Transit
+              </span>
+
             </label>
 
             <label className="schedule-checkbox-row">
+
               <input
                 type="checkbox"
-                checked={transit.twoTransit}
-                onChange={() => handleTransit("twoTransit")}
+                checked={
+                  transit.twoTransit
+                }
+                onChange={() =>
+                  onTransitChange(
+                    "twoTransit"
+                  )
+                }
               />
 
               <span className="schedule-custom-checkbox" />
 
-              <span>2+ Transit</span>
+              <span>
+                2+ Transit
+              </span>
+
             </label>
 
           </div>
         )}
+
       </section>
 
-      {/* PRICE RANGE */}
+      {/* ========================================
+          PRICE RANGE
+      ======================================== */}
+
       <section className="schedule-filter-card">
+
         <button
           type="button"
           className="schedule-filter-title"
-          onClick={() => toggleSection("price")}
+          onClick={() =>
+            onToggleSection("price")
+          }
         >
-          <h3>Price Range</h3>
+          <h3>
+            Price Range
+          </h3>
 
           <FiChevronDown
-            className={sections.price ? "open" : ""}
+            className={
+              sections.price
+                ? "open"
+                : ""
+            }
           />
         </button>
 
@@ -143,6 +162,7 @@ export default function FilterSidebar() {
           <div className="schedule-filter-body">
 
             <div className="schedule-range-wrapper">
+
               <input
                 type="range"
                 min="350"
@@ -150,46 +170,82 @@ export default function FilterSidebar() {
                 step="10"
                 value={maxPrice}
                 onChange={(event) =>
-                  setMaxPrice(Number(event.target.value))
+                  onMaxPriceChange(
+                    Number(
+                      event.target.value
+                    )
+                  )
                 }
                 className="schedule-range-input"
                 style={{
                   "--range-progress": `${
-                    ((maxPrice - 350) / (1000 - 350)) * 100
+                    ((maxPrice - 350) /
+                      (1000 - 350)) *
+                    100
                   }%`,
                 }}
               />
+
             </div>
 
             <div className="schedule-price-boxes">
 
               <div className="schedule-price-box">
-                <span>Start</span>
-                <strong>$350</strong>
+
+                <span>
+                  Start
+                </span>
+
+                <strong>
+                  $350
+                </strong>
+
               </div>
 
               <div className="schedule-price-box">
-                <span>Up To</span>
-                <strong>${maxPrice}</strong>
+
+                <span>
+                  Up To
+                </span>
+
+                <strong>
+                  ${maxPrice}
+                </strong>
+
               </div>
 
             </div>
 
           </div>
         )}
+
       </section>
 
-      {/* DEPARTURE TIMES */}
+      {/* ========================================
+          DEPARTURE TIMES
+      ======================================== */}
+
       <section className="schedule-filter-card">
+
         <button
           type="button"
           className="schedule-filter-title"
-          onClick={() => toggleSection("departure")}
+          onClick={() =>
+            onToggleSection(
+              "departure"
+            )
+          }
         >
-          <h3>Departure Times</h3>
+          <h3>
+            Departure Times
+          </h3>
 
           <FiChevronDown
-            className={sections.departure ? "open" : ""}
+            className={
+              sections.departure
+                ? "open"
+                : ""
+            }
           />
         </button>
 
@@ -197,40 +253,64 @@ export default function FilterSidebar() {
           <div className="schedule-filter-body">
 
             <p className="schedule-time-range">
-              05:00 AM – 06:00 PM
+              05:00 AM –{" "}
+              {formatDepartureLimit(
+                departureTime
+              )}
             </p>
 
             <div className="schedule-range-wrapper">
+
               <input
                 type="range"
                 min="0"
                 max="100"
-                value={departureTime}
+                value={
+                  departureTime
+                }
                 onChange={(event) =>
-                  setDepartureTime(Number(event.target.value))
+                  onDepartureTimeChange(
+                    Number(
+                      event.target.value
+                    )
+                  )
                 }
                 className="schedule-range-input"
                 style={{
                   "--range-progress": `${departureTime}%`,
                 }}
               />
+
             </div>
 
           </div>
         )}
+
       </section>
 
-      {/* AIRLINE */}
+      {/* ========================================
+          AIRLINE
+      ======================================== */}
+
       <section className="schedule-filter-card schedule-airline-card">
+
         <button
           type="button"
           className="schedule-filter-title"
-          onClick={() => toggleSection("airline")}
+          onClick={() =>
+            onToggleSection("airline")
+          }
         >
-          <h3>Airline</h3>
+          <h3>
+            Airline
+          </h3>
 
           <FiChevronDown
-            className={sections.airline ? "open" : ""}
+            className={
+              sections.airline
+                ? "open"
+                : ""
+            }
           />
         </button>
 
@@ -241,16 +321,27 @@ export default function FilterSidebar() {
 
               <button
                 type="button"
-                onClick={selectAllAirlines}
+                onClick={
+                  onSelectAllAirlines
+                }
                 className="schedule-select-all"
+                disabled={
+                  allAirlinesSelected
+                }
               >
                 Select All
               </button>
 
               <button
                 type="button"
-                onClick={clearAllAirlines}
+                onClick={
+                  onClearAllAirlines
+                }
                 className="schedule-clear-all"
+                disabled={
+                  selectedAirlines.length ===
+                  0
+                }
               >
                 Clear All
               </button>
@@ -259,29 +350,103 @@ export default function FilterSidebar() {
 
             <div className="schedule-airline-list">
 
-              {airlines.map((airline) => (
-                <label
-                  key={airline}
-                  className="schedule-checkbox-row"
-                >
-                  <input
-                    type="checkbox"
-                    checked={selectedAirlines.includes(airline)}
-                    onChange={() => handleAirline(airline)}
-                  />
+              {airlines.map(
+                (airline) => (
+                  <label
+                    key={airline}
+                    className="schedule-checkbox-row"
+                  >
 
-                  <span className="schedule-custom-checkbox" />
+                    <input
+                      type="checkbox"
+                      checked={selectedAirlines.includes(
+                        airline
+                      )}
+                      onChange={() =>
+                        onAirlineChange(
+                          airline
+                        )
+                      }
+                    />
 
-                  <span>{airline}</span>
-                </label>
-              ))}
+                    <span className="schedule-custom-checkbox" />
+
+                    <span>
+                      {airline}
+                    </span>
+
+                  </label>
+                )
+              )}
 
             </div>
 
           </div>
         )}
+
       </section>
+
+      {/* ========================================
+          RESET
+      ======================================== */}
+
+      {hasActiveFilters && (
+        <button
+          type="button"
+          className="schedule-reset-filters"
+          onClick={onResetFilters}
+        >
+          Reset Filters
+        </button>
+      )}
 
     </aside>
   );
+}
+
+/* ========================================
+   DEPARTURE RANGE FORMATTER
+
+   0   = 05:00 AM
+   100 = 11:59 PM
+======================================== */
+
+function formatDepartureLimit(
+  percentage
+) {
+  const startMinutes =
+    5 * 60;
+
+  const endMinutes =
+    23 * 60 + 59;
+
+  const minutes =
+    startMinutes +
+    Math.round(
+      (percentage / 100) *
+        (endMinutes -
+          startMinutes)
+    );
+
+  const hour24 =
+    Math.floor(
+      minutes / 60
+    );
+
+  const minute =
+    minutes % 60;
+
+  const period =
+    hour24 >= 12
+      ? "PM"
+      : "AM";
+
+  const hour12 =
+    hour24 % 12 || 12;
+
+  return `${hour12
+    .toString()
+    .padStart(2, "0")}:${minute
+    .toString()
+    .padStart(2, "0")} ${period}`;
 }

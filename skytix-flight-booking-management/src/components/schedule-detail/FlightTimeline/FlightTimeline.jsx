@@ -1,130 +1,73 @@
-"use client";
+import { FaPlane } from "react-icons/fa6";
 
-import {
-  FiMapPin,
-  FiClock,
-  FiNavigation,
-  FiCalendar,
-} from "react-icons/fi";
+import FlightDetailCard from "../FlightDetailCard/FlightDetailCard";
 
 import "./FlightTimeline.scss";
 
-export default function FlightTimeline() {
+export default function FlightTimeline({ flight }) {
   return (
     <section className="flight-timeline">
 
-      {/* Header */}
+      <div className="timeline-layout">
 
-      <div className="timeline-header">
+        {/* TIME COLUMN */}
 
-        <h2>Flight Timeline</h2>
+        <div className="timeline-times">
 
-        <button>
-
-          <FiCalendar />
-
-          July 1, 2028
-
-        </button>
-
-      </div>
-
-      {/* Top Timeline */}
-
-      <div className="timeline-top">
-
-        {/* Departure */}
-
-        <div className="timeline-side">
-
-          <span>Departure</span>
-
-          <h2>08:30 AM</h2>
-
-          <h4>LAX</h4>
-
-          <p>Los Angeles Airport</p>
-
-        </div>
-
-        {/* Center */}
-
-        <div className="timeline-center">
-
-          <span>5h 15m</span>
-
-          <div className="route-line">
-
-            <div className="plane">
-
-              <FiNavigation />
-
-            </div>
-
+          <div className="timeline-time departure-time">
+            <strong>{flight.departure.time}</strong>
+            <span>{flight.departure.date}</span>
           </div>
 
-          <small>Non Stop</small>
+          <span className="timeline-duration">
+            {flight.duration}
+          </span>
 
-        </div>
-
-        {/* Arrival */}
-
-        <div className="timeline-side right">
-
-          <span>Arrival</span>
-
-          <h2>11:45 AM</h2>
-
-          <h4>JFK</h4>
-
-          <p>John F. Kennedy Airport</p>
-
-        </div>
-
-      </div>
-
-      {/* Flight Info */}
-
-      <div className="flight-info-card">
-
-        <div>
-
-          <FiMapPin />
-
-          <div>
-
-            <span>Terminal</span>
-
-            <h4>Terminal 2</h4>
-
+          <div className="timeline-time arrival-time">
+            <strong>{flight.arrival.time}</strong>
+            <span>{flight.arrival.date}</span>
           </div>
 
         </div>
 
-        <div>
+        {/* LINE */}
 
-          <FiClock />
+        <div className="timeline-track">
 
-          <div>
+          <span className="timeline-dot top" />
 
-            <span>Boarding</span>
+          <span className="timeline-line top-line" />
 
-            <h4>07:45 AM</h4>
-
+          <div className="timeline-plane">
+            <FaPlane />
           </div>
+
+          <span className="timeline-line bottom-line" />
+
+          <span className="timeline-dot bottom" />
 
         </div>
 
-        <div>
+        {/* CONTENT */}
 
-          <FiNavigation />
+        <div className="timeline-content">
 
-          <div>
+          <div className="timeline-location">
+            <h2>{flight.departure.city}</h2>
 
-            <span>Gate</span>
+            <p>{flight.departure.airport}</p>
 
-            <h4>A12</h4>
+            <span>{flight.departure.terminal}</span>
+          </div>
 
+          <FlightDetailCard flight={flight} />
+
+          <div className="timeline-location">
+            <h2>{flight.arrival.city}</h2>
+
+            <p>{flight.arrival.airport}</p>
+
+            <span>{flight.arrival.terminal}</span>
           </div>
 
         </div>

@@ -20,27 +20,27 @@ import "./ProfileCard.scss";
 const benefits = [
   {
     id: 1,
-    icon: <FaPlaneDeparture />,
+    icon: FaPlaneDeparture,
     label: "Priority Boarding",
   },
   {
     id: 2,
-    icon: <FaSuitcaseRolling />,
+    icon: FaSuitcaseRolling,
     label: "Extra Baggage Allowance",
   },
   {
     id: 3,
-    icon: <FiCheck />,
+    icon: FiCheck,
     label: "Lounge Access",
   },
   {
     id: 4,
-    icon: <FaUtensils />,
+    icon: FaUtensils,
     label: "Complimentary Meals",
   },
   {
     id: 5,
-    icon: <FaChair />,
+    icon: FaChair,
     label: "Free Seat Selection",
   },
 ];
@@ -136,20 +136,25 @@ export default function ProfileCard({ payment }) {
     return null;
   }
 
-  const profile =
-    profileDetails[payment.id] || {
-      membership: "Gold Member",
-      points: "0",
-      email: "member@example.com",
-      phone: "Not available",
-    };
+  const profile = profileDetails[payment.id] || {
+    membership: "Gold Member",
+    points: "0",
+    email: "member@example.com",
+    phone: "Not available",
+  };
 
   const handleMail = () => {
     window.location.href = `mailto:${profile.email}`;
   };
 
   const handleMessage = () => {
-    window.location.href = `sms:${profile.phone.replace(/\s/g, "")}`;
+    if (profile.phone === "Not available") {
+      return;
+    }
+
+    const phoneNumber = profile.phone.replace(/[^\d+]/g, "");
+
+    window.location.href = `sms:${phoneNumber}`;
   };
 
   return (
@@ -178,11 +183,9 @@ export default function ProfileCard({ payment }) {
       <div className="member-points">
 
         <div className="points-heading">
-
           <span>Total Points</span>
 
           <FaCrown />
-
         </div>
 
         <strong>{profile.points}</strong>
@@ -193,64 +196,60 @@ export default function ProfileCard({ payment }) {
 
       {/* BENEFITS */}
 
-      <div className="member-section">
+      <section className="member-section">
 
-        <div className="member-section-title">
-          <h3>Member Benefits</h3>
-        </div>
+        <h3 className="member-section-title">
+          Member Benefits
+        </h3>
 
         <div className="member-benefits">
 
-          {benefits.map((benefit) => (
-            <div
-              className="member-benefit"
-              key={benefit.id}
-            >
+          {benefits.map((benefit) => {
+            const BenefitIcon = benefit.icon;
 
-              <div className="member-benefit-icon">
-                {benefit.icon}
+            return (
+              <div
+                className="member-benefit"
+                key={benefit.id}
+              >
+
+                <div className="member-benefit-icon">
+                  <BenefitIcon />
+                </div>
+
+                <span>{benefit.label}</span>
+
+                <div className="member-benefit-check">
+                  <FiCheck />
+                </div>
+
               </div>
-
-              <span>{benefit.label}</span>
-
-              <div className="member-benefit-check">
-                <FiCheck />
-              </div>
-
-            </div>
-          ))}
+            );
+          })}
 
         </div>
 
-      </div>
+      </section>
 
       {/* CONTACT */}
 
-      <div className="member-contact">
+      <section className="member-contact">
 
         <h3>Contact Details</h3>
 
         <div className="contact-detail">
-
           <span>Email</span>
 
-          <strong>
-            {profile.email}
-          </strong>
-
+          <strong>{profile.email}</strong>
         </div>
 
         <div className="contact-detail">
-
           <span>Phone Number</span>
 
-          <strong>
-            {profile.phone}
-          </strong>
-
+          <strong>{profile.phone}</strong>
         </div>
 
-      </div>
+      </section>
 
       {/* ACTIONS */}
 
@@ -263,17 +262,18 @@ export default function ProfileCard({ payment }) {
         >
           <FiMail />
 
-          Mail
+          <span>Mail</span>
         </button>
 
         <button
           type="button"
           className="member-message-button"
           onClick={handleMessage}
+          disabled={profile.phone === "Not available"}
         >
           <FiMessageCircle />
 
-          Message
+          <span>Message</span>
         </button>
 
       </div>

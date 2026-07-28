@@ -1,63 +1,80 @@
 "use client";
 
 import Link from "next/link";
-import { FiArrowLeft, FiSearch } from "react-icons/fi";
+
+import {
+  FiArrowLeft,
+  FiSearch,
+  FiChevronDown,
+} from "react-icons/fi";
 
 import "./DetailHeader.scss";
 
-export default function DetailHeader() {
+export default function DetailHeader({ flight }) {
   return (
-    <div className="detail-header">
+    <header className="detail-header">
 
-      <div className="detail-left">
+      <div className="detail-header-main">
 
-        <Link href="/schedule" className="back-link">
-          <div className="back-btn">
-            <FiArrowLeft />
-          </div>
+        <Link
+          href="/schedule"
+          className="detail-back-btn"
+          aria-label="Back to flight schedule"
+        >
+          <FiArrowLeft />
         </Link>
 
-        <div className="route-info">
+        <div className="detail-heading">
 
-          <span>
+          <span className="detail-back-label">
             Back to Flight Schedule
           </span>
 
-          <h2>
-            Los Angeles → New York
-          </h2>
+          <h1>
+            {flight.departure.city}
+            <span>→</span>
+            {flight.arrival.city}
+          </h1>
 
           <p>
-            Boeing 787 Dreamliner • 220 Passengers
+            {flight.aircraft}
+            <span>•</span>
+            {flight.totalPassengers} Passengers
           </p>
 
         </div>
 
       </div>
 
-      <div className="detail-right">
+      <div className="detail-search">
 
-        <div className="search-box">
-
+        <div className="detail-search-input">
           <FiSearch />
 
           <input
             type="text"
             placeholder="Search flight"
           />
-
         </div>
 
-        <select>
-          <option>Economy</option>
-        </select>
+        <button
+          type="button"
+          className="detail-class-btn"
+        >
+          Economy
 
-        <button>
+          <FiChevronDown />
+        </button>
+
+        <button
+          type="button"
+          className="detail-search-btn"
+        >
           Search
         </button>
 
       </div>
 
-    </div>
+    </header>
   );
 }

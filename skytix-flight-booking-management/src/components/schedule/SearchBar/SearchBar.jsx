@@ -1,85 +1,240 @@
 "use client";
 
-import { useState } from "react";
-import { FiRefreshCw, FiSearch } from "react-icons/fi";
+import {
+  FiCalendar,
+  FiChevronDown,
+  FiRefreshCw,
+  FiSearch,
+} from "react-icons/fi";
 
 import "./SearchBar.scss";
 
-export default function SearchBar() {
-  const [from, setFrom] = useState("Los Angeles (LAX)");
-  const [to, setTo] = useState("New York (JFK)");
+export default function SearchBar({
+  from,
+  to,
+  departureDate,
+  seatClass,
 
-  const handleSwap = () => {
-    setFrom(to);
-    setTo(from);
-  };
+  locations = [],
 
+  onFromChange,
+  onToChange,
+  onDepartureDateChange,
+  onSeatClassChange,
+  onSwap,
+  onSearch,
+}) {
   return (
-    <div className="schedule-search-bar">
+    <form
+      className="schedule-search-bar"
+      onSubmit={(event) => {
+        event.preventDefault();
 
-      {/* FROM */}
+        onSearch();
+      }}
+    >
+      {/* =====================================
+          FROM
+      ====================================== */}
+
       <div className="schedule-search-item schedule-search-from">
-        <span className="schedule-search-label">
-          From
-        </span>
 
-        <h4 className="schedule-search-value">
-          {from}
-        </h4>
+        <label
+          className="schedule-search-label"
+          htmlFor="schedule-from"
+        >
+          From
+        </label>
+
+        <div className="schedule-search-control">
+
+          <select
+            id="schedule-from"
+            value={from}
+            onChange={(event) =>
+              onFromChange(
+                event.target.value
+              )
+            }
+          >
+            <option value="">
+              Anywhere
+            </option>
+
+            {locations.map(
+              (location) => (
+                <option
+                  key={`from-${location.code}`}
+                  value={location.code}
+                >
+                  {location.city} ({location.code})
+                </option>
+              )
+            )}
+
+          </select>
+
+          <FiChevronDown />
+
+        </div>
+
       </div>
 
-      {/* SWAP */}
+      {/* =====================================
+          SWAP
+      ====================================== */}
+
       <button
         type="button"
         className="schedule-swap-btn"
-        onClick={handleSwap}
+        onClick={onSwap}
         aria-label="Swap departure and destination"
       >
         <FiRefreshCw />
       </button>
 
-      {/* TO */}
+      {/* =====================================
+          TO
+      ====================================== */}
+
       <div className="schedule-search-item schedule-search-to">
-        <span className="schedule-search-label">
+
+        <label
+          className="schedule-search-label"
+          htmlFor="schedule-to"
+        >
           To
-        </span>
+        </label>
 
-        <h4 className="schedule-search-value">
-          {to}
-        </h4>
+        <div className="schedule-search-control">
+
+          <select
+            id="schedule-to"
+            value={to}
+            onChange={(event) =>
+              onToChange(
+                event.target.value
+              )
+            }
+          >
+            <option value="">
+              Anywhere
+            </option>
+
+            {locations.map(
+              (location) => (
+                <option
+                  key={`to-${location.code}`}
+                  value={location.code}
+                >
+                  {location.city} ({location.code})
+                </option>
+              )
+            )}
+
+          </select>
+
+          <FiChevronDown />
+
+        </div>
+
       </div>
 
-      {/* DATE */}
+      {/* =====================================
+          DEPARTURE DATE
+      ====================================== */}
+
       <div className="schedule-search-item schedule-search-date">
-        <span className="schedule-search-label">
+
+        <label
+          className="schedule-search-label"
+          htmlFor="schedule-departure-date"
+        >
           Departure Date
-        </span>
+        </label>
 
-        <h4 className="schedule-search-value">
-          Sat, 1 Jul 2028
-        </h4>
+        <div className="schedule-search-control schedule-date-control">
+
+          <input
+            id="schedule-departure-date"
+            type="date"
+            value={departureDate}
+            onChange={(event) =>
+              onDepartureDateChange(
+                event.target.value
+              )
+            }
+          />
+
+          <FiCalendar />
+
+        </div>
+
       </div>
 
-      {/* CLASS */}
+      {/* =====================================
+          SEAT CLASS
+      ====================================== */}
+
       <div className="schedule-search-item schedule-search-class">
-        <span className="schedule-search-label">
-          Seat Class
-        </span>
 
-        <h4 className="schedule-search-value">
-          Economy
-        </h4>
+        <label
+          className="schedule-search-label"
+          htmlFor="schedule-seat-class"
+        >
+          Seat Class
+        </label>
+
+        <div className="schedule-search-control">
+
+          <select
+            id="schedule-seat-class"
+            value={seatClass}
+            onChange={(event) =>
+              onSeatClassChange(
+                event.target.value
+              )
+            }
+          >
+            <option value="All">
+              All Classes
+            </option>
+
+            <option value="Economy">
+              Economy
+            </option>
+
+            <option value="Premium Economy">
+              Premium Economy
+            </option>
+
+            <option value="Business">
+              Business
+            </option>
+
+            <option value="First Class">
+              First Class
+            </option>
+          </select>
+
+          <FiChevronDown />
+
+        </div>
+
       </div>
 
-      {/* SEARCH */}
+      {/* =====================================
+          SEARCH
+      ====================================== */}
+
       <button
-        type="button"
+        type="submit"
         className="schedule-search-submit"
         aria-label="Search flights"
       >
         <FiSearch />
       </button>
 
-    </div>
+    </form>
   );
 }

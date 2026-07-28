@@ -1,0 +1,474 @@
+.verify-card {
+  width: 100%;
+
+  padding: 42px 40px;
+
+  background: #ffffff;
+
+  border: 1px solid #ececec;
+  border-radius: 28px;
+
+  text-align: center;
+}
+
+/* ========================================
+   MOBILE BRAND
+======================================== */
+
+.verify-mobile-brand {
+  display: none;
+
+  margin-bottom: 28px;
+
+  color: #d0ab42;
+
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* ========================================
+   ICON
+======================================== */
+
+.verify-icon {
+  width: 66px;
+  height: 66px;
+
+  margin: 0 auto 22px;
+
+  border-radius: 18px;
+
+  background: #faf6e8;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #c49c35;
+}
+
+.verify-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* ========================================
+   HEADING
+======================================== */
+
+.verify-heading {
+  margin-bottom: 30px;
+}
+
+.verify-heading h1 {
+  margin: 0;
+
+  color: #202020;
+
+  font-size: 34px;
+  line-height: 1.2;
+  font-weight: 700;
+
+  letter-spacing: -0.8px;
+}
+
+.verify-heading p {
+  margin: 11px 0 4px;
+
+  color: #929292;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.verify-heading strong {
+  display: block;
+
+  color: #333333;
+
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 600;
+
+  overflow-wrap: anywhere;
+}
+
+/* ========================================
+   FORM
+======================================== */
+
+.verify-form {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+/* ========================================
+   OTP
+======================================== */
+
+.otp-wrapper {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(6, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+.otp-wrapper input {
+  width: 100%;
+  min-width: 0;
+
+  aspect-ratio: 1 / 1;
+
+  max-height: 58px;
+
+  padding: 0;
+
+  border: 1px solid #e4e4e4;
+  border-radius: 14px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #202020;
+
+  text-align: center;
+
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 700;
+
+  caret-color: #c59d34;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.otp-wrapper input:focus {
+  border-color: #d7b755;
+
+  background: #fffdf8;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(228, 198, 109, 0.12);
+}
+
+.otp-wrapper input:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+}
+
+/* ========================================
+   ERROR
+======================================== */
+
+.verify-error {
+  padding: 11px 13px;
+
+  border-radius: 10px;
+
+  background: #fff1f1;
+
+  color: #d94b4b;
+
+  text-align: left;
+
+  font-size: 12px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+/* ========================================
+   SUCCESS
+======================================== */
+
+.verify-message {
+  padding: 11px 13px;
+
+  border-radius: 10px;
+
+  background: #eef9f1;
+
+  color: #3c915b;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  text-align: left;
+
+  font-size: 12px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+.verify-message svg {
+  flex: 0 0 auto;
+
+  width: 16px;
+  height: 16px;
+}
+
+/* ========================================
+   VERIFY BUTTON
+======================================== */
+
+.verify-submit {
+  width: 100%;
+  height: 54px;
+
+  border: 0;
+  border-radius: 14px;
+
+  background: #e4c66d;
+
+  color: #202020;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.verify-submit:hover:not(:disabled) {
+  background: #d7b958;
+}
+
+.verify-submit:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+}
+
+/* ========================================
+   RESEND
+======================================== */
+
+.verify-resend {
+  margin-top: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  flex-wrap: wrap;
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.verify-resend > span:first-child {
+  color: #929292;
+}
+
+.resend-timer {
+  color: #777777;
+
+  font-weight: 600;
+}
+
+.verify-resend button {
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #aa821d;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.verify-resend button:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+.verify-resend button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+/* ========================================
+   CHANGE EMAIL
+======================================== */
+
+.change-email {
+  width: fit-content;
+
+  margin: 22px auto 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  color: #777777;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.change-email svg {
+  width: 15px;
+  height: 15px;
+}
+
+.change-email:hover {
+  color: #a47b17;
+}
+
+/* ========================================
+   AUTH LOADING
+======================================== */
+
+.verify-loading-card {
+  min-height: 440px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  color: #8d8d8d;
+
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.verify-loader {
+  width: 36px;
+  height: 36px;
+
+  border: 3px solid #eeeeee;
+  border-top-color: #e4c66d;
+
+  border-radius: 50%;
+
+  animation:
+    verify-spinner 0.7s
+    linear infinite;
+}
+
+@keyframes verify-spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 992px) {
+  .verify-mobile-brand {
+    display: block;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 576px) {
+  .verify-card {
+    padding: 32px 20px;
+
+    border-radius: 22px;
+  }
+
+  .verify-icon {
+    width: 60px;
+    height: 60px;
+
+    border-radius: 16px;
+
+    margin-bottom: 20px;
+  }
+
+  .verify-icon svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .verify-heading {
+    margin-bottom: 26px;
+  }
+
+  .verify-heading h1 {
+    font-size: 29px;
+  }
+
+  .otp-wrapper {
+    gap: 6px;
+  }
+
+  .otp-wrapper input {
+    border-radius: 11px;
+
+    font-size: 18px;
+  }
+
+  .verify-submit {
+    height: 52px;
+  }
+
+  .verify-loading-card {
+    min-height: 380px;
+  }
+}
+
+/* ========================================
+   VERY SMALL MOBILE
+======================================== */
+
+@media (max-width: 380px) {
+  .verify-card {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .otp-wrapper {
+    gap: 5px;
+  }
+
+  .otp-wrapper input {
+    border-radius: 9px;
+
+    font-size: 16px;
+  }
+}

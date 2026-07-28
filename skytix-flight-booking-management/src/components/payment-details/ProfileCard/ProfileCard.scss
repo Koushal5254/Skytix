@@ -2,66 +2,67 @@
   width: 100%;
   min-width: 0;
 
+  padding: 32px 28px 28px;
+
   background: #ffffff;
 
-  border: 1px solid #e9e9e9;
-  border-radius: 28px;
-
-  padding: 28px 26px;
+  border: 1px solid #e8e8e8;
+  border-radius: 24px;
 
   display: flex;
   flex-direction: column;
-
-  box-shadow: none;
 }
 
-/* ========================================
+/* =====================================================
    PROFILE
-======================================== */
+===================================================== */
 
 .member-profile-top {
+  width: 100%;
+
+  padding-bottom: 26px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
 
   text-align: center;
-
-  padding: 4px 0 24px;
 }
 
 .member-avatar {
-  width: 84px;
-  height: 84px;
+  width: 86px;
+  height: 86px;
 
-  flex: 0 0 auto;
+  margin-bottom: 17px;
 
   border-radius: 50%;
 
-  background: #f2f7ff;
+  background: #f1f6ff;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  margin-bottom: 16px;
+  flex-shrink: 0;
 }
 
 .member-avatar svg {
-  font-size: 42px;
+  width: 43px;
+  height: 43px;
 
-  color: #61dafb;
+  color: #54c8f4;
 }
 
 .member-profile-top h2 {
   margin: 0;
 
-  color: #1f1f1f;
+  color: #202020;
 
-  font-size: 24px;
+  font-size: 23px;
   line-height: 1.2;
   font-weight: 700;
 
-  letter-spacing: -0.3px;
+  letter-spacing: -0.4px;
 }
 
 .gold-member-badge {
@@ -69,13 +70,13 @@
 
   margin-top: 12px;
 
-  padding: 0 13px;
+  padding: 0 14px;
 
   border-radius: 9px;
 
-  background: #fbf2d8;
+  background: #fff3d1;
 
-  color: #ad8120;
+  color: #a97912;
 
   display: inline-flex;
   align-items: center;
@@ -84,25 +85,27 @@
   gap: 7px;
 
   font-size: 13px;
+  line-height: 1;
   font-weight: 600;
 }
 
 .gold-member-badge svg {
-  flex: 0 0 auto;
+  width: 13px;
+  height: 13px;
 
-  font-size: 13px;
+  flex-shrink: 0;
 }
 
-/* ========================================
+/* =====================================================
    POINTS
-======================================== */
+===================================================== */
 
 .member-points {
   width: 100%;
 
-  padding: 20px;
+  margin-bottom: 28px;
 
-  margin-bottom: 26px;
+  padding: 20px 20px 19px;
 
   border-radius: 18px;
 
@@ -112,28 +115,29 @@
 .points-heading {
   width: 100%;
 
+  margin-bottom: 9px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  gap: 16px;
-
-  margin-bottom: 9px;
+  gap: 15px;
 }
 
 .points-heading span {
-  color: #8f8f8f;
+  color: #8c8c8c;
 
   font-size: 12px;
   font-weight: 500;
 }
 
 .points-heading svg {
-  flex: 0 0 auto;
+  width: 15px;
+  height: 15px;
 
-  font-size: 15px;
+  color: #d4ad3e;
 
-  color: #d5b550;
+  flex-shrink: 0;
 }
 
 .member-points strong {
@@ -143,9 +147,11 @@
 
   color: #202020;
 
-  font-size: 28px;
-  line-height: 1.05;
+  font-size: 29px;
+  line-height: 1.1;
   font-weight: 700;
+
+  letter-spacing: -0.5px;
 }
 
 .member-points p {
@@ -155,28 +161,25 @@
 
   font-size: 12px;
   line-height: 1.4;
+  font-weight: 400;
 }
 
-/* ========================================
+/* =====================================================
    MEMBER BENEFITS
-======================================== */
+===================================================== */
 
 .member-section {
   width: 100%;
 
-  padding-bottom: 24px;
+  padding-bottom: 27px;
 
   border-bottom: 1px solid #eeeeee;
 }
 
 .member-section-title {
-  margin-bottom: 15px;
-}
+  margin: 0 0 17px;
 
-.member-section-title h3 {
-  margin: 0;
-
-  color: #222222;
+  color: #202020;
 
   font-size: 16px;
   line-height: 1.3;
@@ -194,88 +197,98 @@
 
 .member-benefit {
   width: 100%;
+  min-height: 38px;
 
   display: grid;
 
-  grid-template-columns: 36px minmax(0, 1fr) 22px;
+  grid-template-columns:
+    38px
+    minmax(0, 1fr)
+    22px;
 
   align-items: center;
 
-  gap: 11px;
+  column-gap: 11px;
 }
 
 .member-benefit-icon {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
 
   border-radius: 10px;
 
   background: #f8f8f8;
 
+  color: #d3ad3d;
+
   display: flex;
   align-items: center;
   justify-content: center;
-
-  color: #d1b04c;
 }
 
 .member-benefit-icon svg {
-  font-size: 15px;
+  width: 15px;
+  height: 15px;
 }
 
 .member-benefit > span {
   min-width: 0;
 
-  color: #4d4d4d;
+  color: #505050;
 
   font-size: 12px;
-  line-height: 1.35;
+  line-height: 1.4;
   font-weight: 500;
 }
 
 .member-benefit-check {
-  width: 21px;
-  height: 21px;
+  width: 22px;
+  height: 22px;
 
   border-radius: 50%;
 
-  background: #edf8f0;
+  background: #eaf8ef;
+
+  color: #43a266;
 
   display: flex;
   align-items: center;
   justify-content: center;
-
-  color: #48a267;
 }
 
 .member-benefit-check svg {
-  font-size: 12px;
+  width: 12px;
+  height: 12px;
 }
 
-/* ========================================
-   CONTACT
-======================================== */
+/* =====================================================
+   CONTACT DETAILS
+===================================================== */
 
 .member-contact {
   width: 100%;
 
-  padding: 24px 0;
+  padding: 27px 0 25px;
 
   border-bottom: 1px solid #eeeeee;
 }
 
 .member-contact h3 {
-  margin: 0 0 17px;
+  margin: 0 0 18px;
 
-  color: #222222;
+  color: #202020;
 
   font-size: 16px;
   line-height: 1.3;
   font-weight: 700;
 }
 
+.contact-detail {
+  width: 100%;
+}
+
 .contact-detail + .contact-detail {
-  margin-top: 15px;
+  margin-top: 16px;
 }
 
 .contact-detail span {
@@ -287,13 +300,13 @@
 
   font-size: 11px;
   line-height: 1.3;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .contact-detail strong {
   display: block;
 
-  color: #303030;
+  color: #292929;
 
   font-size: 12px;
   line-height: 1.45;
@@ -302,9 +315,9 @@
   overflow-wrap: anywhere;
 }
 
-/* ========================================
+/* =====================================================
    ACTIONS
-======================================== */
+===================================================== */
 
 .member-actions {
   width: 100%;
@@ -313,7 +326,8 @@
 
   display: grid;
 
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
 
   gap: 10px;
 }
@@ -324,7 +338,7 @@
 
   padding: 0 12px;
 
-  border-radius: 13px;
+  border-radius: 12px;
 
   display: inline-flex;
   align-items: center;
@@ -340,13 +354,15 @@
 
   transition:
     background 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .member-actions button svg {
-  flex: 0 0 auto;
+  width: 15px;
+  height: 15px;
 
-  font-size: 16px;
+  flex-shrink: 0;
 }
 
 .member-mail-button {
@@ -358,68 +374,75 @@
 }
 
 .member-mail-button:hover {
-  background: #d9ba5b;
+  background: #d9b958;
 
-  border-color: #d9ba5b;
+  border-color: #d9b958;
 }
 
 .member-message-button {
-  border: 1px solid #e5e5e5;
+  border: 1px solid #e4e4e4;
 
   background: #ffffff;
 
-  color: #333333;
+  color: #292929;
 }
 
 .member-message-button:hover {
   background: #f8f8f8;
+
+  border-color: #dddddd;
 }
 
-/* ========================================
+.member-actions button:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+.member-actions button:disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+/* =====================================================
    RESPONSIVE
-======================================== */
+===================================================== */
 
-@media (max-width: 1400px) {
+@media (max-width: 1200px) {
   .member-profile-card {
-    padding: 26px 22px;
-  }
-
-  .member-benefit {
-    grid-template-columns: 34px minmax(0, 1fr) 21px;
-
-    gap: 9px;
-  }
-
-  .member-benefit-icon {
-    width: 34px;
-    height: 34px;
+    padding: 28px 24px;
   }
 }
 
-@media (max-width: 1100px) {
-  .member-profile-card {
-    max-width: 100%;
-  }
-
+@media (max-width: 1050px) {
   .member-benefits {
     display: grid;
 
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
 
-    column-gap: 24px;
-    row-gap: 12px;
+    gap: 12px 24px;
   }
 }
 
 @media (max-width: 650px) {
   .member-profile-card {
-    padding: 24px 20px;
+    padding: 25px 20px;
 
-    border-radius: 22px;
+    border-radius: 20px;
   }
 
-  .member-profile-top {
-    padding-top: 0;
+  .member-avatar {
+    width: 78px;
+    height: 78px;
+  }
+
+  .member-avatar svg {
+    width: 39px;
+    height: 39px;
+  }
+
+  .member-profile-top h2 {
+    font-size: 21px;
   }
 
   .member-benefits {

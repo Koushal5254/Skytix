@@ -1,51 +1,157 @@
 "use client";
 
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import {
+  FiChevronLeft,
+  FiChevronRight,
+} from "react-icons/fi";
 
 import "./PaymentPagination.scss";
 
-export default function PaymentPagination() {
+export default function PaymentPagination({
+  currentPage = 1,
+  totalPages = 1,
+  totalItems = 0,
+  itemsPerPage = 10,
+  onPageChange,
+}) {
+  const startItem =
+    totalItems === 0
+      ? 0
+      : (currentPage - 1) * itemsPerPage + 1;
+
+  const endItem = Math.min(
+    currentPage * itemsPerPage,
+    totalItems
+  );
+
+  const handlePageChange = (page) => {
+    if (
+      page < 1 ||
+      page > totalPages ||
+      page === currentPage
+    ) {
+      return;
+    }
+
+    onPageChange?.(page);
+  };
+
+  const getVisiblePages = () => {
+    if (totalPages <= 5) {
+      return Array.from(
+        { length: totalPages },
+        (_, index) => index + 1
+      );
+    }
+
+    if (currentPage <= 3) {
+      return [1, 2, 3, "dots", totalPages];
+    }
+
+    if (currentPage >= totalPages - 2) {
+      return [
+        1,
+        "dots",
+        totalPages - 2,
+        totalPages - 1,
+        totalPages,
+      ];
+    }
+
+    return [
+      1,
+      "dots-left",
+      currentPage,
+      "dots-right",
+      totalPages,
+    ];
+  };
+
+  const visiblePages = getVisiblePages();
+
   return (
     <div className="payment-pagination">
+      {/* RESULT INFO */}
 
-      <div className="pagination-info">
-        Showing 1–12 of 567
+      <div className="payment-pagination-info">
+        Showing {startItem}–{endItem} of {totalItems}
       </div>
 
-      <div className="pagination-controls">
+      {/* CONTROLS */}
 
-        <button className="page-btn">
+      <div className="payment-pagination-controls">
+        <button
+          type="button"
+          className="payment-pagination-arrow"
+          disabled={currentPage === 1}
+          onClick={() =>
+            handlePageChange(currentPage - 1)
+          }
+          aria-label="Previous page"
+        >
           <FiChevronLeft />
-          Previous
+
+          <span>Previous</span>
         </button>
 
-        <button className="page-number active">
-          1
-        </button>
+        <div className="payment-page-numbers">
+          {visiblePages.map((page, index) => {
+            if (
+              page === "dots" ||
+              page === "dots-left" ||
+              page === "dots-right"
+            ) {
+              return (
+                <span
+                  key={`${page}-${index}`}
+                  className="payment-pagination-dots"
+                >
+                  ...
+                </span>
+              );
+            }
 
-        <button className="page-number">
-          2
-        </button>
+            return (
+              <button
+                type="button"
+                key={page}
+                className={`payment-page-number ${
+                  currentPage === page
+                    ? "active"
+                    : ""
+                }`}
+                onClick={() =>
+                  handlePageChange(page)
+                }
+                aria-current={
+                  currentPage === page
+                    ? "page"
+                    : undefined
+                }
+              >
+                {page}
+              </button>
+            );
+          })}
+        </div>
 
-        <button className="page-number">
-          3
-        </button>
+        <button
+          type="button"
+          className="payment-pagination-arrow"
+          disabled={
+            currentPage === totalPages ||
+            totalPages === 0
+          }
+          onClick={() =>
+            handlePageChange(currentPage + 1)
+          }
+          aria-label="Next page"
+        >
+          <span>Next</span>
 
-        <span className="dots">
-          ...
-        </span>
-
-        <button className="page-number">
-          8
-        </button>
-
-        <button className="page-btn">
-          Next
           <FiChevronRight />
         </button>
-
       </div>
-
     </div>
   );
 }

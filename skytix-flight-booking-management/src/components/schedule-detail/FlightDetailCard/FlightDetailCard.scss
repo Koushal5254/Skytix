@@ -1,0 +1,231 @@
+.flight-info-card {
+  width: 100%;
+
+  padding: 16px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 14px;
+
+  background: #ffffff;
+}
+
+/* ========================================
+   TOP
+======================================== */
+
+.flight-info-top {
+  display: grid;
+
+  grid-template-columns:
+    160px
+    150px
+    1fr
+    190px;
+
+  align-items: center;
+
+  gap: 16px;
+
+  padding-bottom: 16px;
+}
+
+.flight-info-airline {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.flight-info-logo {
+  width: 42px;
+  height: 42px;
+
+  flex: 0 0 42px;
+
+  border-radius: 8px;
+
+  background: #f7f7f9;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #1d5ba6;
+}
+
+.flight-info-airline h3 {
+  margin: 0;
+
+  color: #222222;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.flight-info-airline span {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #999999;
+
+  font-size: 9px;
+}
+
+/* ========================================
+   SPEC
+======================================== */
+
+.flight-spec {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.flight-spec span {
+  color: #aaaaaa;
+
+  font-size: 9px;
+}
+
+.flight-spec strong {
+  color: #555555;
+
+  font-size: 9px;
+  font-weight: 400;
+}
+
+.seat-spec {
+  padding-left: 24px;
+
+  border-left: 1px solid #e8e8e8;
+}
+
+/* ========================================
+   INCLUDED
+======================================== */
+
+.included-card {
+  padding: 16px;
+
+  border-radius: 10px;
+
+  background: #fafafa;
+}
+
+.included-card h4 {
+  margin: 0 0 14px;
+
+  color: #555555;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.included-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 40px;
+}
+
+.included-item {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 8px;
+
+  color: #777777;
+}
+
+.included-item > svg {
+  width: 12px;
+  height: 12px;
+
+  margin-top: 1px;
+
+  flex: 0 0 12px;
+}
+
+.included-item strong {
+  display: block;
+
+  color: #666666;
+
+  font-size: 9px;
+  font-weight: 500;
+}
+
+.included-item p {
+  margin: 6px 0 0;
+
+  color: #999999;
+
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.included-item small {
+  margin-top: 7px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+
+  color: #999999;
+
+  font-size: 8px;
+}
+
+.included-item small svg {
+  width: 10px;
+  height: 10px;
+}
+
+.included-item small span {
+  color: #d5b442;
+}
+
+.included-divider {
+  height: 1px;
+
+  margin: 15px 0;
+
+  background: #e3e3e3;
+}
+
+.included-bottom {
+  gap: 45px;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1000px) {
+  .flight-info-top {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .seat-spec {
+    padding-left: 0;
+
+    border-left: 0;
+  }
+}
+
+@media (max-width: 650px) {
+  .flight-info-top,
+  .included-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .included-grid {
+    gap: 16px;
+  }
+}

@@ -1,5 +1,5 @@
 /* ========================================
-   PAGINATION ROW
+   PAGINATION
 ======================================== */
 
 .booking-pagination {
@@ -18,7 +18,7 @@
 }
 
 /* ========================================
-   RESULT INFORMATION
+   RESULT INFO
 ======================================== */
 
 .booking-pagination-info {
@@ -51,7 +51,7 @@
 }
 
 /* ========================================
-   PREV / NEXT
+   PREVIOUS / NEXT
 ======================================== */
 
 .booking-page-navigation {
@@ -101,9 +101,9 @@
 }
 
 .booking-page-navigation:disabled {
-  color: #c4c4c4;
-
   background: #fafafa;
+
+  color: #c4c4c4;
 
   cursor: not-allowed;
 
@@ -158,7 +158,7 @@
 }
 
 /* ========================================
-   ACTIVE PAGE
+   ACTIVE
 ======================================== */
 
 .booking-page-numbers button.active {
@@ -172,7 +172,7 @@
 }
 
 /* ========================================
-   ELLIPSIS
+   DOTS
 ======================================== */
 
 .booking-page-dots {
@@ -218,6 +218,7 @@
 @media (max-width: 480px) {
   .booking-page-navigation {
     width: 30px;
+    height: 28px;
 
     padding: 0;
   }
@@ -231,7 +232,7 @@
     height: 28px;
   }
 
-  .booking-page-navigation {
-    height: 28px;
+  .booking-page-dots {
+    width: 14px;
   }
 }

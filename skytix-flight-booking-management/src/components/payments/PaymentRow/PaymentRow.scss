@@ -1,230 +1,288 @@
-.payment-row{
+/* ========================================
+   PAYMENT ROW
+======================================== */
 
-display:grid;
+.payment-row {
+  width: 100%;
+  min-height: 58px;
 
-grid-template-columns:
-2.5fr
-1.7fr
-1.8fr
-1.2fr
-1.5fr
-1fr
-1.2fr
-70px;
+  padding: 0 18px;
 
-align-items:center;
+  display: grid;
 
-padding:22px 32px;
+  grid-template-columns:
+    minmax(165px, 1.55fr)
+    minmax(125px, 1.2fr)
+    minmax(145px, 1.4fr)
+    minmax(95px, 0.9fr)
+    minmax(115px, 1.05fr)
+    minmax(90px, 0.8fr)
+    minmax(105px, 0.9fr)
+    58px;
 
-border-bottom:1px solid #F3F3F3;
+  align-items: center;
 
-transition:.25s;
+  column-gap: 14px;
 
-background:#fff;
+  background: #ffffff;
 
+  border-bottom: 1px solid #eeeeee;
+
+  transition: background-color 0.2s ease;
 }
 
-.payment-row:hover{
-
-background:#FCFCFC;
-
+.payment-row:last-child {
+  border-bottom: none;
 }
 
-/* ====================== */
-
-.passenger{
-
-display:flex;
-
-align-items:center;
-
-gap:14px;
-
+.payment-row:hover {
+  background: #fffdf9;
 }
 
-.avatar{
+/* ========================================
+   CUSTOMER
+======================================== */
 
-width:56px;
-height:56px;
+.payment-customer {
+  min-width: 0;
 
-border-radius:18px;
+  display: flex;
+  align-items: center;
 
-display:flex;
-justify-content:center;
-align-items:center;
-
-font-size:24px;
-
-flex-shrink:0;
-
-transition:.25s;
-
+  gap: 10px;
 }
 
-.avatar svg{
+/* ========================================
+   AVATAR
+======================================== */
 
-font-size:24px;
+.payment-customer-avatar {
+  width: 30px;
+  height: 30px;
 
-}
-.passenger-info{
+  flex: 0 0 30px;
 
-display:flex;
+  border-radius: 50%;
 
-flex-direction:column;
-
-}
-
-.passenger-info h4{
-
-margin:0;
-
-font-size:17px;
-
-font-weight:700;
-
-color:#1F1F1F;
-
-line-height:1.2;
-
+  background: #f4e2aa;
 }
 
-.passenger-info span{
+/* ========================================
+   CUSTOMER NAME
+======================================== */
 
-margin-top:5px;
-
-font-size:13px;
-
-color:#A1A1A1;
-
+.payment-customer-info {
+  min-width: 0;
 }
 
-/* ====================== */
+.payment-customer-info h4 {
+  margin: 0;
 
-.booking,
-.airline,
-.route,
-.date{
+  overflow: hidden;
 
-font-size:14px;
+  color: #3f3f3f;
 
-font-weight:500;
+  font-size: 11px;
+  line-height: 1.25;
+  font-weight: 500;
 
-color:#555;
-
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-.amount{
+/* ========================================
+   STANDARD CELLS
+======================================== */
 
-font-size:15px;
+.payment-cell {
+  min-width: 0;
 
-font-weight:700;
+  overflow: hidden;
 
-color:#222;
+  color: #555555;
 
+  font-size: 11px;
+  line-height: 1.3;
+  font-weight: 400;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-/* ====================== */
-
-.status{
-
-display:inline-flex;
-
-justify-content:center;
-
-align-items:center;
-
-min-width:100px;
-
-height:34px;
-
-border-radius:999px;
-
-font-size:13px;
-
-font-weight:600;
-
+.payment-booking-code {
+  color: #505050;
 }
 
-.status.confirmed{
-
-background:#EAF8EE;
-
-color:#2D9C5A;
-
+.payment-airline {
+  color: #505050;
 }
 
-.status.pending{
-
-background:#FFF6DD;
-
-color:#D89B00;
-
+.payment-route {
+  color: #505050;
 }
 
-.status.cancelled{
-
-background:#FDECEC;
-
-color:#E34C4C;
-
+.payment-date {
+  color: #505050;
 }
 
-/* ====================== */
+/* ========================================
+   AMOUNT
+======================================== */
 
-.action{
+.payment-amount {
+  color: #444444;
 
-display:flex;
-
-justify-content:center;
-
-position:relative;
-
+  font-weight: 500;
 }
 
-.action-btn{
+/* ========================================
+   STATUS
+======================================== */
 
-width:42px;
+.payment-status-cell {
+  min-width: 0;
 
-height:42px;
-
-border:none;
-
-border-radius:14px;
-
-background:#F7F7F7;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-cursor:pointer;
-
-transition:.25s;
-
+  display: flex;
+  align-items: center;
 }
 
-.action-btn:hover{
+.payment-status {
+  min-width: 0;
+  height: 20px;
 
-background:#EFEFEF;
+  padding: 0 8px;
 
+  border-radius: 4px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 500;
+
+  white-space: nowrap;
 }
 
-.action-btn svg{
+/* CONFIRMED */
 
-font-size:18px;
+.payment-status--confirmed {
+  background: #e4c66d;
 
-color:#666;
-
+  color: #4e421d;
 }
 
-@media(max-width:1400px){
+/* PENDING */
 
-.payment-row{
+.payment-status--pending {
+  background: #f4e6b9;
 
-min-width:1200px;
-
+  color: #685b34;
 }
 
+/* CANCELLED */
+
+.payment-status--cancelled {
+  background: #56544f;
+
+  color: #ffffff;
+}
+
+/* ========================================
+   ACTION
+======================================== */
+
+.payment-row-action {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========================================
+   EDIT BUTTON
+======================================== */
+
+.payment-edit-btn {
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 7px;
+
+  background: #f5f5f5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #555555;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.payment-edit-btn:hover {
+  background: #ececec;
+
+  color: #222222;
+
+  transform: translateY(-1px);
+}
+
+.payment-edit-btn:active {
+  transform: translateY(0);
+}
+
+.payment-edit-btn svg {
+  width: 14px;
+  height: 14px;
+
+  stroke-width: 1.8;
+}
+
+/* ========================================
+   LARGE DESKTOP
+======================================== */
+
+@media (min-width: 1600px) {
+  .payment-row {
+    padding-left: 22px;
+    padding-right: 22px;
+
+    column-gap: 18px;
+  }
+}
+
+/* ========================================
+   LAPTOP
+======================================== */
+
+@media (max-width: 1300px) {
+  .payment-row {
+    min-width: 1000px;
+
+    padding-left: 16px;
+    padding-right: 16px;
+
+    column-gap: 12px;
+  }
+}
+
+/* ========================================
+   TABLET / MOBILE
+======================================== */
+
+@media (max-width: 900px) {
+  .payment-row {
+    min-width: 980px;
+  }
 }

@@ -7,35 +7,33 @@ import {
   FiChevronDown,
 } from "react-icons/fi";
 
+import { FaReact } from "react-icons/fa";
+
 import "./ScheduleHeader.scss";
 
-export default function ScheduleHeader() {
+export default function ScheduleHeader({
+  showDescription = true,
+}) {
   return (
     <header className="schedule-header">
 
-      {/* PAGE TITLE */}
+      <div className="schedule-header-left">
 
-      <div className="schedule-header-title">
         <h1>Schedule</h1>
+
+        {showDescription && (
+          <p>
+            Manage your flights, bookings and schedules.
+          </p>
+        )}
+
       </div>
 
-      {/* HEADER ACTIONS */}
-
-      <div className="schedule-header-actions">
+      <div className="schedule-header-right">
 
         <button
           type="button"
-          className="schedule-header-icon-btn schedule-notification-btn"
-          aria-label="Notifications"
-        >
-          <FiBell />
-
-          <span className="schedule-notification-dot" />
-        </button>
-
-        <button
-          type="button"
-          className="schedule-header-icon-btn"
+          className="schedule-icon-btn"
           aria-label="Help"
         >
           <FiHelpCircle />
@@ -43,31 +41,45 @@ export default function ScheduleHeader() {
 
         <button
           type="button"
-          className="schedule-header-icon-btn"
+          className="schedule-icon-btn notification-btn"
+          aria-label="Notifications"
+        >
+          <FiBell />
+
+          <span className="notification-dot" />
+        </button>
+
+        <button
+          type="button"
+          className="schedule-icon-btn"
           aria-label="Settings"
         >
           <FiSettings />
         </button>
 
-        {/* PROFILE */}
-
         <button
           type="button"
-          className="schedule-profile"
+          className="schedule-profile-card"
         >
-          <span
-            className="schedule-profile-avatar"
-            aria-hidden="true"
-          />
 
-          <span className="schedule-profile-info">
-            <strong>Martin Septimus</strong>
-            <small>Admin</small>
-          </span>
+          <div className="schedule-avatar">
+            <FaReact />
+          </div>
 
-          <FiChevronDown
-            className="schedule-profile-arrow"
-          />
+          <div className="schedule-profile-info">
+
+            <h4>
+              Martin Septimus
+            </h4>
+
+            <span>
+              Admin
+            </span>
+
+          </div>
+
+          <FiChevronDown className="profile-chevron" />
+
         </button>
 
       </div>

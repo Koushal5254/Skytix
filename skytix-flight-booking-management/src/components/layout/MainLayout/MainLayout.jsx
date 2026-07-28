@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import ProtectedRoute from "@/components/auth/ProtectedRoute/ProtectedRoute";
+
 import Sidebar from "../Sidebar/Sidebar";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -12,58 +14,37 @@ export default function MainLayout({
   children,
   showHeader = true,
   showFooter = true,
-  title = "Dashboard",
 }) {
-  const [sidebarOpen, setSidebarOpen] =
-    useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
-    <div className="main-layout">
+    <ProtectedRoute>
+      <div className="main-layout">
 
-      {/* =====================================
-          SIDEBAR
-      ====================================== */}
-
-      <Sidebar open={sidebarOpen} />
-
-      {/* =====================================
-          MOBILE SIDEBAR OVERLAY
-      ====================================== */}
-
-      {sidebarOpen && (
-        <button
-          type="button"
-          className="main-layout-overlay"
-          aria-label="Close navigation"
-          onClick={() =>
-            setSidebarOpen(false)
-          }
+        <Sidebar
+          open={open}
+          setOpen={setOpen}
         />
-      )}
 
-      {/* =====================================
-          MAIN CONTENT
-      ====================================== */}
+        <div className="main-content">
 
-      <div className="main-content">
+          {showHeader && (
+            <Header
+              setOpen={setOpen}
+            />
+          )}
 
-        {showHeader && (
-          <Header
-            title={title}
-            setOpen={setSidebarOpen}
-          />
-        )}
+          <main>
+            {children}
+          </main>
 
-        <main className="main-page-content">
-          {children}
-        </main>
+          {showFooter && (
+            <Footer />
+          )}
 
-        {showFooter && (
-          <Footer />
-        )}
+        </div>
 
       </div>
-
-    </div>
+    </ProtectedRoute>
   );
 }

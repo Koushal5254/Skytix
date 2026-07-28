@@ -1,57 +1,141 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+
 import {
   FiArrowLeft,
   FiSearch,
   FiChevronDown,
+  FiBell,
+  FiHelpCircle,
+  FiSettings,
 } from "react-icons/fi";
 
 import "./PaymentDetailsHeader.scss";
 
-export default function PaymentDetailsHeader() {
+export default function PaymentDetailsHeader({
+  onSearch,
+  defaultMembership = "Gold",
+}) {
   const router = useRouter();
 
+  const [search, setSearch] = useState("");
+  const [membership, setMembership] = useState(defaultMembership);
+
+  const handleSearch = () => {
+    if (onSearch) {
+      onSearch({
+        search: search.trim(),
+        membership,
+      });
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
-    <header className="profile-details-header">
+    <header className="payment-details-header">
 
-      {/* TOP / BACK */}
+      {/* =====================================
+          TOP HEADER
+      ====================================== */}
 
-      <button
-        type="button"
-        className="profile-back-button"
-        onClick={() => router.push("/payments")}
-      >
-        <FiArrowLeft />
-        <span>Back to Payments</span>
-      </button>
-
-      {/* MAIN HEADER */}
-
-      <div className="profile-header-main">
+      <div className="details-topbar">
 
         <h1>Profile Details</h1>
 
-        <div className="profile-header-controls">
+        <div className="details-topbar-right">
 
-          {/* SEARCH */}
+          <button
+            type="button"
+            className="details-icon-button notification-button"
+            aria-label="Notifications"
+          >
+            <FiBell />
+            <span className="notification-dot" />
+          </button>
 
-          <div className="profile-member-search">
+          <button
+            type="button"
+            className="details-icon-button"
+            aria-label="Help"
+          >
+            <FiHelpCircle />
+          </button>
+
+          <button
+            type="button"
+            className="details-icon-button"
+            aria-label="Settings"
+          >
+            <FiSettings />
+          </button>
+
+          <div className="details-profile">
+
+            <div className="details-profile-avatar" />
+
+            <div className="details-profile-info">
+              <strong>Martin Septimus</strong>
+              <span>Admin</span>
+            </div>
+
+            <FiChevronDown className="details-profile-arrow" />
+
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* =====================================
+          ACTION ROW
+      ====================================== */}
+
+      <div className="details-action-row">
+
+        <button
+          type="button"
+          className="details-back-button"
+          onClick={() => router.push("/payments")}
+        >
+          <span className="details-back-icon">
+            <FiArrowLeft />
+          </span>
+
+          <span>Back to Payments</span>
+        </button>
+
+        <div className="details-member-controls">
+
+          <div className="details-member-search">
+
             <FiSearch />
 
             <input
               type="text"
               placeholder="Search member"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              onKeyDown={handleKeyDown}
               aria-label="Search member"
             />
+
           </div>
 
-          {/* MEMBERSHIP */}
+          <div className="details-membership-filter">
 
-          <div className="profile-filter">
             <select
-              defaultValue="Gold"
-              aria-label="Membership"
+              value={membership}
+              onChange={(event) =>
+                setMembership(event.target.value)
+              }
+              aria-label="Membership level"
             >
               <option value="Gold">Gold</option>
               <option value="Silver">Silver</option>
@@ -59,53 +143,16 @@ export default function PaymentDetailsHeader() {
             </select>
 
             <FiChevronDown />
+
           </div>
 
-          {/* PERIOD */}
-
-          <div className="profile-filter profile-period-filter">
-            <select
-              defaultValue="This Month"
-              aria-label="Period"
-            >
-              <option value="This Month">
-                This Month
-              </option>
-
-              <option value="Last Month">
-                Last Month
-              </option>
-
-              <option value="This Year">
-                This Year
-              </option>
-            </select>
-
-            <FiChevronDown />
-          </div>
-
-          {/* STATUS */}
-
-          <div className="profile-filter profile-status-filter">
-            <select
-              defaultValue="Status"
-              aria-label="Status"
-            >
-              <option value="Status">
-                Status
-              </option>
-
-              <option value="Active">
-                Active
-              </option>
-
-              <option value="Inactive">
-                Inactive
-              </option>
-            </select>
-
-            <FiChevronDown />
-          </div>
+          <button
+            type="button"
+            className="details-search-button"
+            onClick={handleSearch}
+          >
+            Search
+          </button>
 
         </div>
 

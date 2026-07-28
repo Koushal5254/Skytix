@@ -13,7 +13,7 @@ export default function BookingFooter() {
       {/* COPYRIGHT */}
 
       <p className="booking-footer-copyright">
-        © 2028 Skytix. All Rights Reserved.
+        © 2026 indixpert. All Rights Reserved.
       </p>
 
       {/* LINKS */}

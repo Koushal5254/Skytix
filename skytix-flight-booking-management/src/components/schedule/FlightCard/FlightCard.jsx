@@ -8,104 +8,218 @@ import {
   FiBriefcase,
 } from "react-icons/fi";
 
-import { FaPlane } from "react-icons/fa";
-
 import "./FlightCard.scss";
 
-export default function FlightCard({ flight }) {
+const AIRLINE_BRANDS = {
+  "SkyHigh Airlines": {
+    type: "skyhigh",
+  },
+
+  "FlyFast Airways": {
+    type: "flyfast",
+  },
+
+  AeroJet: {
+    type: "aerojet",
+  },
+
+  "JetStream Aviation": {
+    type: "jetstream",
+  },
+
+  "Nimbus Airlines": {
+    type: "nimbus",
+  },
+
+  "CloudNine Airlines": {
+    type: "cloudnine",
+  },
+
+  "QuickWing Air": {
+    type: "quickwing",
+  },
+
+  "SuperJet Airways": {
+    type: "superjet",
+  },
+};
+
+export default function FlightCard({
+  flight,
+}) {
+  const brand =
+    AIRLINE_BRANDS[flight.airline] || {
+      type: "default",
+    };
+
   return (
-    <article className="schedule-flight-card">
+    <article className="flight-card">
 
-      {/* =====================================
-          MAIN FLIGHT INFORMATION
-      ====================================== */}
-
-      <div className="schedule-flight-main">
+      <div className="card-top">
 
         {/* AIRLINE */}
 
-        <div className="schedule-flight-airline">
+        <div className="airline-section">
 
-          <div
-            className="schedule-flight-airline-logo"
-            aria-hidden="true"
-          >
-            <FaPlane />
-          </div>
+          <AirlineLogo
+            type={brand.type}
+          />
 
-          <div className="schedule-flight-airline-info">
-            <h4>{flight.airline}</h4>
-            <span>{flight.code}</span>
+          <div className="airline-info">
+
+            <h4>
+              {flight.airline}
+            </h4>
+
+            <span>
+              {flight.code}
+            </span>
+
           </div>
 
         </div>
 
         {/* DEPARTURE */}
 
-        <div className="schedule-flight-time">
+        <div className="time-block">
 
-          <strong>
-            {flight.departure}
-          </strong>
+          <h2>
+            {formatTime(
+              flight.departure
+            )}
+          </h2>
 
           <span>
             {flight.fromCode}
           </span>
 
+          <small>
+            {flight.departureDetails
+              ?.city || "Los Angeles"}
+          </small>
+
         </div>
 
         {/* ROUTE */}
 
-        <div className="schedule-flight-route">
+        <div className="route-block">
 
-          <div className="schedule-flight-route-line">
+          <div className="route-airports">
 
-            <span className="schedule-route-point" />
-
-            <span className="schedule-route-plane">
-              <FaPlane />
+            <span>
+              {flight.fromCode}
             </span>
 
-            <span className="schedule-route-point" />
+            <span>
+              {flight.toCode}
+            </span>
+
+          </div>
+
+          <div className="route-line">
+
+            <span className="route-dot" />
+
+            <span className="route-track" />
+
+            <span className="route-plane">
+              ✈
+            </span>
+
+            <span className="route-track" />
+
+            <span className="route-dot" />
 
           </div>
 
           <small>
-            {flight.duration || "3 hours"} •{" "}
-            {flight.transit || "Direct"}
+            {flight.duration} • Direct
           </small>
 
         </div>
 
         {/* ARRIVAL */}
 
-        <div className="schedule-flight-time">
+        <div className="time-block">
 
-          <strong>
-            {flight.arrival}
-          </strong>
+          <h2>
+            {formatTime(
+              flight.arrival
+            )}
+          </h2>
 
           <span>
             {flight.toCode}
           </span>
 
+          <small>
+            {flight.arrivalDetails
+              ?.city || "New York"}
+          </small>
+
         </div>
 
-        {/* PRICE */}
+      </div>
 
-        <div className="schedule-flight-price">
+      {/* BOTTOM */}
 
-          <div className="schedule-flight-price-value">
-            <small>Starting From</small>
+      <div className="card-bottom">
+
+        <div className="flight-facilities">
+
+          <span className="facilities-label">
+            Facilities:
+          </span>
+
+          <div>
+            <FiBriefcase />
+
+            <p>
+              {flight.facilities
+                ?.baggage ||
+                "1 Baggage"}
+            </p>
+          </div>
+
+          <div>
+            <FiCoffee />
+
+            <p>
+              {flight.facilities
+                ?.meal ||
+                "No Meal"}
+            </p>
+          </div>
+
+          {flight.facilities?.wifi && (
+            <div>
+              <FiWifi />
+
+              <p>
+                {flight.facilities.wifi}
+              </p>
+            </div>
+          )}
+
+        </div>
+
+        <div className="flight-price-actions">
+
+          <div className="price-section">
 
             <strong>
               ${flight.price}
             </strong>
+
+            <span>
+              /pax
+            </span>
+
           </div>
 
           <Link
             href={`/schedule/${flight.id}`}
-            className="schedule-flight-detail-btn"
+            className="view-detail-btn"
           >
             View Detail
           </Link>
@@ -114,33 +228,70 @@ export default function FlightCard({ flight }) {
 
       </div>
 
-      {/* =====================================
-          FACILITIES
-      ====================================== */}
+    </article>
+  );
+}
 
-      <div className="schedule-flight-facilities">
+/* ========================================
+   AIRLINE LOGO
+======================================== */
 
-        <span className="schedule-facilities-title">
-          Facilities:
-        </span>
+function AirlineLogo({
+  type,
+}) {
+  return (
+    <div
+      className={`airline-logo airline-logo-${type}`}
+      aria-hidden="true"
+    >
 
-        <div className="schedule-facility">
-          <FiBriefcase />
-          <span>1 Baggage</span>
-        </div>
+      <div className="airline-symbol">
 
-        <div className="schedule-facility">
-          <FiCoffee />
-          <span>No Meal</span>
-        </div>
+        <span className="logo-piece logo-piece-1" />
 
-        <div className="schedule-facility">
-          <FiWifi />
-          <span>Free WiFi</span>
-        </div>
+        <span className="logo-piece logo-piece-2" />
+
+        <span className="logo-piece logo-piece-3" />
 
       </div>
 
-    </article>
+    </div>
   );
+}
+
+/* ========================================
+   TIME
+======================================== */
+
+function formatTime(time) {
+  if (!time) {
+    return "-";
+  }
+
+  if (
+    time.includes("AM") ||
+    time.includes("PM")
+  ) {
+    return time;
+  }
+
+  const [
+    hourValue,
+    minute = "00",
+  ] = time.split(":");
+
+  const hour =
+    Number(hourValue);
+
+  if (Number.isNaN(hour)) {
+    return time;
+  }
+
+  const period =
+    hour >= 12 ? "PM" : "AM";
+
+  const formattedHour =
+    hour % 12 || 12;
+
+  return `${formattedHour}:${minute} ${period}`;
 }

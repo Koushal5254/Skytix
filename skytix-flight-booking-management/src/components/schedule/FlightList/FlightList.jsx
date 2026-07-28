@@ -1,66 +1,60 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { FiPlus } from "react-icons/fi";
+import {
+  FiPlus,
+  FiInbox,
+} from "react-icons/fi";
 
 import FlightCard from "../FlightCard/FlightCard";
-import { flights } from "@/data/flights";
 
 import "./FlightList.scss";
 
-export default function FlightList() {
-  const [priceSort, setPriceSort] = useState("cheapest");
-  const [timeSort, setTimeSort] = useState("earliest");
+export default function FlightList({
+  flights = [],
+  totalResults = 0,
 
-  const sortedFlights = useMemo(() => {
-    const list = [...flights];
+  priceSort,
+  timeSort,
 
-    list.sort((a, b) => {
-      if (priceSort === "cheapest") {
-        return Number(a.price) - Number(b.price);
-      }
+  onPriceSortChange,
+  onTimeSortChange,
 
-      if (priceSort === "expensive") {
-        return Number(b.price) - Number(a.price);
-      }
-
-      return 0;
-    });
-
-    return list;
-  }, [priceSort]);
-
-  const handleAddFlight = () => {
-    console.log("Add Flight");
-  };
-
+  onAddFlight,
+}) {
   return (
     <section className="schedule-flight-list">
 
-      {/* =====================================
-          LIST HEADER
-      ====================================== */}
+      {/* HEADER */}
 
       <div className="schedule-flight-list-header">
 
         <div className="schedule-flight-list-title">
-          <h2>Flight List</h2>
+
+          <h2>
+            Flight List
+          </h2>
 
           <span>
-            ({flights.length} result)
+            ({totalResults}{" "}
+            {totalResults === 1
+              ? "result"
+              : "results"})
           </span>
+
         </div>
 
         <div className="schedule-flight-list-actions">
 
-          {/* PRICE SORT */}
+          {/* PRICE */}
 
           <select
             value={priceSort}
             onChange={(event) =>
-              setPriceSort(event.target.value)
+              onPriceSortChange(
+                event.target.value
+              )
             }
-            aria-label="Sort flights by price"
+            aria-label="Sort by price"
           >
             <option value="cheapest">
               Cheapest
@@ -71,14 +65,16 @@ export default function FlightList() {
             </option>
           </select>
 
-          {/* TIME SORT */}
+          {/* TIME */}
 
           <select
             value={timeSort}
             onChange={(event) =>
-              setTimeSort(event.target.value)
+              onTimeSortChange(
+                event.target.value
+              )
             }
-            aria-label="Sort flights by departure time"
+            aria-label="Sort by departure time"
           >
             <option value="earliest">
               Earliest
@@ -89,36 +85,58 @@ export default function FlightList() {
             </option>
           </select>
 
-          {/* ADD FLIGHT */}
+          {/* ADD */}
 
           <button
             type="button"
             className="schedule-add-flight-btn"
-            onClick={handleAddFlight}
+            onClick={onAddFlight}
           >
             <FiPlus />
 
-            <span>Add Flight</span>
+            <span>
+              Add Flight
+            </span>
           </button>
 
         </div>
 
       </div>
 
-      {/* =====================================
-          FLIGHT CARDS
-      ====================================== */}
+      {/* CARDS */}
 
-      <div className="schedule-flight-list-cards">
+      {flights.length > 0 ? (
+        <div className="schedule-flight-list-cards">
 
-        {sortedFlights.map((flight, index) => (
-          <FlightCard
-            key={flight.id ?? index}
-            flight={flight}
-          />
-        ))}
+          {flights.map(
+            (flight) => (
+              <FlightCard
+                key={flight.id}
+                flight={flight}
+              />
+            )
+          )}
 
-      </div>
+        </div>
+      ) : (
+        <div className="schedule-empty-results">
+
+          <div className="schedule-empty-icon">
+            <FiInbox />
+          </div>
+
+          <h3>
+            No flights found
+          </h3>
+
+          <p>
+            Try changing your route,
+            date, price range or
+            airline filters.
+          </p>
+
+        </div>
+      )}
 
     </section>
   );

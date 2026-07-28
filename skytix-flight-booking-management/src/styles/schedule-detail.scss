@@ -1,0 +1,19 @@
+.flight-detail-page {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+  .flight-detail-page {
+    gap: 14px;
+  }
+}

@@ -1,6 +1,10 @@
 "use client";
 
-import { FiSearch, FiCalendar, FiChevronDown } from "react-icons/fi";
+import {
+  FiSearch,
+  FiCalendar,
+  FiChevronDown,
+} from "react-icons/fi";
 
 import "./PaymentToolbar.scss";
 
@@ -13,46 +17,62 @@ export default function PaymentToolbar({
   return (
     <div className="payment-toolbar">
 
-      {/* Search */}
-
-      <div className="toolbar-search">
-
+      <div className="payment-toolbar-search">
         <FiSearch />
 
         <input
           type="text"
-          placeholder="Search..."
+          placeholder="Search name, airline, booking code..."
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(event) =>
+            setSearch(event.target.value)
+          }
         />
-
       </div>
 
-      {/* Date */}
+      <div className="payment-toolbar-right">
 
-      <button className="toolbar-date">
-
-        <FiCalendar />
-
-        <span>1 - 8 July 2028</span>
-
-      </button>
-
-      {/* Status */}
-
-      <div className="toolbar-status">
-
-        <select
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
+        <button
+          type="button"
+          className="payment-toolbar-date"
         >
-          <option value="All">All Status</option>
-          <option value="Confirmed">Confirmed</option>
-          <option value="Pending">Pending</option>
-          <option value="Cancelled">Cancelled</option>
-        </select>
+          <FiCalendar />
 
-        <FiChevronDown />
+          <span>
+            1 - 8 July 2028
+          </span>
+
+          <FiChevronDown />
+        </button>
+
+        <div className="payment-toolbar-status">
+
+          <select
+            value={status}
+            onChange={(event) =>
+              setStatus(event.target.value)
+            }
+          >
+            <option value="All">
+              All Status
+            </option>
+
+            <option value="Confirmed">
+              Confirmed
+            </option>
+
+            <option value="Pending">
+              Pending
+            </option>
+
+            <option value="Cancelled">
+              Cancelled
+            </option>
+          </select>
+
+          <FiChevronDown />
+
+        </div>
 
       </div>
 

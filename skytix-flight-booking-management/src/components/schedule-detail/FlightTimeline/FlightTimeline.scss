@@ -1,216 +1,230 @@
 .flight-timeline {
-  background: #ffffff;
-  border: 1px solid #ececec;
-  border-radius: 24px;
-  padding: 30px;
-  margin-top: 24px;
+  width: 100%;
+
+  padding: 28px 54px;
+
+  border-radius: 14px;
+
+  background: #f7f5f4;
 }
 
-/* ================= HEADER ================= */
+.timeline-layout {
+  min-height: 500px;
 
-.timeline-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 36px;
-}
-
-.timeline-header h2 {
-  font-size: 26px;
-  font-weight: 700;
-  color: #1d1d1d;
-}
-
-.timeline-header button {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  height: 46px;
-  padding: 0 18px;
-
-  border: 1px solid #ececec;
-  border-radius: 12px;
-
-  background: #fff;
-
-  cursor: pointer;
-
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.timeline-header svg {
-  color: #e5bf57;
-}
-
-/* ================= TOP ================= */
-
-.timeline-top {
   display: grid;
-  grid-template-columns: 260px 1fr 260px;
-  align-items: center;
-  gap: 30px;
 
-  margin-bottom: 45px;
+  grid-template-columns:
+    95px
+    36px
+    minmax(0, 1fr);
+
+  gap: 18px;
 }
 
-.timeline-side span {
-  font-size: 13px;
-  color: #9a9a9a;
-}
+/* ========================================
+   TIMES
+======================================== */
 
-.timeline-side h2 {
-  margin: 10px 0;
+.timeline-times {
+  min-height: 500px;
 
-  font-size: 42px;
-  font-weight: 700;
-
-  color: #1d1d1d;
-}
-
-.timeline-side h4 {
-  margin-bottom: 6px;
-
-  font-size: 22px;
-  font-weight: 700;
-}
-
-.timeline-side p {
-  color: #9c9c9c;
-  font-size: 14px;
-}
-
-.right {
-  text-align: right;
-}
-
-/* ================= CENTER ================= */
-
-.timeline-center {
-  text-align: center;
-}
-
-.timeline-center span {
-  display: block;
-
-  margin-bottom: 18px;
-
-  font-size: 16px;
-  font-weight: 600;
-
-  color: #555;
-}
-
-.route-line {
   position: relative;
-
-  height: 2px;
-
-  background: repeating-linear-gradient(
-    to right,
-    #d9d9d9,
-    #d9d9d9 10px,
-    transparent 10px,
-    transparent 18px
-  );
 }
 
-.plane {
+.timeline-time {
+  position: absolute;
+
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.departure-time {
+  top: 0;
+}
+
+.arrival-time {
+  bottom: 0;
+}
+
+.timeline-time strong {
+  color: #222222;
+
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.timeline-time span {
+  color: #999999;
+
+  font-size: 9px;
+}
+
+.timeline-duration {
+  position: absolute;
+
+  top: 50%;
+  left: 15px;
+
+  transform: translateY(-50%);
+
+  color: #999999;
+
+  font-size: 9px;
+}
+
+/* ========================================
+   TRACK
+======================================== */
+
+.timeline-track {
+  min-height: 500px;
+
+  position: relative;
+}
+
+.timeline-dot {
   position: absolute;
 
   left: 50%;
-  top: 50%;
 
-  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
 
-  width: 62px;
-  height: 62px;
+  transform: translateX(-50%);
 
   border-radius: 50%;
 
-  background: #e5bf57;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  box-shadow: 0 10px 22px rgba(229, 191, 87, .35);
+  background: #e4c66d;
 }
 
-.plane svg {
-  color: white;
-  font-size: 26px;
-  transform: rotate(90deg);
+.timeline-dot.top {
+  top: 2px;
 }
 
-.timeline-center small {
-  display: block;
-
-  margin-top: 18px;
-
-  color: #9b9b9b;
+.timeline-dot.bottom {
+  bottom: 2px;
 }
 
-/* ================= INFO CARD ================= */
+.timeline-line {
+  position: absolute;
 
-.flight-info-card {
+  left: 50%;
+
+  width: 1px;
+
+  transform: translateX(-50%);
+
+  border-left: 1px dashed #e4c66d;
+}
+
+.top-line {
+  top: 14px;
+
+  height: calc(50% - 32px);
+}
+
+.bottom-line {
+  bottom: 14px;
+
+  height: calc(50% - 32px);
+}
+
+.timeline-plane {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(90deg);
+
+  color: #e4c66d;
+}
+
+.timeline-plane svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.timeline-content {
+  min-width: 0;
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+
+  grid-template-rows:
+    auto
+    1fr
+    auto;
+
+  gap: 24px;
 }
 
-.flight-info-card > div {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.timeline-location h2 {
+  margin: 0 0 7px;
 
-  padding: 22px;
+  color: #222222;
 
-  border: 1px solid #ececec;
-  border-radius: 18px;
-
-  background: #fafafa;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.flight-info-card svg {
-  font-size: 26px;
-  color: #e5bf57;
-}
-
-.flight-info-card span {
-  display: block;
-
-  margin-bottom: 4px;
-
-  font-size: 13px;
-  color: #9b9b9b;
-}
-
-.flight-info-card h4 {
+.timeline-location p {
   margin: 0;
 
-  font-size: 18px;
-  font-weight: 700;
+  color: #888888;
 
-  color: #222;
+  font-size: 10px;
 }
 
-/* ================= RESPONSIVE ================= */
+.timeline-location span {
+  display: block;
 
-@media (max-width: 1100px) {
+  margin-top: 6px;
 
-  .timeline-top {
-    grid-template-columns: 1fr;
-    text-align: center;
+  color: #888888;
+
+  font-size: 10px;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 800px) {
+  .flight-timeline {
+    padding: 24px;
   }
 
-  .right {
-    text-align: center;
+  .timeline-layout {
+    grid-template-columns:
+      72px
+      28px
+      minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .flight-timeline {
+    padding: 20px 16px;
   }
 
-  .flight-info-card {
-    grid-template-columns: 1fr;
+  .timeline-layout {
+    grid-template-columns:
+      26px
+      minmax(0, 1fr);
   }
 
+  .timeline-times {
+    display: none;
+  }
 }

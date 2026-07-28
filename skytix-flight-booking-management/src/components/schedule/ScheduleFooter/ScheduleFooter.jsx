@@ -15,7 +15,7 @@ export default function ScheduleFooter() {
       {/* COPYRIGHT */}
 
       <div className="schedule-footer-copyright">
-        © 2028 Skytix. All Rights Reserved.
+        © 2026 indixpert. All Rights Reserved.
       </div>
 
       {/* LINKS */}

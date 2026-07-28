@@ -1,30 +1,47 @@
-import { flights } from "@/data/flights";
+import { notFound } from "next/navigation";
+
+import MainLayout from "@/components/layout/MainLayout/MainLayout";
+
+import ScheduleHeader from "@/components/schedule/ScheduleHeader/ScheduleHeader";
 
 import DetailHeader from "@/components/schedule-detail/DetailHeader/DetailHeader";
 import FlightSummary from "@/components/schedule-detail/FlightSummary/FlightSummary";
-// import FlightTimeline from "@/components/schedule-detail/FlightTimeline/FlightTimeline";
-import JourneyTimeline from "@/components/schedule-detail/JourneyTimeline/JourneyTimeline";
+import FlightTimeline from "@/components/schedule-detail/FlightTimeline/FlightTimeline";
+import DetailFooter from "@/components/schedule-detail/DetailFooter/DetailFooter";
 
-export default async function ScheduleDetailPage({ params }) {
+import { flights } from "@/data/flights";
+
+import "@/styles/schedule-detail.scss";
+
+export default async function FlightDetailPage({ params }) {
   const { id } = await params;
 
   const flight = flights.find(
-    (item) => item.id === Number(id)
+    (item) => String(item.id) === String(id)
   );
 
   if (!flight) {
-    return <h2>Flight Not Found</h2>;
+    notFound();
   }
 
   return (
-    <div className="schedule-detail-page">
+    <MainLayout
+      showHeader={false}
+      showFooter={false}
+    >
+      <div className="flight-detail-page">
 
-      <DetailHeader />
+        <ScheduleHeader showDescription={false} />
 
-      <FlightSummary flight={flight} />
+        <DetailHeader flight={flight} />
 
-      <JourneyTimeline flight={flight} />
+        <FlightSummary flight={flight} />
 
-    </div>
+        <FlightTimeline flight={flight} />
+
+        <DetailFooter />
+
+      </div>
+    </MainLayout>
   );
 }

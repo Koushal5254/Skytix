@@ -65,7 +65,8 @@
 
   transform: rotate(-90deg);
 
-  transition: transform 0.2s ease;
+  transition:
+    transform 0.2s ease;
 }
 
 .schedule-filter-title svg.open {
@@ -107,7 +108,8 @@
   user-select: none;
 }
 
-.schedule-checkbox-row + .schedule-checkbox-row {
+.schedule-checkbox-row +
+.schedule-checkbox-row {
   margin-top: 22px;
 }
 
@@ -141,17 +143,25 @@
 
   transition:
     background 0.15s ease,
-    border-color 0.15s ease;
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
-.schedule-checkbox-row input:checked +
+.schedule-checkbox-row:hover
+.schedule-custom-checkbox {
+  border-color: #d4b85f;
+}
+
+.schedule-checkbox-row
+input:checked +
 .schedule-custom-checkbox {
   border-color: #e4c66d;
 
   background: #e4c66d;
 }
 
-.schedule-checkbox-row input:checked +
+.schedule-checkbox-row
+input:checked +
 .schedule-custom-checkbox::after {
   content: "";
 
@@ -163,10 +173,21 @@
   width: 4px;
   height: 7px;
 
-  border-right: 1.5px solid #2b2b2b;
-  border-bottom: 1.5px solid #2b2b2b;
+  border-right:
+    1.5px solid #2b2b2b;
+
+  border-bottom:
+    1.5px solid #2b2b2b;
 
   transform: rotate(45deg);
+}
+
+.schedule-checkbox-row
+input:focus-visible +
+.schedule-custom-checkbox {
+  box-shadow:
+    0 0 0 3px
+    rgba(228, 198, 109, 0.2);
 }
 
 /* ========================================
@@ -227,6 +248,10 @@
 
   background: #e4c66d;
 
+  box-shadow:
+    0 1px 4px
+    rgba(0, 0, 0, 0.14);
+
   cursor: grab;
 }
 
@@ -274,7 +299,10 @@
   display: grid;
 
   grid-template-columns:
-    repeat(2, minmax(0, 1fr));
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
 
   gap: 14px;
 }
@@ -338,7 +366,10 @@
   display: grid;
 
   grid-template-columns:
-    repeat(2, minmax(0, 1fr));
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
 
   gap: 12px;
 }
@@ -355,6 +386,8 @@
   align-items: center;
   justify-content: center;
 
+  font-family: inherit;
+
   font-size: 14px;
   font-weight: 600;
 
@@ -364,7 +397,8 @@
 
   transition:
     background 0.18s ease,
-    transform 0.18s ease;
+    transform 0.18s ease,
+    opacity 0.18s ease;
 }
 
 .schedule-select-all {
@@ -379,8 +413,27 @@
   color: #111111;
 }
 
-.schedule-airline-actions button:hover {
-  transform: translateY(-1px);
+.schedule-airline-actions
+button:hover:not(:disabled) {
+  transform:
+    translateY(-1px);
+}
+
+.schedule-select-all:hover:not(:disabled) {
+  background: #eeeeee;
+}
+
+.schedule-clear-all:hover:not(:disabled) {
+  background: #dabc5c;
+}
+
+.schedule-airline-actions
+button:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+
+  transform: none;
 }
 
 /* ========================================
@@ -395,12 +448,65 @@
 }
 
 /* ========================================
+   RESET FILTERS
+======================================== */
+
+.schedule-reset-filters {
+  width: 100%;
+  height: 46px;
+
+  padding: 0 16px;
+
+  border:
+    1px solid #e6e6e6;
+
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  color: #555555;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.schedule-reset-filters:hover {
+  background: #fafafa;
+
+  border-color: #dddddd;
+
+  color: #222222;
+
+  transform:
+    translateY(-1px);
+}
+
+/* ========================================
    FOCUS
 ======================================== */
 
 .schedule-filter-title:focus-visible,
-.schedule-airline-actions button:focus-visible {
-  outline: 2px solid rgba(228, 198, 109, 0.75);
+.schedule-airline-actions
+button:focus-visible,
+.schedule-reset-filters:focus-visible {
+  outline:
+    2px solid
+    rgba(
+      228,
+      198,
+      109,
+      0.75
+    );
+
   outline-offset: 3px;
 }
 
@@ -409,6 +515,7 @@
 ======================================== */
 
 @media (max-width: 1350px) {
+
   .schedule-filter-sidebar {
     gap: 18px;
   }
@@ -438,13 +545,21 @@
 ======================================== */
 
 @media (max-width: 1200px) {
+
   .schedule-filter-sidebar {
     display: grid;
 
     grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
 
     align-items: start;
+  }
+
+  .schedule-reset-filters {
+    grid-column: 1 / -1;
   }
 }
 
@@ -453,8 +568,10 @@
 ======================================== */
 
 @media (max-width: 650px) {
+
   .schedule-filter-sidebar {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns:
+      minmax(0, 1fr);
 
     gap: 14px;
   }
@@ -463,5 +580,9 @@
     padding: 18px;
 
     border-radius: 16px;
+  }
+
+  .schedule-reset-filters {
+    grid-column: auto;
   }
 }

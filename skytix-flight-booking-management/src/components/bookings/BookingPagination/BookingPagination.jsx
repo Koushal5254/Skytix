@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 import {
   FiChevronLeft,
   FiChevronRight,
@@ -9,19 +7,58 @@ import {
 
 import "./BookingPagination.scss";
 
-export default function BookingPagination() {
-  const [currentPage, setCurrentPage] =
-    useState(1);
+export default function BookingPagination({
+  currentPage = 1,
+  totalPages = 1,
+  totalItems = 0,
+  itemsPerPage = 5,
+  onPageChange,
+}) {
+  /* ========================================
+     RANGE
+  ======================================== */
 
-  const totalPages = 8;
+  const startItem =
+    totalItems === 0
+      ? 0
+      : (currentPage - 1) *
+          itemsPerPage +
+        1;
+
+  const endItem =
+    totalItems === 0
+      ? 0
+      : Math.min(
+          currentPage *
+            itemsPerPage,
+          totalItems
+        );
+
+  /* ========================================
+     PAGE CHANGE
+  ======================================== */
 
   const goToPage = (page) => {
-    if (page < 1 || page > totalPages) {
+    if (
+      page < 1 ||
+      page > totalPages ||
+      page === currentPage
+    ) {
       return;
     }
 
-    setCurrentPage(page);
+    onPageChange?.(page);
   };
+
+  /* ========================================
+     PAGE NUMBERS
+  ======================================== */
+
+  const pages =
+    getVisiblePages(
+      currentPage,
+      totalPages
+    );
 
   return (
     <div className="booking-pagination">
@@ -29,76 +66,107 @@ export default function BookingPagination() {
       {/* RESULT INFO */}
 
       <p className="booking-pagination-info">
-        Showing <strong>1-12</strong> of{" "}
-        <strong>567</strong>
+        Showing{" "}
+
+        <strong>
+          {startItem}-{endItem}
+        </strong>
+
+        {" "}of{" "}
+
+        <strong>
+          {totalItems}
+        </strong>
       </p>
 
-      {/* PAGINATION CONTROLS */}
+      {/* CONTROLS */}
 
       <div className="booking-pagination-controls">
 
+        {/* PREVIOUS */}
+
         <button
           type="button"
           className="booking-page-navigation"
           onClick={() =>
-            goToPage(currentPage - 1)
+            goToPage(
+              currentPage - 1
+            )
           }
-          disabled={currentPage === 1}
+          disabled={
+            currentPage <= 1
+          }
         >
           <FiChevronLeft />
+
           <span>Prev</span>
         </button>
 
+        {/* PAGE NUMBERS */}
+
         <div className="booking-page-numbers">
 
-          {[1, 2, 3].map((page) => (
-            <button
-              key={page}
-              type="button"
-              className={
-                currentPage === page
-                  ? "active"
-                  : ""
+          {pages.map(
+            (page, index) => {
+              if (
+                page === "dots"
+              ) {
+                return (
+                  <span
+                    key={`dots-${index}`}
+                    className="booking-page-dots"
+                  >
+                    ...
+                  </span>
+                );
               }
-              onClick={() =>
-                goToPage(page)
-              }
-            >
-              {page}
-            </button>
-          ))}
 
-          <span className="booking-page-dots">
-            ...
-          </span>
-
-          <button
-            type="button"
-            className={
-              currentPage === 8
-                ? "active"
-                : ""
+              return (
+                <button
+                  key={page}
+                  type="button"
+                  className={
+                    currentPage ===
+                    page
+                      ? "active"
+                      : ""
+                  }
+                  onClick={() =>
+                    goToPage(page)
+                  }
+                  aria-label={`Go to page ${page}`}
+                  aria-current={
+                    currentPage ===
+                    page
+                      ? "page"
+                      : undefined
+                  }
+                >
+                  {page}
+                </button>
+              );
             }
-            onClick={() =>
-              goToPage(8)
-            }
-          >
-            8
-          </button>
+          )}
 
         </div>
+
+        {/* NEXT */}
 
         <button
           type="button"
           className="booking-page-navigation"
           onClick={() =>
-            goToPage(currentPage + 1)
+            goToPage(
+              currentPage + 1
+            )
           }
           disabled={
-            currentPage === totalPages
+            currentPage >=
+            totalPages
           }
         >
           <span>Next</span>
+
           <FiChevronRight />
         </button>
 
@@ -106,4 +174,58 @@ export default function BookingPagination() {
 
     </div>
   );
+}
+
+/* ========================================
+   PAGE NUMBER GENERATOR
+======================================== */
+
+function getVisiblePages(
+  currentPage,
+  totalPages
+) {
+  if (totalPages <= 5) {
+    return Array.from(
+      {
+        length: totalPages,
+      },
+      (_, index) =>
+        index + 1
+    );
+  }
+
+  if (currentPage <= 3) {
+    return [
+      1,
+      2,
+      3,
+      4,
+      "dots",
+      totalPages,
+    ];
+  }
+
+  if (
+    currentPage >=
+    totalPages - 2
+  ) {
+    return [
+      1,
+      "dots",
+      totalPages - 3,
+      totalPages - 2,
+      totalPages - 1,
+      totalPages,
+    ];
+  }
+
+  return [
+    1,
+    "dots",
+    currentPage - 1,
+    currentPage,
+    currentPage + 1,
+    "dots",
+    totalPages,
+  ];
 }

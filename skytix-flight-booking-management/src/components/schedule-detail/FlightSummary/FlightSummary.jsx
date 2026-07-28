@@ -1,83 +1,80 @@
 "use client";
 
-import { FaReact } from "react-icons/fa";
+import { FaPlaneDeparture } from "react-icons/fa6";
 
 import "./FlightSummary.scss";
 
 export default function FlightSummary({ flight }) {
   return (
-    <div className="flight-summary">
+    <section className="detail-summary">
 
-      {/* LEFT */}
-
-      <div className="summary-left">
+      <div className="summary-airline">
 
         <div className="summary-logo">
-          <FaReact />
+          <FaPlaneDeparture />
         </div>
 
-        <div className="summary-airline">
-          <h3>{flight.airline}</h3>
+        <div>
+          <h2>{flight.airline}</h2>
 
-          <div className="meta">
+          <div className="summary-airline-meta">
             <span>{flight.code}</span>
 
-            <span className="status">
-              On Time
-            </span>
+            <strong>
+              {flight.status}
+            </strong>
           </div>
         </div>
 
       </div>
 
-      {/* DATE */}
+      <div className="summary-divider" />
 
-      <div className="summary-block">
-
+      <div className="summary-date">
         <span>Date</span>
 
-        <h4>July 1, 2028</h4>
-
+        <strong>
+          {flight.bookingDate}
+        </strong>
       </div>
 
-      {/* PASSENGERS */}
+      <div className="summary-passengers">
 
-      <div className="summary-block">
+        <span className="summary-label">
+          Passenger
+        </span>
 
-        <span>Passenger</span>
+        <div className="summary-passenger-value">
 
-        <div className="passengers">
+          <div className="summary-avatars">
+            <i />
+            <i />
+            <i />
+          </div>
 
-          <div className="avatar"></div>
-
-          <div className="avatar"></div>
-
-          <div className="avatar"></div>
-
-          <strong>+207</strong>
+          <strong>
+            +{flight.passengers}
+          </strong>
 
         </div>
 
       </div>
 
-      {/* RIGHT */}
-
-      <div className="summary-right">
-
-        <h2>
-
+      <div className="summary-price">
+        <strong>
           ${flight.price}
+        </strong>
 
-          <span>/pax</span>
-
-        </h2>
-
-        <button>
-          Edit
-        </button>
-
+        <span>/pax</span>
       </div>
 
-    </div>
+      <button
+        type="button"
+        className="summary-edit"
+      >
+        Edit
+      </button>
+
+    </section>
   );
 }
