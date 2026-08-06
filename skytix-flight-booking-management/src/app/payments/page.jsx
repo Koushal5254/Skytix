@@ -22,61 +22,120 @@ import "@/styles/payments.scss";
 const ITEMS_PER_PAGE = 6;
 
 export default function PaymentsPage() {
-  const [search, setSearch] = useState("");
-  const [status, setStatus] = useState("All");
-  const [currentPage, setCurrentPage] = useState(1);
-
   /* ========================================
-     FILTERED DATA
+     PAYMENT DATA
   ======================================== */
 
-  const filteredPayments = useMemo(() => {
-    const query = search.trim().toLowerCase();
+  const [payments, setPayments] =
+    useState(paymentData);
 
-    return paymentData.filter((payment) => {
-      const matchesSearch =
-        !query ||
-        payment.name
-          .toLowerCase()
-          .includes(query) ||
-        payment.bookingCode
-          .toLowerCase()
-          .includes(query) ||
-        payment.airline
-          .toLowerCase()
-          .includes(query) ||
-        payment.route
-          .toLowerCase()
-          .includes(query);
+  /* ========================================
+     FILTERS
+  ======================================== */
 
-      const matchesStatus =
-        status === "All" ||
-        payment.status === status;
+  const [search, setSearch] =
+    useState("");
 
-      return matchesSearch && matchesStatus;
-    });
-  }, [search, status]);
+  const [status, setStatus] =
+    useState("All");
+
+  const [dateFilter, setDateFilter] =
+    useState("all");
 
   /* ========================================
      PAGINATION
   ======================================== */
 
-  const totalItems = filteredPayments.length;
+  const [currentPage, setCurrentPage] =
+    useState(1);
+
+  /* ========================================
+     FILTERED PAYMENTS
+  ======================================== */
+
+  const filteredPayments = useMemo(() => {
+    const query = search
+      .trim()
+      .toLowerCase();
+
+    return payments.filter(
+      (payment) => {
+        const searchableValues = [
+          payment.name,
+          payment.bookingCode,
+          payment.airline,
+          payment.route,
+          payment.billingDate,
+          payment.amount,
+          payment.status,
+        ];
+
+        const matchesSearch =
+          !query ||
+          searchableValues.some(
+            (value) =>
+              String(value || "")
+                .toLowerCase()
+                .includes(query)
+          );
+
+        const matchesStatus =
+          status === "All" ||
+          payment.status === status;
+
+        const matchesDate =
+          dateFilter === "all" ||
+          payment.billingDate ===
+            dateFilter;
+
+        return (
+          matchesSearch &&
+          matchesStatus &&
+          matchesDate
+        );
+      }
+    );
+  }, [
+    payments,
+    search,
+    status,
+    dateFilter,
+  ]);
+
+  /* ========================================
+     TOTALS
+  ======================================== */
+
+  const totalItems =
+    filteredPayments.length;
 
   const totalPages = Math.max(
     1,
-    Math.ceil(totalItems / ITEMS_PER_PAGE)
+    Math.ceil(
+      totalItems /
+        ITEMS_PER_PAGE
+    )
   );
 
-  const paginatedPayments = useMemo(() => {
-    const startIndex =
-      (currentPage - 1) * ITEMS_PER_PAGE;
+  /* ========================================
+     PAGINATED PAYMENTS
+  ======================================== */
 
-    return filteredPayments.slice(
-      startIndex,
-      startIndex + ITEMS_PER_PAGE
-    );
-  }, [filteredPayments, currentPage]);
+  const paginatedPayments =
+    useMemo(() => {
+      const startIndex =
+        (currentPage - 1) *
+        ITEMS_PER_PAGE;
+
+      return filteredPayments.slice(
+        startIndex,
+        startIndex +
+          ITEMS_PER_PAGE
+      );
+    }, [
+      filteredPayments,
+      currentPage,
+    ]);
 
   /* ========================================
      RESET PAGE AFTER FILTER
@@ -84,7 +143,65 @@ export default function PaymentsPage() {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [search, status]);
+  }, [
+    search,
+    status,
+    dateFilter,
+  ]);
+
+  /* ========================================
+     KEEP PAGE VALID
+  ======================================== */
+
+  useEffect(() => {
+    if (
+      currentPage >
+      totalPages
+    ) {
+      setCurrentPage(
+        totalPages
+      );
+    }
+  }, [
+    currentPage,
+    totalPages,
+  ]);
+
+  /* ========================================
+     DELETE PAYMENT
+  ======================================== */
+
+  const handleDeletePayment = (
+    paymentId
+  ) => {
+    setPayments((current) =>
+      current.filter(
+        (payment) =>
+          payment.id !==
+          paymentId
+      )
+    );
+  };
+
+  /* ========================================
+     UPDATE PAYMENT
+  ======================================== */
+
+  const handleUpdatePayment = (
+    updatedPayment
+  ) => {
+    setPayments((current) =>
+      current.map((payment) =>
+        payment.id ===
+        updatedPayment.id
+          ? {
+              ...payment,
+              ...updatedPayment,
+            }
+          : payment
+      )
+    );
+  };
 
   return (
     <MainLayout
@@ -93,7 +210,11 @@ export default function PaymentsPage() {
     >
       <div className="payments-page">
 
+        {/* HEADER */}
+
         <PaymentHeader />
+
+        {/* CONTENT */}
 
         <div className="payments-content-card">
 
@@ -102,21 +223,47 @@ export default function PaymentsPage() {
             setSearch={setSearch}
             status={status}
             setStatus={setStatus}
+            dateFilter={
+              dateFilter
+            }
+            setDateFilter={
+              setDateFilter
+            }
           />
 
           <PaymentTable
-            payments={paginatedPayments}
+            payments={
+              paginatedPayments
+            }
+            onDelete={
+              handleDeletePayment
+            }
+            onUpdate={
+              handleUpdatePayment
+            }
           />
 
           <PaymentPagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            totalItems={totalItems}
-            itemsPerPage={ITEMS_PER_PAGE}
-            onPageChange={setCurrentPage}
+            currentPage={
+              currentPage
+            }
+            totalPages={
+              totalPages
+            }
+            totalItems={
+              totalItems
+            }
+            itemsPerPage={
+              ITEMS_PER_PAGE
+            }
+            onPageChange={
+              setCurrentPage
+            }
           />
 
         </div>
+
+        {/* FOOTER */}
 
         <ScheduleFooter />
 

@@ -1,24 +1,17 @@
-/* ========================================
-   POPULAR DESTINATION
-======================================== */
-
 .destination-card {
+  position: relative;
+
   width: 100%;
   min-width: 0;
-
   min-height: 430px;
 
   display: flex;
   flex-direction: column;
 }
 
-/* ========================================
-   HEADER
-======================================== */
-
 .destination-header {
-  width: 100%;
-  min-width: 0;
+  position: relative;
+  z-index: 20;
 
   display: flex;
   align-items: center;
@@ -30,40 +23,30 @@
 .destination-header h5 {
   margin: 0;
 
-  min-width: 0;
-
   color: #292929;
 
   font-size: 13px;
-  line-height: 1.2;
   font-weight: 700;
-
-  white-space: nowrap;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-/* ========================================
-   FILTER
-======================================== */
+.destination-filter-wrapper {
+  position: relative;
+}
 
 .destination-filter {
+  min-width: 82px;
   height: 30px;
-
-  flex: 0 0 auto;
 
   padding: 0 9px;
 
   border: 1px solid #eeeeee;
   border-radius: 8px;
-  outline: 0;
 
   background: #ffffff;
 
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 
   gap: 6px;
 
@@ -71,42 +54,81 @@
 
   font-family: inherit;
   font-size: 8px;
-  line-height: 1;
-  font-weight: 500;
 
   cursor: pointer;
-
-  transition:
-    background 0.18s ease,
-    border-color 0.18s ease;
 }
 
-.destination-filter span {
-  color: #999999;
+.destination-filter svg {
+  width: 11px;
+  height: 11px;
 
-  font-size: 7px;
+  transition: transform 0.2s ease;
 }
 
-.destination-filter:hover {
-  background: #fafafa;
-
-  border-color: #dddddd;
+.destination-filter.active {
+  border-color: #e4c66d;
 }
 
-.destination-filter:focus-visible {
-  outline: 2px solid rgba(217, 186, 89, 0.5);
-
-  outline-offset: 2px;
+.destination-filter.active svg {
+  transform: rotate(180deg);
 }
 
-/* ========================================
-   MAP
-======================================== */
+.destination-dropdown {
+  position: absolute;
+
+  top: calc(100% + 6px);
+  right: 0;
+
+  z-index: 100;
+
+  width: 120px;
+
+  padding: 5px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 10px 30px
+    rgba(0, 0, 0, 0.08);
+}
+
+.destination-dropdown button {
+  width: 100%;
+  height: 31px;
+
+  padding: 0 8px;
+
+  border: 0;
+  border-radius: 6px;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: #666666;
+
+  font-family: inherit;
+  font-size: 8px;
+
+  cursor: pointer;
+}
+
+.destination-dropdown button:hover {
+  background: #f8f8f8;
+}
+
+.destination-dropdown button.selected {
+  background: #faf5e3;
+  color: #80671f;
+}
 
 .destination-map {
   width: 100%;
-  min-width: 0;
-
   height: 190px;
 
   margin: 14px 0 16px;
@@ -119,42 +141,27 @@
 }
 
 .destination-map img {
-  display: block;
-
   width: 100%;
   height: 100%;
 
   object-fit: contain;
 
+  pointer-events: none;
   user-select: none;
 }
 
-/* ========================================
-   DESTINATION GRID
-======================================== */
-
 .destination-grid {
-  width: 100%;
-  min-width: 0;
-
   margin-top: auto;
 
   display: grid;
-
   grid-template-columns:
     repeat(2, minmax(0, 1fr));
 
   column-gap: 20px;
-  row-gap: 0;
 }
-
-/* ========================================
-   COUNTRY ROW
-======================================== */
 
 .country-row {
   min-width: 0;
-
   min-height: 43px;
 
   padding: 10px 0;
@@ -174,7 +181,6 @@
   color: #777777;
 
   font-size: 9px;
-  line-height: 1.3;
   font-weight: 500;
 
   white-space: nowrap;
@@ -184,56 +190,14 @@
 }
 
 .country-row strong {
-  flex: 0 0 auto;
-
   color: #292929;
 
   font-size: 9px;
-  line-height: 1.3;
   font-weight: 700;
 }
 
-/* ========================================
-   LAPTOP
-======================================== */
-
-@media (max-width: 1450px) {
-  .destination-map {
-    height: 180px;
-
-    margin-top: 12px;
-  }
-
-  .destination-grid {
-    column-gap: 16px;
-  }
-}
-
-/* ========================================
-   TABLET
-======================================== */
-
-@media (max-width: 900px) {
-  .destination-card {
-    min-height: auto;
-  }
-
-  .destination-map {
-    height: 220px;
-  }
-}
-
-/* ========================================
-   MOBILE
-======================================== */
-
 @media (max-width: 500px) {
-  .destination-map {
-    height: 175px;
-  }
-
   .destination-grid {
-    grid-template-columns:
-      minmax(0, 1fr);
+    grid-template-columns: 1fr;
   }
 }

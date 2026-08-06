@@ -3,10 +3,12 @@
 ======================================== */
 
 .layout-header {
+  position: relative;
+  z-index: 100;
+
   width: 100%;
   min-width: 0;
 
-  height: 68px;
   min-height: 68px;
 
   padding: 0 6px;
@@ -35,7 +37,20 @@
   gap: 10px;
 }
 
-.layout-header-title h1 {
+/* ========================================
+   HEADING
+======================================== */
+
+.layout-header-heading {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.layout-header-heading h1 {
   margin: 0;
 
   color: #202020;
@@ -49,8 +64,20 @@
   white-space: nowrap;
 }
 
+.layout-header-heading p {
+  margin: 0;
+
+  color: #999999;
+
+  font-size: 10px;
+  line-height: 1.4;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
 /* ========================================
-   MOBILE MENU BUTTON
+   MOBILE MENU
 ======================================== */
 
 .layout-header-menu-button {
@@ -107,14 +134,28 @@
 }
 
 /* ========================================
+   SEARCH WRAPPER
+======================================== */
+
+.layout-header-search-wrapper {
+  position: relative;
+
+  width: 220px;
+
+  flex: 0 0 220px;
+}
+
+/* ========================================
    SEARCH
 ======================================== */
 
 .layout-header-search {
-  width: 220px;
+  width: 100%;
   height: 36px;
 
-  padding: 0 12px;
+  margin: 0;
+
+  padding: 0 10px 0 12px;
 
   border: 1px solid transparent;
   border-radius: 9px;
@@ -139,7 +180,7 @@
     rgba(228, 198, 109, 0.08);
 }
 
-.layout-header-search svg {
+.layout-header-search > svg {
   width: 14px;
   height: 14px;
 
@@ -176,8 +217,138 @@
 }
 
 .layout-header-search
-input::-webkit-search-cancel-button {
+  input::-webkit-search-cancel-button {
   display: none;
+}
+
+/* ========================================
+   SEARCH CLEAR
+======================================== */
+
+.layout-header-search-clear {
+  width: 22px;
+  height: 22px;
+
+  flex: 0 0 22px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #999999;
+
+  cursor: pointer;
+}
+
+.layout-header-search-clear:hover {
+  background: #f5f5f5;
+
+  color: #333333;
+}
+
+.layout-header-search-clear svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* ========================================
+   SEARCH RESULTS
+======================================== */
+
+.layout-header-search-results {
+  position: absolute;
+
+  z-index: 300;
+
+  top: calc(100% + 7px);
+  left: 0;
+
+  width: 100%;
+  max-height: 280px;
+
+  padding: 5px;
+
+  overflow-y: auto;
+
+  background: #ffffff;
+
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+
+  box-shadow:
+    0 12px 32px
+    rgba(0, 0, 0, 0.09);
+}
+
+.layout-header-search-results > button {
+  width: 100%;
+  height: 38px;
+
+  padding: 0 9px;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  color: #555555;
+
+  font-family: inherit;
+  font-size: 9px;
+  font-weight: 500;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.layout-header-search-results
+  > button:hover {
+  background: #faf7ed;
+
+  color: #292929;
+}
+
+.layout-header-search-result-icon {
+  width: 25px;
+  height: 25px;
+
+  flex: 0 0 25px;
+
+  border-radius: 6px;
+
+  background: #f7f7f7;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layout-header-search-result-icon svg {
+  width: 12px;
+  height: 12px;
+}
+
+.layout-header-search-empty {
+  padding: 18px 10px;
+
+  color: #999999;
+
+  font-size: 9px;
+
+  text-align: center;
 }
 
 /* ========================================
@@ -189,6 +360,10 @@ input::-webkit-search-cancel-button {
   align-items: center;
 
   gap: 7px;
+}
+
+.layout-header-action-wrapper {
+  position: relative;
 }
 
 .layout-header-action {
@@ -228,10 +403,11 @@ input::-webkit-search-cancel-button {
   stroke-width: 1.8;
 }
 
-.layout-header-action:hover {
-  background: #f5f5f5;
+.layout-header-action:hover,
+.layout-header-action.active {
+  background: #f7f3e5;
 
-  color: #202020;
+  color: #292929;
 }
 
 .layout-header-action:active {
@@ -252,16 +428,293 @@ input::-webkit-search-cancel-button {
 .layout-header-notification {
   position: absolute;
 
-  top: 8px;
-  right: 8px;
+  top: 7px;
+  right: 7px;
 
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 
   border: 1px solid #ffffff;
   border-radius: 50%;
 
+  background: #e04d4d;
+}
+
+/* ========================================
+   GENERIC PANEL
+======================================== */
+
+.layout-header-panel {
+  position: absolute;
+
+  z-index: 300;
+
+  top: calc(100% + 8px);
+  right: 0;
+
+  background: #ffffff;
+
+  border: 1px solid #eeeeee;
+  border-radius: 11px;
+
+  box-shadow:
+    0 12px 35px
+    rgba(0, 0, 0, 0.09);
+}
+
+/* ========================================
+   NOTIFICATION PANEL
+======================================== */
+
+.layout-notification-panel {
+  width: 310px;
+
+  overflow: hidden;
+}
+
+.layout-header-panel-heading {
+  min-height: 58px;
+
+  padding: 11px 13px;
+
+  border-bottom: 1px solid #f0f0f0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+.layout-header-panel-heading > div {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.layout-header-panel-heading strong {
+  color: #292929;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.layout-header-panel-heading span {
+  color: #999999;
+
+  font-size: 8px;
+}
+
+.layout-header-panel-heading > button {
+  padding: 4px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #a38530;
+
+  font-family: inherit;
+  font-size: 8px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+/* ========================================
+   NOTIFICATION LIST
+======================================== */
+
+.layout-notification-list {
+  max-height: 300px;
+
+  overflow-y: auto;
+}
+
+.layout-notification-item {
+  position: relative;
+
+  width: 100%;
+
+  padding: 11px 13px;
+
+  border: 0;
+  border-bottom: 1px solid #f2f2f2;
+
+  background: #ffffff;
+
+  display: grid;
+
+  grid-template-columns:
+    30px
+    minmax(0, 1fr)
+    6px;
+
+  align-items: flex-start;
+
+  gap: 9px;
+
+  font-family: inherit;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.layout-notification-item:last-child {
+  border-bottom: 0;
+}
+
+.layout-notification-item:hover {
+  background: #fafafa;
+}
+
+.layout-notification-item.unread {
+  background: #fffdf7;
+}
+
+.layout-notification-icon {
+  width: 30px;
+  height: 30px;
+
+  border-radius: 8px;
+
+  background: #f5e9bd;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #876c20;
+}
+
+.layout-notification-icon svg {
+  width: 13px;
+  height: 13px;
+}
+
+.layout-notification-content {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.layout-notification-content strong {
+  color: #333333;
+
+  font-size: 9px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.layout-notification-content > span {
+  color: #777777;
+
+  font-size: 8px;
+  line-height: 1.45;
+  font-weight: 400;
+}
+
+.layout-notification-content small {
+  color: #aaaaaa;
+
+  font-size: 7px;
+}
+
+.layout-notification-item > i {
+  width: 5px;
+  height: 5px;
+
+  margin-top: 4px;
+
+  border-radius: 50%;
+
   background: #e4c66d;
+}
+
+/* ========================================
+   HELP / SETTINGS
+======================================== */
+
+.layout-header-small-menu {
+  position: absolute;
+
+  z-index: 300;
+
+  top: calc(100% + 8px);
+  right: 0;
+
+  width: 180px;
+
+  padding: 5px;
+
+  background: #ffffff;
+
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+
+  box-shadow:
+    0 12px 32px
+    rgba(0, 0, 0, 0.09);
+}
+
+.layout-header-small-title {
+  padding: 8px 9px 9px;
+
+  color: #999999;
+
+  font-size: 8px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.5px;
+}
+
+.layout-header-small-menu button {
+  width: 100%;
+  height: 36px;
+
+  padding: 0 9px;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  color: #555555;
+
+  font-family: inherit;
+  font-size: 9px;
+  font-weight: 500;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.layout-header-small-menu button:hover {
+  background: #f7f7f7;
+
+  color: #292929;
+}
+
+.layout-header-small-menu button svg {
+  width: 13px;
+  height: 13px;
+
+  color: #888888;
 }
 
 /* ========================================
@@ -277,7 +730,7 @@ input::-webkit-search-cancel-button {
 }
 
 /* ========================================
-   PROFILE BUTTON
+   PROFILE
 ======================================== */
 
 .layout-header-profile {
@@ -287,6 +740,7 @@ input::-webkit-search-cancel-button {
   padding: 0;
 
   border: 0;
+  border-radius: 9px;
   outline: 0;
 
   background: transparent;
@@ -307,6 +761,19 @@ input::-webkit-search-cancel-button {
   text-align: left;
 
   cursor: pointer;
+
+  transition: background 0.18s ease;
+}
+
+.layout-header-profile:hover,
+.layout-header-profile.active {
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.5
+    );
 }
 
 /* ========================================
@@ -316,8 +783,6 @@ input::-webkit-search-cancel-button {
 .layout-header-avatar {
   width: 38px;
   height: 38px;
-
-  flex: 0 0 38px;
 
   border-radius: 9px;
 
@@ -337,7 +802,7 @@ input::-webkit-search-cancel-button {
 }
 
 /* ========================================
-   USER INFO
+   USER
 ======================================== */
 
 .layout-header-user {
@@ -401,33 +866,96 @@ input::-webkit-search-cancel-button {
 .layout-header-dropdown {
   position: absolute;
 
-  z-index: 200;
+  z-index: 300;
 
   top: calc(100% + 8px);
   right: 0;
 
-  width: 140px;
+  width: 190px;
 
   padding: 5px;
 
   border: 1px solid #eeeeee;
-  border-radius: 9px;
+  border-radius: 10px;
 
   background: #ffffff;
 
   box-shadow:
-    0 10px 30px
-    rgba(0, 0, 0, 0.08);
+    0 12px 35px
+    rgba(0, 0, 0, 0.09);
+}
+
+/* ========================================
+   PROFILE SUMMARY
+======================================== */
+
+.layout-header-profile-summary {
+  padding: 9px;
+
+  display: grid;
+
+  grid-template-columns:
+    32px
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.layout-header-profile-summary-avatar {
+  width: 32px;
+  height: 32px;
+
+  border-radius: 8px;
+
+  background: #f1dda0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #292929;
+
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.layout-header-profile-summary
+  > div:last-child {
+  min-width: 0;
 
   display: flex;
   flex-direction: column;
 
-  gap: 2px;
+  gap: 3px;
 }
 
-.layout-header-dropdown button {
+.layout-header-profile-summary strong {
+  color: #333333;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.layout-header-profile-summary span {
+  color: #999999;
+
+  font-size: 7px;
+}
+
+/* ========================================
+   DROPDOWN BUTTONS
+======================================== */
+
+.layout-header-dropdown > button {
   width: 100%;
-  height: 30px;
+  height: 34px;
 
   padding: 0 9px;
 
@@ -436,6 +964,11 @@ input::-webkit-search-cancel-button {
   outline: 0;
 
   background: transparent;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
 
   color: #555555;
 
@@ -449,8 +982,36 @@ input::-webkit-search-cancel-button {
   cursor: pointer;
 }
 
-.layout-header-dropdown button:hover {
+.layout-header-dropdown
+  > button:hover {
   background: #f7f7f7;
+}
+
+.layout-header-dropdown
+  > button svg {
+  width: 13px;
+  height: 13px;
+
+  color: #888888;
+}
+
+.layout-header-dropdown-divider {
+  height: 1px;
+
+  margin: 4px 5px;
+
+  background: #eeeeee;
+}
+
+.layout-header-dropdown
+  > button.layout-header-sign-out {
+  color: #c85d5d;
+}
+
+.layout-header-dropdown
+  > button.layout-header-sign-out
+  svg {
+  color: #c85d5d;
 }
 
 /* ========================================
@@ -462,8 +1023,10 @@ input::-webkit-search-cancel-button {
     gap: 16px;
   }
 
-  .layout-header-search {
+  .layout-header-search-wrapper {
     width: 190px;
+
+    flex-basis: 190px;
   }
 
   .layout-header-profile {
@@ -477,7 +1040,6 @@ input::-webkit-search-cancel-button {
 
 @media (max-width: 900px) {
   .layout-header {
-    height: 64px;
     min-height: 64px;
 
     padding: 0;
@@ -487,8 +1049,10 @@ input::-webkit-search-cancel-button {
     display: flex;
   }
 
-  .layout-header-search {
+  .layout-header-search-wrapper {
     width: 200px;
+
+    flex-basis: 200px;
   }
 
   .layout-header-user,
@@ -516,7 +1080,6 @@ input::-webkit-search-cancel-button {
 
 @media (max-width: 650px) {
   .layout-header {
-    height: auto;
     min-height: 0;
 
     padding: 12px 0;
@@ -530,18 +1093,35 @@ input::-webkit-search-cancel-button {
     flex: 1;
   }
 
+  .layout-header-heading {
+    gap: 3px;
+  }
+
+  .layout-header-heading h1 {
+    font-size: 16px;
+  }
+
+  .layout-header-heading p {
+    max-width: 220px;
+
+    font-size: 9px;
+
+    white-space: normal;
+  }
+
   .layout-header-content {
     gap: 6px;
   }
 
-  .layout-header-search {
+  .layout-header-search-wrapper {
     order: 10;
 
     width: 100%;
-  }
 
-  .layout-header-title h1 {
-    font-size: 16px;
+    flex:
+      1
+      0
+      100%;
   }
 
   .layout-header-action {
@@ -559,6 +1139,16 @@ input::-webkit-search-cancel-button {
   .layout-header-profile {
     grid-template-columns: 34px;
   }
+
+  .layout-notification-panel {
+    position: fixed;
+
+    top: 70px;
+    right: 12px;
+    left: 12px;
+
+    width: auto;
+  }
 }
 
 /* ========================================
@@ -566,11 +1156,19 @@ input::-webkit-search-cancel-button {
 ======================================== */
 
 @media (max-width: 480px) {
-  .layout-header-search {
+  .layout-header-search-wrapper {
     display: none;
   }
 
-  .layout-header-action:nth-child(2) {
+  .layout-header-action-wrapper:nth-child(2) {
     display: none;
+  }
+
+  .layout-header-small-menu {
+    right: -45px;
+  }
+
+  .layout-header-heading p {
+    max-width: 180px;
   }
 }

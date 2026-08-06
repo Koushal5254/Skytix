@@ -1,31 +1,25 @@
-/* ========================================
-   ALL BOOKINGS
-======================================== */
-
 .bookings-card {
   width: 100%;
   min-width: 0;
-
   min-height: 430px;
 
   display: flex;
   flex-direction: column;
 }
 
-/* ========================================
-   HEADER
-======================================== */
-
 .booking-header {
-  width: 100%;
-
   margin-bottom: 13px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
 
-  gap: 12px;
+.booking-header-title {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
 }
 
 .booking-header h5 {
@@ -34,52 +28,46 @@
   color: #292929;
 
   font-size: 13px;
-  line-height: 1.2;
   font-weight: 700;
 }
 
-/* ========================================
-   SEE ALL
-======================================== */
+.booking-header-title > span {
+  min-width: 19px;
+  height: 19px;
+
+  padding: 0 5px;
+
+  border-radius: 999px;
+
+  background: #faf5e3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #9b812d;
+
+  font-size: 7px;
+  font-weight: 600;
+}
 
 .booking-see-all {
-  flex: 0 0 auto;
-
-  padding: 3px;
-
   border: 0;
-  outline: 0;
-
   background: transparent;
 
   color: #999999;
 
   font-family: inherit;
   font-size: 8px;
-  line-height: 1;
-  font-weight: 500;
 
   cursor: pointer;
-
-  transition: color 0.18s ease;
 }
 
 .booking-see-all:hover {
   color: #b49335;
 }
 
-.booking-see-all:focus-visible {
-  outline: 2px solid rgba(217, 186, 89, 0.5);
-
-  outline-offset: 2px;
-}
-
-/* ========================================
-   LIST
-======================================== */
-
 .booking-list {
-  width: 100%;
   min-width: 0;
 
   flex: 1;
@@ -90,27 +78,20 @@
   gap: 8px;
 }
 
-/* ========================================
-   BOOKING ITEM
-======================================== */
-
 .booking-item {
-  width: 100%;
   min-width: 0;
+  min-height: 66px;
 
   flex: 1 1 0;
 
-  min-height: 66px;
-
   padding: 9px 12px;
-
-  background: #ffffff;
 
   border: 1px solid #f0f0f0;
   border-radius: 11px;
 
-  display: grid;
+  background: #ffffff;
 
+  display: grid;
   grid-template-columns:
     minmax(125px, 1.4fr)
     minmax(70px, 0.7fr)
@@ -121,33 +102,41 @@
 
   gap: 10px;
 
-  transition:
-    border-color 0.18s ease,
-    box-shadow 0.18s ease;
+  cursor: pointer;
 }
 
 .booking-item:hover {
   border-color: #e5e5e5;
-
-  box-shadow:
-    0 3px 12px rgba(0, 0, 0, 0.025);
 }
 
-/* ========================================
-   AIRLINE
-======================================== */
+.booking-item-selected {
+  border-color: #ead996;
+  background: #fffdf7;
+}
 
 .booking-airline {
   min-width: 0;
 }
 
+.booking-airline-title {
+  min-width: 0;
+
+  margin-bottom: 7px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+}
+
 .booking-airline h6 {
-  margin: 0 0 7px;
+  min-width: 0;
+
+  margin: 0;
 
   color: #333333;
 
   font-size: 10px;
-  line-height: 1.25;
   font-weight: 600;
 
   white-space: nowrap;
@@ -156,13 +145,34 @@
   text-overflow: ellipsis;
 }
 
-/* ========================================
-   META
-======================================== */
+.booking-row-chevron {
+  width: 10px;
+  height: 10px;
+
+  opacity: 0;
+
+  color: #b5b5b5;
+
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+
+.booking-item:hover
+.booking-row-chevron {
+  opacity: 1;
+}
+
+.booking-item-selected
+.booking-row-chevron {
+  opacity: 1;
+
+  color: #b49335;
+
+  transform: rotate(90deg);
+}
 
 .booking-meta {
-  min-width: 0;
-
   display: flex;
   align-items: center;
 
@@ -170,9 +180,7 @@
 }
 
 .booking-meta span {
-  min-width: 0;
-
-  display: inline-flex;
+  display: flex;
   align-items: center;
 
   gap: 4px;
@@ -180,8 +188,6 @@
   color: #999999;
 
   font-size: 7px;
-  line-height: 1.2;
-  font-weight: 400;
 
   white-space: nowrap;
 }
@@ -189,16 +195,6 @@
 .booking-meta svg {
   width: 9px;
   height: 9px;
-
-  flex: 0 0 9px;
-}
-
-/* ========================================
-   TIME
-======================================== */
-
-.booking-time {
-  min-width: 0;
 }
 
 .booking-time strong {
@@ -209,10 +205,7 @@
   color: #292929;
 
   font-size: 11px;
-  line-height: 1;
   font-weight: 700;
-
-  white-space: nowrap;
 }
 
 .booking-time > span {
@@ -221,22 +214,11 @@
   color: #999999;
 
   font-size: 8px;
-  line-height: 1.2;
-  font-weight: 400;
 
   white-space: nowrap;
 
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-/* ========================================
-   ROUTE
-======================================== */
-
-.booking-route {
-  width: 100%;
-  min-width: 0;
 }
 
 .booking-route small {
@@ -247,18 +229,9 @@
   color: #999999;
 
   font-size: 7px;
-  line-height: 1;
-
-  font-weight: 400;
 
   text-align: center;
-
-  white-space: nowrap;
 }
-
-/* ========================================
-   ROUTE LINE
-======================================== */
 
 .route-line {
   position: relative;
@@ -266,7 +239,7 @@
   width: calc(100% - 12px);
   height: 2px;
 
-  margin: 0 auto;
+  margin: auto;
 
   background: #e4c66d;
 }
@@ -282,13 +255,12 @@
   width: 5px;
   height: 5px;
 
-  background: #ffffff;
-
   border: 1px solid #e4c66d;
   border-radius: 50%;
 
-  transform:
-    translate(-50%, -50%);
+  background: #ffffff;
+
+  transform: translate(-50%, -50%);
 }
 
 .route-line > span {
@@ -299,9 +271,9 @@
   width: 7px;
   height: 7px;
 
-  background: #e4c66d;
-
   border-radius: 50%;
+
+  background: #e4c66d;
 
   transform: translateY(-50%);
 }
@@ -314,17 +286,10 @@
   right: -1px;
 }
 
-/* ========================================
-   ROUTE CODES
-======================================== */
-
 .route-codes {
-  width: 100%;
-
   margin-top: 6px;
 
   display: flex;
-  align-items: center;
   justify-content: space-between;
 }
 
@@ -332,106 +297,61 @@
   color: #999999;
 
   font-size: 7px;
-  line-height: 1;
   font-weight: 500;
 }
-
-/* ========================================
-   ARRIVAL
-======================================== */
 
 .booking-arrival {
   text-align: right;
 }
 
-/* ========================================
-   LAPTOP
-======================================== */
+.booking-extra-details {
+  grid-column: 1 / -1;
 
-@media (max-width: 1450px) {
-  .booking-item {
-    padding:
-      9px
-      10px;
+  padding-top: 10px;
 
-    grid-template-columns:
-      minmax(110px, 1.25fr)
-      minmax(65px, 0.7fr)
-      minmax(110px, 1fr)
-      minmax(65px, 0.7fr);
+  border-top: 1px solid #f0ead6;
 
-    gap: 8px;
-  }
+  display: grid;
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
 
-  .booking-meta {
-    gap: 6px;
-  }
+  gap: 12px;
 }
 
-/* ========================================
-   SMALL LAPTOP
-======================================== */
+.booking-extra-details div {
+  display: flex;
+  flex-direction: column;
 
-@media (max-width: 1200px) {
-  .booking-item {
-    grid-template-columns:
-      minmax(130px, 1.3fr)
-      minmax(70px, 0.7fr)
-      minmax(130px, 1fr)
-      minmax(70px, 0.7fr);
-  }
+  gap: 4px;
 }
 
-/* ========================================
-   TABLET
-======================================== */
-
-@media (max-width: 900px) {
-  .bookings-card {
-    min-height: auto;
-  }
-
-  .booking-list {
-    gap: 9px;
-  }
-
-  .booking-item {
-    min-height: 72px;
-
-    flex: none;
-  }
+.booking-extra-details span {
+  color: #aaaaaa;
+  font-size: 7px;
 }
 
-/* ========================================
-   MOBILE
-======================================== */
+.booking-extra-details strong {
+  color: #444444;
+  font-size: 8px;
+}
 
 @media (max-width: 600px) {
   .booking-item {
-    padding: 12px;
+    flex: none;
 
     grid-template-columns:
       minmax(0, 1fr)
       auto;
-
-    gap: 12px;
   }
 
-  .booking-airline {
+  .booking-airline,
+  .booking-route,
+  .booking-extra-details {
     grid-column: 1 / -1;
   }
 
-  .booking-route {
-    grid-column: 1 / -1;
-
-    grid-row: 3;
-  }
-
-  .booking-arrival {
-    text-align: right;
-  }
-
-  .booking-meta {
-    flex-wrap: wrap;
+  .booking-extra-details {
+    grid-template-columns:
+      repeat(2, 1fr);
   }
 }

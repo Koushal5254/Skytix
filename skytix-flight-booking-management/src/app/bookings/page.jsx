@@ -1,6 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import {
+  useMemo,
+  useState,
+} from "react";
 
 import MainLayout from "@/components/layout/MainLayout/MainLayout";
 
@@ -39,11 +42,15 @@ export default function BookingsPage() {
   const [searchTerm, setSearchTerm] =
     useState("");
 
-  const [airlineFilter, setAirlineFilter] =
-    useState("All");
+  const [
+    airlineFilter,
+    setAirlineFilter,
+  ] = useState("All");
 
-  const [statusFilter, setStatusFilter] =
-    useState("All");
+  const [
+    statusFilter,
+    setStatusFilter,
+  ] = useState("All");
 
   const [
     departureFilter,
@@ -95,64 +102,72 @@ export default function BookingsPage() {
      FILTER BOOKINGS
   ======================================== */
 
-  const filteredBookings = useMemo(() => {
-    const search =
-      searchTerm.trim().toLowerCase();
+  const filteredBookings =
+    useMemo(() => {
+      const search =
+        searchTerm
+          .trim()
+          .toLowerCase();
 
-    return bookings.filter((booking) => {
-      const matchesSearch =
-        !search ||
-        booking.airline
-          ?.toLowerCase()
-          .includes(search) ||
-        booking.code
-          ?.toLowerCase()
-          .includes(search) ||
-        booking.from
-          ?.toLowerCase()
-          .includes(search) ||
-        booking.fromCode
-          ?.toLowerCase()
-          .includes(search) ||
-        booking.to
-          ?.toLowerCase()
-          .includes(search) ||
-        booking.toCode
-          ?.toLowerCase()
-          .includes(search) ||
-        booking.date
-          ?.toLowerCase()
-          .includes(search) ||
-        booking.status
-          ?.toLowerCase()
-          .includes(search);
+      return bookings.filter(
+        (booking) => {
+          const matchesSearch =
+            !search ||
+            booking.airline
+              ?.toLowerCase()
+              .includes(search) ||
+            booking.code
+              ?.toLowerCase()
+              .includes(search) ||
+            booking.from
+              ?.toLowerCase()
+              .includes(search) ||
+            booking.fromCode
+              ?.toLowerCase()
+              .includes(search) ||
+            booking.to
+              ?.toLowerCase()
+              .includes(search) ||
+            booking.toCode
+              ?.toLowerCase()
+              .includes(search) ||
+            booking.date
+              ?.toLowerCase()
+              .includes(search) ||
+            booking.status
+              ?.toLowerCase()
+              .includes(search);
 
-      const matchesAirline =
-        airlineFilter === "All" ||
-        booking.airline === airlineFilter;
+          const matchesAirline =
+            airlineFilter === "All" ||
+            booking.airline ===
+              airlineFilter;
 
-      const matchesStatus =
-        statusFilter === "All" ||
-        booking.status === statusFilter;
+          const matchesStatus =
+            statusFilter === "All" ||
+            booking.status ===
+              statusFilter;
 
-      const matchesDeparture =
-        departureFilter === "All" ||
-        booking.from === departureFilter;
+          const matchesDeparture =
+            departureFilter === "All" ||
+            booking.from ===
+              departureFilter;
 
-      return (
-        matchesSearch &&
-        matchesAirline &&
-        matchesStatus &&
-        matchesDeparture
+          return (
+            matchesSearch &&
+            matchesAirline &&
+            matchesStatus &&
+            matchesDeparture
+          );
+        }
       );
-    });
-  }, [
-    bookings,
-    searchTerm,
-    airlineFilter,
-    statusFilter,
-    departureFilter,
-  ]);
+    }, [
+      bookings,
+      searchTerm,
+      airlineFilter,
+      statusFilter,
+      departureFilter,
+    ]);
 
   /* ========================================
      PAGINATION
@@ -164,14 +179,16 @@ export default function BookingsPage() {
   const totalPages = Math.max(
     1,
     Math.ceil(
-      totalItems / ITEMS_PER_PAGE
+      totalItems /
+        ITEMS_PER_PAGE
     )
   );
 
-  const safeCurrentPage = Math.min(
-    currentPage,
-    totalPages
-  );
+  const safeCurrentPage =
+    Math.min(
+      currentPage,
+      totalPages
+    );
 
   const startIndex =
     (safeCurrentPage - 1) *
@@ -180,7 +197,8 @@ export default function BookingsPage() {
   const visibleBookings =
     filteredBookings.slice(
       startIndex,
-      startIndex + ITEMS_PER_PAGE
+      startIndex +
+        ITEMS_PER_PAGE
     );
 
   /* ========================================
@@ -205,9 +223,9 @@ export default function BookingsPage() {
     ]);
 
     /*
-      Clear filters so the newly added
-      booking is immediately visible.
-    */
+     * Reset filters so the new
+     * booking is immediately visible.
+     */
 
     setSearchTerm("");
     setAirlineFilter("All");
@@ -287,7 +305,9 @@ export default function BookingsPage() {
      PAGE CHANGE
   ======================================== */
 
-  const handlePageChange = (page) => {
+  const handlePageChange = (
+    page
+  ) => {
     if (
       page < 1 ||
       page > totalPages
@@ -305,17 +325,23 @@ export default function BookingsPage() {
     >
       <div className="bookings-page">
 
-        {/* HEADER */}
+        {/* =====================================
+            SHARED DASHBOARD HEADER
+        ====================================== */}
 
         <BookingHeader />
 
-        {/* FILTERS */}
+        {/* =====================================
+            FILTERS
+        ====================================== */}
 
         <BookingFilters
           search={searchTerm}
           airline={airlineFilter}
           status={statusFilter}
-          departure={departureFilter}
+          departure={
+            departureFilter
+          }
           airlines={airlines}
           departures={departures}
           onSearchChange={
@@ -334,38 +360,62 @@ export default function BookingsPage() {
             handleClearFilters
           }
           onAddBooking={() =>
-            setIsAddModalOpen(true)
+            setIsAddModalOpen(
+              true
+            )
           }
         />
 
-        {/* BOOKINGS */}
+        {/* =====================================
+            BOOKINGS
+        ====================================== */}
 
         <BookingList
-          bookings={visibleBookings}
+          bookings={
+            visibleBookings
+          }
         />
 
-        {/* PAGINATION */}
+        {/* =====================================
+            PAGINATION
+        ====================================== */}
 
         <BookingPagination
-          currentPage={safeCurrentPage}
-          totalPages={totalPages}
-          totalItems={totalItems}
-          itemsPerPage={ITEMS_PER_PAGE}
+          currentPage={
+            safeCurrentPage
+          }
+          totalPages={
+            totalPages
+          }
+          totalItems={
+            totalItems
+          }
+          itemsPerPage={
+            ITEMS_PER_PAGE
+          }
           onPageChange={
             handlePageChange
           }
         />
 
-        {/* FOOTER */}
+        {/* =====================================
+            FOOTER
+        ====================================== */}
 
         <BookingFooter />
 
-        {/* ADD BOOKING MODAL */}
+        {/* =====================================
+            ADD BOOKING
+        ====================================== */}
 
         <AddBookingModal
-          open={isAddModalOpen}
+          open={
+            isAddModalOpen
+          }
           onClose={() =>
-            setIsAddModalOpen(false)
+            setIsAddModalOpen(
+              false
+            )
           }
           onAdd={
             handleAddBooking

@@ -1,46 +1,58 @@
 "use client";
 
+import {
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+
 import Chart from "react-apexcharts";
 
-import {
-  FaPlaneDeparture,
-} from "react-icons/fa";
+import { FaPlaneDeparture } from "react-icons/fa";
 
 import {
+  FiCheck,
   FiMoreHorizontal,
 } from "react-icons/fi";
 
 import Card from "@/components/common/Card/Card";
 
+import {
+  airlines,
+} from "@/data/dashboardData";
+
 import "./PopularAirlines.scss";
 
-const airlines = [
-  {
-    name: "SkyHigh Airlines",
-    value: 35,
-    className: "yellow",
-  },
-  {
-    name: "FlyFast Airways",
-    value: 30,
-    className: "black",
-  },
-  {
-    name: "AeroJet",
-    value: 20,
-    className: "gray",
-  },
-  {
-    name: "Nimbus Airlines",
-    value: 15,
-    className: "light",
-  },
-];
-
 export default function PopularAirlines() {
-  const series = airlines.map(
-    (airline) => airline.value
-  );
+  const [selected, setSelected] =
+    useState(null);
+
+  const [menuOpen, setMenuOpen] =
+    useState(false);
+
+  const [displayMode, setDisplayMode] =
+    useState("percentage");
+
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const outside = (event) => {
+      if (
+        ref.current &&
+        !ref.current.contains(event.target)
+      ) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", outside);
+
+    return () =>
+      document.removeEventListener(
+        "mousedown",
+        outside
+      );
+  }, []);
 
   const options = {
     chart: {
@@ -51,11 +63,35 @@ export default function PopularAirlines() {
       sparkline: {
         enabled: true,
       },
+
+      events: {
+        dataPointSelection: (
+          event,
+          context,
+          config
+        ) => {
+          const index =
+            config.dataPointIndex;
+
+          setSelected(
+            selected === index
+              ? null
+              : index
+          );
+        },
+      },
     },
 
     labels: airlines.map(
-      (airline) => airline.name
+      (item) => item.name
     ),
+
+    colors: [
+      "#E4C66D",
+      "#252525",
+      "#8C8C8C",
+      "#D9D9D9",
+    ],
 
     legend: {
       show: false,
@@ -69,13 +105,6 @@ export default function PopularAirlines() {
       width: 0,
     },
 
-    tooltip: {
-      y: {
-        formatter: (value) =>
-          `${value}%`,
-      },
-    },
-
     plotOptions: {
       pie: {
         expandOnClick: false,
@@ -85,85 +114,165 @@ export default function PopularAirlines() {
         },
       },
     },
-
-    colors: [
-      "#E4C66D",
-      "#252525",
-      "#8C8C8C",
-      "#D9D9D9",
-    ],
   };
+
+  const selectedAirline =
+    selected !== null
+      ? airlines[selected]
+      : null;
 
   return (
     <Card className="popular-airlines-card">
-
-      {/* HEADER */}
-
       <div className="airlines-header">
+        <h5>Popular Airlines</h5>
 
-        <h5>
-          Popular Airlines
-        </h5>
-
-        <button
-          type="button"
-          className="airlines-more"
-          aria-label="More airline options"
+        <div
+          className="airlines-menu-wrapper"
+          ref={ref}
         >
-          <FiMoreHorizontal />
-        </button>
+          <button
+            type="button"
+            className={`airlines-more ${
+              menuOpen ? "active" : ""
+            }`}
+            onClick={() =>
+              setMenuOpen(
+                (value) => !value
+              )
+            }
+          >
+            <FiMoreHorizontal />
+          </button>
 
+          {menuOpen && (
+            <div className="airlines-menu">
+              <button
+                type="button"
+                className={
+                  displayMode ===
+                  "percentage"
+                    ? "active"
+                    : ""
+                }
+                onClick={() => {
+                  setDisplayMode(
+                    "percentage"
+                  );
+                  setMenuOpen(false);
+                }}
+              >
+                Show Percentage
+
+                {displayMode ===
+                  "percentage" && (
+                  <FiCheck />
+                )}
+              </button>
+
+              <button
+                type="button"
+                className={
+                  displayMode === "value"
+                    ? "active"
+                    : ""
+                }
+                onClick={() => {
+                  setDisplayMode("value");
+                  setMenuOpen(false);
+                }}
+              >
+                Show Distribution
+
+                {displayMode === "value" && (
+                  <FiCheck />
+                )}
+              </button>
+
+              <div className="airlines-menu-divider" />
+
+              <button
+                type="button"
+                onClick={() => {
+                  setSelected(null);
+                  setMenuOpen(false);
+                }}
+              >
+                Clear Selection
+              </button>
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* DONUT */}
-
       <div className="airlines-chart">
-
         <Chart
           options={options}
-          series={series}
+          series={airlines.map(
+            (item) => item.value
+          )}
           type="donut"
           width="100%"
           height="100%"
         />
 
-        <div className="airlines-center-icon">
-          <FaPlaneDeparture />
+        <div className="airlines-center">
+          <div
+            className={`airlines-center-icon ${
+              selectedAirline
+                ? "selected"
+                : ""
+            }`}
+          >
+            <FaPlaneDeparture />
+          </div>
+
+          {selectedAirline && (
+            <div className="airlines-center-value">
+              <strong>
+                {selectedAirline.value}%
+              </strong>
+            </div>
+          )}
         </div>
-
       </div>
-
-      {/* AIRLINES */}
 
       <div className="airlines-list">
+        {airlines.map(
+          (airline, index) => (
+            <button
+              type="button"
+              key={airline.id}
+              className={`airline-row ${
+                selected === index
+                  ? "selected"
+                  : ""
+              }`}
+              onClick={() =>
+                setSelected(
+                  selected === index
+                    ? null
+                    : index
+                )
+              }
+            >
+              <div className="airline-name">
+                <span
+                  className={`airline-dot ${airline.className}`}
+                />
 
-        {airlines.map((airline) => (
-          <div
-            className="airline-row"
-            key={airline.name}
-          >
+                <span>{airline.name}</span>
+              </div>
 
-            <div className="airline-name">
-
-              <span
-                className={`airline-dot ${airline.className}`}
-              />
-
-              <span>
-                {airline.name}
-              </span>
-
-            </div>
-
-            <strong>
-              {airline.value}%
-            </strong>
-
-          </div>
-        ))}
-
+              <strong>
+                {displayMode ===
+                "percentage"
+                  ? `${airline.value}%`
+                  : airline.value}
+              </strong>
+            </button>
+          )
+        )}
       </div>
-
     </Card>
   );
 }

@@ -1,8 +1,6 @@
 "use client";
 
-import {
-  FiArrowRight,
-} from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
 
 import "./FlightCard.scss";
 
@@ -24,92 +22,20 @@ export default function FlightCard({
     <button
       type="button"
       className={`flight-card ${
-        active
-          ? "flight-card-active"
-          : ""
+        active ? "flight-card-active" : ""
       }`}
       onClick={onClick}
       aria-pressed={active}
     >
 
-      {/* =====================================
-          ROUTE
-      ====================================== */}
+      <div className="flight-card-top">
 
-      <div className="flight-card-route">
-
-        {/* DEPARTURE */}
-
-        <div className="flight-card-airport">
-
-          <strong>
-            {flight.from.code}
-          </strong>
-
-          <span>
-            {flight.from.city}
-          </span>
-
-        </div>
-
-        {/* ROUTE LINE */}
-
-        <div className="flight-card-route-line">
-
-          <span />
+        <div className="flight-card-route-code">
+          <span>{flight.from.code}</span>
 
           <FiArrowRight />
 
-        </div>
-
-        {/* ARRIVAL */}
-
-        <div className="flight-card-airport flight-card-airport-arrival">
-
-          <strong>
-            {flight.to.code}
-          </strong>
-
-          <span>
-            {flight.to.city}
-          </span>
-
-        </div>
-
-      </div>
-
-      {/* =====================================
-          TIMES
-      ====================================== */}
-
-      <div className="flight-card-times">
-
-        <span>
-          {flight.from.time}
-        </span>
-
-        <span>
-          {flight.to.time}
-        </span>
-
-      </div>
-
-      {/* =====================================
-          META
-      ====================================== */}
-
-      <div className="flight-card-meta">
-
-        <div className="flight-card-meta-info">
-
-          <strong>
-            {flight.airline}
-          </strong>
-
-          <span>
-            {flight.date}
-          </span>
-
+          <span>{flight.to.code}</span>
         </div>
 
         <span
@@ -117,6 +43,50 @@ export default function FlightCard({
         >
           {flight.status}
         </span>
+
+      </div>
+
+      <strong className="flight-card-airline">
+        {flight.airline}
+      </strong>
+
+      <div className="flight-card-divider" />
+
+      <div className="flight-card-columns">
+
+        <div className="flight-card-column">
+
+          <span className="flight-card-label">
+            Departure
+          </span>
+
+          <strong>
+            {flight.from.city} -{" "}
+            {flight.from.time}
+          </strong>
+
+          <small>
+            {flight.date}
+          </small>
+
+        </div>
+
+        <div className="flight-card-column">
+
+          <span className="flight-card-label">
+            Arrival
+          </span>
+
+          <strong>
+            {flight.to.city} -{" "}
+            {flight.to.time}
+          </strong>
+
+          <small>
+            {flight.date}
+          </small>
+
+        </div>
 
       </div>
 

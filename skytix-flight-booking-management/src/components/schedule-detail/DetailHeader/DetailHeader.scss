@@ -1,5 +1,12 @@
+/* ========================================
+   DETAIL HEADER
+======================================== */
+
 .detail-header {
+  position: relative;
+
   width: 100%;
+  min-width: 0;
 
   display: flex;
   align-items: center;
@@ -8,10 +15,14 @@
   gap: 24px;
 }
 
-/* LEFT */
+/* ========================================
+   LEFT
+======================================== */
 
 .detail-header-main {
   min-width: 0;
+
+  flex: 1 1 auto;
 
   display: flex;
   align-items: center;
@@ -19,14 +30,21 @@
   gap: 12px;
 }
 
+/* ========================================
+   BACK BUTTON
+======================================== */
+
 .detail-back-btn {
   width: 38px;
   height: 38px;
 
   flex: 0 0 38px;
 
+  padding: 0;
+
   border: 1px solid #eeeeee;
   border-radius: 10px;
+  outline: 0;
 
   background: #ffffff;
 
@@ -37,16 +55,52 @@
   color: #222222;
 
   text-decoration: none;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
 }
 
 .detail-back-btn svg {
   width: 17px;
   height: 17px;
+
+  display: block;
 }
+
+.detail-back-btn:hover {
+  background: #fafafa;
+
+  border-color: #dddddd;
+}
+
+.detail-back-btn:active {
+  transform: scale(0.96);
+}
+
+.detail-back-btn:focus-visible {
+  outline: 2px solid
+    rgba(228, 198, 109, 0.55);
+
+  outline-offset: 2px;
+}
+
+/* ========================================
+   HEADING
+======================================== */
 
 .detail-heading {
   min-width: 0;
+
+  flex: 1;
 }
+
+/* ========================================
+   BACK LABEL
+======================================== */
 
 .detail-back-label {
   display: block;
@@ -55,10 +109,20 @@
 
   color: #999999;
 
-  font-size: 10px;
+  font-size: 9px;
+  line-height: 1.2;
+  font-weight: 400;
+
+  white-space: nowrap;
 }
 
+/* ========================================
+   ROUTE TITLE
+======================================== */
+
 .detail-heading h1 {
+  max-width: 100%;
+
   margin: 0;
 
   display: flex;
@@ -71,14 +135,38 @@
   font-size: 16px;
   line-height: 1.2;
   font-weight: 600;
+
+  letter-spacing: -0.2px;
+
+  white-space: nowrap;
 }
 
-.detail-heading h1 span {
+.detail-city {
+  min-width: 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detail-route-arrow {
+  flex: 0 0 auto;
+
+  color: #8f8f8f;
+
+  font-size: 14px;
+  line-height: 1;
+
   font-weight: 400;
 }
 
+/* ========================================
+   FLIGHT META
+======================================== */
+
 .detail-heading p {
   margin: 5px 0 0;
+
+  min-width: 0;
 
   display: flex;
   align-items: center;
@@ -87,20 +175,63 @@
 
   color: #999999;
 
-  font-size: 10px;
+  font-size: 9px;
+  line-height: 1.3;
+  font-weight: 400;
 }
 
-/* SEARCH */
+.detail-heading p > span {
+  white-space: nowrap;
+}
+
+/* ========================================
+   META DOT
+======================================== */
+
+.detail-heading p > i {
+  width: 3px;
+  height: 3px;
+
+  flex: 0 0 3px;
+
+  border-radius: 50%;
+
+  background: #b5b5b5;
+}
+
+/* ========================================
+   SEARCH AREA
+======================================== */
 
 .detail-search {
+  min-width: 0;
+
+  flex: 0 0 auto;
+
   display: flex;
   align-items: center;
 
   gap: 8px;
 }
 
-.detail-search-input {
+/* ========================================
+   SEARCH WRAPPER
+======================================== */
+
+.detail-search-wrapper {
+  position: relative;
+
   width: 200px;
+
+  flex: 0 0 200px;
+}
+
+/* ========================================
+   SEARCH INPUT
+======================================== */
+
+.detail-search-input {
+  width: 100%;
   height: 34px;
 
   padding: 0 11px;
@@ -114,17 +245,38 @@
   align-items: center;
 
   gap: 8px;
+
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
 }
 
-.detail-search-input svg {
+.detail-search-input:focus-within {
+  border-color: #dfc66f;
+
+  box-shadow:
+    0 0 0 2px
+    rgba(228, 198, 109, 0.08);
+}
+
+.detail-search-input > svg {
   width: 13px;
   height: 13px;
 
+  flex: 0 0 13px;
+
   color: #999999;
+
+  stroke-width: 1.8;
 }
 
 .detail-search-input input {
   width: 100%;
+  min-width: 0;
+
+  padding: 0;
 
   border: 0;
   outline: 0;
@@ -135,33 +287,359 @@
 
   font-family: inherit;
   font-size: 10px;
+  line-height: 1;
+  font-weight: 400;
 }
 
 .detail-search-input input::placeholder {
   color: #aaaaaa;
+
+  opacity: 1;
 }
 
+.detail-search-input
+input::-webkit-search-cancel-button {
+  display: none;
+}
+
+/* ========================================
+   SEARCH RESULTS
+======================================== */
+
+.detail-search-results {
+  position: absolute;
+
+  z-index: 200;
+
+  top: calc(100% + 7px);
+  left: 0;
+
+  width: 270px;
+  max-height: 260px;
+
+  padding: 5px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  box-sizing: border-box;
+
+  box-shadow:
+    0 12px 35px
+    rgba(0, 0, 0, 0.09);
+}
+
+/* ========================================
+   SEARCH RESULT
+======================================== */
+
+.detail-search-result {
+  width: 100%;
+  min-width: 0;
+
+  padding: 10px;
+
+  border: 0;
+  border-radius: 7px;
+  outline: 0;
+
+  background: transparent;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+  color: inherit;
+
+  font-family: inherit;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease;
+}
+
+.detail-search-result:hover {
+  background: #f8f8f8;
+}
+
+.detail-search-result:focus-visible {
+  outline: 2px solid
+    rgba(228, 198, 109, 0.45);
+
+  outline-offset: -2px;
+}
+
+/* ========================================
+   RESULT ROUTE
+======================================== */
+
+.detail-result-route {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+}
+
+.detail-result-route strong {
+  min-width: 0;
+
+  color: #333333;
+
+  font-size: 9px;
+  line-height: 1.2;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detail-result-route > span {
+  flex: 0 0 auto;
+
+  color: #b0b0b0;
+
+  font-size: 9px;
+}
+
+/* ========================================
+   RESULT META
+======================================== */
+
+.detail-result-meta {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+.detail-result-meta span {
+  min-width: 0;
+
+  color: #999999;
+
+  font-size: 8px;
+  line-height: 1.2;
+  font-weight: 400;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ========================================
+   EMPTY RESULT
+======================================== */
+
+.detail-search-empty {
+  padding: 16px 10px;
+
+  color: #999999;
+
+  font-size: 9px;
+  line-height: 1.3;
+  font-weight: 400;
+
+  text-align: center;
+}
+
+/* ========================================
+   CLASS WRAPPER
+======================================== */
+
+.detail-class-wrapper {
+  position: relative;
+
+  flex: 0 0 auto;
+}
+
+/* ========================================
+   CLASS BUTTON
+======================================== */
+
 .detail-class-btn {
+  min-width: 108px;
   height: 34px;
 
-  padding: 0 12px;
+  padding: 0 11px;
 
   border: 1px solid #eeeeee;
   border-radius: 8px;
+  outline: 0;
 
   background: #ffffff;
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   gap: 8px;
 
   color: #333333;
 
+  font-family: inherit;
   font-size: 10px;
+  line-height: 1;
+  font-weight: 400;
 
   cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease;
 }
+
+.detail-class-btn:hover {
+  background: #fafafa;
+
+  border-color: #dddddd;
+}
+
+.detail-class-btn:focus-visible {
+  outline: 2px solid
+    rgba(228, 198, 109, 0.55);
+
+  outline-offset: 2px;
+}
+
+.detail-class-btn > span {
+  white-space: nowrap;
+}
+
+.detail-class-btn svg {
+  width: 12px;
+  height: 12px;
+
+  flex: 0 0 12px;
+
+  color: #999999;
+
+  transition:
+    transform 0.18s ease;
+}
+
+.detail-class-btn svg.open {
+  transform: rotate(180deg);
+}
+
+/* ========================================
+   CLASS MENU
+======================================== */
+
+.detail-class-menu {
+  position: absolute;
+
+  z-index: 200;
+
+  top: calc(100% + 7px);
+  right: 0;
+
+  width: 155px;
+
+  padding: 5px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+
+  box-shadow:
+    0 10px 30px
+    rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.detail-class-menu button {
+  width: 100%;
+  min-height: 30px;
+
+  padding: 0 8px;
+
+  border: 0;
+  border-radius: 6px;
+  outline: 0;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 8px;
+
+  color: #666666;
+
+  font-family: inherit;
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 500;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.detail-class-menu button:hover {
+  background: #f7f7f7;
+}
+
+.detail-class-menu button.active {
+  background: #faf6e8;
+
+  color: #9a7c27;
+}
+
+.detail-class-menu button:focus-visible {
+  outline: 2px solid
+    rgba(228, 198, 109, 0.45);
+
+  outline-offset: -2px;
+}
+
+.detail-class-menu button span {
+  white-space: nowrap;
+}
+
+.detail-class-menu button svg {
+  width: 11px;
+  height: 11px;
+
+  flex: 0 0 11px;
+}
+
+/* ========================================
+   SEARCH BUTTON
+======================================== */
 
 .detail-search-btn {
   height: 34px;
@@ -170,39 +648,231 @@
 
   border: 0;
   border-radius: 8px;
+  outline: 0;
 
   background: #e4c66d;
 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   color: #222222;
 
+  font-family: inherit;
   font-size: 10px;
+  line-height: 1;
   font-weight: 600;
 
+  white-space: nowrap;
+
   cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease;
 }
 
+.detail-search-btn:hover {
+  background: #ddbd5c;
+}
+
+.detail-search-btn:active {
+  transform: scale(0.97);
+}
+
+.detail-search-btn:focus-visible {
+  outline: 2px solid
+    rgba(181, 145, 36, 0.35);
+
+  outline-offset: 2px;
+}
+
+/* ========================================
+   LAPTOP
+======================================== */
+
+@media (max-width: 1200px) {
+
+  .detail-header {
+    gap: 18px;
+  }
+
+  .detail-header-main {
+    gap: 10px;
+  }
+
+  .detail-search-wrapper {
+    width: 175px;
+
+    flex-basis: 175px;
+  }
+
+  .detail-class-btn {
+    min-width: 100px;
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
 @media (max-width: 1000px) {
+
   .detail-header {
     align-items: flex-start;
+
     flex-direction: column;
+
+    gap: 18px;
+  }
+
+  .detail-header-main {
+    width: 100%;
   }
 
   .detail-search {
     width: 100%;
   }
 
-  .detail-search-input {
-    flex: 1;
+  .detail-search-wrapper {
+    width: auto;
+
+    flex: 1 1 auto;
+  }
+
+  .detail-search-results {
+    width: 100%;
   }
 }
 
+/* ========================================
+   MOBILE
+======================================== */
+
 @media (max-width: 600px) {
+
+  .detail-header {
+    gap: 16px;
+  }
+
+  .detail-header-main {
+    align-items: center;
+
+    gap: 10px;
+  }
+
+  /* BACK */
+
+  .detail-back-btn {
+    width: 36px;
+    height: 36px;
+
+    flex-basis: 36px;
+  }
+
+  .detail-back-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* HEADING */
+
+  .detail-back-label {
+    margin-bottom: 3px;
+
+    font-size: 8px;
+  }
+
+  .detail-heading h1 {
+    gap: 5px;
+
+    font-size: 14px;
+
+    white-space: normal;
+  }
+
+  .detail-heading p {
+    gap: 5px;
+
+    font-size: 9px;
+
+    flex-wrap: wrap;
+  }
+
+  /* SEARCH */
+
   .detail-search {
     flex-wrap: wrap;
   }
 
-  .detail-search-input {
+  .detail-search-wrapper {
     width: 100%;
-    flex-basis: 100%;
+
+    flex: 0 0 100%;
+  }
+
+  .detail-search-input {
+    height: 36px;
+  }
+
+  /* CLASS */
+
+  .detail-class-wrapper {
+    flex: 1 1 auto;
+  }
+
+  .detail-class-btn {
+    width: 100%;
+    height: 36px;
+  }
+
+  .detail-class-menu {
+    left: 0;
+    right: auto;
+
+    width: 100%;
+  }
+
+  /* SEARCH BUTTON */
+
+  .detail-search-btn {
+    min-width: 80px;
+    height: 36px;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 420px) {
+
+  .detail-header-main {
+    align-items: flex-start;
+  }
+
+  .detail-back-btn {
+    width: 34px;
+    height: 34px;
+
+    flex-basis: 34px;
+  }
+
+  .detail-heading {
+    min-width: 0;
+
+    padding-top: 1px;
+  }
+
+  .detail-heading h1 {
+    font-size: 13px;
+  }
+
+  .detail-heading p {
+    font-size: 8px;
+  }
+
+  .detail-search-btn {
+    padding: 0 14px;
   }
 }

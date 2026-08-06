@@ -1,37 +1,23 @@
-/* ========================================
-   FLIGHT SCHEDULE
-======================================== */
-
 .flight-schedule-card {
+  position: relative;
+
   min-height: 285px;
 
   display: flex;
   flex-direction: column;
 }
 
-/* ========================================
-   HEADER
-======================================== */
-
 .flight-schedule-header {
-  width: 100%;
-  min-width: 0;
+  position: relative;
+  z-index: 10;
+
+  margin-bottom: 8px;
 
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
 
   gap: 16px;
-
-  margin-bottom: 8px;
-}
-
-/* ========================================
-   TITLE
-======================================== */
-
-.flight-schedule-title {
-  min-width: 0;
 }
 
 .flight-schedule-title h5 {
@@ -40,13 +26,8 @@
   color: #292929;
 
   font-size: 13px;
-  line-height: 1.2;
   font-weight: 700;
 }
-
-/* ========================================
-   LEGEND
-======================================== */
 
 .flight-schedule-legend {
   display: flex;
@@ -56,7 +37,7 @@
 }
 
 .flight-schedule-legend span {
-  display: inline-flex;
+  display: flex;
   align-items: center;
 
   gap: 5px;
@@ -64,37 +45,30 @@
   color: #929292;
 
   font-size: 8px;
-  line-height: 1;
-  font-weight: 500;
-
-  white-space: nowrap;
 }
 
 .flight-schedule-legend i {
   width: 7px;
   height: 7px;
 
-  flex: 0 0 7px;
-
   border-radius: 50%;
 }
 
-.flight-schedule-legend i.completed {
+.flight-schedule-legend .completed {
   background: #e4c66d;
 }
 
-.flight-schedule-legend i.pending {
+.flight-schedule-legend .pending {
   background: #292929;
 }
 
-/* ========================================
-   FILTER
-======================================== */
+.flight-schedule-filter-wrapper {
+  position: relative;
+}
 
 .flight-schedule-filter {
+  min-width: 82px;
   height: 30px;
-
-  flex: 0 0 auto;
 
   padding: 0 9px;
 
@@ -103,18 +77,16 @@
 
   background: #ffffff;
 
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 
-  gap: 5px;
+  gap: 6px;
 
   color: #777777;
 
   font-family: inherit;
   font-size: 8px;
-  line-height: 1;
-  font-weight: 500;
 
   cursor: pointer;
 }
@@ -122,53 +94,76 @@
 .flight-schedule-filter svg {
   width: 11px;
   height: 11px;
+
+  transition: transform 0.2s ease;
 }
 
-.flight-schedule-filter:hover {
-  background: #fafafa;
+.flight-schedule-filter.active {
+  border-color: #e4c66d;
 }
 
-/* ========================================
-   CHART
-======================================== */
+.flight-schedule-filter.active svg {
+  transform: rotate(180deg);
+}
+
+.flight-schedule-dropdown {
+  position: absolute;
+
+  top: calc(100% + 6px);
+  right: 0;
+
+  z-index: 100;
+
+  width: 120px;
+
+  padding: 5px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 10px 30px
+    rgba(0, 0, 0, 0.08);
+}
+
+.flight-schedule-dropdown button {
+  width: 100%;
+  height: 31px;
+
+  padding: 0 8px;
+
+  border: 0;
+  border-radius: 6px;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: #666666;
+
+  font-family: inherit;
+  font-size: 8px;
+
+  cursor: pointer;
+}
+
+.flight-schedule-dropdown button:hover {
+  background: #f8f8f8;
+}
+
+.flight-schedule-dropdown button.selected {
+  background: #faf5e3;
+  color: #80671f;
+}
 
 .flight-schedule-chart {
   width: 100%;
   min-width: 0;
-  min-height: 0;
+  height: 190px;
 
   flex: 1;
-
-  height: 190px;
-}
-
-/* ========================================
-   APEXCHARTS
-======================================== */
-
-.flight-schedule-chart .apexcharts-canvas,
-.flight-schedule-chart .apexcharts-svg {
-  width: 100% !important;
-}
-
-/* ========================================
-   MOBILE
-======================================== */
-
-@media (max-width: 650px) {
-  .flight-schedule-card {
-    min-height: 270px;
-  }
-
-  .flight-schedule-header {
-    gap: 10px;
-  }
-
-  .flight-schedule-legend {
-    gap: 9px;
-  }
-
-  .flight-schedule-chart {
-    height: 175px;
-  }
 }

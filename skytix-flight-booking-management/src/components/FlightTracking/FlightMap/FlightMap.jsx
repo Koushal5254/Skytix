@@ -1,115 +1,119 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import {
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 import {
   FiPlus,
   FiMinus,
-  FiNavigation,
-  FiMaximize2,
+  FiMaximize,
+  FiCrosshair,
 } from "react-icons/fi";
 
 import "./FlightMap.scss";
 
-/* ========================================
-   MAP ROUTE POSITIONS
-
-   Coordinates are percentages of the map
-   container, not geographic coordinates.
-
-   This keeps map presentation separate
-   from flights.js.
-======================================== */
-
-const routePositions = {
-  1: {
-    from: { x: 27, y: 39 },
-    to: { x: 16, y: 46 },
-    plane: { x: 21, y: 42 },
-  },
-
-  2: {
-    from: { x: 47, y: 32 },
-    to: { x: 27, y: 39 },
-    plane: { x: 37, y: 34 },
-  },
-
-  3: {
-    from: { x: 84, y: 41 },
-    to: { x: 14, y: 44 },
-    plane: { x: 92, y: 31 },
-  },
-
-  4: {
-    from: { x: 87, y: 76 },
-    to: { x: 76, y: 60 },
-    plane: { x: 82, y: 68 },
-  },
-
-  5: {
-    from: { x: 63, y: 49 },
-    to: { x: 47, y: 32 },
-    plane: { x: 55, y: 40 },
-  },
-
-  6: {
-    from: { x: 49, y: 35 },
-    to: { x: 27, y: 39 },
-    plane: { x: 38, y: 35 },
-  },
-
-  7: {
-    from: { x: 79, y: 47 },
-    to: { x: 16, y: 46 },
-    plane: { x: 96, y: 33 },
-  },
+const airportPositions = {
+  JFK: { x: 79, y: 46 },
+  LAX: { x: 20, y: 65 },
+  LHR: { x: 87, y: 24 },
+  HND: { x: 90, y: 55 },
+  SFO: { x: 17, y: 49 },
+  SYD: { x: 82, y: 80 },
+  SIN: { x: 75, y: 70 },
+  DXB: { x: 68, y: 53 },
+  CDG: { x: 84, y: 28 },
+  HKG: { x: 84, y: 62 },
+  DEL: { x: 64, y: 57 },
 };
 
-/* ========================================
-   COMPONENT
-======================================== */
+const fallbackFrom = {
+  x: 20,
+  y: 65,
+};
+
+const fallbackTo = {
+  x: 79,
+  y: 46,
+};
 
 export default function FlightMap({
   flight,
 }) {
-  const [zoom, setZoom] = useState(1);
+  const [zoom, setZoom] =
+    useState(1);
+
   const [fullscreen, setFullscreen] =
     useState(false);
 
-  /* ========================================
-     SELECTED ROUTE
-  ======================================== */
+  useEffect(() => {
+    if (!fullscreen) {
+      return undefined;
+    }
 
-  const route = useMemo(() => {
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setFullscreen(false);
+      }
+    };
+
+    document.addEventListener(
+      "keydown",
+      handleEscape
+    );
+
+    return () =>
+      document.removeEventListener(
+        "keydown",
+        handleEscape
+      );
+  }, [fullscreen]);
+
+  const positions = useMemo(() => {
     if (!flight) {
       return null;
     }
 
-    return (
-      routePositions[flight.id] ||
-      routePositions[1]
-    );
+    return {
+      from:
+        airportPositions[
+          flight.from.code
+        ] || fallbackFrom,
+
+      to:
+        airportPositions[
+          flight.to.code
+        ] || fallbackTo,
+    };
   }, [flight]);
 
-  /* ========================================
-     ZOOM
-  ======================================== */
+  const route = useMemo(() => {
+    if (!positions) {
+      return null;
+    }
 
-  const handleZoomIn = () => {
-    setZoom((current) =>
-      Math.min(current + 0.1, 1.4)
-    );
-  };
+    const start = positions.from;
+    const end = positions.to;
 
-  const handleZoomOut = () => {
-    setZoom((current) =>
-      Math.max(current - 0.1, 0.8)
-    );
-  };
+    const middleX =
+      (start.x + end.x) / 2;
 
-  const handleReset = () => {
-    setZoom(1);
-  };
+    const middleY =
+      Math.min(start.y, end.y) - 15;
+
+    return {
+      start,
+      end,
+      middleX,
+      middleY,
+
+      path: `M ${start.x} ${start.y}
+             Q ${middleX} ${middleY}
+             ${end.x} ${end.y}`,
+    };
+  }, [positions]);
 
   if (!flight || !route) {
     return (
@@ -119,24 +123,16 @@ export default function FlightMap({
     );
   }
 
-  /* ========================================
-     ROUTE LINE
-  ======================================== */
+  const planeX =
+    route.start.x +
+    (route.end.x - route.start.x) *
+      0.62;
 
-  const deltaX =
-    route.to.x - route.from.x;
-
-  const deltaY =
-    route.to.y - route.from.y;
-
-  const routeLength = Math.sqrt(
-    deltaX * deltaX +
-    deltaY * deltaY
-  );
-
-  const routeAngle =
-    Math.atan2(deltaY, deltaX) *
-    (180 / Math.PI);
+  const planeY =
+    route.start.y +
+    (route.end.y - route.start.y) *
+      0.62 -
+    10;
 
   return (
     <div
@@ -147,123 +143,118 @@ export default function FlightMap({
       }`}
     >
 
-      {/* =====================================
-          MAP
-      ====================================== */}
-
       <div
-        className="flight-map-canvas"
+        className="flight-map-stage"
         style={{
           transform: `scale(${zoom})`,
         }}
       >
 
-        {/* ===================================
-            WORLD MAP DECORATION
-        ==================================== */}
+        <div className="flight-map-geography">
 
-        <div className="flight-map-world">
+          <span className="geo-canada" />
+          <span className="geo-usa" />
+          <span className="geo-mexico" />
+          <span className="geo-water" />
 
-          <span className="map-land map-land-north-america" />
+          <span className="geo-line geo-line-1" />
+          <span className="geo-line geo-line-2" />
+          <span className="geo-line geo-line-3" />
+          <span className="geo-line geo-line-4" />
+          <span className="geo-line geo-line-5" />
 
-          <span className="map-land map-land-south-america" />
+          <span className="map-city map-city-vancouver">
+            Vancouver
+          </span>
 
-          <span className="map-land map-land-europe" />
+          <span className="map-city map-city-edmonton">
+            Edmonton
+          </span>
 
-          <span className="map-land map-land-africa" />
+          <span className="map-city map-city-calgary">
+            Calgary
+          </span>
 
-          <span className="map-land map-land-asia" />
+          <span className="map-city map-city-san-francisco">
+            San Francisco
+          </span>
 
-          <span className="map-land map-land-australia" />
+          <span className="map-city map-city-los-angeles">
+            Los Angeles
+          </span>
+
+          <span className="map-city map-city-houston">
+            Houston
+          </span>
+
+          <span className="map-city map-city-toronto">
+            Toronto
+          </span>
+
+          <span className="map-city map-city-new-york">
+            New York
+          </span>
+
+          <span className="map-city map-city-boston">
+            Boston
+          </span>
+
+          <span className="map-country map-country-canada">
+            Canada
+          </span>
+
+          <span className="map-country map-country-us">
+            United States
+          </span>
+
+          <span className="map-country map-country-mexico">
+            Mexico
+          </span>
 
         </div>
 
-        {/* ===================================
-            MAP GRID
-        ==================================== */}
-
-        <div className="flight-map-grid" />
-
-        {/* ===================================
-            ROUTE LINE
-        ==================================== */}
-
-        <div
-          className="flight-route-line"
-          style={{
-            left: `${route.from.x}%`,
-            top: `${route.from.y}%`,
-            width: `${routeLength}%`,
-            transform: `rotate(${routeAngle}deg)`,
-          }}
-        />
-
-        {/* ===================================
-            DEPARTURE
-        ==================================== */}
+        <svg
+          className="flight-map-route"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path d={route.path} />
+        </svg>
 
         <div
-          className="flight-map-point flight-map-point-from"
+          className="flight-map-airport flight-map-airport-from"
           style={{
-            left: `${route.from.x}%`,
-            top: `${route.from.y}%`,
+            left: `${route.start.x}%`,
+            top: `${route.start.y}%`,
           }}
         >
+          <span className="flight-map-airport-code">
+            {flight.from.code}
+          </span>
 
-          <span className="flight-map-marker" />
-
-          <div className="flight-map-airport-label">
-
-            <strong>
-              {flight.from.code}
-            </strong>
-
-            <span>
-              {flight.from.city}
-            </span>
-
-          </div>
-
+          <i />
         </div>
-
-        {/* ===================================
-            ARRIVAL
-        ==================================== */}
 
         <div
-          className="flight-map-point flight-map-point-to"
+          className="flight-map-airport flight-map-airport-to"
           style={{
-            left: `${route.to.x}%`,
-            top: `${route.to.y}%`,
+            left: `${route.end.x}%`,
+            top: `${route.end.y}%`,
           }}
         >
+          <span className="flight-map-airport-code">
+            {flight.to.code}
+          </span>
 
-          <span className="flight-map-marker" />
-
-          <div className="flight-map-airport-label">
-
-            <strong>
-              {flight.to.code}
-            </strong>
-
-            <span>
-              {flight.to.city}
-            </span>
-
-          </div>
-
+          <i />
         </div>
-
-        {/* ===================================
-            AIRCRAFT
-        ==================================== */}
 
         <div
           className="flight-map-plane"
           style={{
-            left: `${route.plane.x}%`,
-            top: `${route.plane.y}%`,
-            transform: `translate(-50%, -50%) rotate(${routeAngle}deg)`,
+            left: `${planeX}%`,
+            top: `${planeY}%`,
           }}
         >
           ✈
@@ -271,80 +262,64 @@ export default function FlightMap({
 
       </div>
 
-      {/* =====================================
-          FLIGHT INFO
-      ====================================== */}
-
-      <div className="flight-map-info">
-
-        <div className="flight-map-info-icon">
-          ✈
-        </div>
-
-        <div className="flight-map-info-content">
-
-          <span>
-            {flight.airline}
-          </span>
-
-          <strong>
-            {flight.flightNumber}
-          </strong>
-
-        </div>
-
-        <span
-          className={`flight-map-status flight-map-status-${flight.status
-            .toLowerCase()
-            .replace(/\s+/g, "-")}`}
-        >
-          {flight.status}
-        </span>
-
-      </div>
-
-      {/* =====================================
-          MAP CONTROLS
-      ====================================== */}
-
       <div className="flight-map-controls">
 
-        <button
-          type="button"
-          onClick={handleZoomIn}
-          aria-label="Zoom in"
-        >
-          <FiPlus />
-        </button>
+        <div className="flight-map-zoom">
+
+          <button
+            type="button"
+            onClick={() =>
+              setZoom((current) =>
+                Math.min(
+                  current + 0.1,
+                  1.4
+                )
+              )
+            }
+            aria-label="Zoom in"
+          >
+            <FiPlus />
+          </button>
+
+          <span />
+
+          <button
+            type="button"
+            onClick={() =>
+              setZoom((current) =>
+                Math.max(
+                  current - 0.1,
+                  0.8
+                )
+              )
+            }
+            aria-label="Zoom out"
+          >
+            <FiMinus />
+          </button>
+
+        </div>
 
         <button
           type="button"
-          onClick={handleZoomOut}
-          aria-label="Zoom out"
-        >
-          <FiMinus />
-        </button>
-
-        <span />
-
-        <button
-          type="button"
-          onClick={handleReset}
-          aria-label="Reset map"
-        >
-          <FiNavigation />
-        </button>
-
-        <button
-          type="button"
+          className="flight-map-control"
           onClick={() =>
             setFullscreen(
               (current) => !current
             )
           }
-          aria-label="Toggle fullscreen map"
+          aria-label="Toggle fullscreen"
         >
-          <FiMaximize2 />
+          <FiMaximize />
+        </button>
+
+        <button
+          type="button"
+          className="flight-map-control flight-map-location"
+          onClick={() => setZoom(1)}
+          aria-label="Reset map"
+        >
+          <FiCrosshair />
         </button>
 
       </div>

@@ -1,19 +1,14 @@
-/* ========================================
-   STATISTIC CARD
-======================================== */
-
 .stat-card {
   width: 100%;
   min-width: 0;
-
   min-height: 92px;
 
   padding: 15px 16px;
 
-  background: #ffffff;
-
   border: 1px solid #eeeeee;
   border-radius: 16px;
+
+  background: #ffffff;
 
   display: flex;
   align-items: center;
@@ -21,70 +16,33 @@
 
   gap: 12px;
 
-  box-shadow:
-    0 2px 10px rgba(0, 0, 0, 0.025);
-
   box-sizing: border-box;
 }
 
-/* ========================================
-   LEFT SIDE
-======================================== */
-
 .stat-left {
   min-width: 0;
-
   flex: 1;
-
-  display: flex;
-  flex-direction: column;
-
-  align-items: flex-start;
 }
 
-/* ========================================
-   TITLE
-======================================== */
-
 .stat-title {
-  width: 100%;
-
   margin: 0 0 10px;
 
   color: #969696;
 
   font-size: 10px;
-  line-height: 1.2;
   font-weight: 500;
 
   white-space: nowrap;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
-
-/* ========================================
-   VALUE ROW
-======================================== */
 
 .stat-value-row {
-  width: 100%;
-  min-width: 0;
-
   display: flex;
   align-items: center;
-
-  gap: 8px;
+  gap: 7px;
 }
-
-/* ========================================
-   VALUE
-======================================== */
 
 .stat-value {
   margin: 0;
-
-  min-width: 0;
 
   color: #202020;
 
@@ -92,62 +50,37 @@
   line-height: 1;
   font-weight: 700;
 
-  letter-spacing: -0.5px;
-
-  white-space: nowrap;
+  letter-spacing: -0.55px;
 }
 
-/* ========================================
-   PERCENTAGE BADGE
-======================================== */
-
 .stat-badge {
-  flex: 0 0 auto;
-
-  min-height: 20px;
-
-  padding: 4px 6px;
+  padding: 5px 6px;
 
   border-radius: 6px;
 
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 8px;
+  font-size: 7px;
   line-height: 1;
   font-weight: 600;
-
-  white-space: nowrap;
 }
-
-/* POSITIVE */
 
 .stat-badge-positive {
   background: #faf5e3;
-
   color: #9c812c;
 }
 
-/* NEGATIVE */
-
 .stat-badge-negative {
   background: #fff0f0;
-
   color: #cf6262;
 }
-
-/* ========================================
-   ICON BOX
-======================================== */
 
 .stat-icon-box {
   width: 42px;
   height: 42px;
-
   flex: 0 0 42px;
 
   border-radius: 11px;
+
+  background: #e4c66d;
 
   display: flex;
   align-items: center;
@@ -156,118 +89,34 @@
   color: #ffffff;
 }
 
-/* ========================================
-   ICON
-======================================== */
-
 .stat-icon-box svg {
-  width: 18px;
-  height: 18px;
-
-  stroke-width: 1.8;
+  width: 19px;
+  height: 19px;
 }
 
-/* ========================================
-   STANDARD LAPTOP
-======================================== */
-
 @media (max-width: 1450px) {
-
   .stat-card {
     min-height: 88px;
-
     padding: 14px;
-  }
-
-  .stat-title {
-    margin-bottom: 9px;
-
-    font-size: 9px;
   }
 
   .stat-value {
     font-size: 20px;
   }
 
-  .stat-value-row {
-    gap: 6px;
-  }
-
-  .stat-badge {
-    min-height: 19px;
-
-    padding: 3px 5px;
-
-    font-size: 7px;
-  }
-
   .stat-icon-box {
     width: 39px;
     height: 39px;
-
     flex-basis: 39px;
-
-    border-radius: 10px;
-  }
-
-  .stat-icon-box svg {
-    width: 17px;
-    height: 17px;
   }
 }
 
-/* ========================================
-   SMALL LAPTOP
-======================================== */
-
 @media (max-width: 1200px) {
-
   .stat-card {
     min-height: 92px;
-
-    padding: 15px 16px;
-  }
-
-  .stat-title {
-    font-size: 10px;
   }
 
   .stat-value {
     font-size: 22px;
-  }
-
-  .stat-badge {
-    font-size: 8px;
-  }
-
-  .stat-icon-box {
-    width: 42px;
-    height: 42px;
-
-    flex-basis: 42px;
-  }
-}
-
-/* ========================================
-   MOBILE
-======================================== */
-
-@media (max-width: 650px) {
-
-  .stat-card {
-    min-height: 88px;
-
-    padding: 14px 15px;
-  }
-
-  .stat-value {
-    font-size: 21px;
-  }
-
-  .stat-icon-box {
-    width: 40px;
-    height: 40px;
-
-    flex-basis: 40px;
   }
 }

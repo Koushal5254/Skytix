@@ -1,14 +1,10 @@
-/* ========================================
-   FLIGHT CARD
-======================================== */
-
 .flight-card {
   width: 100%;
 
-  padding: 14px 16px 13px;
+  padding: 11px 12px;
 
-  border: 0;
-  border-bottom: 1px solid #eeeeee;
+  border: 1px solid #dddddd;
+  border-radius: 11px;
 
   outline: 0;
 
@@ -23,11 +19,15 @@
   cursor: pointer;
 
   transition:
-    background 0.18s ease;
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
 }
 
 .flight-card:hover {
-  background: #fafafa;
+  border-color: #cacaca;
+
+  transform: translateY(-1px);
 }
 
 /* ========================================
@@ -35,58 +35,161 @@
 ======================================== */
 
 .flight-card-active {
-  background: #faf8f1;
+  border-color: #dfbd51;
+
+  box-shadow:
+    inset 0 0 0 1px #dfbd51;
 }
 
 .flight-card-active:hover {
-  background: #faf8f1;
+  border-color: #dfbd51;
 }
 
 /* ========================================
-   ROUTE
+   TOP
 ======================================== */
 
-.flight-card-route {
+.flight-card-top {
   width: 100%;
 
-  display: grid;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  grid-template-columns:
-    minmax(0, 1fr)
-    48px
-    minmax(0, 1fr);
+  gap: 10px;
+}
 
+.flight-card-route-code {
+  min-width: 0;
+
+  display: flex;
   align-items: center;
 
-  gap: 7px;
+  gap: 4px;
+
+  color: #8d8d8d;
+
+  font-size: 8px;
+  font-weight: 500;
+}
+
+.flight-card-route-code svg {
+  width: 9px;
+  height: 9px;
 }
 
 /* ========================================
-   AIRPORT
+   AIRLINE
 ======================================== */
 
-.flight-card-airport {
-  min-width: 0;
-}
-
-.flight-card-airport strong {
-  display: block;
-
-  color: #292929;
-
-  font-size: 13px;
-  line-height: 1.2;
-  font-weight: 700;
-
-  white-space: nowrap;
-}
-
-.flight-card-airport span {
+.flight-card-airline {
   display: block;
 
   margin-top: 3px;
 
-  color: #999999;
+  color: #292929;
+
+  font-size: 10px;
+  line-height: 1.25;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ========================================
+   STATUS
+======================================== */
+
+.flight-card-status {
+  min-height: 19px;
+
+  padding: 0 6px;
+
+  border-radius: 4px;
+
+  display: inline-flex;
+  align-items: center;
+
+  font-size: 7px;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+.flight-card-status-on-time {
+  background: #ead074;
+  color: #5c4a13;
+}
+
+.flight-card-status-delayed {
+  background: #e7e7e5;
+  color: #656565;
+}
+
+.flight-card-status-in-air {
+  background: #65d6a4;
+  color: #245f48;
+}
+
+.flight-card-status-scheduled {
+  background: #eee4bd;
+  color: #63582d;
+}
+
+.flight-card-status-cancelled {
+  background: #5d5d57;
+  color: #ffffff;
+}
+
+/* ========================================
+   DIVIDER
+======================================== */
+
+.flight-card-divider {
+  width: 100%;
+  height: 1px;
+
+  margin: 8px 0 7px;
+
+  background: #dedede;
+}
+
+/* ========================================
+   COLUMNS
+======================================== */
+
+.flight-card-columns {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  gap: 12px;
+}
+
+.flight-card-column {
+  min-width: 0;
+}
+
+.flight-card-label {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #a2a2a2;
+
+  font-size: 7px;
+  line-height: 1.2;
+}
+
+.flight-card-column strong {
+  display: block;
+
+  color: #555555;
 
   font-size: 8px;
   line-height: 1.3;
@@ -98,211 +201,23 @@
   text-overflow: ellipsis;
 }
 
-.flight-card-airport-arrival {
-  text-align: right;
-}
-
-/* ========================================
-   ROUTE LINE
-======================================== */
-
-.flight-card-route-line {
-  min-width: 0;
-
-  display: flex;
-  align-items: center;
-
-  color: #b4b4b4;
-}
-
-.flight-card-route-line > span {
-  height: 1px;
-
-  flex: 1;
-
-  background: #dddddd;
-}
-
-.flight-card-route-line svg {
-  width: 12px;
-  height: 12px;
-
-  flex: 0 0 12px;
-
-  margin-left: -1px;
-}
-
-/* ========================================
-   TIMES
-======================================== */
-
-.flight-card-times {
-  width: 100%;
-
-  margin-top: 5px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 15px;
-}
-
-.flight-card-times span {
-  color: #555555;
-
-  font-size: 9px;
-  line-height: 1.2;
-  font-weight: 600;
-
-  white-space: nowrap;
-}
-
-/* ========================================
-   META
-======================================== */
-
-.flight-card-meta {
-  width: 100%;
-
-  margin-top: 11px;
-
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-
-  gap: 10px;
-}
-
-.flight-card-meta-info {
-  min-width: 0;
-
-  flex: 1;
-}
-
-.flight-card-meta-info strong {
+.flight-card-column small {
   display: block;
 
-  color: #555555;
-
-  font-size: 9px;
-  line-height: 1.3;
-  font-weight: 600;
-
-  white-space: nowrap;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.flight-card-meta-info span {
-  display: block;
-
-  margin-top: 3px;
+  margin-top: 2px;
 
   color: #a0a0a0;
 
-  font-size: 8px;
-  line-height: 1.2;
-  font-weight: 400;
-
-  white-space: nowrap;
+  font-size: 6.5px;
 }
 
 /* ========================================
-   STATUS
-======================================== */
-
-.flight-card-status {
-  flex: 0 0 auto;
-
-  min-height: 22px;
-
-  padding: 0 7px;
-
-  border-radius: 6px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 8px;
-  line-height: 1;
-  font-weight: 600;
-
-  white-space: nowrap;
-}
-
-/* ON TIME */
-
-.flight-card-status-on-time {
-  background: #edf7ef;
-
-  color: #68a175;
-}
-
-/* DELAYED */
-
-.flight-card-status-delayed {
-  background: #fff4e6;
-
-  color: #c48b43;
-}
-
-/* IN AIR */
-
-.flight-card-status-in-air {
-  background: #edf4fb;
-
-  color: #658fae;
-}
-
-/* SCHEDULED */
-
-.flight-card-status-scheduled {
-  background: #f2f2f2;
-
-  color: #818181;
-}
-
-/* CANCELLED */
-
-.flight-card-status-cancelled {
-  background: #fbecec;
-
-  color: #bb6868;
-}
-
-/* ========================================
-   KEYBOARD FOCUS
+   FOCUS
 ======================================== */
 
 .flight-card:focus-visible {
-  position: relative;
+  outline: 2px solid
+    rgba(223, 189, 81, 0.5);
 
-  z-index: 2;
-
-  box-shadow:
-    inset 0 0 0 2px
-    rgba(217, 186, 89, 0.55);
-}
-
-/* ========================================
-   SMALL WIDTH
-======================================== */
-
-@media (max-width: 1000px) {
-  .flight-card {
-    padding:
-      13px
-      13px
-      12px;
-  }
-
-  .flight-card-route {
-    grid-template-columns:
-      minmax(0, 1fr)
-      38px
-      minmax(0, 1fr);
-  }
+  outline-offset: 2px;
 }

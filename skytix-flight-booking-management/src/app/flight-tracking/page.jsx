@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 
 import MainLayout from "@/components/layout/MainLayout/MainLayout";
+import Header from "@/components/layout/Header/Header";
+import Footer from "@/components/layout/Footer/Footer";
 
 import FlightList from "@/components/FlightTracking/FlightList/FlightList";
 import FlightMap from "@/components/FlightTracking/FlightMap/FlightMap";
@@ -14,45 +16,20 @@ import {
   flights as initialFlights,
 } from "@/components/FlightTracking/data/flights";
 
-import {
-  FiBell,
-  FiHelpCircle,
-  FiSettings,
-  FiChevronDown,
-} from "react-icons/fi";
-
 import "./page.scss";
 
 export default function FlightTrackingPage() {
-  /* ========================================
-     ADMIN MENU
-  ======================================== */
-
-  const [adminMenuOpen, setAdminMenuOpen] =
-    useState(false);
-
-  /* ========================================
-     FLIGHTS
-  ======================================== */
-
-  const [flights] = useState(() =>
+  const [flights, setFlights] = useState(() =>
     initialFlights.map((flight) => ({
       ...flight,
+      from: { ...flight.from },
+      to: { ...flight.to },
+      aircraft: { ...flight.aircraft },
     }))
   );
 
-  /* ========================================
-     SELECTED FLIGHT
-  ======================================== */
-
   const [selectedFlightId, setSelectedFlightId] =
-    useState(
-      initialFlights[0]?.id ?? null
-    );
-
-  /* ========================================
-     SELECTED FLIGHT DATA
-  ======================================== */
+    useState(initialFlights[0]?.id ?? null);
 
   const selectedFlight = useMemo(() => {
     return (
@@ -63,17 +40,67 @@ export default function FlightTrackingPage() {
       flights[0] ||
       null
     );
-  }, [
-    flights,
-    selectedFlightId,
-  ]);
-
-  /* ========================================
-     SELECT FLIGHT
-  ======================================== */
+  }, [flights, selectedFlightId]);
 
   const handleSelectFlight = (flightId) => {
     setSelectedFlightId(flightId);
+  };
+
+  const handleAddFlight = () => {
+    const nextId =
+      flights.reduce(
+        (highest, flight) =>
+          Math.max(highest, flight.id),
+        0
+      ) + 1;
+
+    const newFlight = {
+      id: nextId,
+
+      flightNumber: `SK${String(
+        1000 + nextId
+      )}`,
+
+      airline: "Skytix Airlines",
+
+      from: {
+        code: "DEL",
+        city: "New Delhi",
+        time: "9:00 AM",
+      },
+
+      to: {
+        code: "DXB",
+        city: "Dubai",
+        time: "11:30 AM",
+      },
+
+      date: "July 1, 2028",
+
+      status: "Scheduled",
+
+      duration: "4 h 00 m",
+
+      speed: "0",
+      speedUnit: "km/h",
+
+      altitude: "0",
+      altitudeUnit: "feet",
+
+      passengers: 208,
+
+      aircraft: {
+        type: "Airbus A350",
+        registration: `VT-SK${nextId}`,
+      },
+    };
+
+    setFlights((current) => [
+      newFlight,
+      ...current,
+    ]);
+
+    setSelectedFlightId(newFlight.id);
   };
 
   return (
@@ -83,144 +110,14 @@ export default function FlightTrackingPage() {
     >
       <main className="flight-tracking-page">
 
-        {/* =====================================
-            PAGE HEADER
-        ====================================== */}
-
-        <header className="flight-tracking-header">
-
-          <h1>
-            Flight Tracking
-          </h1>
-
-          <div className="flight-tracking-header-actions">
-
-            {/* NOTIFICATIONS */}
-
-            <button
-              type="button"
-              className="flight-tracking-header-icon"
-              aria-label="Notifications"
-            >
-              <FiBell />
-
-              <span className="flight-tracking-notification-dot" />
-            </button>
-
-            {/* HELP */}
-
-            <button
-              type="button"
-              className="flight-tracking-header-icon"
-              aria-label="Help"
-            >
-              <FiHelpCircle />
-            </button>
-
-            {/* SETTINGS */}
-
-            <button
-              type="button"
-              className="flight-tracking-header-icon"
-              aria-label="Settings"
-            >
-              <FiSettings />
-            </button>
-
-            {/* =================================
-                ADMIN
-            ================================= */}
-
-            <div className="flight-tracking-admin-wrapper">
-
-              <button
-                type="button"
-                className="flight-tracking-admin"
-                onClick={() =>
-                  setAdminMenuOpen(
-                    (current) => !current
-                  )
-                }
-                aria-expanded={adminMenuOpen}
-              >
-
-                <div className="flight-tracking-admin-avatar">
-                  MS
-                </div>
-
-                <div className="flight-tracking-admin-info">
-
-                  <strong>
-                    Martin Septimus
-                  </strong>
-
-                  <span>
-                    Admin
-                  </span>
-
-                </div>
-
-                <FiChevronDown
-                  className={`flight-tracking-admin-chevron ${
-                    adminMenuOpen
-                      ? "open"
-                      : ""
-                  }`}
-                />
-
-              </button>
-
-              {adminMenuOpen && (
-                <div className="flight-tracking-admin-dropdown">
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setAdminMenuOpen(false)
-                    }
-                  >
-                    My Profile
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setAdminMenuOpen(false)
-                    }
-                  >
-                    Settings
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setAdminMenuOpen(false)
-                    }
-                  >
-                    Sign Out
-                  </button>
-
-                </div>
-              )}
-
-            </div>
-
-          </div>
-
-        </header>
-
-        {/* =====================================
-            WORKSPACE
-        ====================================== */}
+        <Header
+          title="Flight Tracking"
+          showSearch={false}
+        />
 
         <section className="flight-tracking-workspace">
 
-          {/* ===================================
-              LEFT — FLIGHT LIST
-          ==================================== */}
-
           <aside className="flight-tracking-list-column">
-
             <FlightList
               flights={flights}
               selectedFlightId={
@@ -229,55 +126,37 @@ export default function FlightTrackingPage() {
               onSelectFlight={
                 handleSelectFlight
               }
+              onAddFlight={handleAddFlight}
             />
-
           </aside>
 
-          {/* ===================================
-              RIGHT
-          ==================================== */}
-
-          <section className="flight-tracking-main-column">
-
-            {/* MAP */}
+          <section className="flight-tracking-content">
 
             <div className="flight-tracking-map-area">
-
               <FlightMap
                 flight={selectedFlight}
               />
-
             </div>
-
-            {/* =================================
-                BOTTOM DETAILS
-            ================================== */}
 
             {selectedFlight && (
               <div className="flight-tracking-bottom">
 
                 <div className="flight-tracking-details-column">
-
                   <FlightDetails
                     flight={selectedFlight}
                   />
-
                 </div>
 
                 <div className="flight-tracking-stats-column">
-
                   <FlightStats
                     flight={selectedFlight}
                   />
-
                 </div>
 
                 <div className="flight-tracking-aircraft-column">
-
                   <AircraftDetails
                     flight={selectedFlight}
                   />
-
                 </div>
 
               </div>
@@ -286,6 +165,8 @@ export default function FlightTrackingPage() {
           </section>
 
         </section>
+
+        <Footer />
 
       </main>
     </MainLayout>

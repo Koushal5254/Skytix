@@ -3,6 +3,8 @@
 ======================================== */
 
 .routes-card {
+  position: relative;
+
   width: 100%;
   min-width: 0;
 
@@ -17,6 +19,8 @@
 ======================================== */
 
 .routes-header {
+  position: relative;
+
   width: 100%;
 
   margin-bottom: 13px;
@@ -26,6 +30,8 @@
   justify-content: space-between;
 
   gap: 12px;
+
+  z-index: 20;
 }
 
 .routes-header h5 {
@@ -36,6 +42,16 @@
   font-size: 13px;
   line-height: 1.2;
   font-weight: 700;
+}
+
+/* ========================================
+   MENU WRAPPER
+======================================== */
+
+.routes-menu-wrapper {
+  position: relative;
+
+  flex: 0 0 auto;
 }
 
 /* ========================================
@@ -74,10 +90,138 @@
   height: 16px;
 }
 
-.routes-more:hover {
+.routes-more:hover,
+.routes-more.active {
   background: #f6f6f6;
 
   color: #444444;
+}
+
+.routes-more:focus-visible {
+  outline: 2px solid
+    rgba(228, 198, 109, 0.6);
+
+  outline-offset: 2px;
+}
+
+/* ========================================
+   DROPDOWN
+======================================== */
+
+.routes-menu {
+  position: absolute;
+
+  top: calc(100% + 6px);
+  right: 0;
+
+  z-index: 50;
+
+  width: 165px;
+
+  padding: 5px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 10px 30px
+    rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+/* ========================================
+   MENU TITLE
+======================================== */
+
+.routes-menu-title {
+  margin: 0;
+
+  padding: 7px 8px 5px;
+
+  color: #aaaaaa;
+
+  font-size: 7px;
+  line-height: 1;
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.4px;
+}
+
+/* ========================================
+   MENU BUTTONS
+======================================== */
+
+.routes-menu button {
+  width: 100%;
+  min-height: 30px;
+
+  padding: 0 8px;
+
+  border: 0;
+  border-radius: 6px;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 8px;
+
+  color: #666666;
+
+  font-family: inherit;
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 500;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.routes-menu button:hover {
+  background: #f7f7f7;
+
+  color: #292929;
+}
+
+.routes-menu button.active {
+  background: #faf6e8;
+
+  color: #9a7c27;
+}
+
+.routes-menu button svg {
+  width: 11px;
+  height: 11px;
+
+  flex: 0 0 11px;
+}
+
+/* ========================================
+   MENU DIVIDER
+======================================== */
+
+.routes-menu-divider {
+  width: calc(100% - 8px);
+  height: 1px;
+
+  margin: 3px auto;
+
+  background: #eeeeee;
 }
 
 /* ========================================
@@ -104,13 +248,27 @@
 
   flex: 1 1 0;
 
-  padding: 11px 0;
+  padding: 11px 5px;
 
+  border: 0;
   border-bottom: 1px solid #f1f1f1;
+  border-radius: 6px;
+
+  background: transparent;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  font-family: inherit;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    padding 0.18s ease;
 }
 
 .route-item:first-child {
@@ -120,7 +278,26 @@
 .route-item:last-child {
   padding-bottom: 0;
 
-  border-bottom: 0;
+  border-bottom-color: transparent;
+}
+
+/* ========================================
+   ROUTE HOVER
+======================================== */
+
+.route-item:hover {
+  background: #fcfcfc;
+}
+
+.route-item.selected {
+  background: #faf7ed;
+}
+
+.route-item:focus-visible {
+  outline: 2px solid
+    rgba(228, 198, 109, 0.55);
+
+  outline-offset: -2px;
 }
 
 /* ========================================
@@ -153,6 +330,12 @@
   font-weight: 600;
 
   overflow-wrap: anywhere;
+}
+
+.route-item.selected h6 {
+  color: #292929;
+
+  font-weight: 700;
 }
 
 /* ========================================
@@ -197,6 +380,18 @@
   background: #e4c66d;
 
   border-radius: inherit;
+
+  transition:
+    width 0.3s ease;
+}
+
+/* ========================================
+   SELECTED PROGRESS
+======================================== */
+
+.route-item.selected
+  .route-progress {
+  background: #eee9d9;
 }
 
 /* ========================================
@@ -226,5 +421,25 @@
 @media (max-width: 1200px) {
   .routes-card {
     min-height: 330px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .routes-card {
+    min-height: auto;
+  }
+
+  .route-item {
+    flex: none;
+
+    min-height: 72px;
+  }
+
+  .routes-menu {
+    width: 160px;
   }
 }

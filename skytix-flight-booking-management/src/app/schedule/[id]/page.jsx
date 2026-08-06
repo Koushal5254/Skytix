@@ -13,12 +13,27 @@ import { flights } from "@/data/flights";
 
 import "@/styles/schedule-detail.scss";
 
-export default async function FlightDetailPage({ params }) {
+/* ========================================
+   FLIGHT DETAIL PAGE
+======================================== */
+
+export default async function FlightDetailPage({
+  params,
+}) {
   const { id } = await params;
 
+  /* ========================================
+     FIND FLIGHT
+  ======================================== */
+
   const flight = flights.find(
-    (item) => String(item.id) === String(id)
+    (item) =>
+      String(item.id) === String(id)
   );
+
+  /* ========================================
+     NOT FOUND
+  ======================================== */
 
   if (!flight) {
     notFound();
@@ -29,19 +44,43 @@ export default async function FlightDetailPage({ params }) {
       showHeader={false}
       showFooter={false}
     >
-      <div className="flight-detail-page">
+      <section className="flight-detail-page">
 
-        <ScheduleHeader showDescription={false} />
+        {/* =================================
+            SCHEDULE HEADER
+        ================================= */}
 
-        <DetailHeader flight={flight} />
+        <ScheduleHeader
+          showDescription={false}
+        />
 
-        <FlightSummary flight={flight} />
+        {/* =================================
+            DETAIL CONTENT
+        ================================= */}
 
-        <FlightTimeline flight={flight} />
+        <div className="flight-detail-content">
+
+          <DetailHeader
+            flight={flight}
+          />
+
+          <FlightSummary
+            flight={flight}
+          />
+
+          <FlightTimeline
+            flight={flight}
+          />
+
+        </div>
+
+        {/* =================================
+            FOOTER
+        ================================= */}
 
         <DetailFooter />
 
-      </div>
+      </section>
     </MainLayout>
   );
 }

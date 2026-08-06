@@ -1,223 +1,88 @@
+/* ========================================
+   PAYMENT DETAILS HEADER
+======================================== */
+
 .payment-details-header {
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 26px;
-}
-
-/* =====================================================
-   TOP HEADER
-===================================================== */
-
-.details-topbar {
-  width: 100%;
-
-  min-height: 52px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 30px;
-}
-
-.details-topbar h1 {
-  margin: 0;
-
-  color: #202020;
-
-  font-size: 28px;
-  line-height: 1.1;
-  font-weight: 700;
-
-  letter-spacing: -0.5px;
-}
-
-/* =====================================================
-   TOP RIGHT
-===================================================== */
-
-.details-topbar-right {
-  display: flex;
-  align-items: center;
-
-  gap: 10px;
-}
-
-/* =====================================================
-   ICON BUTTONS
-===================================================== */
-
-.details-icon-button {
   position: relative;
 
-  width: 42px;
-  height: 42px;
-
-  padding: 0;
-
-  border: 1px solid #eeeeee;
-  border-radius: 11px;
-
-  background: #ffffff;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #333333;
-
-  cursor: pointer;
-
-  transition:
-    border-color 0.2s ease,
-    background 0.2s ease,
-    transform 0.2s ease;
-}
-
-.details-icon-button svg {
-  width: 18px;
-  height: 18px;
-}
-
-.details-icon-button:hover {
-  border-color: #dfc36b;
-
-  transform: translateY(-1px);
-}
-
-.notification-dot {
-  position: absolute;
-
-  top: 8px;
-  right: 8px;
-
-  width: 7px;
-  height: 7px;
-
-  border-radius: 50%;
-
-  background: #ef4f4f;
-
-  border: 1px solid #ffffff;
-}
-
-/* =====================================================
-   PROFILE
-===================================================== */
-
-.details-profile {
-  min-width: 190px;
-  height: 52px;
-
-  margin-left: 2px;
-
-  display: grid;
-
-  grid-template-columns: 42px 1fr 18px;
-
-  align-items: center;
-
-  gap: 10px;
-}
-
-.details-profile-avatar {
-  width: 42px;
-  height: 42px;
-
-  border-radius: 11px;
-
-  background: #f0dda1;
-}
-
-.details-profile-info {
+  width: 100%;
   min-width: 0;
 
   display: flex;
   flex-direction: column;
 
-  gap: 3px;
+  gap: 20px;
 }
 
-.details-profile-info strong {
-  overflow: hidden;
+/* ========================================
+   SHARED HEADER
+======================================== */
 
-  color: #222222;
-
-  font-size: 14px;
-  line-height: 1.2;
-  font-weight: 600;
-
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.payment-details-header
+  > .layout-header {
+  width: 100%;
 }
 
-.details-profile-info span {
-  color: #999999;
-
-  font-size: 12px;
-  line-height: 1.2;
-  font-weight: 400;
-}
-
-.details-profile-arrow {
-  width: 16px;
-  height: 16px;
-
-  color: #777777;
-}
-
-/* =====================================================
-   SECOND ROW
-===================================================== */
+/* ========================================
+   ACTION ROW
+======================================== */
 
 .details-action-row {
   width: 100%;
+  min-width: 0;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  gap: 30px;
+  gap: 24px;
 }
 
-/* =====================================================
+/* ========================================
    BACK BUTTON
-===================================================== */
+======================================== */
 
 .details-back-button {
+  flex: 0 0 auto;
+
   padding: 0;
 
-  border: none;
+  border: 0;
+  outline: 0;
 
   background: transparent;
 
   display: inline-flex;
   align-items: center;
 
-  gap: 11px;
+  gap: 10px;
 
   color: #5e5e5e;
 
-  font-size: 14px;
+  font-family: inherit;
+  font-size: 11px;
+  line-height: 1;
   font-weight: 500;
 
-  cursor: pointer;
-
   white-space: nowrap;
+
+  cursor: pointer;
 }
+
+/* ========================================
+   BACK ICON
+======================================== */
 
 .details-back-icon {
   width: 30px;
   height: 30px;
 
+  flex: 0 0 30px;
+
+  border: 1px solid #eeeeee;
   border-radius: 8px;
 
   background: #ffffff;
-
-  border: 1px solid #eeeeee;
 
   display: flex;
   align-items: center;
@@ -226,199 +91,273 @@
   color: #555555;
 
   transition:
-    border-color 0.2s ease,
-    background 0.2s ease;
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
 }
 
 .details-back-icon svg {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
+
+  stroke-width: 1.8;
 }
 
-.details-back-button:hover .details-back-icon {
-  border-color: #e1c56e;
+.details-back-button:hover
+  .details-back-icon {
+  border-color: #e4c66d;
 
-  background: #fffaf0;
+  background: #fffdf7;
+
+  color: #292929;
 }
 
-/* =====================================================
+.details-back-button:active
+  .details-back-icon {
+  transform: translateX(-2px);
+}
+
+.details-back-button:focus-visible {
+  outline: 2px solid
+    rgba(228, 198, 109, 0.45);
+
+  outline-offset: 4px;
+
+  border-radius: 8px;
+}
+
+/* ========================================
    MEMBER CONTROLS
-===================================================== */
+======================================== */
 
 .details-member-controls {
+  min-width: 0;
+
   display: flex;
   align-items: center;
 
-  gap: 10px;
+  gap: 9px;
 }
 
-/* =====================================================
-   SEARCH INPUT
-===================================================== */
+/* ========================================
+   MEMBER SEARCH
+======================================== */
 
 .details-member-search {
   width: 330px;
-  height: 44px;
+  height: 38px;
 
-  padding: 0 15px;
+  min-width: 0;
+
+  padding: 0 13px;
 
   border: 1px solid #eeeeee;
-  border-radius: 10px;
+  border-radius: 9px;
 
   background: #ffffff;
 
   display: flex;
   align-items: center;
 
-  gap: 10px;
+  gap: 9px;
 
-  transition: border-color 0.2s ease;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
 }
 
 .details-member-search:focus-within {
-  border-color: #dfc36b;
+  border-color: #e4c66d;
+
+  box-shadow:
+    0 0 0 2px
+    rgba(228, 198, 109, 0.08);
 }
 
 .details-member-search > svg {
-  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
 
-  width: 17px;
-  height: 17px;
+  flex: 0 0 14px;
 
-  color: #9b9b9b;
+  color: #999999;
+
+  stroke-width: 1.8;
 }
 
 .details-member-search input {
-  flex: 1;
-
   width: 100%;
   min-width: 0;
 
   padding: 0;
 
-  border: none;
-  outline: none;
+  border: 0;
+  outline: 0;
 
   background: transparent;
 
-  color: #292929;
+  color: #444444;
 
-  font-size: 13px;
-  font-weight: 500;
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 400;
 }
 
-.details-member-search input::placeholder {
+.details-member-search
+  input::placeholder {
   color: #a0a0a0;
 
   opacity: 1;
 }
 
-/* =====================================================
+/* ========================================
    MEMBERSHIP FILTER
-===================================================== */
+======================================== */
 
 .details-membership-filter {
   position: relative;
 
   width: 100px;
-  height: 44px;
+  height: 38px;
 
-  flex-shrink: 0;
+  flex: 0 0 100px;
 }
 
 .details-membership-filter select {
   width: 100%;
   height: 100%;
 
-  padding: 0 34px 0 14px;
+  padding: 0 30px 0 12px;
 
   border: 1px solid #eeeeee;
-  border-radius: 10px;
-
-  outline: none;
+  border-radius: 9px;
+  outline: 0;
 
   appearance: none;
   -webkit-appearance: none;
 
   background: #ffffff;
 
-  color: #303030;
+  color: #444444;
 
-  font-size: 13px;
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1;
   font-weight: 500;
 
   cursor: pointer;
 
-  transition: border-color 0.2s ease;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
 }
 
-.details-membership-filter select:focus {
-  border-color: #dfc36b;
+.details-membership-filter
+  select:hover {
+  border-color: #dddddd;
+}
+
+.details-membership-filter
+  select:focus {
+  border-color: #e4c66d;
+
+  box-shadow:
+    0 0 0 2px
+    rgba(228, 198, 109, 0.08);
 }
 
 .details-membership-filter > svg {
   position: absolute;
 
   top: 50%;
-  right: 12px;
+  right: 10px;
+
+  width: 13px;
+  height: 13px;
 
   transform: translateY(-50%);
-
-  width: 15px;
-  height: 15px;
 
   color: #777777;
 
   pointer-events: none;
 }
 
-/* =====================================================
+/* ========================================
    SEARCH BUTTON
-===================================================== */
+======================================== */
 
 .details-search-button {
-  height: 44px;
+  height: 38px;
 
-  padding: 0 22px;
+  flex: 0 0 auto;
 
-  border: none;
-  border-radius: 10px;
+  padding: 0 20px;
+
+  border: 1px solid #e4c66d;
+  border-radius: 9px;
+  outline: 0;
 
   background: #e4c66d;
 
-  color: #222222;
+  color: #292929;
 
-  font-size: 13px;
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1;
   font-weight: 600;
 
   cursor: pointer;
 
   transition:
-    background 0.2s ease,
-    transform 0.2s ease;
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
 }
 
 .details-search-button:hover {
-  background: #d8b958;
+  background: #ddbd5d;
 
-  transform: translateY(-1px);
+  border-color: #ddbd5d;
 }
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
+.details-search-button:active {
+  transform: scale(0.97);
+}
+
+.details-search-button:focus-visible {
+  outline: 2px solid
+    rgba(228, 198, 109, 0.45);
+
+  outline-offset: 2px;
+}
+
+/* ========================================
+   LAPTOP
+======================================== */
 
 @media (max-width: 1200px) {
   .payment-details-header {
-    gap: 22px;
+    gap: 18px;
   }
 
+  .details-member-search {
+    width: 280px;
+  }
+}
+
+/* ========================================
+   SMALL LAPTOP
+======================================== */
+
+@media (max-width: 1050px) {
   .details-action-row {
     align-items: flex-start;
 
     flex-direction: column;
 
-    gap: 18px;
+    gap: 14px;
   }
 
   .details-member-controls {
@@ -426,31 +365,32 @@
   }
 
   .details-member-search {
-    flex: 1;
-
     width: auto;
+
+    flex: 1 1 auto;
   }
 }
 
-@media (max-width: 850px) {
-  .details-topbar {
-    align-items: flex-start;
+/* ========================================
+   TABLET
+======================================== */
 
-    flex-direction: column;
-  }
-
-  .details-topbar-right {
-    width: 100%;
-  }
-
-  .details-profile {
-    margin-left: auto;
+@media (max-width: 768px) {
+  .payment-details-header {
+    gap: 16px;
   }
 
   .details-member-controls {
+    width: 100%;
+
     display: grid;
 
-    grid-template-columns: 1fr 110px auto;
+    grid-template-columns:
+      minmax(0, 1fr)
+      100px
+      auto;
+
+    gap: 8px;
   }
 
   .details-member-search {
@@ -459,30 +399,56 @@
 
   .details-membership-filter {
     width: 100%;
+
+    flex: none;
   }
 }
 
+/* ========================================
+   MOBILE
+======================================== */
+
 @media (max-width: 600px) {
   .payment-details-header {
-    gap: 20px;
+    gap: 14px;
   }
 
-  .details-topbar h1 {
-    font-size: 25px;
-  }
-
-  .details-topbar-right {
-    flex-wrap: wrap;
-  }
-
-  .details-profile {
-    width: 100%;
-
-    margin-left: 0;
+  .details-action-row {
+    gap: 12px;
   }
 
   .details-member-controls {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      minmax(0, 1fr)
+      95px;
+  }
+
+  .details-member-search {
+    height: 36px;
+  }
+
+  .details-membership-filter {
+    height: 36px;
+  }
+
+  .details-search-button {
+    width: 100%;
+    height: 36px;
+
+    grid-column: 1 / -1;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 420px) {
+  .details-member-controls {
+    display: flex;
+    flex-direction: column;
+
+    align-items: stretch;
   }
 
   .details-member-search,
@@ -491,7 +457,7 @@
     width: 100%;
   }
 
-  .details-search-button {
-    height: 44px;
+  .details-membership-filter {
+    flex: none;
   }
 }

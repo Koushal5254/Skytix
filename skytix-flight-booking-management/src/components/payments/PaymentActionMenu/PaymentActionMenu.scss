@@ -5,31 +5,42 @@
 .payment-action-menu {
   position: absolute;
 
-  top: 36px;
+  z-index: 500;
+
+  top: calc(100% + 5px);
   right: 0;
 
   width: 132px;
 
   padding: 6px;
 
-  background: #ffffff;
+  border:
+    1px solid
+    #ededed;
 
-  border: 1px solid #ededed;
   border-radius: 10px;
 
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.08);
+  background: #ffffff;
 
   display: flex;
   flex-direction: column;
 
   gap: 2px;
 
-  z-index: 100;
+  box-sizing: border-box;
+
+  box-shadow:
+    0 10px 30px
+    rgba(
+      0,
+      0,
+      0,
+      0.08
+    );
 }
 
 /* ========================================
-   MENU BUTTON
+   BUTTON
 ======================================== */
 
 .payment-action-menu button {
@@ -38,8 +49,9 @@
 
   padding: 0 10px;
 
-  border: none;
+  border: 0;
   border-radius: 7px;
+  outline: 0;
 
   background: transparent;
 
@@ -51,6 +63,7 @@
   color: #4d4d4d;
 
   font-family: inherit;
+
   font-size: 11px;
   line-height: 1;
   font-weight: 500;
@@ -60,21 +73,38 @@
   cursor: pointer;
 
   transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
+    background 0.18s ease,
+    color 0.18s ease;
 }
 
-.payment-action-menu button:hover {
+.payment-action-menu
+  button:hover {
   background: #f7f7f7;
 
   color: #222222;
 }
 
+.payment-action-menu
+  button:focus-visible {
+  outline:
+    2px solid
+    rgba(
+      228,
+      198,
+      109,
+      0.5
+    );
+
+  outline-offset: -2px;
+}
+
 /* ========================================
-   ICONS
+   ICON
 ======================================== */
 
-.payment-action-menu button svg {
+.payment-action-menu
+  button
+  svg {
   width: 14px;
   height: 14px;
 
@@ -88,10 +118,16 @@
 ======================================== */
 
 .payment-action-divider {
-  width: calc(100% - 12px);
+  width:
+    calc(
+      100% - 12px
+    );
+
   height: 1px;
 
-  margin: 3px 6px;
+  margin:
+    3px
+    6px;
 
   background: #eeeeee;
 }
@@ -100,11 +136,13 @@
    DELETE
 ======================================== */
 
-.payment-action-menu .payment-action-delete {
+.payment-action-menu
+  .payment-action-delete {
   color: #d85c5c;
 }
 
-.payment-action-menu .payment-action-delete:hover {
+.payment-action-menu
+  .payment-action-delete:hover {
   background: #fff4f4;
 
   color: #c94444;

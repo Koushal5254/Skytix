@@ -1,11 +1,5 @@
 "use client";
 
-import {
-  FiActivity,
-  FiTrendingUp,
-  FiClock,
-} from "react-icons/fi";
-
 import "./FlightStats.scss";
 
 export default function FlightStats({
@@ -18,77 +12,35 @@ export default function FlightStats({
   return (
     <div className="flight-stats">
 
-      <h3>
-        Flight Stats
-      </h3>
+      <div className="flight-stat">
 
-      <div className="flight-stats-list">
+        <span>
+          Speed
+        </span>
 
-        <div className="flight-stat">
+        <strong>
+          {flight.speed}
 
-          <div className="flight-stat-icon">
-            <FiActivity />
-          </div>
+          <small>
+            {flight.speedUnit}
+          </small>
+        </strong>
 
-          <div className="flight-stat-content">
+      </div>
 
-            <span>
-              Speed
-            </span>
+      <div className="flight-stat">
 
-            <strong>
-              {flight.speed}
-              <small>
-                {flight.speedUnit}
-              </small>
-            </strong>
+        <span>
+          Altitude
+        </span>
 
-          </div>
+        <strong>
+          {flight.altitude}
 
-        </div>
-
-        <div className="flight-stat">
-
-          <div className="flight-stat-icon">
-            <FiTrendingUp />
-          </div>
-
-          <div className="flight-stat-content">
-
-            <span>
-              Altitude
-            </span>
-
-            <strong>
-              {flight.altitude}
-              <small>
-                {flight.altitudeUnit}
-              </small>
-            </strong>
-
-          </div>
-
-        </div>
-
-        <div className="flight-stat">
-
-          <div className="flight-stat-icon">
-            <FiClock />
-          </div>
-
-          <div className="flight-stat-content">
-
-            <span>
-              Duration
-            </span>
-
-            <strong>
-              {flight.duration}
-            </strong>
-
-          </div>
-
-        </div>
+          <small>
+            {flight.altitudeUnit}
+          </small>
+        </strong>
 
       </div>
 

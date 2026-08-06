@@ -1,161 +1,224 @@
 "use client";
 
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+
 import Chart from "react-apexcharts";
-import { FiChevronDown } from "react-icons/fi";
+
+import {
+  FiCheck,
+  FiChevronDown,
+} from "react-icons/fi";
 
 import Card from "@/components/common/Card/Card";
+
+import {
+  ticketSalesPeriods,
+} from "@/data/dashboardData";
 
 import "./TicketSalesChart.scss";
 
 export default function TicketSalesChart() {
-  const options = {
-    chart: {
-      toolbar: {
-        show: false,
+  const [period, setPeriod] = useState("week");
+  const [open, setOpen] = useState(false);
+
+  const ref = useRef(null);
+
+  const data = ticketSalesPeriods[period];
+
+  useEffect(() => {
+    const outside = (event) => {
+      if (
+        ref.current &&
+        !ref.current.contains(event.target)
+      ) {
+        setOpen(false);
+      }
+    };
+
+    const escape = (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", outside);
+    document.addEventListener("keydown", escape);
+
+    return () => {
+      document.removeEventListener("mousedown", outside);
+      document.removeEventListener("keydown", escape);
+    };
+  }, []);
+
+  const colors = useMemo(
+    () =>
+      data.data.map((_, index) =>
+        index === data.highlightIndex
+          ? "#E4C66D"
+          : "#252525"
+      ),
+    [data]
+  );
+
+  const options = useMemo(
+    () => ({
+      chart: {
+        toolbar: { show: false },
+        zoom: { enabled: false },
+        parentHeightOffset: 0,
       },
 
-      zoom: {
+      plotOptions: {
+        bar: {
+          borderRadius: 4,
+          columnWidth:
+            period === "month"
+              ? "34%"
+              : "42%",
+          distributed: true,
+        },
+      },
+
+      dataLabels: {
         enabled: false,
       },
 
-      parentHeightOffset: 0,
-    },
-
-    plotOptions: {
-      bar: {
-        borderRadius: 4,
-        columnWidth: "42%",
-        distributed: true,
-      },
-    },
-
-    dataLabels: {
-      enabled: false,
-    },
-
-    legend: {
-      show: false,
-    },
-
-    colors: [
-      "#252525",
-      "#252525",
-      "#252525",
-      "#E4C66D",
-      "#252525",
-      "#252525",
-      "#252525",
-    ],
-
-    grid: {
-      show: true,
-
-      borderColor: "#F0F0F0",
-
-      strokeDashArray: 0,
-
-      padding: {
-        top: 0,
-        right: 0,
-        bottom: -4,
-        left: 0,
-      },
-    },
-
-    xaxis: {
-      categories: [
-        "Sun",
-        "Mon",
-        "Tue",
-        "Wed",
-        "Thu",
-        "Fri",
-        "Sat",
-      ],
-
-      axisBorder: {
+      legend: {
         show: false,
       },
 
-      axisTicks: {
-        show: false,
-      },
+      colors,
 
-      labels: {
-        style: {
-          colors: "#999999",
-          fontSize: "9px",
-          fontWeight: 400,
+      grid: {
+        borderColor: "#f0f0f0",
+        padding: {
+          top: 0,
+          right: 0,
+          bottom: -4,
+          left: 0,
         },
       },
-    },
 
-    yaxis: {
-      min: 0,
-      max: 14,
-      tickAmount: 4,
+      xaxis: {
+        categories: data.categories,
 
-      labels: {
-        style: {
-          colors: "#A0A0A0",
-          fontSize: "9px",
-          fontWeight: 400,
+        axisBorder: {
+          show: false,
         },
 
-        formatter: (value) =>
-          `${Math.round(value)}k`,
-      },
-    },
+        axisTicks: {
+          show: false,
+        },
 
-    tooltip: {
-      theme: "light",
-
-      y: {
-        formatter: (value) =>
-          `${value}k tickets`,
+        labels: {
+          style: {
+            colors: data.categories.map(
+              () => "#999999"
+            ),
+            fontSize: "9px",
+          },
+        },
       },
-    },
-  };
+
+      yaxis: {
+        min: 0,
+        max: 14,
+        tickAmount: 4,
+
+        labels: {
+          style: {
+            colors: ["#a0a0a0"],
+            fontSize: "9px",
+          },
+
+          formatter: (value) =>
+            `${Math.round(value)}k`,
+        },
+      },
+
+      tooltip: {
+        marker: {
+          show: false,
+        },
+
+        y: {
+          formatter: (value) =>
+            `${value}k tickets`,
+        },
+      },
+    }),
+    [data, colors, period]
+  );
 
   const series = [
     {
       name: "Tickets",
-      data: [
-        8,
-        10,
-        9,
-        11,
-        10,
-        12,
-        9,
-      ],
+      data: data.data,
     },
   ];
 
   return (
     <Card className="ticket-sales-card">
-
       <div className="ticket-sales-header">
-
         <div className="ticket-sales-heading">
           <h5>Ticket Sales</h5>
 
           <div className="ticket-sales-value">
-            <strong>12,500</strong>
-
+            <strong>{data.total}</strong>
             <span>Tickets Sold</span>
           </div>
         </div>
 
-        <button
-          type="button"
-          className="ticket-sales-filter"
+        <div
+          className="ticket-sales-filter-wrapper"
+          ref={ref}
         >
-          <span>This Week</span>
+          <button
+            type="button"
+            className={`ticket-sales-filter ${
+              open ? "active" : ""
+            }`}
+            onClick={() =>
+              setOpen((value) => !value)
+            }
+          >
+            {data.label}
+            <FiChevronDown />
+          </button>
 
-          <FiChevronDown />
-        </button>
+          {open && (
+            <div className="ticket-sales-dropdown">
+              {Object.entries(
+                ticketSalesPeriods
+              ).map(([key, item]) => (
+                <button
+                  type="button"
+                  key={key}
+                  className={
+                    period === key
+                      ? "selected"
+                      : ""
+                  }
+                  onClick={() => {
+                    setPeriod(key);
+                    setOpen(false);
+                  }}
+                >
+                  <span>{item.label}</span>
 
+                  {period === key && (
+                    <FiCheck />
+                  )}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="ticket-sales-chart">
@@ -166,7 +229,6 @@ export default function TicketSalesChart() {
           height="100%"
         />
       </div>
-
     </Card>
   );
 }

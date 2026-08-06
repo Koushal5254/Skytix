@@ -5,339 +5,21 @@
 .messages-page {
   width: 100%;
   min-width: 0;
-  min-height: 0;
-
-  height: calc(100vh - 40px);
-  max-height: calc(100vh - 40px);
 
   display: flex;
   flex-direction: column;
 
   gap: 14px;
-
-  overflow: hidden;
 }
 
 /* ========================================
-   PAGE HEADER
+   SHARED HEADER
 ======================================== */
 
-.messages-page-header {
+.messages-page > .layout-header {
   width: 100%;
-  min-width: 0;
 
-  height: 74px;
-
-  flex: 0 0 74px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 28px;
-}
-
-.messages-page-header h1 {
-  margin: 0;
-
-  color: #202020;
-
-  font-size: 29px;
-  line-height: 1.15;
-  font-weight: 700;
-
-  letter-spacing: -0.55px;
-
-  white-space: nowrap;
-}
-
-/* ========================================
-   HEADER ACTIONS
-======================================== */
-
-.messages-header-actions {
-  min-width: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  gap: 8px;
-}
-
-/* ========================================
-   HEADER ICON BUTTON
-======================================== */
-
-.messages-header-icon-btn {
-  position: relative;
-
-  width: 38px;
-  height: 38px;
-
-  flex: 0 0 38px;
-
-  padding: 0;
-
-  border: 0;
-  border-radius: 10px;
-  outline: 0;
-
-  background: transparent;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #929292;
-
-  cursor: pointer;
-
-  transition:
-    background 0.18s ease,
-    color 0.18s ease;
-}
-
-.messages-header-icon-btn svg {
-  width: 17px;
-  height: 17px;
-}
-
-.messages-header-icon-btn:hover {
-  background: #f3f3f3;
-
-  color: #292929;
-}
-
-.messages-header-icon-btn:focus-visible {
-  outline: 2px solid rgba(217, 186, 89, 0.6);
-
-  outline-offset: 2px;
-}
-
-/* ========================================
-   NOTIFICATION DOT
-======================================== */
-
-.messages-notification-dot {
-  position: absolute;
-
-  top: 6px;
-  right: 7px;
-
-  width: 5px;
-  height: 5px;
-
-  box-sizing: content-box;
-
-  background: #dfbd51;
-
-  border: 2px solid #f8f9fc;
-  border-radius: 50%;
-
-  pointer-events: none;
-}
-
-/* ========================================
-   ADMIN WRAPPER
-======================================== */
-
-.messages-admin-wrapper {
-  position: relative;
-
-  flex: 0 0 auto;
-
-  margin-left: 4px;
-}
-
-/* ========================================
-   ADMIN BUTTON
-======================================== */
-
-.messages-admin {
-  min-width: 180px;
-  height: 48px;
-
-  padding:
-    0
-    7px
-    0
-    4px;
-
-  border: 0;
-  border-radius: 11px;
-  outline: 0;
-
-  background: transparent;
-
-  display: grid;
-
-  grid-template-columns:
-    38px
-    minmax(0, 1fr)
-    15px;
-
-  align-items: center;
-
-  gap: 8px;
-
-  text-align: left;
-
-  cursor: pointer;
-
-  transition: background 0.18s ease;
-}
-
-.messages-admin:hover {
-  background: #f4f4f4;
-}
-
-.messages-admin:focus-visible {
-  outline: 2px solid rgba(217, 186, 89, 0.6);
-
-  outline-offset: 2px;
-}
-
-/* ========================================
-   ADMIN AVATAR
-======================================== */
-
-.messages-admin-avatar {
-  width: 38px;
-  height: 38px;
-
-  border-radius: 50%;
-
-  background: #efefef;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #505050;
-
-  font-size: 10px;
-  line-height: 1;
-  font-weight: 700;
-
-  user-select: none;
-}
-
-/* ========================================
-   ADMIN INFO
-======================================== */
-
-.messages-admin-info {
-  min-width: 0;
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 3px;
-}
-
-.messages-admin-info strong {
-  min-width: 0;
-
-  color: #242424;
-
-  font-size: 11px;
-  line-height: 1.2;
-  font-weight: 600;
-
-  white-space: nowrap;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.messages-admin-info span {
-  color: #999999;
-
-  font-size: 9px;
-  line-height: 1.2;
-  font-weight: 500;
-
-  white-space: nowrap;
-}
-
-/* ========================================
-   ADMIN CHEVRON
-======================================== */
-
-.messages-admin-chevron {
-  width: 14px;
-  height: 14px;
-
-  color: #999999;
-
-  transition: transform 0.18s ease;
-}
-
-.messages-admin-chevron.open {
-  transform: rotate(180deg);
-}
-
-/* ========================================
-   ADMIN DROPDOWN
-======================================== */
-
-.messages-admin-dropdown {
-  position: absolute;
-
-  top: calc(100% + 7px);
-  right: 0;
-
-  z-index: 100;
-
-  width: 175px;
-
-  padding: 7px;
-
-  background: #ffffff;
-
-  border: 1px solid #e9e9e9;
-  border-radius: 11px;
-
-  box-shadow:
-    0 12px 28px rgba(0, 0, 0, 0.08);
-}
-
-.messages-admin-dropdown button {
-  width: 100%;
-  height: 35px;
-
-  padding: 0 10px;
-
-  border: 0;
-  border-radius: 8px;
-  outline: 0;
-
-  background: transparent;
-
-  display: flex;
-  align-items: center;
-
-  color: #444444;
-
-  font-family: inherit;
-  font-size: 10px;
-  line-height: 1;
-  font-weight: 500;
-
-  text-align: left;
-
-  cursor: pointer;
-
-  transition:
-    background 0.18s ease,
-    color 0.18s ease;
-}
-
-.messages-admin-dropdown button:hover {
-  background: #f6f6f6;
-
-  color: #202020;
+  flex: 0 0 68px;
 }
 
 /* ========================================
@@ -348,9 +30,9 @@
   width: 100%;
 
   min-width: 0;
-  min-height: 0;
 
-  flex: 1 1 0;
+  height: calc(100vh - 180px);
+  min-height: 580px;
 
   display: grid;
   align-items: stretch;
@@ -368,15 +50,6 @@
 
 /* ========================================
    PROFILE OPEN
-
-   The screenshot works better with:
-   Left    ~29%
-   Chat    ~50%
-   Profile ~21%
-
-   The left column gets slightly more room
-   for names/message previews while keeping
-   the center chat dominant.
 ======================================== */
 
 .messages-workspace.profile-open {
@@ -397,7 +70,7 @@
 }
 
 /* ========================================
-   WORKSPACE COLUMNS
+   COLUMNS
 ======================================== */
 
 .messages-list-column,
@@ -413,7 +86,7 @@
 }
 
 /* ========================================
-   LEFT COLUMN
+   LEFT
 ======================================== */
 
 .messages-list-column {
@@ -423,7 +96,7 @@
 }
 
 /* ========================================
-   CENTER COLUMN
+   CENTER
 ======================================== */
 
 .messages-chat-column {
@@ -433,7 +106,7 @@
 }
 
 /* ========================================
-   PROFILE CLOSED CENTER
+   PROFILE CLOSED
 ======================================== */
 
 .messages-workspace.profile-closed
@@ -442,7 +115,7 @@
 }
 
 /* ========================================
-   RIGHT COLUMN
+   RIGHT
 ======================================== */
 
 .messages-profile-column {
@@ -461,220 +134,6 @@
 
   min-width: 0;
   min-height: 0;
-}
-
-/* ========================================
-   LARGE DESKTOP
-======================================== */
-
-@media (min-width: 1600px) {
-  .messages-page-header {
-    height: 76px;
-
-    flex-basis: 76px;
-  }
-
-  .messages-workspace.profile-open {
-    grid-template-columns:
-      minmax(330px, 29%)
-      minmax(540px, 50%)
-      minmax(285px, 21%);
-  }
-
-  .messages-workspace.profile-closed {
-    grid-template-columns:
-      minmax(330px, 29%)
-      minmax(0, 71%);
-  }
-}
-
-/* ========================================
-   STANDARD LAPTOP
-======================================== */
-
-@media (max-width: 1450px) {
-  .messages-workspace.profile-open {
-    grid-template-columns:
-      minmax(285px, 29%)
-      minmax(430px, 49%)
-      minmax(250px, 22%);
-  }
-
-  .messages-workspace.profile-closed {
-    grid-template-columns:
-      minmax(285px, 29%)
-      minmax(0, 71%);
-  }
-
-  .messages-admin {
-    min-width: 175px;
-  }
-}
-
-/* ========================================
-   SMALL LAPTOP
-======================================== */
-
-@media (max-width: 1200px) {
-  .messages-workspace.profile-open,
-  .messages-workspace.profile-closed {
-    grid-template-columns:
-      290px
-      minmax(0, 1fr);
-  }
-
-  .messages-profile-column {
-    display: none;
-  }
-
-  .messages-chat-column {
-    border-right: 0;
-  }
-}
-
-/* ========================================
-   TABLET
-======================================== */
-
-@media (max-width: 900px) {
-  .messages-page {
-    height: calc(100vh - 30px);
-    max-height: calc(100vh - 30px);
-
-    gap: 12px;
-  }
-
-  .messages-page-header {
-    height: 58px;
-
-    flex-basis: 58px;
-  }
-
-  .messages-page-header h1 {
-    font-size: 26px;
-  }
-
-  .messages-header-actions {
-    gap: 5px;
-  }
-
-  .messages-admin {
-    min-width: 165px;
-  }
-
-  .messages-workspace {
-    border-radius: 17px;
-  }
-
-  .messages-workspace.profile-open,
-  .messages-workspace.profile-closed {
-    grid-template-columns:
-      275px
-      minmax(0, 1fr);
-  }
-}
-
-/* ========================================
-   MOBILE
-======================================== */
-
-@media (max-width: 700px) {
-  .messages-page {
-    height: calc(100vh - 24px);
-    max-height: calc(100vh - 24px);
-
-    gap: 10px;
-  }
-
-  .messages-page-header {
-    height: 52px;
-
-    flex-basis: 52px;
-
-    gap: 10px;
-  }
-
-  .messages-page-header h1 {
-    font-size: 23px;
-  }
-
-  .messages-header-actions {
-    gap: 2px;
-  }
-
-  .messages-header-icon-btn {
-    width: 35px;
-    height: 35px;
-
-    flex-basis: 35px;
-  }
-
-  .messages-header-icon-btn svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  /* ========================================
-     MOBILE ADMIN
-  ======================================== */
-
-  .messages-admin {
-    width: 56px;
-    min-width: 56px;
-    height: 40px;
-
-    padding: 0 3px;
-
-    grid-template-columns:
-      33px
-      13px;
-
-    gap: 3px;
-  }
-
-  .messages-admin-avatar {
-    width: 33px;
-    height: 33px;
-
-    font-size: 9px;
-  }
-
-  .messages-admin-info {
-    display: none;
-  }
-
-  /* ========================================
-     MOBILE WORKSPACE
-  ======================================== */
-
-  .messages-workspace,
-  .messages-workspace.profile-open,
-  .messages-workspace.profile-closed {
-    width: 100%;
-
-    min-width: 0;
-    min-height: 0;
-
-    flex: 1 1 0;
-
-    display: block;
-
-    border-radius: 15px;
-
-    overflow: hidden;
-  }
-
-  .messages-list-column {
-    width: 100%;
-    height: 100%;
-
-    border-right: 0;
-  }
-
-  .messages-chat-column,
-  .messages-profile-column {
-    display: none;
-  }
 }
 
 /* ========================================
@@ -729,20 +188,192 @@
 }
 
 /* ========================================
+   FOOTER
+======================================== */
+
+.messages-page > .schedule-footer {
+  width: 100%;
+
+  flex: 0 0 auto;
+
+  margin-top: 4px;
+}
+
+/* ========================================
+   LARGE DESKTOP
+======================================== */
+
+@media (min-width: 1600px) {
+  .messages-page {
+    gap: 16px;
+  }
+
+  .messages-workspace {
+    min-height: 620px;
+  }
+
+  .messages-workspace.profile-open {
+    grid-template-columns:
+      minmax(330px, 29%)
+      minmax(540px, 50%)
+      minmax(285px, 21%);
+  }
+
+  .messages-workspace.profile-closed {
+    grid-template-columns:
+      minmax(330px, 29%)
+      minmax(0, 71%);
+  }
+}
+
+/* ========================================
+   STANDARD LAPTOP
+======================================== */
+
+@media (max-width: 1450px) {
+  .messages-workspace.profile-open {
+    grid-template-columns:
+      minmax(285px, 29%)
+      minmax(430px, 49%)
+      minmax(250px, 22%);
+  }
+
+  .messages-workspace.profile-closed {
+    grid-template-columns:
+      minmax(285px, 29%)
+      minmax(0, 71%);
+  }
+}
+
+/* ========================================
+   SMALL LAPTOP
+======================================== */
+
+@media (max-width: 1200px) {
+  .messages-workspace.profile-open,
+  .messages-workspace.profile-closed {
+    grid-template-columns:
+      290px
+      minmax(0, 1fr);
+  }
+
+  .messages-profile-column {
+    display: none;
+  }
+
+  .messages-chat-column {
+    border-right: 0;
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .messages-page {
+    gap: 12px;
+  }
+
+  .messages-page > .layout-header {
+    flex-basis: 64px;
+  }
+
+  .messages-workspace {
+    height: calc(100vh - 170px);
+
+    min-height: 540px;
+
+    border-radius: 17px;
+  }
+
+  .messages-workspace.profile-open,
+  .messages-workspace.profile-closed {
+    grid-template-columns:
+      275px
+      minmax(0, 1fr);
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+  .messages-page {
+    gap: 10px;
+  }
+
+  .messages-page > .layout-header {
+    flex: 0 0 auto;
+  }
+
+  .messages-workspace,
+  .messages-workspace.profile-open,
+  .messages-workspace.profile-closed {
+    width: 100%;
+
+    height: 620px;
+    min-height: 620px;
+
+    display: block;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+  }
+
+  .messages-list-column {
+    width: 100%;
+    height: 100%;
+
+    border-right: 0;
+  }
+
+  .messages-chat-column,
+  .messages-profile-column {
+    display: none;
+  }
+
+  .messages-page > .schedule-footer {
+    margin-top: 2px;
+  }
+}
+
+/* ========================================
    SMALL MOBILE
 ======================================== */
 
 @media (max-width: 480px) {
-  .messages-page-header h1 {
-    font-size: 21px;
+  .messages-page {
+    gap: 8px;
   }
 
-  .messages-header-icon-btn:nth-of-type(2),
-  .messages-header-icon-btn:nth-of-type(3) {
-    display: none;
+  .messages-workspace,
+  .messages-workspace.profile-open,
+  .messages-workspace.profile-closed {
+    height: 580px;
+    min-height: 580px;
+
+    border-radius: 14px;
   }
 
-  .messages-admin-dropdown {
-    width: 160px;
+  .messages-empty-chat {
+    padding: 22px;
+  }
+
+  .messages-empty-chat > svg {
+    width: 28px;
+    height: 28px;
+
+    margin-bottom: 12px;
+  }
+
+  .messages-empty-chat h2 {
+    font-size: 15px;
+  }
+
+  .messages-empty-chat p {
+    font-size: 9px;
   }
 }

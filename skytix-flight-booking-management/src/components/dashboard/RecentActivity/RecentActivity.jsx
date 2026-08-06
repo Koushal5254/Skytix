@@ -1,5 +1,16 @@
+"use client";
+
 import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+
+import {
+  FiCheck,
   FiMoreHorizontal,
+  FiRefreshCw,
 } from "react-icons/fi";
 
 import Card from "@/components/common/Card/Card";
@@ -11,73 +22,146 @@ import {
 import "./RecentActivity.scss";
 
 export default function RecentActivity() {
+  const [menuOpen, setMenuOpen] =
+    useState(false);
+
+  const [viewMode, setViewMode] =
+    useState("all");
+
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const outside = (event) => {
+      if (
+        ref.current &&
+        !ref.current.contains(event.target)
+      ) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", outside);
+
+    return () =>
+      document.removeEventListener(
+        "mousedown",
+        outside
+      );
+  }, []);
+
+  const displayed = useMemo(
+    () =>
+      viewMode === "recent"
+        ? activities.slice(0, 3)
+        : activities,
+    [viewMode]
+  );
+
   return (
     <Card className="activity-card">
-
-      {/* HEADER */}
-
       <div className="activity-header">
+        <h5>Recent Activity</h5>
 
-        <h5>
-          Recent Activity
-        </h5>
-
-        <button
-          type="button"
-          className="activity-more"
-          aria-label="More activity options"
+        <div
+          className="activity-menu-wrapper"
+          ref={ref}
         >
-          <FiMoreHorizontal />
-        </button>
+          <button
+            type="button"
+            className={`activity-more ${
+              menuOpen ? "active" : ""
+            }`}
+            onClick={() =>
+              setMenuOpen(
+                (value) => !value
+              )
+            }
+          >
+            <FiMoreHorizontal />
+          </button>
 
+          {menuOpen && (
+            <div className="activity-menu">
+              <button
+                type="button"
+                className={
+                  viewMode === "all"
+                    ? "active"
+                    : ""
+                }
+                onClick={() => {
+                  setViewMode("all");
+                  setMenuOpen(false);
+                }}
+              >
+                <span>All Activity</span>
+
+                {viewMode === "all" && (
+                  <FiCheck />
+                )}
+              </button>
+
+              <button
+                type="button"
+                className={
+                  viewMode === "recent"
+                    ? "active"
+                    : ""
+                }
+                onClick={() => {
+                  setViewMode("recent");
+                  setMenuOpen(false);
+                }}
+              >
+                <span>Recent Only</span>
+
+                {viewMode ===
+                  "recent" && (
+                  <FiCheck />
+                )}
+              </button>
+
+              <div className="activity-menu-divider" />
+
+              <button
+                type="button"
+                onClick={() => {
+                  setViewMode("all");
+                  setMenuOpen(false);
+                }}
+              >
+                <span>Refresh</span>
+                <FiRefreshCw />
+              </button>
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* ACTIVITY LIST */}
-
       <div className="activity-list">
-
-        {activities.map(
+        {displayed.map(
           (item, index) => (
-
             <div
-              key={item.id}
               className="activity-item"
+              key={item.id}
             >
-
-              {/* TIMELINE */}
-
               <div className="activity-timeline">
-
                 <span className="activity-dot" />
 
                 {index !==
-                  activities.length - 1 && (
+                  displayed.length - 1 && (
                   <span className="activity-line" />
                 )}
-
               </div>
-
-              {/* CONTENT */}
 
               <div className="activity-content">
-
-                <p>
-                  {item.text}
-                </p>
-
-                <small>
-                  {item.time}
-                </small>
-
+                <p>{item.text}</p>
+                <small>{item.time}</small>
               </div>
-
             </div>
-
           )
         )}
-
       </div>
-
     </Card>
   );
 }

@@ -1,49 +1,30 @@
 "use client";
 
 import {
-  FaReact,
-  FaCrown,
-  FaPlaneDeparture,
-  FaSuitcaseRolling,
-  FaUtensils,
-  FaChair,
-} from "react-icons/fa";
-
-import {
-  FiMail,
-  FiMessageCircle,
+  FiMoreHorizontal,
+  FiAward,
   FiCheck,
+  FiMail,
+  FiPhone,
 } from "react-icons/fi";
 
 import "./ProfileCard.scss";
 
+/* ========================================
+   MEMBER BENEFITS
+======================================== */
+
 const benefits = [
-  {
-    id: 1,
-    icon: FaPlaneDeparture,
-    label: "Priority Boarding",
-  },
-  {
-    id: 2,
-    icon: FaSuitcaseRolling,
-    label: "Extra Baggage Allowance",
-  },
-  {
-    id: 3,
-    icon: FiCheck,
-    label: "Lounge Access",
-  },
-  {
-    id: 4,
-    icon: FaUtensils,
-    label: "Complimentary Meals",
-  },
-  {
-    id: 5,
-    icon: FaChair,
-    label: "Free Seat Selection",
-  },
+  "Priority Boarding",
+  "Extra Baggage Allowance",
+  "Lounge Access",
+  "Complimentary In-Flight Meals",
+  "Free Seat Selection",
 ];
+
+/* ========================================
+   PROFILE DETAILS
+======================================== */
 
 const profileDetails = {
   1: {
@@ -131,149 +112,237 @@ const profileDetails = {
   },
 };
 
-export default function ProfileCard({ payment }) {
+/* ========================================
+   PROFILE CARD
+======================================== */
+
+export default function ProfileCard({
+  payment,
+}) {
   if (!payment) {
     return null;
   }
 
-  const profile = profileDetails[payment.id] || {
-    membership: "Gold Member",
-    points: "0",
-    email: "member@example.com",
-    phone: "Not available",
-  };
+  const profile =
+    profileDetails[payment.id] || {
+      membership: "Gold Member",
+      points: "0",
+      email: "member@example.com",
+      phone: "Not available",
+    };
+
+  /* ========================================
+     MAIL
+  ======================================== */
 
   const handleMail = () => {
-    window.location.href = `mailto:${profile.email}`;
+    window.location.href =
+      `mailto:${profile.email}`;
   };
 
+  /* ========================================
+     MESSAGE
+  ======================================== */
+
   const handleMessage = () => {
-    if (profile.phone === "Not available") {
+    if (
+      !profile.phone ||
+      profile.phone === "Not available"
+    ) {
       return;
     }
 
-    const phoneNumber = profile.phone.replace(/[^\d+]/g, "");
+    const phoneNumber =
+      profile.phone.replace(
+        /[^\d+]/g,
+        ""
+      );
 
-    window.location.href = `sms:${phoneNumber}`;
+    window.location.href =
+      `sms:${phoneNumber}`;
   };
 
   return (
-    <aside className="member-profile-card">
+    <aside className="profile-card">
 
-      {/* PROFILE */}
+      {/* =====================================
+          HEADER
+      ====================================== */}
 
-      <div className="member-profile-top">
+      <div className="profile-card-header">
 
-        <div className="member-avatar">
-          <FaReact />
-        </div>
-
-        <h2>{payment.name}</h2>
-
-        <div className="gold-member-badge">
-          <FaCrown />
-
-          <span>{profile.membership}</span>
-        </div>
-
-      </div>
-
-      {/* POINTS */}
-
-      <div className="member-points">
-
-        <div className="points-heading">
-          <span>Total Points</span>
-
-          <FaCrown />
-        </div>
-
-        <strong>{profile.points}</strong>
-
-        <p>Reward Points</p>
-
-      </div>
-
-      {/* BENEFITS */}
-
-      <section className="member-section">
-
-        <h3 className="member-section-title">
-          Member Benefits
-        </h3>
-
-        <div className="member-benefits">
-
-          {benefits.map((benefit) => {
-            const BenefitIcon = benefit.icon;
-
-            return (
-              <div
-                className="member-benefit"
-                key={benefit.id}
-              >
-
-                <div className="member-benefit-icon">
-                  <BenefitIcon />
-                </div>
-
-                <span>{benefit.label}</span>
-
-                <div className="member-benefit-check">
-                  <FiCheck />
-                </div>
-
-              </div>
-            );
-          })}
-
-        </div>
-
-      </section>
-
-      {/* CONTACT */}
-
-      <section className="member-contact">
-
-        <h3>Contact Details</h3>
-
-        <div className="contact-detail">
-          <span>Email</span>
-
-          <strong>{profile.email}</strong>
-        </div>
-
-        <div className="contact-detail">
-          <span>Phone Number</span>
-
-          <strong>{profile.phone}</strong>
-        </div>
-
-      </section>
-
-      {/* ACTIONS */}
-
-      <div className="member-actions">
+        <h3>Profile</h3>
 
         <button
           type="button"
-          className="member-mail-button"
+          className="profile-card-more"
+          aria-label="More profile options"
+        >
+          <FiMoreHorizontal />
+        </button>
+
+      </div>
+
+      {/* =====================================
+          AVATAR
+      ====================================== */}
+
+      <div className="profile-card-avatar" />
+
+      {/* =====================================
+          NAME
+      ====================================== */}
+
+      <div className="profile-card-name">
+
+        <h2>{payment.name}</h2>
+
+        <span
+          className="profile-verified"
+          aria-label="Verified member"
+        >
+          <FiCheck />
+        </span>
+
+      </div>
+
+      {/* =====================================
+          GOLD MEMBERSHIP CARD
+      ====================================== */}
+
+      <div className="profile-membership-card">
+
+        {/* GOLD TOP */}
+
+        <div className="profile-membership-top">
+
+          <div className="profile-membership-badge">
+            <FiAward />
+
+            <span>
+              {profile.membership}
+            </span>
+          </div>
+
+          <div className="profile-membership-watermark">
+            <FiAward />
+          </div>
+
+          <div className="profile-points">
+
+            <span className="profile-points-icon">
+              <span />
+              <span />
+              <span />
+            </span>
+
+            <strong>
+              {profile.points}
+            </strong>
+
+            <span className="profile-points-label">
+              Points
+            </span>
+
+          </div>
+
+        </div>
+
+        {/* BENEFITS */}
+
+        <div className="profile-benefits">
+
+          {benefits.map((benefit) => (
+            <div
+              className="profile-benefit"
+              key={benefit}
+            >
+
+              <span className="profile-benefit-check">
+                <FiCheck />
+              </span>
+
+              <span className="profile-benefit-text">
+                {benefit}
+              </span>
+
+            </div>
+          ))}
+
+        </div>
+
+      </div>
+
+      {/* =====================================
+          CONTACT INFORMATION
+      ====================================== */}
+
+      <div className="profile-contact-card">
+
+        <div className="profile-contact-row">
+
+          <div className="profile-contact-icon">
+            <FiMail />
+          </div>
+
+          <div className="profile-contact-info">
+
+            <span>Email</span>
+
+            <strong>
+              {profile.email}
+            </strong>
+
+          </div>
+
+        </div>
+
+        <div className="profile-contact-row">
+
+          <div className="profile-contact-icon">
+            <FiPhone />
+          </div>
+
+          <div className="profile-contact-info">
+
+            <span>
+              Phone Number
+            </span>
+
+            <strong>
+              {profile.phone}
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* =====================================
+          ACTIONS
+      ====================================== */}
+
+      <div className="profile-card-actions">
+
+        <button
+          type="button"
+          className="profile-mail-button"
           onClick={handleMail}
         >
-          <FiMail />
-
-          <span>Mail</span>
+          Mail
         </button>
 
         <button
           type="button"
-          className="member-message-button"
+          className="profile-message-button"
           onClick={handleMessage}
-          disabled={profile.phone === "Not available"}
+          disabled={
+            profile.phone ===
+            "Not available"
+          }
         >
-          <FiMessageCircle />
-
-          <span>Message</span>
+          Message
         </button>
 
       </div>

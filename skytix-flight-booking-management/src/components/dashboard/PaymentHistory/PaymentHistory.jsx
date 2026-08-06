@@ -1,10 +1,16 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 import {
   FiChevronDown,
   FiSearch,
+  FiX,
 } from "react-icons/fi";
 
 import Card from "@/components/common/Card/Card";
@@ -15,7 +21,7 @@ import {
 
 import "./PaymentHistory.scss";
 
-const filters = [
+const FILTERS = [
   "Latest",
   "Confirmed",
   "Pending",
@@ -24,175 +30,180 @@ const filters = [
 ];
 
 export default function PaymentHistory() {
-  const [searchTerm, setSearchTerm] =
+  const [search, setSearch] =
     useState("");
 
-  const [activeFilter, setActiveFilter] =
+  const [filter, setFilter] =
     useState("Latest");
 
-  const [filterOpen, setFilterOpen] =
+  const [open, setOpen] =
     useState(false);
 
-  /* ========================================
-     FILTERED PAYMENTS
-  ======================================== */
+  const ref = useRef(null);
 
-  const filteredPayments = useMemo(() => {
+  useEffect(() => {
+    const outside = (event) => {
+      if (
+        ref.current &&
+        !ref.current.contains(event.target)
+      ) {
+        setOpen(false);
+      }
+    };
+
+    const escape = (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", outside);
+    document.addEventListener("keydown", escape);
+
+    return () => {
+      document.removeEventListener("mousedown", outside);
+      document.removeEventListener("keydown", escape);
+    };
+  }, []);
+
+  const filtered = useMemo(() => {
     const query =
-      searchTerm.trim().toLowerCase();
+      search.trim().toLowerCase();
 
     let result = [...payments];
 
-    /* STATUS FILTER */
-
     if (
-      activeFilter !== "Latest" &&
-      activeFilter !== "All"
+      filter !== "Latest" &&
+      filter !== "All"
     ) {
       result = result.filter(
-        (payment) =>
-          payment.status === activeFilter
+        (item) =>
+          item.status === filter
       );
     }
 
-    /* SEARCH */
-
     if (query) {
-      result = result.filter((payment) =>
-        [
-          payment.name,
-          payment.bookingCode,
-          payment.date,
-          payment.route,
-          payment.airline,
-          payment.amount,
-          payment.status,
-        ].some((value) =>
-          String(value)
-            .toLowerCase()
-            .includes(query)
-        )
+      result = result.filter(
+        (item) =>
+          [
+            item.name,
+            item.bookingCode,
+            item.date,
+            item.route,
+            item.airline,
+            item.amount,
+            item.status,
+          ].some((value) =>
+            String(value)
+              .toLowerCase()
+              .includes(query)
+          )
+      );
+    }
+
+    if (filter === "Latest") {
+      result.sort(
+        (a, b) =>
+          b.id - a.id
       );
     }
 
     return result;
-  }, [
-    searchTerm,
-    activeFilter,
-  ]);
-
-  /* ========================================
-     SELECT FILTER
-  ======================================== */
-
-  const handleFilterSelect = (filter) => {
-    setActiveFilter(filter);
-
-    setFilterOpen(false);
-  };
+  }, [search, filter]);
 
   return (
     <Card className="payment-history-card">
-
-      {/* =====================================
-          HEADER
-      ====================================== */}
-
       <div className="payment-top">
+        <div className="payment-heading">
+          <h5>Payment History</h5>
 
-        <h5>
-          Payment History
-        </h5>
+          <span>
+            {filtered.length}{" "}
+            {filtered.length === 1
+              ? "payment"
+              : "payments"}
+          </span>
+        </div>
 
         <div className="payment-actions">
-
-          {/* SEARCH */}
-
           <div className="payment-search">
-
             <FiSearch />
 
             <input
               type="text"
-              value={searchTerm}
+              value={search}
               onChange={(event) =>
-                setSearchTerm(
+                setSearch(
                   event.target.value
                 )
               }
               placeholder="Search name, airline, etc"
-              aria-label="Search payment history"
             />
 
+            {search && (
+              <button
+                type="button"
+                className="payment-search-clear"
+                onClick={() =>
+                  setSearch("")
+                }
+              >
+                <FiX />
+              </button>
+            )}
           </div>
 
-          {/* FILTER */}
-
-          <div className="payment-filter-wrapper">
-
+          <div
+            className="payment-filter-wrapper"
+            ref={ref}
+          >
             <button
               type="button"
               className="payment-filter"
               onClick={() =>
-                setFilterOpen(
-                  (current) => !current
+                setOpen(
+                  (value) => !value
                 )
               }
-              aria-expanded={filterOpen}
             >
-              <span>
-                {activeFilter}
-              </span>
+              <span>{filter}</span>
 
               <FiChevronDown
                 className={
-                  filterOpen
-                    ? "open"
-                    : ""
+                  open ? "open" : ""
                 }
               />
-
             </button>
 
-            {filterOpen && (
+            {open && (
               <div className="payment-filter-menu">
-
-                {filters.map((filter) => (
-                  <button
-                    type="button"
-                    key={filter}
-                    className={
-                      activeFilter === filter
-                        ? "active"
-                        : ""
-                    }
-                    onClick={() =>
-                      handleFilterSelect(
-                        filter
-                      )
-                    }
-                  >
-                    {filter}
-                  </button>
-                ))}
-
+                {FILTERS.map(
+                  (item) => (
+                    <button
+                      key={item}
+                      type="button"
+                      className={
+                        filter === item
+                          ? "active"
+                          : ""
+                      }
+                      onClick={() => {
+                        setFilter(item);
+                        setOpen(false);
+                      }}
+                    >
+                      {item}
+                    </button>
+                  )
+                )}
               </div>
             )}
-
           </div>
-
         </div>
-
       </div>
 
-      {/* =====================================
-          TABLE
-      ====================================== */}
-
       <div className="payment-table-wrapper">
-
         <table className="payment-table">
-
           <thead>
             <tr>
               <th>Name</th>
@@ -206,73 +217,104 @@ export default function PaymentHistory() {
           </thead>
 
           <tbody>
+            {filtered.length ? (
+              filtered.map((item) => {
+                const status =
+                  item.status
+                    .toLowerCase()
+                    .replace(
+                      /\s+/g,
+                      "-"
+                    );
 
-            {filteredPayments.map(
-              (item, index) => (
+                return (
+                  <tr key={item.id}>
+                    <td>
+                      <strong className="payment-name">
+                        {item.name}
+                      </strong>
+                    </td>
 
-                <tr
-                  key={`${item.bookingCode}-${index}`}
-                >
+                    <td>
+                      {item.bookingCode}
+                    </td>
 
-                  <td>
-                    <strong className="payment-name">
-                      {item.name}
-                    </strong>
-                  </td>
+                    <td>
+                      {formatDate(
+                        item.date
+                      )}
+                    </td>
 
-                  <td>
-                    {item.bookingCode}
-                  </td>
+                    <td>{item.route}</td>
 
-                  <td>
-                    {item.date}
-                  </td>
+                    <td>
+                      {item.airline}
+                    </td>
 
-                  <td>
-                    {item.route}
-                  </td>
+                    <td>
+                      <strong className="payment-amount">
+                        {item.amount}
+                      </strong>
+                    </td>
 
-                  <td>
-                    {item.airline}
-                  </td>
-
-                  <td>
-                    <strong className="payment-amount">
-                      {item.amount}
-                    </strong>
-                  </td>
-
-                  <td>
-                    <span
-                      className={`payment-status ${item.status.toLowerCase()}`}
-                    >
-                      {item.status}
-                    </span>
-                  </td>
-
-                </tr>
-
-              )
-            )}
-
-            {filteredPayments.length ===
-              0 && (
+                    <td>
+                      <span
+                        className={`payment-status ${status}`}
+                      >
+                        {item.status}
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })
+            ) : (
               <tr>
                 <td
                   colSpan="7"
                   className="payment-empty"
                 >
-                  No payments found.
+                  <div className="payment-empty-content">
+                    <FiSearch />
+
+                    <strong>
+                      No payments found
+                    </strong>
+
+                    <span>
+                      Try changing your
+                      search or payment
+                      status.
+                    </span>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSearch("");
+                        setFilter(
+                          "Latest"
+                        );
+                      }}
+                    >
+                      Reset Filters
+                    </button>
+                  </div>
                 </td>
               </tr>
             )}
-
           </tbody>
-
         </table>
-
       </div>
-
     </Card>
   );
+}
+
+function formatDate(date) {
+  const [year, month, day] =
+    String(date).split("-");
+
+  if (!year || !month || !day) {
+    return date;
+  }
+
+  return `${day}/${month}/${year}`;
 }

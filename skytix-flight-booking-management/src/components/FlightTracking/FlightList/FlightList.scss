@@ -1,7 +1,3 @@
-/* ========================================
-   FLIGHT LIST
-======================================== */
-
 .flight-list {
   position: relative;
 
@@ -14,8 +10,6 @@
   display: flex;
   flex-direction: column;
 
-  background: #ffffff;
-
   overflow: hidden;
 }
 
@@ -26,11 +20,7 @@
 .flight-list-toolbar {
   position: relative;
 
-  width: 100%;
-
   flex: 0 0 auto;
-
-  padding: 16px;
 
   display: grid;
 
@@ -39,13 +29,9 @@
     38px
     38px;
 
-  align-items: center;
-
   gap: 7px;
 
-  background: #ffffff;
-
-  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 16px;
 }
 
 /* ========================================
@@ -53,86 +39,60 @@
 ======================================== */
 
 .flight-list-search {
-  width: 100%;
   height: 38px;
 
   min-width: 0;
 
-  padding: 0 10px;
+  padding: 0 11px;
 
-  border: 1px solid #e7e7e7;
   border-radius: 10px;
 
-  background: #ffffff;
+  background: #f6f6f6;
 
   display: flex;
   align-items: center;
 
   gap: 8px;
-
-  transition:
-    border-color 0.18s ease,
-    box-shadow 0.18s ease;
-}
-
-.flight-list-search:focus-within {
-  border-color: #d5b34d;
-
-  box-shadow:
-    0 0 0 2px
-    rgba(213, 179, 77, 0.08);
 }
 
 .flight-list-search > svg {
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
 
-  flex: 0 0 15px;
+  flex: 0 0 14px;
 
-  color: #9c9c9c;
+  color: #969696;
 }
 
 .flight-list-search input {
   width: 100%;
   min-width: 0;
 
-  flex: 1;
-
-  padding: 0;
-
   border: 0;
   outline: 0;
 
   background: transparent;
 
-  color: #333333;
+  color: #444444;
 
   font-family: inherit;
-  font-size: 10px;
-  line-height: 1.4;
-  font-weight: 500;
+  font-size: 9px;
 }
 
 .flight-list-search input::placeholder {
-  color: #a2a2a2;
-
-  opacity: 1;
+  color: #999999;
 }
 
-/* ========================================
-   CLEAR SEARCH
-======================================== */
+/* CLEAR */
 
 .flight-list-search-clear {
-  width: 22px;
-  height: 22px;
-
-  flex: 0 0 22px;
+  width: 20px;
+  height: 20px;
 
   padding: 0;
 
   border: 0;
-  border-radius: 6px;
+  border-radius: 50%;
 
   background: transparent;
 
@@ -140,70 +100,60 @@
   align-items: center;
   justify-content: center;
 
-  color: #a0a0a0;
+  color: #999999;
 
   cursor: pointer;
 }
 
-.flight-list-search-clear svg {
-  width: 12px;
-  height: 12px;
+.flight-list-search-clear:hover {
+  background: #ececec;
 }
 
-.flight-list-search-clear:hover {
-  background: #f4f4f4;
-
-  color: #444444;
+.flight-list-search-clear svg {
+  width: 11px;
+  height: 11px;
 }
 
 /* ========================================
-   TOOLBAR ACTION
+   FILTER
 ======================================== */
 
-.flight-list-action,
+.flight-list-filter-wrapper {
+  position: relative;
+}
+
+.flight-list-filter-button,
 .flight-list-add {
   width: 38px;
   height: 38px;
 
   padding: 0;
 
-  border-radius: 10px;
+  border-radius: 9px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   cursor: pointer;
-
-  transition:
-    background 0.18s ease,
-    border-color 0.18s ease,
-    color 0.18s ease;
 }
 
-.flight-list-action {
-  border: 1px solid #e7e7e7;
+.flight-list-filter-button {
+  border: 0;
 
-  background: #ffffff;
+  background: #f6f6f6;
 
-  color: #8d8d8d;
+  color: #777777;
 }
 
-.flight-list-action:hover {
-  background: #f7f7f7;
+.flight-list-filter-button:hover,
+.flight-list-filter-button.active {
+  background: #eee9da;
 
-  color: #333333;
+  color: #9d7d23;
 }
 
-.flight-list-action.active {
-  border-color: #d9bb5a;
-
-  background: #faf7eb;
-
-  color: #b49332;
-}
-
-.flight-list-action svg,
+.flight-list-filter-button svg,
 .flight-list-add svg {
   width: 15px;
   height: 15px;
@@ -214,25 +164,15 @@
 ======================================== */
 
 .flight-list-add {
-  border: 1px solid #dfbd51;
+  border: 0;
 
-  background: #dfbd51;
+  background: #e5c45e;
 
   color: #292929;
 }
 
 .flight-list-add:hover {
-  background: #d5b249;
-
-  border-color: #d5b249;
-}
-
-/* ========================================
-   FILTER WRAPPER
-======================================== */
-
-.flight-list-filter-wrapper {
-  position: relative;
+  background: #dabb57;
 }
 
 /* ========================================
@@ -242,17 +182,17 @@
 .flight-list-filter-menu {
   position: absolute;
 
-  top: calc(100% + 7px);
+  z-index: 100;
+
+  top: calc(100% + 6px);
   right: 0;
 
-  z-index: 50;
+  width: 150px;
 
-  width: 165px;
+  padding: 6px;
 
-  padding: 10px;
-
-  border: 1px solid #e8e8e8;
-  border-radius: 11px;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
 
   background: #ffffff;
 
@@ -261,54 +201,25 @@
     rgba(0, 0, 0, 0.09);
 }
 
-.flight-list-filter-head {
-  margin-bottom: 8px;
+.flight-list-filter-title {
+  padding: 6px 8px 8px;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  color: #999999;
 
-  gap: 10px;
-}
-
-.flight-list-filter-head strong {
-  color: #333333;
-
-  font-size: 10px;
-  font-weight: 700;
-}
-
-.flight-list-filter-head button {
-  padding: 0;
-
-  border: 0;
-
-  background: transparent;
-
-  color: #b79636;
-
-  font-family: inherit;
   font-size: 8px;
   font-weight: 600;
 
-  cursor: pointer;
+  text-transform: uppercase;
 }
 
-.flight-list-filter-options {
-  display: flex;
-  flex-direction: column;
-
-  gap: 3px;
-}
-
-.flight-list-filter-options button {
+.flight-list-filter-menu button {
   width: 100%;
-  height: 29px;
+  height: 30px;
 
   padding: 0 8px;
 
   border: 0;
-  border-radius: 7px;
+  border-radius: 6px;
 
   background: transparent;
 
@@ -316,85 +227,26 @@
 
   font-family: inherit;
   font-size: 9px;
-  font-weight: 500;
 
   text-align: left;
 
   cursor: pointer;
 }
 
-.flight-list-filter-options button:hover {
-  background: #f6f6f6;
-
-  color: #292929;
+.flight-list-filter-menu button:hover {
+  background: #f7f7f7;
 }
 
-.flight-list-filter-options button.active {
-  background: #faf7eb;
+.flight-list-filter-menu button.active {
+  background: #f8f1d9;
 
-  color: #a7872d;
+  color: #8f7021;
 
-  font-weight: 700;
-}
-
-/* ========================================
-   ACTIVE FILTER
-======================================== */
-
-.flight-list-active-filter {
-  flex: 0 0 auto;
-
-  padding: 0 16px 10px;
-
-  display: flex;
-  align-items: center;
-}
-
-.flight-list-active-filter > span {
-  min-height: 24px;
-
-  padding: 0 7px;
-
-  border-radius: 7px 0 0 7px;
-
-  background: #faf7eb;
-
-  display: inline-flex;
-  align-items: center;
-
-  color: #a88931;
-
-  font-size: 8px;
   font-weight: 600;
 }
 
-.flight-list-active-filter button {
-  width: 24px;
-  height: 24px;
-
-  padding: 0;
-
-  border: 0;
-  border-radius: 0 7px 7px 0;
-
-  background: #faf7eb;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #a88931;
-
-  cursor: pointer;
-}
-
-.flight-list-active-filter svg {
-  width: 11px;
-  height: 11px;
-}
-
 /* ========================================
-   SCROLL
+   LIST
 ======================================== */
 
 .flight-list-scroll {
@@ -405,27 +257,28 @@
 
   flex: 1 1 0;
 
+  padding-right: 4px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
   overflow-x: hidden;
   overflow-y: auto;
 
-  overscroll-behavior: contain;
-
   scrollbar-width: thin;
-  scrollbar-color: #d7d7d7 transparent;
+  scrollbar-color: #d8d8d8 transparent;
 }
 
 .flight-list-scroll::-webkit-scrollbar {
   width: 4px;
 }
 
-.flight-list-scroll::-webkit-scrollbar-track {
-  background: transparent;
-}
-
 .flight-list-scroll::-webkit-scrollbar-thumb {
-  background: #d7d7d7;
-
   border-radius: 10px;
+
+  background: #d8d8d8;
 }
 
 /* ========================================
@@ -433,14 +286,14 @@
 ======================================== */
 
 .flight-list-empty {
-  min-height: 180px;
-
-  padding: 30px 20px;
+  min-height: 200px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  color: #999999;
 
   text-align: center;
 }
@@ -450,41 +303,16 @@
   height: 20px;
 
   margin-bottom: 9px;
-
-  color: #b2b2b2;
 }
 
 .flight-list-empty strong {
   color: #555555;
 
   font-size: 10px;
-  font-weight: 700;
 }
 
 .flight-list-empty span {
-  max-width: 170px;
-
-  margin-top: 4px;
-
-  color: #999999;
+  margin-top: 5px;
 
   font-size: 8px;
-  line-height: 1.5;
-}
-
-/* ========================================
-   SMALL WIDTH
-======================================== */
-
-@media (max-width: 1000px) {
-  .flight-list-toolbar {
-    padding:
-      14px
-      13px;
-  }
-
-  .flight-list-active-filter {
-    padding-left: 13px;
-    padding-right: 13px;
-  }
 }

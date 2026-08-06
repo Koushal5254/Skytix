@@ -5,69 +5,162 @@ import FlightDetailCard from "../FlightDetailCard/FlightDetailCard";
 import "./FlightTimeline.scss";
 
 export default function FlightTimeline({ flight }) {
+  if (!flight) {
+    return null;
+  }
+
+  const departure =
+    flight.departure ||
+    flight.departureDetails ||
+    {};
+
+  const arrival =
+    flight.arrival ||
+    flight.arrivalDetails ||
+    {};
+
+  const departureCode =
+    departure.code ||
+    flight.fromCode ||
+    departure.city ||
+    "";
+
+  const arrivalCode =
+    arrival.code ||
+    flight.toCode ||
+    arrival.city ||
+    "";
+
   return (
     <section className="flight-timeline">
 
       <div className="timeline-layout">
 
-        {/* TIME COLUMN */}
+        {/* =====================================
+            TIME / DURATION
+        ====================================== */}
 
         <div className="timeline-times">
 
           <div className="timeline-time departure-time">
-            <strong>{flight.departure.time}</strong>
-            <span>{flight.departure.date}</span>
+
+            {departure.time && (
+              <strong>
+                {departure.time}
+              </strong>
+            )}
+
+            {departure.date && (
+              <span>
+                {departure.date}
+              </span>
+            )}
+
           </div>
 
           <span className="timeline-duration">
-            {flight.duration}
+            {flight.duration || ""}
           </span>
 
           <div className="timeline-time arrival-time">
-            <strong>{flight.arrival.time}</strong>
-            <span>{flight.arrival.date}</span>
+
+            {arrival.time && (
+              <strong>
+                {arrival.time}
+              </strong>
+            )}
+
+            {arrival.date && (
+              <span>
+                {arrival.date}
+              </span>
+            )}
+
           </div>
 
         </div>
 
-        {/* LINE */}
+        {/* =====================================
+            TRACK
+        ====================================== */}
 
         <div className="timeline-track">
 
-          <span className="timeline-dot top" />
+          <span className="timeline-dot timeline-dot-top" />
 
-          <span className="timeline-line top-line" />
+          <span className="timeline-line timeline-line-top" />
 
-          <div className="timeline-plane">
+          <div
+            className="timeline-plane"
+            aria-hidden="true"
+          >
             <FaPlane />
           </div>
 
-          <span className="timeline-line bottom-line" />
+          <span className="timeline-line timeline-line-bottom" />
 
-          <span className="timeline-dot bottom" />
+          <span className="timeline-dot timeline-dot-bottom" />
 
         </div>
 
-        {/* CONTENT */}
+        {/* =====================================
+            CONTENT
+        ====================================== */}
 
         <div className="timeline-content">
 
-          <div className="timeline-location">
-            <h2>{flight.departure.city}</h2>
+          {/* DEPARTURE */}
 
-            <p>{flight.departure.airport}</p>
+          <div className="timeline-location timeline-departure-location">
 
-            <span>{flight.departure.terminal}</span>
+            <h2>
+              {departureCode}
+            </h2>
+
+            {departure.airport && (
+              <p>
+                {departure.airport}
+              </p>
+            )}
+
+            {departure.terminal && (
+              <span>
+                {departure.terminal}
+              </span>
+            )}
+
           </div>
 
-          <FlightDetailCard flight={flight} />
+          {/* FLIGHT CARD */}
 
-          <div className="timeline-location">
-            <h2>{flight.arrival.city}</h2>
+          <div className="timeline-flight-card">
 
-            <p>{flight.arrival.airport}</p>
+            <FlightDetailCard
+              flight={flight}
+            />
 
-            <span>{flight.arrival.terminal}</span>
+          </div>
+
+          {/* ARRIVAL */}
+
+          <div className="timeline-location timeline-arrival-location">
+
+            <h2>
+              {arrivalCode}
+            </h2>
+
+            {arrival.airport && (
+              <p>
+                {arrival.airport}
+              </p>
+            )}
+
+            {arrival.terminal && (
+              <span>
+                {arrival.terminal}
+              </span>
+            )}
+
           </div>
 
         </div>

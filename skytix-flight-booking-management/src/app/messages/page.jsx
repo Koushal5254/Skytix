@@ -3,34 +3,24 @@
 import { useMemo, useState } from "react";
 
 import MainLayout from "@/components/layout/MainLayout/MainLayout";
+import Header from "@/components/layout/Header/Header";
 
 import MessageList from "@/components/messages/MessageList/MessageList";
 import ChatPanel from "@/components/messages/ChatPanel/ChatPanel";
 import MessageProfile from "@/components/messages/MessageProfile/MessageProfile";
+
+import ScheduleFooter from "@/components/schedule/ScheduleFooter/ScheduleFooter";
 
 import {
   conversations as initialConversations,
   chatMessages as initialChatMessages,
 } from "@/data/messages";
 
-import {
-  FiBell,
-  FiHelpCircle,
-  FiSettings,
-  FiChevronDown,
-  FiMessageSquare,
-} from "react-icons/fi";
+import { FiMessageSquare } from "react-icons/fi";
 
 import "./page.scss";
 
 export default function MessagesPage() {
-  /* ========================================
-     ADMIN DROPDOWN
-  ======================================== */
-
-  const [adminMenuOpen, setAdminMenuOpen] =
-    useState(false);
-
   /* ========================================
      CONVERSATIONS
   ======================================== */
@@ -86,7 +76,7 @@ export default function MessagesPage() {
   ] = useState(true);
 
   /* ========================================
-     SELECTED CONVERSATION
+     SELECTED CONVERSATION DATA
   ======================================== */
 
   const selectedConversation = useMemo(() => {
@@ -189,7 +179,7 @@ export default function MessagesPage() {
       })
     );
 
-    /* UPDATE PREVIEW */
+    /* UPDATE CONVERSATION PREVIEW */
 
     setConversations((current) =>
       current.map((conversation) =>
@@ -224,16 +214,6 @@ export default function MessagesPage() {
       return;
     }
 
-    /*
-     * Work out which conversation should
-     * become active BEFORE removing the
-     * current one.
-     *
-     * Prefer the next conversation.
-     * If there is no next conversation,
-     * use the previous conversation.
-     */
-
     const nextConversation =
       conversations[
         conversationIndex + 1
@@ -253,7 +233,7 @@ export default function MessagesPage() {
       )
     );
 
-    /* REMOVE ITS CHAT MESSAGES */
+    /* REMOVE ITS MESSAGES */
 
     setMessagesByConversation(
       (current) => {
@@ -269,7 +249,7 @@ export default function MessagesPage() {
       }
     );
 
-    /* CHANGE SELECTED CONVERSATION */
+    /* CHANGE ACTIVE CONVERSATION */
 
     if (
       selectedConversationId ===
@@ -280,13 +260,9 @@ export default function MessagesPage() {
       );
     }
 
-    /*
-     * If nothing remains, close profile.
-     */
+    /* CLOSE PROFILE WHEN EMPTY */
 
-    if (
-      conversations.length === 1
-    ) {
+    if (conversations.length === 1) {
       setMessageProfileOpen(false);
     }
   };
@@ -299,130 +275,10 @@ export default function MessagesPage() {
       <main className="messages-page">
 
         {/* =====================================
-            PAGE HEADER
+            SHARED HEADER
         ====================================== */}
 
-        <header className="messages-page-header">
-
-          <h1>Messages</h1>
-
-          <div className="messages-header-actions">
-
-            {/* NOTIFICATIONS */}
-
-            <button
-              type="button"
-              className="messages-header-icon-btn"
-              aria-label="Notifications"
-            >
-              <FiBell />
-
-              <span className="messages-notification-dot" />
-            </button>
-
-            {/* HELP */}
-
-            <button
-              type="button"
-              className="messages-header-icon-btn"
-              aria-label="Help"
-            >
-              <FiHelpCircle />
-            </button>
-
-            {/* SETTINGS */}
-
-            <button
-              type="button"
-              className="messages-header-icon-btn"
-              aria-label="Settings"
-            >
-              <FiSettings />
-            </button>
-
-            {/* =================================
-                ADMIN PROFILE
-            ================================= */}
-
-            <div className="messages-admin-wrapper">
-
-              <button
-                type="button"
-                className="messages-admin"
-                onClick={() =>
-                  setAdminMenuOpen(
-                    (current) => !current
-                  )
-                }
-                aria-expanded={
-                  adminMenuOpen
-                }
-              >
-
-                <div className="messages-admin-avatar">
-                  MS
-                </div>
-
-                <div className="messages-admin-info">
-
-                  <strong>
-                    Martin Septimus
-                  </strong>
-
-                  <span>
-                    Admin
-                  </span>
-
-                </div>
-
-                <FiChevronDown
-                  className={`messages-admin-chevron ${
-                    adminMenuOpen
-                      ? "open"
-                      : ""
-                  }`}
-                />
-
-              </button>
-
-              {adminMenuOpen && (
-                <div className="messages-admin-dropdown">
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setAdminMenuOpen(false)
-                    }
-                  >
-                    My Profile
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setAdminMenuOpen(false)
-                    }
-                  >
-                    Settings
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setAdminMenuOpen(false)
-                    }
-                  >
-                    Sign Out
-                  </button>
-
-                </div>
-              )}
-
-            </div>
-
-          </div>
-
-        </header>
+        <Header title="Messages" />
 
         {/* =====================================
             MESSAGES WORKSPACE
@@ -523,6 +379,12 @@ export default function MessagesPage() {
             )}
 
         </section>
+
+        {/* =====================================
+            FOOTER
+        ====================================== */}
+
+        <ScheduleFooter />
 
       </main>
     </MainLayout>

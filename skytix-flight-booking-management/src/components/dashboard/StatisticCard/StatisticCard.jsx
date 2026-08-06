@@ -4,34 +4,25 @@ export default function StatisticCard({
   title,
   value,
   percentage,
-  icon,
-  color,
+  icon: Icon,
 }) {
-  const Icon = icon;
-
-  const isNegative =
-    typeof percentage === "string" &&
-    percentage.trim().startsWith("-");
+  const negative =
+    String(percentage || "")
+      .trim()
+      .startsWith("-");
 
   return (
-    <div className="stat-card">
-
+    <article className="stat-card">
       <div className="stat-left">
-
-        <p className="stat-title">
-          {title}
-        </p>
+        <p className="stat-title">{title}</p>
 
         <div className="stat-value-row">
-
-          <h3 className="stat-value">
-            {value}
-          </h3>
+          <h3 className="stat-value">{value}</h3>
 
           {percentage && (
             <span
               className={`stat-badge ${
-                isNegative
+                negative
                   ? "stat-badge-negative"
                   : "stat-badge-positive"
               }`}
@@ -39,23 +30,14 @@ export default function StatisticCard({
               {percentage}
             </span>
           )}
-
         </div>
-
       </div>
 
       {Icon && (
-        <div
-          className="stat-icon-box"
-          style={{
-            backgroundColor:
-              color || "#e4c66d",
-          }}
-        >
+        <div className="stat-icon-box">
           <Icon />
         </div>
       )}
-
-    </div>
+    </article>
   );
 }

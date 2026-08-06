@@ -4,146 +4,51 @@
 
   min-width: 0;
 
-  padding: 16px 17px;
+  padding: 20px 17px;
+
+  border: 1px solid #e3e3e3;
+  border-radius: 16px;
 
   background: #ffffff;
 }
 
 .aircraft-details h3 {
-  margin: 0 0 12px;
+  margin: 0 0 19px;
 
   color: #303030;
 
   font-size: 11px;
-  line-height: 1.3;
+  line-height: 1.2;
   font-weight: 700;
-}
-
-/* AIRCRAFT */
-
-.aircraft-details-plane {
-  min-width: 0;
-
-  padding-bottom: 10px;
-
-  border-bottom: 1px solid #eeeeee;
-
-  display: grid;
-
-  grid-template-columns:
-    36px
-    minmax(0, 1fr);
-
-  align-items: center;
-
-  gap: 9px;
-}
-
-.aircraft-details-plane-icon {
-  width: 36px;
-  height: 36px;
-
-  border-radius: 9px;
-
-  background: #faf7eb;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #b99632;
-
-  font-size: 16px;
-
-  transform: rotate(-12deg);
-}
-
-.aircraft-details-plane-info {
-  min-width: 0;
-}
-
-.aircraft-details-plane-info span {
-  display: block;
-
-  color: #9b9b9b;
-
-  font-size: 7px;
-  font-weight: 500;
-}
-
-.aircraft-details-plane-info strong {
-  display: block;
-
-  margin-top: 3px;
-
-  color: #3d3d3d;
-
-  font-size: 9px;
-  line-height: 1.35;
-  font-weight: 700;
-
-  overflow-wrap: anywhere;
-}
-
-/* DETAILS */
-
-.aircraft-details-list {
-  margin-top: 9px;
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 7px;
 }
 
 .aircraft-details-item {
-  min-width: 0;
-
-  display: grid;
-
-  grid-template-columns:
-    18px
-    minmax(0, 1fr);
-
-  align-items: center;
-
-  gap: 6px;
+  margin-top: 15px;
 }
 
-.aircraft-details-item > svg {
-  width: 12px;
-  height: 12px;
-
-  color: #a5a5a5;
-}
-
-.aircraft-details-item > div {
-  min-width: 0;
+.aircraft-details-item:first-of-type {
+  margin-top: 0;
 }
 
 .aircraft-details-item span {
   display: block;
 
-  color: #a0a0a0;
+  color: #999999;
 
   font-size: 7px;
   line-height: 1.2;
-  font-weight: 500;
 }
 
 .aircraft-details-item strong {
   display: block;
 
-  margin-top: 2px;
+  margin-top: 4px;
 
-  color: #555555;
+  color: #404040;
 
-  font-size: 8px;
-  line-height: 1.3;
+  font-size: 9px;
+  line-height: 1.35;
   font-weight: 600;
 
-  white-space: nowrap;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
 }

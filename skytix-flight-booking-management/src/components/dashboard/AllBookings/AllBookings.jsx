@@ -1,5 +1,13 @@
+"use client";
+
+import {
+  useMemo,
+  useState,
+} from "react";
+
 import {
   FiCalendar,
+  FiChevronRight,
   FiUsers,
 } from "react-icons/fi";
 
@@ -11,132 +19,196 @@ import {
 
 import "./AllBookings.scss";
 
+const DEFAULT_VISIBLE = 4;
+
 export default function AllBookings() {
+  const [showAll, setShowAll] =
+    useState(false);
+
+  const [selectedId, setSelectedId] =
+    useState(null);
+
+  const visibleBookings = useMemo(
+    () =>
+      showAll
+        ? bookings
+        : bookings.slice(
+            0,
+            DEFAULT_VISIBLE
+          ),
+    [showAll]
+  );
+
   return (
-    <Card className="bookings-card">
-
-      {/* =====================================
-          HEADER
-      ====================================== */}
-
+    <Card
+      className={`bookings-card ${
+        showAll
+          ? "bookings-card-expanded"
+          : ""
+      }`}
+    >
       <div className="booking-header">
+        <div className="booking-header-title">
+          <h5>All Bookings</h5>
+          <span>{bookings.length}</span>
+        </div>
 
-        <h5>
-          All Bookings
-        </h5>
-
-        <button
-          type="button"
-          className="booking-see-all"
-        >
-          See All
-        </button>
-
+        {bookings.length >
+          DEFAULT_VISIBLE && (
+          <button
+            type="button"
+            className="booking-see-all"
+            onClick={() =>
+              setShowAll(
+                (value) => !value
+              )
+            }
+          >
+            {showAll
+              ? "Show Less"
+              : "See All"}
+          </button>
+        )}
       </div>
-
-      {/* =====================================
-          BOOKING LIST
-      ====================================== */}
 
       <div className="booking-list">
+        {visibleBookings.map(
+          (item) => {
+            const selected =
+              selectedId === item.id;
 
-        {bookings.map((item, index) => (
+            return (
+              <div
+                key={item.id}
+                className={`booking-item ${
+                  selected
+                    ? "booking-item-selected"
+                    : ""
+                }`}
+                role="button"
+                tabIndex={0}
+                onClick={() =>
+                  setSelectedId(
+                    selected
+                      ? null
+                      : item.id
+                  )
+                }
+                onKeyDown={(event) => {
+                  if (
+                    event.key ===
+                      "Enter" ||
+                    event.key === " "
+                  ) {
+                    event.preventDefault();
 
-          <div
-            className="booking-item"
-            key={`${item.airline}-${index}`}
-          >
+                    setSelectedId(
+                      selected
+                        ? null
+                        : item.id
+                    );
+                  }
+                }}
+              >
+                <div className="booking-airline">
+                  <div className="booking-airline-title">
+                    <h6>{item.airline}</h6>
 
-            {/* AIRLINE */}
+                    <FiChevronRight className="booking-row-chevron" />
+                  </div>
 
-            <div className="booking-airline">
+                  <div className="booking-meta">
+                    <span>
+                      <FiCalendar />
+                      {item.date}
+                    </span>
 
-              <h6>
-                {item.airline}
-              </h6>
+                    <span>
+                      <FiUsers />
+                      {item.passengers}
+                    </span>
+                  </div>
+                </div>
 
-              <div className="booking-meta">
+                <div className="booking-time">
+                  <strong>
+                    {item.departureTime}
+                  </strong>
 
-                <span>
-                  <FiCalendar />
+                  <span>
+                    {item.departureCity}
+                  </span>
+                </div>
 
-                  {item.date}
-                </span>
+                <div className="booking-route">
+                  <small>
+                    Duration: {item.duration}
+                  </small>
 
-                <span>
-                  <FiUsers />
+                  <div className="route-line">
+                    <span />
+                    <span />
+                  </div>
 
-                  {item.passengers}
-                </span>
+                  <div className="route-codes">
+                    <span>
+                      {item.departureCode}
+                    </span>
 
+                    <span>
+                      {item.arrivalCode}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="booking-time booking-arrival">
+                  <strong>
+                    {item.arrivalTime}
+                  </strong>
+
+                  <span>
+                    {item.arrivalCity}
+                  </span>
+                </div>
+
+                {selected && (
+                  <div className="booking-extra-details">
+                    <div>
+                      <span>Booking</span>
+                      <strong>
+                        {item.bookingCode}
+                      </strong>
+                    </div>
+
+                    <div>
+                      <span>Route</span>
+                      <strong>
+                        {item.departureCode}
+                        {" → "}
+                        {item.arrivalCode}
+                      </strong>
+                    </div>
+
+                    <div>
+                      <span>Passengers</span>
+                      <strong>
+                        {item.passengers}
+                      </strong>
+                    </div>
+
+                    <div>
+                      <span>Duration</span>
+                      <strong>
+                        {item.duration}
+                      </strong>
+                    </div>
+                  </div>
+                )}
               </div>
-
-            </div>
-
-            {/* DEPARTURE */}
-
-            <div className="booking-time">
-
-              <strong>
-                {item.departureTime}
-              </strong>
-
-              <span>
-                {item.departureCity}
-              </span>
-
-            </div>
-
-            {/* ROUTE */}
-
-            <div className="booking-route">
-
-              <small>
-                Duration: {item.duration}
-              </small>
-
-              <div className="route-line">
-
-                <span />
-
-                <span />
-
-              </div>
-
-              <div className="route-codes">
-
-                <span>
-                  {item.departureCode}
-                </span>
-
-                <span>
-                  {item.arrivalCode}
-                </span>
-
-              </div>
-
-            </div>
-
-            {/* ARRIVAL */}
-
-            <div className="booking-time booking-arrival">
-
-              <strong>
-                {item.arrivalTime}
-              </strong>
-
-              <span>
-                {item.arrivalCity}
-              </span>
-
-            </div>
-
-          </div>
-
-        ))}
-
+            );
+          }
+        )}
       </div>
-
     </Card>
   );
 }

@@ -1,3 +1,7 @@
+/* ========================================
+   PURCHASE HISTORY
+======================================== */
+
 .profile-purchase-history {
   width: 100%;
   min-width: 0;
@@ -10,13 +14,13 @@
 .profile-purchase-header {
   width: 100%;
 
+  margin-bottom: 18px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   gap: 20px;
-
-  margin-bottom: 24px;
 }
 
 .profile-purchase-header h2 {
@@ -24,31 +28,45 @@
 
   color: #202020;
 
-  font-size: 26px;
-  line-height: 1.2;
+  font-size: 18px;
+  line-height: 1.25;
   font-weight: 700;
+
+  letter-spacing: -0.25px;
 }
 
+/* ========================================
+   VIEW ALL
+======================================== */
+
 .profile-purchase-header button {
-  padding: 0;
+  padding: 4px 0;
 
   border: 0;
-  outline: none;
+  outline: 0;
 
   background: transparent;
 
-  color: #d2b356;
+  color: #c4a23e;
 
-  font-size: 14px;
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1;
   font-weight: 600;
 
   cursor: pointer;
 
-  transition: color 0.2s ease;
+  transition:
+    color 0.18s ease,
+    transform 0.18s ease;
 }
 
 .profile-purchase-header button:hover {
-  color: #b99739;
+  color: #9e7d21;
+}
+
+.profile-purchase-header button:active {
+  transform: scale(0.97);
 }
 
 /* ========================================
@@ -70,16 +88,16 @@
   width: 100%;
   min-width: 0;
 
+  overflow: hidden;
+
   background: #ffffff;
 
   border: 1px solid #eeeeee;
-  border-radius: 18px;
-
-  overflow: hidden;
+  border-radius: 14px;
 }
 
 /* ========================================
-   TABLE GRID
+   SHARED GRID
 ======================================== */
 
 .profile-purchase-head,
@@ -87,21 +105,21 @@
   width: 100%;
   min-width: 0;
 
+  padding-left: 18px;
+  padding-right: 18px;
+
   display: grid;
 
   grid-template-columns:
-    minmax(110px, 1fr)
-    minmax(100px, 1fr)
-    minmax(110px, 0.9fr)
-    minmax(90px, 0.75fr)
-    minmax(100px, 0.8fr);
+    minmax(115px, 1.15fr)
+    minmax(90px, 0.9fr)
+    minmax(105px, 1fr)
+    minmax(80px, 0.75fr)
+    minmax(92px, 0.8fr);
 
   align-items: center;
 
-  column-gap: 16px;
-
-  padding-left: 22px;
-  padding-right: 22px;
+  column-gap: 14px;
 
   box-sizing: border-box;
 }
@@ -111,25 +129,27 @@
 ======================================== */
 
 .profile-purchase-head {
-  min-height: 58px;
+  min-height: 46px;
 
   background: #fafafa;
 
   border-bottom: 1px solid #eeeeee;
-
-  color: #929292;
-
-  font-size: 12px;
-  line-height: 1.3;
-  font-weight: 600;
 }
 
 .profile-purchase-head > div {
   min-width: 0;
+
+  color: #999999;
+
+  font-size: 9px;
+  line-height: 1.2;
+  font-weight: 500;
+
+  white-space: nowrap;
 }
 
 /* ========================================
-   TABLE BODY
+   BODY
 ======================================== */
 
 .profile-purchase-body {
@@ -137,17 +157,19 @@
   min-width: 0;
 }
 
+/* ========================================
+   ROW
+======================================== */
+
 .profile-purchase-row {
-  min-height: 72px;
+  min-height: 56px;
+
+  background: #ffffff;
 
   border-bottom: 1px solid #f0f0f0;
 
-  color: #4b4b4b;
-
-  font-size: 13px;
-  font-weight: 500;
-
-  transition: background 0.2s ease;
+  transition:
+    background-color 0.18s ease;
 }
 
 .profile-purchase-row:last-child {
@@ -155,7 +177,7 @@
 }
 
 .profile-purchase-row:hover {
-  background: #fcfcfc;
+  background: #fffdf8;
 }
 
 .profile-purchase-row > div {
@@ -167,16 +189,15 @@
 ======================================== */
 
 .purchase-booking-code {
-  min-width: 0;
+  overflow: hidden;
 
-  color: #292929;
+  color: #383838;
 
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 10px;
+  line-height: 1.3;
+  font-weight: 600;
 
   white-space: nowrap;
-
-  overflow: hidden;
   text-overflow: ellipsis;
 }
 
@@ -185,16 +206,15 @@
 ======================================== */
 
 .purchase-route {
-  min-width: 0;
+  overflow: hidden;
 
   color: #555555;
 
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.3;
+  font-weight: 400;
 
   white-space: nowrap;
-
-  overflow: hidden;
   text-overflow: ellipsis;
 }
 
@@ -203,16 +223,15 @@
 ======================================== */
 
 .purchase-date {
-  min-width: 0;
+  overflow: hidden;
 
   color: #777777;
 
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.3;
+  font-weight: 400;
 
   white-space: nowrap;
-
-  overflow: hidden;
   text-overflow: ellipsis;
 }
 
@@ -221,16 +240,15 @@
 ======================================== */
 
 .purchase-amount {
-  min-width: 0;
+  overflow: hidden;
 
-  color: #242424;
+  color: #383838;
 
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 10px;
+  line-height: 1.3;
+  font-weight: 600;
 
   white-space: nowrap;
-
-  overflow: hidden;
   text-overflow: ellipsis;
 }
 
@@ -239,11 +257,8 @@
 ======================================== */
 
 .purchase-status-cell {
-  min-width: 0;
-
   display: flex;
   align-items: center;
-
   justify-content: flex-start;
 }
 
@@ -252,24 +267,22 @@
 ======================================== */
 
 .purchase-status {
-  min-width: 88px;
-  height: 32px;
+  min-width: 72px;
+  height: 23px;
 
-  padding: 0 12px;
+  padding: 0 8px;
 
-  border-radius: 10px;
+  border-radius: 5px;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 12px;
+  font-size: 9px;
   line-height: 1;
-  font-weight: 600;
+  font-weight: 500;
 
   white-space: nowrap;
-
-  box-sizing: border-box;
 }
 
 /* ========================================
@@ -277,9 +290,9 @@
 ======================================== */
 
 .purchase-status.confirmed {
-  background: #edf8f0;
+  background: #e9f7ee;
 
-  color: #3b985b;
+  color: #449461;
 }
 
 /* ========================================
@@ -287,9 +300,9 @@
 ======================================== */
 
 .purchase-status.pending {
-  background: #fff7e3;
+  background: #fff4d7;
 
-  color: #b88822;
+  color: #aa8126;
 }
 
 /* ========================================
@@ -299,7 +312,7 @@
 .purchase-status.cancelled {
   background: #fff0f0;
 
-  color: #cf5656;
+  color: #c95d5d;
 }
 
 /* ========================================
@@ -307,9 +320,23 @@
 ======================================== */
 
 .purchase-status.purchased {
-  background: #edf8f0;
+  background: #e9f7ee;
 
-  color: #3b985b;
+  color: #449461;
+}
+
+/* ========================================
+   LARGE DESKTOP
+======================================== */
+
+@media (min-width: 1600px) {
+  .profile-purchase-head,
+  .profile-purchase-row {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    column-gap: 16px;
+  }
 }
 
 /* ========================================
@@ -320,22 +347,16 @@
   .profile-purchase-head,
   .profile-purchase-row {
     grid-template-columns:
-      minmax(105px, 1fr)
-      minmax(90px, 0.85fr)
-      minmax(105px, 0.9fr)
-      minmax(85px, 0.7fr)
-      minmax(95px, 0.8fr);
+      minmax(110px, 1.1fr)
+      minmax(85px, 0.85fr)
+      minmax(100px, 0.95fr)
+      minmax(75px, 0.7fr)
+      minmax(88px, 0.8fr);
 
-    column-gap: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
 
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-
-  .purchase-status {
-    min-width: 82px;
-
-    padding: 0 10px;
+    column-gap: 11px;
   }
 }
 
@@ -345,17 +366,12 @@
 
 @media (max-width: 768px) {
   .profile-purchase-header {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 
   .profile-purchase-header h2 {
-    font-size: 23px;
+    font-size: 17px;
   }
-
-  /*
-   * Horizontal scrolling is enabled only
-   * when the screen becomes too narrow.
-   */
 
   .profile-purchase-table-wrap {
     overflow-x: auto;
@@ -364,30 +380,22 @@
   }
 
   .profile-purchase-table {
-    min-width: 680px;
+    min-width: 620px;
   }
 
   .profile-purchase-head,
   .profile-purchase-row {
     grid-template-columns:
-      minmax(120px, 1fr)
-      minmax(110px, 1fr)
-      minmax(120px, 1fr)
-      minmax(100px, 0.8fr)
-      minmax(110px, 0.9fr);
+      120px
+      100px
+      110px
+      90px
+      95px;
 
-    column-gap: 14px;
+    column-gap: 12px;
 
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-
-  .profile-purchase-head {
-    min-height: 54px;
-  }
-
-  .profile-purchase-row {
-    min-height: 68px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 
@@ -397,25 +405,25 @@
 
 @media (max-width: 480px) {
   .profile-purchase-header {
-    gap: 14px;
+    gap: 12px;
   }
 
   .profile-purchase-header h2 {
-    font-size: 21px;
+    font-size: 16px;
   }
 
   .profile-purchase-header button {
-    font-size: 13px;
+    font-size: 9px;
   }
 
   .profile-purchase-table {
-    min-width: 650px;
+    min-width: 600px;
   }
 
   .profile-purchase-head,
   .profile-purchase-row {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 14px;
+    padding-right: 14px;
   }
 }
 
@@ -424,11 +432,11 @@
 ======================================== */
 
 .profile-purchase-table-wrap::-webkit-scrollbar {
-  height: 6px;
+  height: 5px;
 }
 
 .profile-purchase-table-wrap::-webkit-scrollbar-track {
-  background: #f4f4f4;
+  background: #f5f5f5;
 
   border-radius: 20px;
 }
@@ -440,5 +448,5 @@
 }
 
 .profile-purchase-table-wrap::-webkit-scrollbar-thumb:hover {
-  background: #c7c7c7;
+  background: #c5c5c5;
 }

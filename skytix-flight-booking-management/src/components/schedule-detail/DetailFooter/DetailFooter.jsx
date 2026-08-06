@@ -15,7 +15,7 @@ export default function DetailFooter() {
     <footer className="detail-footer">
 
       <div className="detail-footer-copy">
-        Copyright © 2024 Peterdraw
+        Copyright © 2026 indixpert
       </div>
 
       <nav className="detail-footer-links">

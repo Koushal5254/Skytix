@@ -5,17 +5,23 @@
 .payment-pagination {
   width: 100%;
 
-  padding: 16px 18px 4px;
+  padding:
+    16px
+    18px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   gap: 20px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
 }
 
 /* ========================================
-   RESULT INFORMATION
+   INFO
 ======================================== */
 
 .payment-pagination-info {
@@ -49,8 +55,12 @@
 
   padding: 0 10px;
 
-  border: 1px solid #eeeeee;
+  border:
+    1px solid
+    #eeeeee;
+
   border-radius: 7px;
+  outline: 0;
 
   background: #ffffff;
 
@@ -63,6 +73,7 @@
   color: #666666;
 
   font-family: inherit;
+
   font-size: 10px;
   line-height: 1;
   font-weight: 500;
@@ -70,12 +81,14 @@
   cursor: pointer;
 
   transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease;
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
 }
 
-.payment-pagination-arrow:hover:not(:disabled) {
+.payment-pagination-arrow:hover:not(
+    :disabled
+  ) {
   background: #f8f8f8;
 
   border-color: #dddddd;
@@ -84,9 +97,22 @@
 }
 
 .payment-pagination-arrow:disabled {
-  opacity: 0.45;
+  opacity: 0.42;
 
   cursor: not-allowed;
+}
+
+.payment-pagination-arrow:focus-visible {
+  outline:
+    2px solid
+    rgba(
+      228,
+      198,
+      109,
+      0.5
+    );
+
+  outline-offset: 2px;
 }
 
 .payment-pagination-arrow svg {
@@ -97,7 +123,7 @@
 }
 
 /* ========================================
-   PAGE NUMBERS
+   NUMBERS
 ======================================== */
 
 .payment-page-numbers {
@@ -111,10 +137,16 @@
   width: 32px;
   height: 32px;
 
+  flex: 0 0 32px;
+
   padding: 0;
 
-  border: 1px solid #eeeeee;
+  border:
+    1px solid
+    #eeeeee;
+
   border-radius: 7px;
+  outline: 0;
 
   background: #ffffff;
 
@@ -125,6 +157,7 @@
   color: #666666;
 
   font-family: inherit;
+
   font-size: 10px;
   line-height: 1;
   font-weight: 500;
@@ -132,9 +165,9 @@
   cursor: pointer;
 
   transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease;
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
 }
 
 .payment-page-number:hover {
@@ -145,14 +178,27 @@
   color: #222222;
 }
 
+.payment-page-number:focus-visible {
+  outline:
+    2px solid
+    rgba(
+      228,
+      198,
+      109,
+      0.5
+    );
+
+  outline-offset: 2px;
+}
+
 /* ========================================
-   ACTIVE PAGE
+   ACTIVE
 ======================================== */
 
 .payment-page-number.active {
-  background: #e4c66d;
-
   border-color: #e4c66d;
+
+  background: #e4c66d;
 
   color: #252525;
 
@@ -160,9 +206,9 @@
 }
 
 .payment-page-number.active:hover {
-  background: #e4c66d;
-
   border-color: #e4c66d;
+
+  background: #e4c66d;
 }
 
 /* ========================================
@@ -200,8 +246,6 @@
 
 @media (max-width: 768px) {
   .payment-pagination {
-    padding: 14px 0 0;
-
     flex-direction: column;
     align-items: flex-start;
 
@@ -211,9 +255,9 @@
   .payment-pagination-controls {
     width: 100%;
 
-    overflow-x: auto;
-
     padding-bottom: 4px;
+
+    overflow-x: auto;
   }
 }
 
@@ -222,18 +266,20 @@
 ======================================== */
 
 @media (max-width: 520px) {
+  .payment-pagination {
+    padding:
+      14px
+      12px;
+  }
+
   .payment-pagination-arrow {
-    min-width: 32px;
     width: 32px;
+    min-width: 32px;
 
     padding: 0;
   }
 
   .payment-pagination-arrow span {
     display: none;
-  }
-
-  .payment-page-number {
-    flex: 0 0 32px;
   }
 }

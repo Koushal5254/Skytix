@@ -1,76 +1,370 @@
 "use client";
 
 import {
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+
+import {
   FiSearch,
   FiCalendar,
   FiChevronDown,
+  FiCheck,
+  FiX,
 } from "react-icons/fi";
 
 import "./PaymentToolbar.scss";
+
+const dateOptions = [
+  {
+    value: "all",
+    label: "1 - 8 July 2028",
+  },
+  {
+    value: "2028-07-01",
+    label: "1 July 2028",
+  },
+  {
+    value: "2028-07-02",
+    label: "2 July 2028",
+  },
+  {
+    value: "2028-07-03",
+    label: "3 July 2028",
+  },
+  {
+    value: "2028-07-04",
+    label: "4 July 2028",
+  },
+  {
+    value: "2028-07-05",
+    label: "5 July 2028",
+  },
+  {
+    value: "2028-07-06",
+    label: "6 July 2028",
+  },
+  {
+    value: "2028-07-07",
+    label: "7 July 2028",
+  },
+  {
+    value: "2028-07-08",
+    label: "8 July 2028",
+  },
+];
+
+const statusOptions = [
+  "All",
+  "Confirmed",
+  "Pending",
+  "Cancelled",
+];
 
 export default function PaymentToolbar({
   search,
   setSearch,
   status,
   setStatus,
+  dateFilter,
+  setDateFilter,
 }) {
+  const [dateOpen, setDateOpen] =
+    useState(false);
+
+  const [statusOpen, setStatusOpen] =
+    useState(false);
+
+  const toolbarRef = useRef(null);
+
+  /* ========================================
+     CURRENT DATE LABEL
+  ======================================== */
+
+  const selectedDate =
+    dateOptions.find(
+      (option) =>
+        option.value === dateFilter
+    ) || dateOptions[0];
+
+  /* ========================================
+     OUTSIDE CLICK / ESCAPE
+  ======================================== */
+
+  useEffect(() => {
+    const handleMouseDown = (event) => {
+      if (
+        toolbarRef.current &&
+        !toolbarRef.current.contains(
+          event.target
+        )
+      ) {
+        setDateOpen(false);
+        setStatusOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setDateOpen(false);
+        setStatusOpen(false);
+      }
+    };
+
+    document.addEventListener(
+      "mousedown",
+      handleMouseDown
+    );
+
+    document.addEventListener(
+      "keydown",
+      handleKeyDown
+    );
+
+    return () => {
+      document.removeEventListener(
+        "mousedown",
+        handleMouseDown
+      );
+
+      document.removeEventListener(
+        "keydown",
+        handleKeyDown
+      );
+    };
+  }, []);
+
+  /* ========================================
+     DATE
+  ======================================== */
+
+  const handleDateSelect = (value) => {
+    setDateFilter(value);
+
+    setDateOpen(false);
+  };
+
+  /* ========================================
+     STATUS
+  ======================================== */
+
+  const handleStatusSelect = (
+    value
+  ) => {
+    setStatus(value);
+
+    setStatusOpen(false);
+  };
+
   return (
-    <div className="payment-toolbar">
+    <div
+      ref={toolbarRef}
+      className="payment-toolbar"
+    >
+
+      {/* =====================================
+          SEARCH
+      ====================================== */}
 
       <div className="payment-toolbar-search">
+
         <FiSearch />
 
         <input
-          type="text"
+          type="search"
           placeholder="Search name, airline, booking code..."
           value={search}
+          autoComplete="off"
+          aria-label="Search payments"
           onChange={(event) =>
-            setSearch(event.target.value)
+            setSearch(
+              event.target.value
+            )
           }
         />
+
+        {search && (
+          <button
+            type="button"
+            className="payment-search-clear"
+            aria-label="Clear search"
+            onClick={() =>
+              setSearch("")
+            }
+          >
+            <FiX />
+          </button>
+        )}
+
       </div>
+
+      {/* =====================================
+          RIGHT
+      ====================================== */}
 
       <div className="payment-toolbar-right">
 
-        <button
-          type="button"
-          className="payment-toolbar-date"
-        >
-          <FiCalendar />
+        {/* =================================
+            DATE FILTER
+        ================================= */}
 
-          <span>
-            1 - 8 July 2028
-          </span>
+        <div className="payment-date-wrapper">
 
-          <FiChevronDown />
-        </button>
+          <button
+            type="button"
+            className={`payment-toolbar-date ${
+              dateOpen
+                ? "active"
+                : ""
+            }`}
+            aria-expanded={dateOpen}
+            onClick={() => {
+              setDateOpen(
+                (current) =>
+                  !current
+              );
 
-        <div className="payment-toolbar-status">
-
-          <select
-            value={status}
-            onChange={(event) =>
-              setStatus(event.target.value)
-            }
+              setStatusOpen(false);
+            }}
           >
-            <option value="All">
-              All Status
-            </option>
 
-            <option value="Confirmed">
-              Confirmed
-            </option>
+            <FiCalendar />
 
-            <option value="Pending">
-              Pending
-            </option>
+            <span>
+              {selectedDate.label}
+            </span>
 
-            <option value="Cancelled">
-              Cancelled
-            </option>
-          </select>
+            <FiChevronDown
+              className={
+                dateOpen
+                  ? "open"
+                  : ""
+              }
+            />
 
-          <FiChevronDown />
+          </button>
+
+          {dateOpen && (
+            <div className="payment-date-menu">
+
+              {dateOptions.map(
+                (option) => (
+
+                  <button
+                    type="button"
+                    key={option.value}
+                    className={
+                      dateFilter ===
+                      option.value
+                        ? "active"
+                        : ""
+                    }
+                    onClick={() =>
+                      handleDateSelect(
+                        option.value
+                      )
+                    }
+                  >
+
+                    <span>
+                      {option.label}
+                    </span>
+
+                    {dateFilter ===
+                      option.value && (
+                      <FiCheck />
+                    )}
+
+                  </button>
+
+                )
+              )}
+
+            </div>
+          )}
+
+        </div>
+
+        {/* =================================
+            STATUS FILTER
+        ================================= */}
+
+        <div className="payment-status-wrapper">
+
+          <button
+            type="button"
+            className={`payment-toolbar-status-btn ${
+              statusOpen
+                ? "active"
+                : ""
+            }`}
+            aria-expanded={statusOpen}
+            onClick={() => {
+              setStatusOpen(
+                (current) =>
+                  !current
+              );
+
+              setDateOpen(false);
+            }}
+          >
+
+            <span>
+              {status === "All"
+                ? "All Status"
+                : status}
+            </span>
+
+            <FiChevronDown
+              className={
+                statusOpen
+                  ? "open"
+                  : ""
+              }
+            />
+
+          </button>
+
+          {statusOpen && (
+            <div className="payment-status-menu">
+
+              {statusOptions.map(
+                (option) => (
+
+                  <button
+                    type="button"
+                    key={option}
+                    className={
+                      status === option
+                        ? "active"
+                        : ""
+                    }
+                    onClick={() =>
+                      handleStatusSelect(
+                        option
+                      )
+                    }
+                  >
+
+                    <span>
+                      {option === "All"
+                        ? "All Status"
+                        : option}
+                    </span>
+
+                    {status ===
+                      option && (
+                      <FiCheck />
+                    )}
+
+                  </button>
+
+                )
+              )}
+
+            </div>
+          )}
 
         </div>
 

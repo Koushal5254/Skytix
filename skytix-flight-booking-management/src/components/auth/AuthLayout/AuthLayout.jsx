@@ -30,7 +30,7 @@ export default function AuthLayout({ children }) {
         </div>
 
         <div className="auth-left-footer">
-          © 2028 Skytix. All Rights Reserved.
+          © 2026 Skytix. All Rights Reserved.
         </div>
 
       </section>

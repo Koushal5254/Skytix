@@ -29,6 +29,8 @@ const flights = [
     altitude: "35,000",
     altitudeUnit: "feet",
 
+    passengers: 210,
+
     aircraft: {
       type: "Boeing 787 Dreamliner",
       registration: "N123SH",
@@ -64,6 +66,8 @@ const flights = [
 
     altitude: "34,000",
     altitudeUnit: "feet",
+
+    passengers: 186,
 
     aircraft: {
       type: "Airbus A350",
@@ -101,6 +105,8 @@ const flights = [
     altitude: "37,000",
     altitudeUnit: "feet",
 
+    passengers: 224,
+
     aircraft: {
       type: "Boeing 777",
       registration: "JA3098",
@@ -136,6 +142,8 @@ const flights = [
 
     altitude: "0",
     altitudeUnit: "feet",
+
+    passengers: 194,
 
     aircraft: {
       type: "Airbus A330",
@@ -173,6 +181,8 @@ const flights = [
     altitude: "0",
     altitudeUnit: "feet",
 
+    passengers: 201,
+
     aircraft: {
       type: "Boeing 787 Dreamliner",
       registration: "A6-JS502",
@@ -208,6 +218,8 @@ const flights = [
 
     altitude: "0",
     altitudeUnit: "feet",
+
+    passengers: 0,
 
     aircraft: {
       type: "Airbus A350",
@@ -245,16 +257,14 @@ const flights = [
     altitude: "36,000",
     altitudeUnit: "feet",
 
+    passengers: 217,
+
     aircraft: {
       type: "Boeing 777",
       registration: "B-QW712",
     },
   },
 ];
-
-/* ========================================
-   STATUS OPTIONS
-======================================== */
 
 const flightStatuses = [
   "All",
@@ -264,10 +274,6 @@ const flightStatuses = [
   "Scheduled",
   "Cancelled",
 ];
-
-/* ========================================
-   EXPORTS
-======================================== */
 
 export {
   flights,

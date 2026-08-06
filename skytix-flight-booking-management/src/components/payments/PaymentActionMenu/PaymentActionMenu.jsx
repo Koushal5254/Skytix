@@ -1,7 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
+import {
+  useEffect,
+  useRef,
+} from "react";
+
+import {
+  useRouter,
+} from "next/navigation";
 
 import {
   FiEye,
@@ -15,97 +21,119 @@ export default function PaymentActionMenu({
   open,
   onClose,
   paymentId,
+  onDelete,
 }) {
-  const router = useRouter();
-  const menuRef = useRef(null);
+  const router =
+    useRouter();
+
+  const menuRef =
+    useRef(null);
 
   /* ========================================
-     CLOSE WHEN CLICKING OUTSIDE
+     OUTSIDE CLICK
   ======================================== */
 
   useEffect(() => {
-    if (!open) return;
+    if (!open) {
+      return;
+    }
 
-    const handleOutsideClick = (event) => {
+    const handleMouseDown = (
+      event
+    ) => {
       if (
         menuRef.current &&
-        !menuRef.current.contains(event.target)
+        !menuRef.current.contains(
+          event.target
+        )
       ) {
-        onClose();
+        onClose?.();
       }
     };
 
     document.addEventListener(
       "mousedown",
-      handleOutsideClick
+      handleMouseDown
     );
 
     return () => {
       document.removeEventListener(
         "mousedown",
-        handleOutsideClick
+        handleMouseDown
       );
     };
-  }, [open, onClose]);
+  }, [
+    open,
+    onClose,
+  ]);
 
   /* ========================================
-     CLOSE WITH ESCAPE
+     ESCAPE
   ======================================== */
 
   useEffect(() => {
-    if (!open) return;
+    if (!open) {
+      return;
+    }
 
-    const handleEscape = (event) => {
-      if (event.key === "Escape") {
-        onClose();
+    const handleKeyDown = (
+      event
+    ) => {
+      if (
+        event.key === "Escape"
+      ) {
+        onClose?.();
       }
     };
 
     document.addEventListener(
       "keydown",
-      handleEscape
+      handleKeyDown
     );
 
     return () => {
       document.removeEventListener(
         "keydown",
-        handleEscape
+        handleKeyDown
       );
     };
-  }, [open, onClose]);
+  }, [
+    open,
+    onClose,
+  ]);
 
   /* ========================================
-     VIEW
+     VIEW EXISTING DETAIL PAGE
   ======================================== */
 
   const handleView = () => {
-    router.push(`/payments/${paymentId}`);
+    onClose?.();
 
-    onClose();
+    router.push(
+      `/payments/${paymentId}`
+    );
   };
 
   /* ========================================
-     EDIT
-
-     We keep this functional without
-     inventing a separate edit page.
+     EDIT EXISTING DETAIL PAGE
   ======================================== */
 
   const handleEdit = () => {
-    router.push(`/payments/${paymentId}?mode=edit`);
+    onClose?.();
 
-    onClose();
+    router.push(
+      `/payments/${paymentId}?mode=edit`
+    );
   };
 
   /* ========================================
      DELETE
-
-     Actual deletion will be connected when
-     transaction state is moved to the page.
   ======================================== */
 
   const handleDelete = () => {
-    onClose();
+    onClose?.();
+
+    onDelete?.();
   };
 
   if (!open) {
@@ -118,24 +146,33 @@ export default function PaymentActionMenu({
       className="payment-action-menu"
       role="menu"
     >
+
       <button
         type="button"
         role="menuitem"
-        onClick={handleView}
+        onClick={
+          handleView
+        }
       >
         <FiEye />
 
-        <span>View</span>
+        <span>
+          View
+        </span>
       </button>
 
       <button
         type="button"
         role="menuitem"
-        onClick={handleEdit}
+        onClick={
+          handleEdit
+        }
       >
         <FiEdit2 />
 
-        <span>Edit</span>
+        <span>
+          Edit
+        </span>
       </button>
 
       <div className="payment-action-divider" />
@@ -144,12 +181,17 @@ export default function PaymentActionMenu({
         type="button"
         role="menuitem"
         className="payment-action-delete"
-        onClick={handleDelete}
+        onClick={
+          handleDelete
+        }
       >
         <FiTrash2 />
 
-        <span>Delete</span>
+        <span>
+          Delete
+        </span>
       </button>
+
     </div>
   );
 }

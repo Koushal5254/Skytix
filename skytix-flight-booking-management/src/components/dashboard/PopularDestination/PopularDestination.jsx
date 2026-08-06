@@ -1,101 +1,136 @@
+"use client";
+
+import {
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+
+import {
+  FiCheck,
+  FiChevronDown,
+} from "react-icons/fi";
+
 import Card from "@/components/common/Card/Card";
 
 import WorldMap from "@/assets/images/World.png";
 
+import {
+  destinationPeriods,
+} from "@/data/dashboardData";
+
 import "./PopularDestination.scss";
 
-const destinations = [
-  {
-    country: "Mexico",
-    percentage: "24%",
-  },
-  {
-    country: "Canada",
-    percentage: "18%",
-  },
-  {
-    country: "United Kingdom",
-    percentage: "16%",
-  },
-  {
-    country: "India",
-    percentage: "12%",
-  },
-  {
-    country: "France",
-    percentage: "9%",
-  },
-  {
-    country: "Australia",
-    percentage: "7%",
-  },
-];
-
 export default function PopularDestination() {
+  const [period, setPeriod] =
+    useState("month");
+
+  const [open, setOpen] =
+    useState(false);
+
+  const ref = useRef(null);
+
+  const data =
+    destinationPeriods[period];
+
+  useEffect(() => {
+    const outside = (event) => {
+      if (
+        ref.current &&
+        !ref.current.contains(event.target)
+      ) {
+        setOpen(false);
+      }
+    };
+
+    const escape = (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", outside);
+    document.addEventListener("keydown", escape);
+
+    return () => {
+      document.removeEventListener("mousedown", outside);
+      document.removeEventListener("keydown", escape);
+    };
+  }, []);
+
   return (
     <Card className="destination-card">
-
-      {/* =====================================
-          HEADER
-      ====================================== */}
-
       <div className="destination-header">
+        <h5>Popular Destination</h5>
 
-        <h5>
-          Popular Destination
-        </h5>
-
-        <button
-          type="button"
-          className="destination-filter"
+        <div
+          className="destination-filter-wrapper"
+          ref={ref}
         >
-          This Month
+          <button
+            type="button"
+            className={`destination-filter ${
+              open ? "active" : ""
+            }`}
+            onClick={() =>
+              setOpen((value) => !value)
+            }
+          >
+            <span>{data.label}</span>
+            <FiChevronDown />
+          </button>
 
-          <span>
-            ▼
-          </span>
-        </button>
+          {open && (
+            <div className="destination-dropdown">
+              {Object.entries(
+                destinationPeriods
+              ).map(([key, item]) => (
+                <button
+                  key={key}
+                  type="button"
+                  className={
+                    period === key
+                      ? "selected"
+                      : ""
+                  }
+                  onClick={() => {
+                    setPeriod(key);
+                    setOpen(false);
+                  }}
+                >
+                  <span>{item.label}</span>
 
+                  {period === key && (
+                    <FiCheck />
+                  )}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* =====================================
-          MAP
-      ====================================== */}
-
       <div className="destination-map">
-
         <img
           src={WorldMap.src}
           alt="Popular destinations world map"
+          draggable="false"
         />
-
       </div>
-
-      {/* =====================================
-          DESTINATIONS
-      ====================================== */}
 
       <div className="destination-grid">
-
-        {destinations.map((item) => (
-          <div
-            className="country-row"
-            key={item.country}
-          >
-
-            <span>
-              {item.country}
-            </span>
-
-            <strong>
-              {item.percentage}
-            </strong>
-
-          </div>
-        ))}
-
+        {data.destinations.map(
+          (item) => (
+            <div
+              className="country-row"
+              key={item.country}
+            >
+              <span>{item.country}</span>
+              <strong>{item.percentage}</strong>
+            </div>
+          )
+        )}
       </div>
-
     </Card>
   );
 }

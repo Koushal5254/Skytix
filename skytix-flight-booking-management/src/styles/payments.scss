@@ -16,16 +16,19 @@
    PAYMENT HEADER
 ======================================== */
 
-.payments-page .payment-page-header {
+.payments-page
+  .payment-page-header {
   width: 100%;
   min-width: 0;
 }
 
 /* ========================================
-   TRANSACTIONS / PAYMENT CONTENT CARD
+   CONTENT CARD
 ======================================== */
 
 .payments-content-card {
+  position: relative;
+
   width: 100%;
   min-width: 0;
 
@@ -35,12 +38,9 @@
   border-radius: 16px;
 
   box-shadow:
-    0 3px 14px rgba(0, 0, 0, 0.025);
+    0 3px 14px
+    rgba(0, 0, 0, 0.025);
 
-  /*
-   * Keep overflow visible because the
-   * PaymentActionMenu opens outside rows.
-   */
   overflow: visible;
 }
 
@@ -48,36 +48,34 @@
    TOOLBAR
 ======================================== */
 
-.payments-content-card .payment-toolbar {
+.payments-content-card
+  .payment-toolbar {
   width: 100%;
 
-  border-radius: 16px 16px 0 0;
+  border-radius:
+    16px
+    16px
+    0
+    0;
 }
 
 /* ========================================
-   PAYMENT TABLE
+   TABLE
 ======================================== */
 
-.payments-content-card .payment-table {
+.payments-content-card
+  .payment-table {
   width: 100%;
   min-width: 0;
 }
 
-/* ========================================
-   TABLE HEADER
-======================================== */
-
 .payments-content-card
-.payment-table-header {
+  .payment-table-header {
   width: 100%;
 }
 
-/* ========================================
-   TABLE BODY
-======================================== */
-
 .payments-content-card
-.payment-table-body {
+  .payment-table-body {
   width: 100%;
 }
 
@@ -86,20 +84,23 @@
 ======================================== */
 
 .payments-content-card
-.payment-pagination {
+  .payment-pagination {
   width: 100%;
-
-  border-top: 1px solid #eeeeee;
 
   padding-top: 14px;
   padding-bottom: 14px;
+
+  border-top:
+    1px solid
+    #eeeeee;
 }
 
 /* ========================================
    FOOTER
 ======================================== */
 
-.payments-page .schedule-footer {
+.payments-page
+  .schedule-footer {
   width: 100%;
 
   margin-top: 8px;
@@ -118,13 +119,18 @@
     border-radius: 18px;
   }
 
-  .payments-content-card .payment-toolbar {
-    border-radius: 18px 18px 0 0;
+  .payments-content-card
+    .payment-toolbar {
+    border-radius:
+      18px
+      18px
+      0
+      0;
   }
 }
 
 /* ========================================
-   STANDARD LAPTOP
+   LAPTOP
 ======================================== */
 
 @media (max-width: 1400px) {
@@ -146,8 +152,13 @@
     border-radius: 14px;
   }
 
-  .payments-content-card .payment-toolbar {
-    border-radius: 14px 14px 0 0;
+  .payments-content-card
+    .payment-toolbar {
+    border-radius:
+      14px
+      14px
+      0
+      0;
   }
 }
 
@@ -164,17 +175,23 @@
     border-radius: 12px;
   }
 
-  .payments-content-card .payment-toolbar {
-    border-radius: 12px 12px 0 0;
+  .payments-content-card
+    .payment-toolbar {
+    border-radius:
+      12px
+      12px
+      0
+      0;
   }
 
   .payments-content-card
-  .payment-pagination {
+    .payment-pagination {
     padding-top: 12px;
     padding-bottom: 12px;
   }
 
-  .payments-page .schedule-footer {
+  .payments-page
+    .schedule-footer {
     margin-top: 4px;
   }
 }

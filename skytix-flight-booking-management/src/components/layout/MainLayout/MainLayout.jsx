@@ -17,14 +17,33 @@ export default function MainLayout({
 }) {
   const [open, setOpen] = useState(false);
 
+  const handleCloseSidebar = () => {
+    setOpen(false);
+  };
+
   return (
     <ProtectedRoute>
       <div className="main-layout">
+
+        {/* SIDEBAR */}
 
         <Sidebar
           open={open}
           setOpen={setOpen}
         />
+
+        {/* MOBILE SIDEBAR OVERLAY */}
+
+        {open && (
+          <button
+            type="button"
+            className="main-layout-overlay"
+            onClick={handleCloseSidebar}
+            aria-label="Close navigation"
+          />
+        )}
+
+        {/* MAIN CONTENT */}
 
         <div className="main-content">
 
@@ -34,7 +53,7 @@ export default function MainLayout({
             />
           )}
 
-          <main>
+          <main className="main-page-content">
             {children}
           </main>
 

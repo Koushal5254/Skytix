@@ -1,6 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 import {
   FiSearch,
@@ -13,45 +18,46 @@ import FlightCard from "../FlightCard/FlightCard";
 
 import "./FlightList.scss";
 
+const statuses = [
+  "All",
+  "On Time",
+  "Delayed",
+  "In Air",
+  "Scheduled",
+  "Cancelled",
+];
+
 export default function FlightList({
   flights = [],
   selectedFlightId,
   onSelectFlight,
+  onAddFlight,
 }) {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] =
+    useState("");
+
   const [filterOpen, setFilterOpen] =
     useState(false);
 
   const [selectedStatus, setSelectedStatus] =
     useState("All");
 
-  const statusOptions = [
-    "All",
-    "On Time",
-    "Delayed",
-    "In Air",
-    "Scheduled",
-    "Cancelled",
-  ];
-
-  /* ========================================
-     FILTERED FLIGHTS
-  ======================================== */
+  const filterRef = useRef(null);
 
   const filteredFlights = useMemo(() => {
-    const value =
+    const query =
       search.trim().toLowerCase();
 
     return flights.filter((flight) => {
-      const matchesStatus =
+      const statusMatches =
         selectedStatus === "All" ||
         flight.status === selectedStatus;
 
-      if (!matchesStatus) {
+      if (!statusMatches) {
         return false;
       }
 
-      if (!value) {
+      if (!query) {
         return true;
       }
 
@@ -63,10 +69,10 @@ export default function FlightList({
         flight.to?.code,
         flight.to?.city,
         flight.status,
-      ].some((item) =>
-        String(item || "")
+      ].some((value) =>
+        String(value || "")
           .toLowerCase()
-          .includes(value)
+          .includes(query)
       );
     });
   }, [
@@ -75,21 +81,32 @@ export default function FlightList({
     selectedStatus,
   ]);
 
-  /* ========================================
-     CLEAR FILTER
-  ======================================== */
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        filterRef.current &&
+        !filterRef.current.contains(
+          event.target
+        )
+      ) {
+        setFilterOpen(false);
+      }
+    };
 
-  const handleClearFilter = () => {
-    setSelectedStatus("All");
-    setFilterOpen(false);
-  };
+    document.addEventListener(
+      "mousedown",
+      handleClickOutside
+    );
+
+    return () =>
+      document.removeEventListener(
+        "mousedown",
+        handleClickOutside
+      );
+  }, []);
 
   return (
     <div className="flight-list">
-
-      {/* =====================================
-          SEARCH / ACTIONS
-      ====================================== */}
 
       <div className="flight-list-toolbar">
 
@@ -98,7 +115,7 @@ export default function FlightList({
           <FiSearch />
 
           <input
-            type="text"
+            type="search"
             value={search}
             onChange={(event) =>
               setSearch(event.target.value)
@@ -111,9 +128,7 @@ export default function FlightList({
             <button
               type="button"
               className="flight-list-search-clear"
-              onClick={() =>
-                setSearch("")
-              }
+              onClick={() => setSearch("")}
               aria-label="Clear search"
             >
               <FiX />
@@ -122,13 +137,14 @@ export default function FlightList({
 
         </div>
 
-        {/* FILTER */}
-
-        <div className="flight-list-filter-wrapper">
+        <div
+          ref={filterRef}
+          className="flight-list-filter-wrapper"
+        >
 
           <button
             type="button"
-            className={`flight-list-action ${
+            className={`flight-list-filter-button ${
               selectedStatus !== "All"
                 ? "active"
                 : ""
@@ -139,7 +155,6 @@ export default function FlightList({
               )
             }
             aria-label="Filter flights"
-            aria-expanded={filterOpen}
           >
             <FiSliders />
           </button>
@@ -147,66 +162,37 @@ export default function FlightList({
           {filterOpen && (
             <div className="flight-list-filter-menu">
 
-              <div className="flight-list-filter-head">
-
-                <strong>
-                  Status
-                </strong>
-
-                {selectedStatus !==
-                  "All" && (
-                  <button
-                    type="button"
-                    onClick={
-                      handleClearFilter
-                    }
-                  >
-                    Clear
-                  </button>
-                )}
-
+              <div className="flight-list-filter-title">
+                Status
               </div>
 
-              <div className="flight-list-filter-options">
-
-                {statusOptions.map(
-                  (status) => (
-                    <button
-                      key={status}
-                      type="button"
-                      className={
-                        selectedStatus ===
-                        status
-                          ? "active"
-                          : ""
-                      }
-                      onClick={() => {
-                        setSelectedStatus(
-                          status
-                        );
-
-                        setFilterOpen(
-                          false
-                        );
-                      }}
-                    >
-                      {status}
-                    </button>
-                  )
-                )}
-
-              </div>
+              {statuses.map((status) => (
+                <button
+                  type="button"
+                  key={status}
+                  className={
+                    selectedStatus === status
+                      ? "active"
+                      : ""
+                  }
+                  onClick={() => {
+                    setSelectedStatus(status);
+                    setFilterOpen(false);
+                  }}
+                >
+                  {status}
+                </button>
+              ))}
 
             </div>
           )}
 
         </div>
 
-        {/* ADD */}
-
         <button
           type="button"
           className="flight-list-add"
+          onClick={onAddFlight}
           aria-label="Add flight"
         >
           <FiPlus />
@@ -214,52 +200,24 @@ export default function FlightList({
 
       </div>
 
-      {/* =====================================
-          ACTIVE FILTER
-      ====================================== */}
-
-      {selectedStatus !== "All" && (
-        <div className="flight-list-active-filter">
-
-          <span>
-            {selectedStatus}
-          </span>
-
-          <button
-            type="button"
-            onClick={handleClearFilter}
-            aria-label="Remove status filter"
-          >
-            <FiX />
-          </button>
-
-        </div>
-      )}
-
-      {/* =====================================
-          FLIGHT CARDS
-      ====================================== */}
-
       <div className="flight-list-scroll">
 
-        {filteredFlights.length > 0 ? (
-          filteredFlights.map(
-            (flight) => (
-              <FlightCard
-                key={flight.id}
-                flight={flight}
-                active={
-                  selectedFlightId ===
+        {filteredFlights.length ? (
+          filteredFlights.map((flight) => (
+            <FlightCard
+              key={flight.id}
+              flight={flight}
+              active={
+                selectedFlightId ===
+                flight.id
+              }
+              onClick={() =>
+                onSelectFlight?.(
                   flight.id
-                }
-                onClick={() =>
-                  onSelectFlight?.(
-                    flight.id
-                  )
-                }
-              />
-            )
-          )
+                )
+              }
+            />
+          ))
         ) : (
           <div className="flight-list-empty">
 
@@ -270,8 +228,8 @@ export default function FlightList({
             </strong>
 
             <span>
-              Try another flight,
-              airport or status.
+              Try another airport,
+              airline or status.
             </span>
 
           </div>

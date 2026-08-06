@@ -2,8 +2,6 @@
 
 import {
   FiArrowRight,
-  FiClock,
-  FiCalendar,
 } from "react-icons/fi";
 
 import "./FlightDetails.scss";
@@ -15,96 +13,118 @@ export default function FlightDetails({
     return null;
   }
 
+  const statusClass =
+    flight.status
+      .toLowerCase()
+      .replace(/\s+/g, "-");
+
+  const passengerCount =
+    flight.passengers || 210;
+
   return (
     <div className="flight-details">
 
-      <div className="flight-details-header">
-        <h3>Flight Details</h3>
+      <div className="flight-details-top">
 
-        <span
-          className={`flight-details-status flight-details-status-${flight.status
-            .toLowerCase()
-            .replace(/\s+/g, "-")}`}
-        >
-          {flight.status}
-        </span>
-      </div>
+        <div className="flight-details-airline">
 
-      <div className="flight-details-route">
+          <div className="flight-details-logo">
+            ✈
+          </div>
 
-        {/* DEPARTURE */}
+          <div>
+            <strong>
+              {flight.airline}
+            </strong>
 
-        <div className="flight-details-airport">
+            <span>
+              {flight.flightNumber}
+            </span>
+          </div>
+
+          <span
+            className={`flight-details-status flight-details-status-${statusClass}`}
+          >
+            {flight.status}
+          </span>
+
+        </div>
+
+        <div className="flight-details-date">
+          <span>Date</span>
 
           <strong>
-            {flight.from.code}
+            {flight.date}
+          </strong>
+        </div>
+
+        <div className="flight-details-passengers">
+
+          <div className="flight-details-avatar" />
+          <div className="flight-details-avatar" />
+          <div className="flight-details-avatar" />
+
+          <span>
+            +
+            {Math.max(
+              passengerCount - 3,
+              0
+            )}
+          </span>
+
+        </div>
+
+      </div>
+
+      <div className="flight-details-bottom">
+
+        <div className="flight-details-location">
+
+          <strong>
+            {flight.from.time}
           </strong>
 
           <span>
             {flight.from.city}
           </span>
 
-          <b>
-            {flight.from.time}
-          </b>
-
         </div>
 
-        {/* ROUTE */}
+        <div className="flight-details-route">
 
-        <div className="flight-details-route-center">
+          <div className="flight-details-route-line">
 
-          <div className="flight-details-duration">
-            <FiClock />
+            <i />
 
-            <span>
-              {flight.duration}
-            </span>
-          </div>
+            <span />
 
-          <div className="flight-details-line">
-            <span className="flight-details-dot" />
+            <div className="flight-details-plane">
+              ✈
+            </div>
 
-            <div />
+            <span />
 
             <FiArrowRight />
+
           </div>
+
+          <small>
+            {flight.duration}
+          </small>
 
         </div>
 
-        {/* ARRIVAL */}
-
-        <div className="flight-details-airport flight-details-airport-right">
+        <div className="flight-details-location flight-details-location-right">
 
           <strong>
-            {flight.to.code}
+            {flight.to.time}
           </strong>
 
           <span>
             {flight.to.city}
           </span>
 
-          <b>
-            {flight.to.time}
-          </b>
-
         </div>
-
-      </div>
-
-      <div className="flight-details-footer">
-
-        <div>
-          <FiCalendar />
-
-          <span>
-            {flight.date}
-          </span>
-        </div>
-
-        <strong>
-          {flight.flightNumber}
-        </strong>
 
       </div>
 

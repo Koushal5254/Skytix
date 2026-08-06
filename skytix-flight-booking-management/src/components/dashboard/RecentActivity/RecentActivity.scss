@@ -3,6 +3,8 @@
 ======================================== */
 
 .activity-card {
+  position: relative;
+
   width: 100%;
   min-width: 0;
 
@@ -17,6 +19,8 @@
 ======================================== */
 
 .activity-header {
+  position: relative;
+
   width: 100%;
 
   margin-bottom: 14px;
@@ -26,6 +30,8 @@
   justify-content: space-between;
 
   gap: 12px;
+
+  z-index: 20;
 }
 
 .activity-header h5 {
@@ -36,6 +42,16 @@
   font-size: 13px;
   line-height: 1.2;
   font-weight: 700;
+}
+
+/* ========================================
+   MENU WRAPPER
+======================================== */
+
+.activity-menu-wrapper {
+  position: relative;
+
+  flex: 0 0 auto;
 }
 
 /* ========================================
@@ -74,10 +90,110 @@
   height: 16px;
 }
 
-.activity-more:hover {
+.activity-more:hover,
+.activity-more.active {
   background: #f6f6f6;
 
   color: #444444;
+}
+
+.activity-more:focus-visible {
+  outline: 2px solid
+    rgba(228, 198, 109, 0.6);
+
+  outline-offset: 2px;
+}
+
+/* ========================================
+   DROPDOWN
+======================================== */
+
+.activity-menu {
+  position: absolute;
+
+  top: calc(100% + 6px);
+  right: 0;
+
+  z-index: 50;
+
+  width: 145px;
+
+  padding: 5px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 10px 30px
+    rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.activity-menu button {
+  width: 100%;
+  min-height: 30px;
+
+  padding: 0 8px;
+
+  border: 0;
+  border-radius: 6px;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 8px;
+
+  color: #666666;
+
+  font-family: inherit;
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 500;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.activity-menu button:hover {
+  background: #f7f7f7;
+
+  color: #292929;
+}
+
+.activity-menu button.active {
+  background: #faf6e8;
+
+  color: #9a7c27;
+}
+
+.activity-menu button svg {
+  width: 11px;
+  height: 11px;
+
+  flex: 0 0 11px;
+}
+
+.activity-menu-divider {
+  width: calc(100% - 8px);
+  height: 1px;
+
+  margin: 3px auto;
+
+  background: #eeeeee;
 }
 
 /* ========================================
@@ -127,12 +243,13 @@
   justify-content: center;
 }
 
-/* IMPORTANT:
-   JSX uses activity-dot, not dot.
-*/
+/* ========================================
+   DOT
+======================================== */
 
 .activity-dot {
   position: relative;
+
   z-index: 2;
 
   width: 7px;
@@ -151,6 +268,10 @@
     0 0 0 1px #e4c66d;
 }
 
+/* ========================================
+   TIMELINE LINE
+======================================== */
+
 .activity-line {
   position: absolute;
 
@@ -164,7 +285,8 @@
 
   background: #eeeeee;
 
-  transform: translateX(-50%);
+  transform:
+    translateX(-50%);
 }
 
 /* ========================================
@@ -202,8 +324,24 @@
 }
 
 .activity-item:last-child
-.activity-content {
+  .activity-content {
   padding-bottom: 0;
+}
+
+/* ========================================
+   ITEM HOVER
+======================================== */
+
+.activity-content {
+  border-radius: 6px;
+
+  transition:
+    background 0.18s ease;
+}
+
+.activity-item:hover
+  .activity-content {
+  background: #fcfcfc;
 }
 
 /* ========================================
@@ -213,5 +351,25 @@
 @media (max-width: 1200px) {
   .activity-card {
     min-height: 330px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .activity-card {
+    min-height: auto;
+  }
+
+  .activity-item {
+    flex: none;
+
+    min-height: 55px;
+  }
+
+  .activity-menu {
+    width: 140px;
   }
 }

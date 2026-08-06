@@ -7,6 +7,8 @@ import {
 } from "react";
 
 import MainLayout from "@/components/layout/MainLayout/MainLayout";
+import Header from "@/components/layout/Header/Header";
+import Footer from "@/components/layout/Footer/Footer";
 
 import {
   deals as initialDeals,
@@ -14,10 +16,6 @@ import {
 } from "@/components/deals/data/deals";
 
 import {
-  FiBell,
-  FiHelpCircle,
-  FiSettings,
-  FiChevronDown,
   FiFilter,
   FiSliders,
   FiPlus,
@@ -71,13 +69,6 @@ export default function DealsPage() {
     useState(1);
 
   /* ========================================
-     ADMIN MENU
-  ======================================== */
-
-  const [adminMenuOpen, setAdminMenuOpen] =
-    useState(false);
-
-  /* ========================================
      PROMO MODAL
   ======================================== */
 
@@ -89,6 +80,33 @@ export default function DealsPage() {
 
   const [promoPeriod, setPromoPeriod] =
     useState("");
+
+  /* ========================================
+     FILTER OPTIONS
+  ======================================== */
+
+  const filterOptions = [
+    {
+      label: "All Promos",
+      value: "all",
+    },
+    {
+      label: "July",
+      value: "July",
+    },
+    {
+      label: "August",
+      value: "August",
+    },
+    {
+      label: "September",
+      value: "September",
+    },
+    {
+      label: "October",
+      value: "October",
+    },
+  ];
 
   /* ========================================
      FILTER + SEARCH + SORT
@@ -150,7 +168,7 @@ export default function DealsPage() {
   ]);
 
   /* ========================================
-     PAGE COUNT
+     TOTAL PAGES
   ======================================== */
 
   const totalPages = Math.max(
@@ -210,9 +228,7 @@ export default function DealsPage() {
 
   const handleAddPromo = () => {
     setEditingDeal(null);
-
     setPromoPeriod("");
-
     setModalOpen(true);
   };
 
@@ -236,9 +252,7 @@ export default function DealsPage() {
 
   const handleCloseModal = () => {
     setModalOpen(false);
-
     setEditingDeal(null);
-
     setPromoPeriod("");
   };
 
@@ -300,7 +314,7 @@ export default function DealsPage() {
   };
 
   /* ========================================
-     DELETE
+     DELETE PROMO
   ======================================== */
 
   const handleDeletePromo = (
@@ -338,137 +352,13 @@ export default function DealsPage() {
       <main className="deals-page">
 
         {/* =====================================
-            HEADER
+            SHARED HEADER
         ====================================== */}
 
-        <header className="deals-page-header">
-
-          <h1>
-            Deals
-          </h1>
-
-          <div className="deals-header-actions">
-
-            {/* NOTIFICATIONS */}
-
-            <button
-              type="button"
-              className="deals-header-icon-btn"
-              aria-label="Notifications"
-            >
-              <FiBell />
-
-              <span className="deals-notification-dot" />
-            </button>
-
-            {/* HELP */}
-
-            <button
-              type="button"
-              className="deals-header-icon-btn"
-              aria-label="Help"
-            >
-              <FiHelpCircle />
-            </button>
-
-            {/* SETTINGS */}
-
-            <button
-              type="button"
-              className="deals-header-icon-btn"
-              aria-label="Settings"
-            >
-              <FiSettings />
-            </button>
-
-            {/* ADMIN */}
-
-            <div className="deals-admin-wrapper">
-
-              <button
-                type="button"
-                className="deals-admin"
-                onClick={() =>
-                  setAdminMenuOpen(
-                    (current) =>
-                      !current
-                  )
-                }
-                aria-expanded={
-                  adminMenuOpen
-                }
-              >
-
-                <div className="deals-admin-avatar">
-                  MS
-                </div>
-
-                <div className="deals-admin-info">
-
-                  <strong>
-                    Martin Septimus
-                  </strong>
-
-                  <span>
-                    Admin
-                  </span>
-
-                </div>
-
-                <FiChevronDown
-                  className={`deals-admin-chevron ${
-                    adminMenuOpen
-                      ? "open"
-                      : ""
-                  }`}
-                />
-
-              </button>
-
-              {adminMenuOpen && (
-                <div className="deals-admin-dropdown">
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setAdminMenuOpen(
-                        false
-                      )
-                    }
-                  >
-                    My Profile
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setAdminMenuOpen(
-                        false
-                      )
-                    }
-                  >
-                    Settings
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setAdminMenuOpen(
-                        false
-                      )
-                    }
-                  >
-                    Sign Out
-                  </button>
-
-                </div>
-              )}
-
-            </div>
-
-          </div>
-
-        </header>
+        <Header
+          title="Deals"
+          showSearch={true}
+        />
 
         {/* =====================================
             TOOLBAR
@@ -495,6 +385,7 @@ export default function DealsPage() {
                       !current
                   )
                 }
+                aria-expanded={filterOpen}
               >
                 <FiFilter />
 
@@ -506,110 +397,31 @@ export default function DealsPage() {
               {filterOpen && (
                 <div className="deals-filter-menu">
 
-                  <button
-                    type="button"
-                    className={
-                      filterValue ===
-                      "all"
-                        ? "active"
-                        : ""
-                    }
-                    onClick={() => {
-                      setFilterValue(
-                        "all"
-                      );
+                  {filterOptions.map(
+                    (option) => (
+                      <button
+                        type="button"
+                        key={option.value}
+                        className={
+                          filterValue ===
+                          option.value
+                            ? "active"
+                            : ""
+                        }
+                        onClick={() => {
+                          setFilterValue(
+                            option.value
+                          );
 
-                      setFilterOpen(
-                        false
-                      );
-                    }}
-                  >
-                    All Promos
-                  </button>
-
-                  <button
-                    type="button"
-                    className={
-                      filterValue ===
-                      "July"
-                        ? "active"
-                        : ""
-                    }
-                    onClick={() => {
-                      setFilterValue(
-                        "July"
-                      );
-
-                      setFilterOpen(
-                        false
-                      );
-                    }}
-                  >
-                    July
-                  </button>
-
-                  <button
-                    type="button"
-                    className={
-                      filterValue ===
-                      "August"
-                        ? "active"
-                        : ""
-                    }
-                    onClick={() => {
-                      setFilterValue(
-                        "August"
-                      );
-
-                      setFilterOpen(
-                        false
-                      );
-                    }}
-                  >
-                    August
-                  </button>
-
-                  <button
-                    type="button"
-                    className={
-                      filterValue ===
-                      "September"
-                        ? "active"
-                        : ""
-                    }
-                    onClick={() => {
-                      setFilterValue(
-                        "September"
-                      );
-
-                      setFilterOpen(
-                        false
-                      );
-                    }}
-                  >
-                    September
-                  </button>
-
-                  <button
-                    type="button"
-                    className={
-                      filterValue ===
-                      "October"
-                        ? "active"
-                        : ""
-                    }
-                    onClick={() => {
-                      setFilterValue(
-                        "October"
-                      );
-
-                      setFilterOpen(
-                        false
-                      );
-                    }}
-                  >
-                    October
-                  </button>
+                          setFilterOpen(
+                            false
+                          );
+                        }}
+                      >
+                        {option.label}
+                      </button>
+                    )
+                  )}
 
                 </div>
               )}
@@ -818,7 +630,7 @@ export default function DealsPage() {
         </section>
 
         {/* =====================================
-            PAGINATION AREA
+            PAGINATION
         ====================================== */}
 
         <section className="deals-pagination-area">
@@ -898,31 +710,10 @@ export default function DealsPage() {
         </section>
 
         {/* =====================================
-            FOOTER
+            SHARED FOOTER
         ====================================== */}
 
-        <footer className="deals-footer">
-
-          <p>
-            Copyright © 2024
-            Peterdraw
-          </p>
-
-          <nav>
-            <button type="button">
-              Privacy Policy
-            </button>
-
-            <button type="button">
-              Term and conditions
-            </button>
-
-            <button type="button">
-              Contact
-            </button>
-          </nav>
-
-        </footer>
+        <Footer />
 
         {/* =====================================
             ADD / EDIT MODAL
