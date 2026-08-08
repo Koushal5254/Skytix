@@ -1,0 +1,564 @@
+/* ========================================
+   PAYMENT TOOLBAR
+======================================== */
+
+.payment-toolbar {
+  position: relative;
+  z-index: 30;
+
+  width: 100%;
+  min-width: 0;
+
+  padding: 16px 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 14px;
+
+  border-bottom: 1px solid #eeeeee;
+
+  box-sizing: border-box;
+}
+
+/* ========================================
+   SEARCH
+======================================== */
+
+.payment-toolbar-search {
+  width: min(360px, 100%);
+  height: 38px;
+
+  padding: 0 12px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 9px;
+
+  background: #fafafa;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.payment-toolbar-search:focus-within {
+  background: #ffffff;
+
+  border-color: #e4c66d;
+
+  box-shadow:
+    0 0 0 2px
+    rgba(228, 198, 109, 0.09);
+}
+
+.payment-toolbar-search > svg {
+  width: 14px;
+  height: 14px;
+
+  flex: 0 0 14px;
+
+  color: #999999;
+}
+
+.payment-toolbar-search input {
+  width: 100%;
+  min-width: 0;
+
+  padding: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: #444444;
+
+  font-family: inherit;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.payment-toolbar-search input::placeholder {
+  color: #aaaaaa;
+
+  opacity: 1;
+}
+
+.payment-toolbar-search
+  input::-webkit-search-cancel-button {
+  display: none;
+}
+
+/* ========================================
+   CLEAR SEARCH
+======================================== */
+
+.payment-search-clear {
+  width: 22px;
+  height: 22px;
+
+  flex: 0 0 22px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 6px;
+  outline: 0;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #999999;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.payment-search-clear:hover {
+  background: #eeeeee;
+
+  color: #444444;
+}
+
+.payment-search-clear svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* ========================================
+   RIGHT
+======================================== */
+
+.payment-toolbar-right {
+  position: relative;
+
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+/* ========================================
+   DATE WRAPPER
+======================================== */
+
+.payment-date-wrapper {
+  position: relative;
+
+  flex: 0 0 auto;
+}
+
+/* ========================================
+   DATE BUTTON
+======================================== */
+
+.payment-toolbar-date {
+  height: 38px;
+
+  padding: 0 11px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 9px;
+  outline: 0;
+
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  color: #555555;
+
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.payment-toolbar-date:hover,
+.payment-toolbar-date.active {
+  border-color: #e4c66d;
+
+  background: #fffdf8;
+}
+
+.payment-toolbar-date:focus-visible {
+  outline: 2px solid
+    rgba(228, 198, 109, 0.45);
+
+  outline-offset: 2px;
+}
+
+.payment-toolbar-date svg {
+  width: 13px;
+  height: 13px;
+
+  flex: 0 0 13px;
+
+  color: #888888;
+}
+
+.payment-toolbar-date
+  svg:last-child {
+  margin-left: 2px;
+
+  transition:
+    transform 0.18s ease;
+}
+
+.payment-toolbar-date
+  svg:last-child.open {
+  transform: rotate(180deg);
+}
+
+/* ========================================
+   DATE MENU
+======================================== */
+
+.payment-date-menu {
+  position: absolute;
+
+  z-index: 200;
+
+  top: calc(100% + 7px);
+  right: 0;
+
+  width: 175px;
+  max-height: 310px;
+
+  padding: 5px;
+
+  overflow-y: auto;
+
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+
+  box-shadow:
+    0 12px 35px
+    rgba(0, 0, 0, 0.09);
+}
+
+.payment-date-menu button {
+  width: 100%;
+  min-height: 32px;
+
+  padding: 0 9px;
+
+  border: 0;
+  border-radius: 7px;
+  outline: 0;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  color: #555555;
+
+  font-family: inherit;
+  font-size: 9px;
+  line-height: 1.2;
+  font-weight: 500;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.payment-date-menu button:hover {
+  background: #f7f7f7;
+}
+
+.payment-date-menu button.active {
+  background: #faf6e8;
+
+  color: #947723;
+}
+
+.payment-date-menu button svg {
+  width: 11px;
+  height: 11px;
+
+  flex: 0 0 11px;
+}
+
+/* ========================================
+   STATUS WRAPPER
+======================================== */
+
+.payment-status-wrapper {
+  position: relative;
+
+  width: 120px;
+
+  flex: 0 0 120px;
+}
+
+/* ========================================
+   STATUS BUTTON
+======================================== */
+
+.payment-toolbar-status-btn {
+  width: 100%;
+  height: 38px;
+
+  padding: 0 11px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 9px;
+  outline: 0;
+
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 8px;
+
+  color: #555555;
+
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.payment-toolbar-status-btn:hover,
+.payment-toolbar-status-btn.active {
+  border-color: #e4c66d;
+
+  background: #fffdf8;
+}
+
+.payment-toolbar-status-btn:focus-visible {
+  outline: 2px solid
+    rgba(228, 198, 109, 0.45);
+
+  outline-offset: 2px;
+}
+
+.payment-toolbar-status-btn > span {
+  min-width: 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+.payment-toolbar-status-btn svg {
+  width: 13px;
+  height: 13px;
+
+  flex: 0 0 13px;
+
+  color: #888888;
+
+  transition:
+    transform 0.18s ease;
+}
+
+.payment-toolbar-status-btn
+  svg.open {
+  transform: rotate(180deg);
+}
+
+/* ========================================
+   STATUS MENU
+======================================== */
+
+.payment-status-menu {
+  position: absolute;
+
+  z-index: 200;
+
+  top: calc(100% + 7px);
+  right: 0;
+
+  width: 145px;
+
+  padding: 5px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+
+  box-shadow:
+    0 12px 35px
+    rgba(0, 0, 0, 0.09);
+}
+
+.payment-status-menu button {
+  width: 100%;
+  min-height: 32px;
+
+  padding: 0 9px;
+
+  border: 0;
+  border-radius: 7px;
+  outline: 0;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  color: #555555;
+
+  font-family: inherit;
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 500;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.payment-status-menu button:hover {
+  background: #f7f7f7;
+}
+
+.payment-status-menu button.active {
+  background: #faf6e8;
+
+  color: #947723;
+}
+
+.payment-status-menu button svg {
+  width: 11px;
+  height: 11px;
+
+  flex: 0 0 11px;
+}
+
+/* ========================================
+   LAPTOP
+======================================== */
+
+@media (max-width: 1100px) {
+  .payment-toolbar-search {
+    width: 300px;
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .payment-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+  .payment-toolbar-search {
+    width: 100%;
+  }
+
+  .payment-toolbar-right {
+    justify-content: flex-end;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 520px) {
+  .payment-toolbar {
+    padding: 14px;
+  }
+
+  .payment-toolbar-right {
+    width: 100%;
+
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .payment-date-wrapper,
+  .payment-status-wrapper {
+    width: 100%;
+
+    flex-basis: auto;
+  }
+
+  .payment-toolbar-date,
+  .payment-toolbar-status-btn {
+    width: 100%;
+  }
+
+  .payment-toolbar-date {
+    justify-content: flex-start;
+  }
+
+  .payment-toolbar-date
+    svg:last-child {
+    margin-left: auto;
+  }
+
+  .payment-date-menu,
+  .payment-status-menu {
+    left: 0;
+    right: auto;
+
+    width: 100%;
+  }
+}

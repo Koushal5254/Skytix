@@ -1,0 +1,52 @@
+/* ========================================
+   COMMON CARD
+======================================== */
+
+.custom-card {
+  width: 100%;
+  min-width: 0;
+
+  padding: 16px;
+
+  background: #ffffff;
+
+  border: 1px solid #eeeeee;
+  border-radius: 16px;
+
+  box-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.025);
+
+  box-sizing: border-box;
+}
+
+/* ========================================
+   CARD CONTENT SAFETY
+======================================== */
+
+.custom-card > * {
+  min-width: 0;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .custom-card {
+    padding: 15px;
+
+    border-radius: 15px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+  .custom-card {
+    padding: 14px;
+
+    border-radius: 14px;
+  }
+}

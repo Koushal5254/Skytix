@@ -1,0 +1,87 @@
+/* ========================================
+   BOOKING LIST
+======================================== */
+
+.booking-list {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+/* ========================================
+   EMPTY STATE
+======================================== */
+
+.booking-list-empty {
+  width: 100%;
+
+  min-height: 300px;
+
+  margin-bottom: 18px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  text-align: center;
+}
+
+.booking-list-empty h3 {
+  margin: 0;
+
+  color: #292929;
+
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.booking-list-empty p {
+  margin: 0;
+
+  color: #999999;
+
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .booking-list {
+    gap: 10px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .booking-list {
+    margin-bottom: 14px;
+  }
+
+  .booking-list-empty {
+    min-height: 220px;
+
+    margin-bottom: 14px;
+  }
+}

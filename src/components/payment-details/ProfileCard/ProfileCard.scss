@@ -1,0 +1,657 @@
+/* ========================================
+   PROFILE CARD
+======================================== */
+
+.profile-card {
+  width: 100%;
+  min-width: 0;
+
+  padding: 22px 18px 18px;
+
+  background: #ffffff;
+
+  border-radius: 14px;
+
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.profile-card-header {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+}
+
+.profile-card-header h3 {
+  margin: 0;
+
+  color: #252525;
+
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+/* ========================================
+   MORE BUTTON
+======================================== */
+
+.profile-card-more {
+  width: 24px;
+  height: 24px;
+
+  padding: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #252525;
+
+  cursor: pointer;
+}
+
+.profile-card-more svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ========================================
+   AVATAR
+======================================== */
+
+.profile-card-avatar {
+  width: 108px;
+  height: 108px;
+
+  flex: 0 0 108px;
+
+  margin:
+    24px
+    auto
+    15px;
+
+  border-radius: 50%;
+
+  background: #f3dfa4;
+}
+
+/* ========================================
+   NAME
+======================================== */
+
+.profile-card-name {
+  width: 100%;
+
+  margin-bottom: 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 4px;
+}
+
+.profile-card-name h2 {
+  margin: 0;
+
+  color: #202020;
+
+  font-size: 17px;
+  line-height: 1.2;
+  font-weight: 700;
+
+  letter-spacing: -0.3px;
+}
+
+/* ========================================
+   VERIFIED
+======================================== */
+
+.profile-verified {
+  width: 14px;
+  height: 14px;
+
+  flex: 0 0 14px;
+
+  border-radius: 50%;
+
+  background: #4d91f7;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+}
+
+.profile-verified svg {
+  width: 9px;
+  height: 9px;
+
+  stroke-width: 3;
+}
+
+/* ========================================
+   MEMBERSHIP CARD
+======================================== */
+
+.profile-membership-card {
+  width: 100%;
+
+  margin-bottom: 17px;
+
+  border: 1px solid #dfbd55;
+  border-radius: 11px;
+
+  overflow: hidden;
+
+  background: #ffffff;
+}
+
+/* ========================================
+   GOLD AREA
+======================================== */
+
+.profile-membership-top {
+  position: relative;
+
+  width: 100%;
+  height: 106px;
+
+  padding: 10px 12px 13px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      115deg,
+      #c9a843 0%,
+      #e0c36a 52%,
+      #d5b44f 100%
+    );
+
+  box-sizing: border-box;
+}
+
+/* ========================================
+   GOLD MEMBER BADGE
+======================================== */
+
+.profile-membership-badge {
+  position: relative;
+
+  z-index: 2;
+
+  width: fit-content;
+  min-height: 31px;
+
+  padding: 0 11px;
+
+  border-radius: 7px;
+
+  background:
+    rgba(
+      255,
+      248,
+      225,
+      0.86
+    );
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  color: #292929;
+
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.profile-membership-badge svg {
+  width: 16px;
+  height: 16px;
+
+  stroke-width: 1.7;
+}
+
+/* ========================================
+   WATERMARK
+======================================== */
+
+.profile-membership-watermark {
+  position: absolute;
+
+  top: 18px;
+  right: 18px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.2
+    );
+
+  pointer-events: none;
+}
+
+.profile-membership-watermark svg {
+  width: 68px;
+  height: 68px;
+
+  stroke-width: 1.2;
+}
+
+/* ========================================
+   POINTS
+======================================== */
+
+.profile-points {
+  position: absolute;
+
+  z-index: 2;
+
+  left: 13px;
+  bottom: 13px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  color: #ffffff;
+}
+
+.profile-points strong {
+  color: #ffffff;
+
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+}
+
+.profile-points-label {
+  margin-top: 5px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.95
+    );
+
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+/* ========================================
+   POINT ICON
+======================================== */
+
+.profile-points-icon {
+  position: relative;
+
+  width: 22px;
+  height: 18px;
+
+  flex: 0 0 22px;
+}
+
+.profile-points-icon span {
+  position: absolute;
+
+  width: 11px;
+  height: 7px;
+
+  border: 1.5px solid #ffffff;
+  border-radius: 50%;
+}
+
+.profile-points-icon span:nth-child(1) {
+  top: 0;
+  left: 0;
+}
+
+.profile-points-icon span:nth-child(2) {
+  top: 0;
+  right: 0;
+}
+
+.profile-points-icon span:nth-child(3) {
+  left: 5px;
+  bottom: 0;
+}
+
+/* ========================================
+   BENEFITS
+======================================== */
+
+.profile-benefits {
+  width: 100%;
+
+  padding: 12px 13px 14px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 11px;
+
+  box-sizing: border-box;
+}
+
+/* ========================================
+   BENEFIT ROW
+======================================== */
+
+.profile-benefit {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+/* ========================================
+   BENEFIT CHECK
+======================================== */
+
+.profile-benefit-check {
+  width: 15px;
+  height: 15px;
+
+  flex: 0 0 15px;
+
+  border-radius: 50%;
+
+  background: #292923;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+}
+
+.profile-benefit-check svg {
+  width: 8px;
+  height: 8px;
+
+  stroke-width: 3;
+}
+
+/* ========================================
+   BENEFIT TEXT
+======================================== */
+
+.profile-benefit-text {
+  min-width: 0;
+
+  color: #555555;
+
+  font-size: 10px;
+  line-height: 1.35;
+  font-weight: 400;
+}
+
+/* ========================================
+   CONTACT CARD
+======================================== */
+
+.profile-contact-card {
+  width: 100%;
+
+  margin-bottom: 16px;
+
+  border: 1px solid #e4e4e4;
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  background: #ffffff;
+}
+
+/* ========================================
+   CONTACT ROW
+======================================== */
+
+.profile-contact-row {
+  width: 100%;
+
+  min-height: 52px;
+
+  padding: 9px 10px;
+
+  display: grid;
+
+  grid-template-columns:
+    35px
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 10px;
+
+  box-sizing: border-box;
+}
+
+.profile-contact-row +
+.profile-contact-row {
+  border-top: 1px solid #e8e8e8;
+}
+
+/* ========================================
+   CONTACT ICON
+======================================== */
+
+.profile-contact-icon {
+  width: 35px;
+  height: 35px;
+
+  border-radius: 7px;
+
+  background: #f5f5f5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #898989;
+}
+
+.profile-contact-icon svg {
+  width: 17px;
+  height: 17px;
+
+  stroke-width: 1.6;
+}
+
+/* ========================================
+   CONTACT INFORMATION
+======================================== */
+
+.profile-contact-info {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.profile-contact-info span {
+  color: #999999;
+
+  font-size: 8px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.profile-contact-info strong {
+  min-width: 0;
+
+  color: #414141;
+
+  font-size: 10px;
+  line-height: 1.3;
+  font-weight: 500;
+
+  overflow-wrap: anywhere;
+}
+
+/* ========================================
+   ACTIONS
+======================================== */
+
+.profile-card-actions {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 10px;
+}
+
+/* ========================================
+   ACTION BUTTONS
+======================================== */
+
+.profile-card-actions button {
+  width: 100%;
+  height: 34px;
+
+  padding: 0 12px;
+
+  border: 0;
+  border-radius: 7px;
+
+  font-family: inherit;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+/* ========================================
+   MAIL
+======================================== */
+
+.profile-mail-button {
+  background: #ffffff;
+
+  color: #363636;
+}
+
+.profile-mail-button:hover {
+  background: #f7f7f7;
+}
+
+/* ========================================
+   MESSAGE
+======================================== */
+
+.profile-message-button {
+  background: #e4c66d;
+
+  color: #292929;
+}
+
+.profile-message-button:hover:not(:disabled) {
+  background: #d8b957;
+}
+
+.profile-message-button:disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+/* ========================================
+   LAPTOP
+======================================== */
+
+@media (max-width: 1200px) {
+  .profile-card {
+    padding:
+      20px
+      16px
+      17px;
+  }
+
+  .profile-card-avatar {
+    width: 100px;
+    height: 100px;
+
+    flex-basis: 100px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .profile-card {
+    padding: 18px 15px;
+
+    border-radius: 12px;
+  }
+
+  .profile-card-avatar {
+    width: 92px;
+    height: 92px;
+
+    flex-basis: 92px;
+
+    margin-top: 20px;
+  }
+
+  .profile-card-name h2 {
+    font-size: 16px;
+  }
+
+  .profile-membership-top {
+    height: 104px;
+  }
+
+  .profile-card-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card-actions button {
+    height: 38px;
+  }
+}

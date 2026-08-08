@@ -1,0 +1,499 @@
+.flight-map {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+
+  background: #d7dfdf;
+}
+
+.flight-map-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #888888;
+
+  font-size: 11px;
+}
+
+/* ========================================
+   STAGE
+======================================== */
+
+.flight-map-stage {
+  position: absolute;
+
+  inset: 0;
+
+  transform-origin: center;
+
+  transition: transform 0.25s ease;
+}
+
+/* ========================================
+   GEOGRAPHY
+======================================== */
+
+.flight-map-geography {
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d0d9da 0%,
+      #c8d3d5 100%
+    );
+}
+
+/* land masses */
+
+.geo-canada {
+  position: absolute;
+
+  left: -8%;
+  top: -20%;
+
+  width: 116%;
+  height: 55%;
+
+  border-radius: 35% 40% 45% 30%;
+
+  background: #eff0e8;
+
+  transform: rotate(-2deg);
+}
+
+.geo-usa {
+  position: absolute;
+
+  left: 9%;
+  top: 26%;
+
+  width: 82%;
+  height: 48%;
+
+  background: #eeefe7;
+
+  clip-path: polygon(
+    3% 12%,
+    23% 4%,
+    44% 8%,
+    62% 2%,
+    85% 10%,
+    98% 31%,
+    91% 53%,
+    79% 61%,
+    68% 83%,
+    48% 87%,
+    30% 78%,
+    17% 62%,
+    7% 45%
+  );
+}
+
+.geo-mexico {
+  position: absolute;
+
+  left: 33%;
+  top: 67%;
+
+  width: 37%;
+  height: 30%;
+
+  background: #eceee6;
+
+  clip-path: polygon(
+    0 0,
+    38% 8%,
+    62% 25%,
+    100% 35%,
+    85% 62%,
+    63% 53%,
+    44% 83%,
+    30% 62%,
+    12% 40%
+  );
+}
+
+.geo-water {
+  position: absolute;
+
+  right: -10%;
+  bottom: -15%;
+
+  width: 35%;
+  height: 40%;
+
+  border-radius: 50%;
+
+  background:
+    rgba(193, 207, 209, 0.75);
+}
+
+/* ========================================
+   MAP BOUNDARIES
+======================================== */
+
+.geo-line {
+  position: absolute;
+
+  height: 1px;
+
+  background:
+    rgba(157, 164, 161, 0.25);
+}
+
+.geo-line-1 {
+  left: 12%;
+  top: 39%;
+  width: 72%;
+}
+
+.geo-line-2 {
+  left: 18%;
+  top: 50%;
+  width: 65%;
+}
+
+.geo-line-3 {
+  left: 26%;
+  top: 61%;
+  width: 52%;
+}
+
+.geo-line-4 {
+  left: 43%;
+  top: 18%;
+
+  width: 1px;
+  height: 60%;
+}
+
+.geo-line-5 {
+  left: 63%;
+  top: 20%;
+
+  width: 1px;
+  height: 55%;
+}
+
+/* ========================================
+   LABELS
+======================================== */
+
+.map-city,
+.map-country {
+  position: absolute;
+
+  z-index: 2;
+
+  color:
+    rgba(80, 84, 82, 0.7);
+
+  white-space: nowrap;
+}
+
+.map-city {
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.map-country {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.map-city-vancouver {
+  left: 8%;
+  top: 27%;
+}
+
+.map-city-edmonton {
+  left: 25%;
+  top: 15%;
+}
+
+.map-city-calgary {
+  left: 25%;
+  top: 23%;
+}
+
+.map-city-san-francisco {
+  left: 2%;
+  top: 48%;
+}
+
+.map-city-los-angeles {
+  left: 15%;
+  top: 63%;
+}
+
+.map-city-houston {
+  left: 47%;
+  top: 70%;
+}
+
+.map-city-toronto {
+  left: 73%;
+  top: 36%;
+}
+
+.map-city-new-york {
+  left: 80%;
+  top: 47%;
+}
+
+.map-city-boston {
+  left: 86%;
+  top: 39%;
+}
+
+.map-country-canada {
+  left: 35%;
+  top: 9%;
+}
+
+.map-country-us {
+  left: 43%;
+  top: 44%;
+}
+
+.map-country-mexico {
+  left: 40%;
+  top: 81%;
+}
+
+/* ========================================
+   ROUTE
+======================================== */
+
+.flight-map-route {
+  position: absolute;
+
+  z-index: 6;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+
+  pointer-events: none;
+}
+
+.flight-map-route path {
+  fill: none;
+
+  stroke: #222222;
+  stroke-width: 0.42;
+
+  vector-effect:
+    non-scaling-stroke;
+}
+
+/* ========================================
+   AIRPORTS
+======================================== */
+
+.flight-map-airport {
+  position: absolute;
+
+  z-index: 10;
+
+  transform:
+    translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 4px;
+}
+
+.flight-map-airport-code {
+  min-width: 31px;
+  height: 21px;
+
+  padding: 0 6px;
+
+  border-radius: 5px;
+
+  background: #dfbd51;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #302a18;
+
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.flight-map-airport-to
+  .flight-map-airport-code {
+  background: #282828;
+
+  color: #f0d476;
+}
+
+.flight-map-airport i {
+  width: 11px;
+  height: 11px;
+
+  border: 3px solid #333333;
+  border-radius: 50%;
+
+  background: #e1bf53;
+
+  box-shadow:
+    0 0 0 2px
+    rgba(255, 255, 255, 0.7);
+}
+
+/* ========================================
+   PLANE
+======================================== */
+
+.flight-map-plane {
+  position: absolute;
+
+  z-index: 12;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(-15deg);
+
+  color: #222222;
+
+  font-size: 21px;
+
+  text-shadow:
+    0 2px 3px
+    rgba(255, 255, 255, 0.7);
+}
+
+/* ========================================
+   CONTROLS
+======================================== */
+
+.flight-map-controls {
+  position: absolute;
+
+  z-index: 30;
+
+  right: 16px;
+  bottom: 16px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.flight-map-zoom {
+  overflow: hidden;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 4px 15px
+    rgba(0, 0, 0, 0.08);
+}
+
+.flight-map-zoom button,
+.flight-map-control {
+  width: 32px;
+  height: 32px;
+
+  padding: 0;
+
+  border: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.flight-map-zoom button {
+  background: #ffffff;
+
+  color: #555555;
+}
+
+.flight-map-zoom span {
+  display: block;
+
+  width: 20px;
+  height: 1px;
+
+  margin: 0 auto;
+
+  background: #e8e8e8;
+}
+
+.flight-map-control {
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  color: #555555;
+
+  box-shadow:
+    0 4px 15px
+    rgba(0, 0, 0, 0.08);
+}
+
+.flight-map-location {
+  background: #e3c25a;
+
+  color: #39311b;
+}
+
+.flight-map-zoom button:hover,
+.flight-map-control:hover {
+  filter: brightness(0.97);
+}
+
+.flight-map-zoom svg,
+.flight-map-control svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ========================================
+   FULLSCREEN
+======================================== */
+
+.flight-map-fullscreen {
+  position: fixed;
+
+  z-index: 2000;
+
+  inset: 20px;
+
+  width: auto;
+  height: auto;
+
+  border: 1px solid #dddddd;
+  border-radius: 20px;
+
+  box-shadow:
+    0 25px 80px
+    rgba(0, 0, 0, 0.25);
+}

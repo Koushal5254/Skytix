@@ -1,0 +1,503 @@
+/* ========================================
+   POPULAR AIRLINES
+======================================== */
+
+.popular-airlines-card {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+
+  min-height: 340px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.airlines-header {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  z-index: 10;
+}
+
+.airlines-header h5 {
+  margin: 0;
+
+  color: #292929;
+
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+/* ========================================
+   MENU WRAPPER
+======================================== */
+
+.airlines-menu-wrapper {
+  position: relative;
+
+  flex: 0 0 auto;
+}
+
+/* ========================================
+   MORE BUTTON
+======================================== */
+
+.airlines-more {
+  width: 28px;
+  height: 28px;
+
+  flex: 0 0 28px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 7px;
+  outline: 0;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #999999;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.airlines-more svg {
+  width: 16px;
+  height: 16px;
+}
+
+.airlines-more:hover,
+.airlines-more.active {
+  background: #f6f6f6;
+
+  color: #444444;
+}
+
+.airlines-more:focus-visible {
+  outline: 2px solid
+    rgba(228, 198, 109, 0.6);
+
+  outline-offset: 2px;
+}
+
+/* ========================================
+   DROPDOWN MENU
+======================================== */
+
+.airlines-menu {
+  position: absolute;
+
+  top: calc(100% + 6px);
+  right: 0;
+
+  z-index: 50;
+
+  width: 155px;
+
+  padding: 5px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 10px 30px
+    rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.airlines-menu button {
+  width: 100%;
+  min-height: 30px;
+
+  padding: 0 8px;
+
+  border: 0;
+  border-radius: 6px;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 8px;
+
+  color: #666666;
+
+  font-family: inherit;
+  font-size: 8px;
+  line-height: 1.2;
+  font-weight: 500;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.airlines-menu button:hover {
+  background: #f7f7f7;
+
+  color: #292929;
+}
+
+.airlines-menu button.active {
+  background: #faf6e8;
+
+  color: #9a7c27;
+}
+
+.airlines-menu button svg {
+  width: 11px;
+  height: 11px;
+
+  flex: 0 0 11px;
+}
+
+.airlines-menu-divider {
+  width: calc(100% - 8px);
+  height: 1px;
+
+  margin: 3px auto;
+
+  background: #eeeeee;
+}
+
+/* ========================================
+   CHART
+======================================== */
+
+.airlines-chart {
+  position: relative;
+
+  width: 170px;
+  height: 170px;
+
+  max-width: 100%;
+
+  margin: 8px auto 5px;
+}
+
+/* ========================================
+   APEX CHART
+======================================== */
+
+.airlines-chart .apexcharts-canvas,
+.airlines-chart .apexcharts-svg {
+  width: 100% !important;
+}
+
+.airlines-chart
+  .apexcharts-pie-series
+  path {
+  cursor: pointer;
+
+  transition:
+    opacity 0.18s ease;
+}
+
+/* ========================================
+   CENTER
+======================================== */
+
+.airlines-center {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 66px;
+  height: 66px;
+
+  transform:
+    translate(-50%, -50%);
+
+  pointer-events: none;
+}
+
+/* ========================================
+   CENTER ICON
+======================================== */
+
+.airlines-center-icon {
+  position: absolute;
+
+  inset: 0;
+
+  width: 66px;
+  height: 66px;
+
+  border-radius: 50%;
+
+  background: #e4c66d;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #292929;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.airlines-center-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.airlines-center-icon.selected {
+  transform:
+    translateY(-8px)
+    scale(0.72);
+}
+
+/* ========================================
+   CENTER VALUE
+======================================== */
+
+.airlines-center-value {
+  position: absolute;
+
+  left: 50%;
+  bottom: 8px;
+
+  transform:
+    translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.airlines-center-value strong {
+  color: #292929;
+
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   LIST
+======================================== */
+
+.airlines-list {
+  width: 100%;
+
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================================
+   AIRLINE ROW
+======================================== */
+
+.airline-row {
+  width: 100%;
+
+  min-height: 32px;
+
+  padding: 7px 4px;
+
+  border: 0;
+  border-bottom: 1px solid #f2f2f2;
+  border-radius: 5px;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  font-family: inherit;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    padding 0.18s ease;
+}
+
+.airline-row:last-child {
+  border-bottom-color: transparent;
+}
+
+.airline-row:hover {
+  background: #fafafa;
+}
+
+.airline-row.selected {
+  background: #faf7ed;
+}
+
+.airline-row:focus-visible {
+  outline: 2px solid
+    rgba(228, 198, 109, 0.5);
+
+  outline-offset: -2px;
+}
+
+/* ========================================
+   AIRLINE NAME
+======================================== */
+
+.airline-name {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+}
+
+.airline-name > span:last-child {
+  min-width: 0;
+
+  color: #666666;
+
+  font-size: 9px;
+  line-height: 1.2;
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.airline-row.selected
+  .airline-name
+  > span:last-child {
+  color: #292929;
+
+  font-weight: 600;
+}
+
+/* ========================================
+   VALUE
+======================================== */
+
+.airline-row strong {
+  flex: 0 0 auto;
+
+  color: #292929;
+
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* ========================================
+   DOTS
+======================================== */
+
+.airline-dot {
+  width: 8px;
+  height: 8px;
+
+  flex: 0 0 8px;
+
+  border-radius: 2px;
+}
+
+.airline-dot.yellow {
+  background: #e4c66d;
+}
+
+.airline-dot.black {
+  background: #252525;
+}
+
+.airline-dot.gray {
+  background: #8c8c8c;
+}
+
+.airline-dot.light {
+  background: #d9d9d9;
+}
+
+/* ========================================
+   SMALL LAPTOP
+======================================== */
+
+@media (max-width: 1200px) {
+  .popular-airlines-card {
+    min-height: 330px;
+  }
+
+  .airlines-chart {
+    width: 160px;
+    height: 160px;
+  }
+
+  .airlines-center,
+  .airlines-center-icon {
+    width: 62px;
+    height: 62px;
+  }
+
+  .airlines-center-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .popular-airlines-card {
+    min-height: 320px;
+  }
+
+  .airlines-chart {
+    width: 155px;
+    height: 155px;
+  }
+
+  .airlines-menu {
+    width: 150px;
+  }
+}

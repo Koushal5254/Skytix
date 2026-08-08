@@ -1,0 +1,500 @@
+/* ========================================
+   FLIGHT TIMELINE
+======================================== */
+
+.flight-timeline {
+  width: 100%;
+  min-width: 0;
+
+  padding: 28px 54px 30px;
+
+  border-radius: 14px;
+
+  background: #f7f5f4;
+
+  box-sizing: border-box;
+}
+
+/* ========================================
+   LAYOUT
+======================================== */
+
+.timeline-layout {
+  width: 100%;
+  min-width: 0;
+
+  min-height: 500px;
+
+  display: grid;
+
+  grid-template-columns:
+    95px
+    36px
+    minmax(0, 1fr);
+
+  column-gap: 18px;
+}
+
+/* ========================================
+   TIME COLUMN
+======================================== */
+
+.timeline-times {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 500px;
+}
+
+/* ========================================
+   TIME
+======================================== */
+
+.timeline-time {
+  position: absolute;
+
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.departure-time {
+  top: 0;
+}
+
+.arrival-time {
+  bottom: 0;
+}
+
+.timeline-time strong {
+  margin: 0;
+
+  color: #222222;
+
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.timeline-time span {
+  color: #999999;
+
+  font-size: 8px;
+  line-height: 1.2;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   DURATION
+======================================== */
+
+.timeline-duration {
+  position: absolute;
+
+  top: 50%;
+  left: 0;
+
+  width: 100%;
+
+  transform: translateY(-50%);
+
+  color: #999999;
+
+  font-size: 9px;
+  line-height: 1.2;
+  font-weight: 400;
+
+  text-align: center;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   TRACK
+======================================== */
+
+.timeline-track {
+  position: relative;
+
+  width: 36px;
+  min-height: 500px;
+
+  align-self: stretch;
+}
+
+/* ========================================
+   DOTS
+======================================== */
+
+.timeline-dot {
+  position: absolute;
+
+  z-index: 3;
+
+  left: 50%;
+
+  width: 10px;
+  height: 10px;
+
+  border: 2px solid #f7f5f4;
+  border-radius: 50%;
+
+  background: #e4c66d;
+
+  box-shadow:
+    0 0 0 1px #e4c66d;
+
+  transform: translateX(-50%);
+
+  box-sizing: border-box;
+}
+
+.timeline-dot-top {
+  top: 2px;
+}
+
+.timeline-dot-bottom {
+  bottom: 2px;
+}
+
+/* ========================================
+   DASHED LINE
+======================================== */
+
+.timeline-line {
+  position: absolute;
+
+  z-index: 1;
+
+  left: 50%;
+
+  width: 0;
+
+  border-left: 1px dashed #dfc467;
+
+  transform: translateX(-50%);
+}
+
+.timeline-line-top {
+  top: 15px;
+
+  bottom: calc(50% + 15px);
+}
+
+.timeline-line-bottom {
+  top: calc(50% + 15px);
+
+  bottom: 15px;
+}
+
+/* ========================================
+   PLANE
+======================================== */
+
+.timeline-plane {
+  position: absolute;
+
+  z-index: 4;
+
+  top: 50%;
+  left: 50%;
+
+  width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+
+  background: #f7f5f4;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #e4c66d;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(90deg);
+}
+
+.timeline-plane svg {
+  display: block;
+
+  width: 17px;
+  height: 17px;
+}
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.timeline-content {
+  width: 100%;
+  min-width: 0;
+  min-height: 500px;
+
+  display: grid;
+
+  grid-template-rows:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  row-gap: 24px;
+}
+
+/* ========================================
+   LOCATION
+======================================== */
+
+.timeline-location {
+  min-width: 0;
+}
+
+.timeline-location h2 {
+  margin: 0;
+
+  color: #171717;
+
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 700;
+
+  letter-spacing: -0.2px;
+}
+
+.timeline-location p {
+  max-width: 100%;
+
+  margin: 5px 0 0;
+
+  color: #888888;
+
+  font-size: 9px;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.timeline-location > span {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #999999;
+
+  font-size: 9px;
+  line-height: 1.3;
+  font-weight: 400;
+}
+
+/* ========================================
+   DEPARTURE
+======================================== */
+
+.timeline-departure-location {
+  align-self: start;
+
+  min-height: 38px;
+}
+
+/* ========================================
+   FLIGHT CARD WRAPPER
+======================================== */
+
+.timeline-flight-card {
+  width: 100%;
+  min-width: 0;
+
+  align-self: start;
+
+  margin-top: 8px;
+}
+
+/* ========================================
+   ARRIVAL
+======================================== */
+
+.timeline-arrival-location {
+  align-self: end;
+
+  min-height: 38px;
+}
+
+/* ========================================
+   LAPTOP
+======================================== */
+
+@media (max-width: 1200px) {
+
+  .flight-timeline {
+    padding:
+      26px
+      38px
+      28px;
+  }
+
+  .timeline-layout {
+    grid-template-columns:
+      85px
+      34px
+      minmax(0, 1fr);
+
+    column-gap: 15px;
+  }
+
+  .timeline-track {
+    width: 34px;
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 800px) {
+
+  .flight-timeline {
+    padding: 24px;
+  }
+
+  .timeline-layout {
+    grid-template-columns:
+      72px
+      28px
+      minmax(0, 1fr);
+
+    column-gap: 13px;
+  }
+
+  .timeline-track {
+    width: 28px;
+  }
+
+  .timeline-duration {
+    font-size: 8px;
+  }
+
+  .timeline-location h2 {
+    font-size: 15px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+  .flight-timeline {
+    padding:
+      20px
+      16px;
+  }
+
+  .timeline-layout {
+    min-height: 460px;
+
+    grid-template-columns:
+      26px
+      minmax(0, 1fr);
+
+    column-gap: 12px;
+  }
+
+  /* =====================================
+     HIDE TIME COLUMN
+  ====================================== */
+
+  .timeline-times {
+    display: none;
+  }
+
+  /* =====================================
+     TRACK
+  ====================================== */
+
+  .timeline-track {
+    grid-column: 1;
+    grid-row: 1;
+
+    width: 26px;
+    min-height: 460px;
+  }
+
+  /* =====================================
+     CONTENT
+  ====================================== */
+
+  .timeline-content {
+    grid-column: 2;
+    grid-row: 1;
+
+    min-height: 460px;
+
+    row-gap: 20px;
+  }
+
+  .timeline-flight-card {
+    margin-top: 0;
+  }
+
+  .timeline-location h2 {
+    font-size: 14px;
+  }
+
+  .timeline-location p,
+  .timeline-location > span {
+    font-size: 9px;
+  }
+
+  .timeline-plane {
+    width: 26px;
+    height: 26px;
+  }
+
+  .timeline-plane svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 420px) {
+
+  .flight-timeline {
+    padding:
+      18px
+      12px;
+  }
+
+  .timeline-layout {
+    grid-template-columns:
+      22px
+      minmax(0, 1fr);
+
+    column-gap: 9px;
+  }
+
+  .timeline-track {
+    width: 22px;
+  }
+
+  .timeline-content {
+    row-gap: 18px;
+  }
+
+  .timeline-location h2 {
+    font-size: 13px;
+  }
+}

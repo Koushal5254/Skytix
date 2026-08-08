@@ -1,0 +1,199 @@
+/* ========================================
+   SCHEDULE FOOTER
+======================================== */
+
+.schedule-footer {
+  width: 100%;
+  min-width: 0;
+
+  margin-top: 12px;
+
+  padding: 18px 0 4px;
+
+  border-top: 1px solid #ececec;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 24px;
+}
+
+/* ========================================
+   COPYRIGHT
+======================================== */
+
+.schedule-footer-copyright {
+  justify-self: start;
+
+  color: #999999;
+
+  font-size: 10px;
+  line-height: 1.4;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   LINKS
+======================================== */
+
+.schedule-footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 22px;
+}
+
+.schedule-footer-links a {
+  color: #777777;
+
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 400;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  transition: color 0.18s ease;
+}
+
+.schedule-footer-links a:hover {
+  color: #222222;
+}
+
+/* ========================================
+   SOCIAL LINKS
+======================================== */
+
+.schedule-footer-social {
+  justify-self: end;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.schedule-footer-social a {
+  width: 28px;
+  height: 28px;
+
+  border: 1px solid #ececec;
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #777777;
+
+  text-decoration: none;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.schedule-footer-social a svg {
+  width: 11px;
+  height: 11px;
+}
+
+/* ========================================
+   HOVER
+======================================== */
+
+.schedule-footer-social a:hover {
+  border-color: #e4c66d;
+
+  background: #e4c66d;
+
+  color: #222222;
+}
+
+/* ========================================
+   FOCUS
+======================================== */
+
+.schedule-footer-links a:focus-visible,
+.schedule-footer-social a:focus-visible {
+  outline: 2px solid rgba(228, 198, 109, 0.75);
+  outline-offset: 3px;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .schedule-footer {
+    grid-template-columns:
+      minmax(0, 1fr)
+      auto;
+
+    row-gap: 16px;
+  }
+
+  .schedule-footer-copyright {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .schedule-footer-social {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .schedule-footer-links {
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    justify-content: flex-start;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+  .schedule-footer {
+    margin-top: 8px;
+
+    padding-top: 16px;
+
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 14px;
+  }
+
+  .schedule-footer-copyright,
+  .schedule-footer-links,
+  .schedule-footer-social {
+    grid-column: 1;
+    grid-row: auto;
+
+    justify-self: start;
+  }
+
+  .schedule-footer-links {
+    flex-wrap: wrap;
+
+    justify-content: flex-start;
+
+    gap: 12px 18px;
+  }
+}

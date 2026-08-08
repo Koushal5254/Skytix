@@ -1,0 +1,673 @@
+/* ========================================
+   CARD
+======================================== */
+
+.booking-card {
+  width: 100%;
+  min-width: 0;
+  min-height: 72px;
+
+  padding: 9px 12px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(150px, 0.8fr)
+    minmax(400px, 2.5fr)
+    86px
+    70px
+    86px;
+
+  align-items: center;
+
+  gap: 10px;
+
+  box-shadow:
+    0 2px 8px
+    rgba(0, 0, 0, 0.02);
+
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.booking-card:hover {
+  border-color: #e3e3e3;
+
+  box-shadow:
+    0 5px 16px
+    rgba(0, 0, 0, 0.04);
+}
+
+/* ========================================
+   AIRLINE
+======================================== */
+
+.booking-card-airline {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+}
+
+.booking-airline-logo {
+  width: 38px;
+  height: 38px;
+
+  flex: 0 0 38px;
+
+  border-radius: 8px;
+
+  background: #f7f7f7;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.airline-svg {
+  width: 27px;
+  height: 27px;
+
+  display: block;
+}
+
+/* ========================================
+   CLOUDNINE
+======================================== */
+
+.airline-cloudnine-main {
+  fill: #f23432;
+}
+
+.airline-cloudnine-cut {
+  fill: #f7f7f7;
+}
+
+/* ========================================
+   QUICKWING
+======================================== */
+
+.airline-quickwing-main {
+  fill: #10a36d;
+}
+
+.airline-quickwing-detail {
+  fill: #087c56;
+}
+
+/* ========================================
+   SKYHIGH
+======================================== */
+
+.airline-skyhigh-main {
+  fill: #1659ad;
+}
+
+/* ========================================
+   FLYFAST
+======================================== */
+
+.airline-flyfast-main {
+  fill: #f13c35;
+}
+
+/* ========================================
+   AEROJET
+======================================== */
+
+.airline-aerojet-left {
+  fill: #d3b14e;
+}
+
+.airline-aerojet-right {
+  fill: #e0c56d;
+}
+
+/* ========================================
+   NIMBUS
+======================================== */
+
+.airline-nimbus-main {
+  fill: #ef3837;
+}
+
+/* ========================================
+   DYNAMIC AIRLINE FALLBACK
+======================================== */
+
+.airline-default {
+  background: #f7f7f7;
+}
+
+.airline-default-mark {
+  color: #d2af4c;
+
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 700;
+
+  letter-spacing: 0.3px;
+}
+
+/* ========================================
+   AIRLINE INFO
+======================================== */
+
+.booking-airline-info {
+  min-width: 0;
+}
+
+.booking-airline-info h4 {
+  margin: 0 0 3px;
+
+  overflow: hidden;
+
+  color: #292929;
+
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 600;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.booking-airline-info p {
+  margin: 0;
+
+  color: #a1a1a1;
+
+  font-size: 8px;
+  line-height: 1.2;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   FLIGHT PANEL
+======================================== */
+
+.booking-flight-panel {
+  min-width: 0;
+  min-height: 52px;
+
+  padding: 7px 11px;
+
+  border-radius: 8px;
+
+  background: #f7f7f7;
+
+  display: grid;
+
+  grid-template-columns:
+    72px
+    minmax(160px, 1fr)
+    72px;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+/* ========================================
+   FLIGHT TIMES
+======================================== */
+
+.booking-flight-time {
+  min-width: 0;
+
+  text-align: center;
+}
+
+.booking-flight-time strong {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #242424;
+
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.booking-flight-time span {
+  display: block;
+
+  overflow: hidden;
+
+  color: #999999;
+
+  font-size: 8px;
+  line-height: 1.2;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* ========================================
+   ROUTE
+======================================== */
+
+.booking-route {
+  min-width: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    25px
+    minmax(80px, 1fr)
+    25px;
+
+  align-items: center;
+
+  gap: 6px;
+}
+
+.booking-airport-code {
+  color: #777777;
+
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 600;
+
+  text-align: center;
+}
+
+.booking-route-center {
+  min-width: 0;
+}
+
+/* ========================================
+   ROUTE LINE
+======================================== */
+
+.booking-route-track {
+  position: relative;
+
+  width: 100%;
+  height: 2px;
+
+  border-radius: 999px;
+
+  background: #e4c66d;
+}
+
+.booking-route-start,
+.booking-route-middle {
+  position: absolute;
+
+  top: 50%;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+}
+
+.booking-route-start {
+  left: 0;
+
+  transform: translateY(-50%);
+
+  background: #e4c66d;
+}
+
+.booking-route-middle {
+  left: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  border: 1px solid #e4c66d;
+
+  background: #ffffff;
+}
+
+.booking-route-end {
+  position: absolute;
+
+  top: 50%;
+  right: -3px;
+
+  width: 10px;
+  height: 10px;
+
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #e4c66d;
+}
+
+.booking-route-end svg {
+  width: 10px;
+  height: 10px;
+
+  stroke-width: 2.4;
+}
+
+.booking-route-center small {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #a0a0a0;
+
+  font-size: 7px;
+  line-height: 1;
+
+  text-align: center;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   DATE
+======================================== */
+
+.booking-date {
+  min-width: 0;
+
+  text-align: center;
+}
+
+.booking-date span {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #a1a1a1;
+
+  font-size: 7px;
+  line-height: 1;
+}
+
+.booking-date strong {
+  display: block;
+
+  color: #292929;
+
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   PASSENGERS
+======================================== */
+
+.booking-passengers {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.booking-passenger-avatars {
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 7px;
+}
+
+.booking-passenger-avatars span {
+  width: 22px;
+  height: 22px;
+
+  flex: 0 0 22px;
+
+  margin-left: -7px;
+
+  border: 1.5px solid #ffffff;
+  border-radius: 50%;
+
+  background: #f0dda1;
+}
+
+.booking-passenger-avatars span:first-child {
+  margin-left: 0;
+}
+
+.booking-passenger-avatars span:nth-child(2) {
+  background: #f1dfa7;
+}
+
+.booking-passenger-avatars span:nth-child(3) {
+  background: #f0dda1;
+}
+
+.booking-passengers > strong {
+  margin-top: 4px;
+
+  color: #555555;
+
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   STATUS
+======================================== */
+
+.booking-status {
+  width: 82px;
+  height: 28px;
+
+  justify-self: center;
+
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+.booking-status-confirmed {
+  background: #e6c866;
+
+  color: #44380d;
+}
+
+.booking-status-pending {
+  background: #f3e7bd;
+
+  color: #4f4730;
+}
+
+.booking-status-cancelled {
+  background: #555553;
+
+  color: #ffffff;
+}
+
+/* ========================================
+   SMALL DESKTOP
+======================================== */
+
+@media (max-width: 1250px) {
+  .booking-card {
+    grid-template-columns:
+      minmax(140px, 0.75fr)
+      minmax(350px, 2fr)
+      80px
+      65px
+      80px;
+
+    gap: 8px;
+  }
+
+  .booking-flight-panel {
+    grid-template-columns:
+      65px
+      minmax(140px, 1fr)
+      65px;
+  }
+
+  .booking-status {
+    width: 76px;
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1050px) {
+  .booking-card {
+    padding: 12px;
+
+    grid-template-columns:
+      minmax(150px, 1fr)
+      minmax(300px, 2fr)
+      80px;
+
+    gap: 10px;
+  }
+
+  .booking-date {
+    grid-column: 1;
+
+    text-align: left;
+  }
+
+  .booking-passengers {
+    grid-column: 2;
+
+    align-items: flex-start;
+  }
+
+  .booking-status {
+    grid-column: 3;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+  .booking-card {
+    padding: 12px;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      auto;
+
+    gap: 12px;
+  }
+
+  .booking-card-airline {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .booking-status {
+    grid-column: 2;
+    grid-row: 1;
+
+    width: auto;
+    min-width: 76px;
+
+    padding: 0 10px;
+  }
+
+  .booking-flight-panel {
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    grid-template-columns:
+      60px
+      minmax(120px, 1fr)
+      60px;
+  }
+
+  .booking-date {
+    grid-column: 1;
+    grid-row: 3;
+
+    text-align: left;
+  }
+
+  .booking-passengers {
+    grid-column: 2;
+    grid-row: 3;
+
+    align-items: flex-end;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+  .booking-flight-panel {
+    padding: 10px 8px;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+
+    gap: 10px;
+  }
+
+  .booking-flight-time:first-child {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .booking-flight-time:last-child {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .booking-route {
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    width: 100%;
+
+    grid-template-columns:
+      28px
+      minmax(80px, 1fr)
+      28px;
+  }
+
+  .booking-status {
+    min-width: 70px;
+
+    height: 26px;
+
+    font-size: 7px;
+  }
+}

@@ -1,0 +1,303 @@
+/* ========================================
+   FOOTER
+======================================== */
+
+.layout-footer {
+  width: 100%;
+  min-width: 0;
+
+  min-height: 42px;
+
+  margin-top: 14px;
+
+  padding:
+    8px
+    0
+    2px;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  flex: 0 0 auto;
+
+  box-sizing: border-box;
+}
+
+/* ========================================
+   LEFT SIDE
+======================================== */
+
+.layout-footer-left {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+}
+
+/* ========================================
+   COPYRIGHT
+======================================== */
+
+.layout-footer-copyright {
+  margin: 0;
+
+  flex: 0 0 auto;
+
+  color: #8f8f8f;
+
+  font-family: inherit;
+  font-size: 9px;
+  line-height: 1.2;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   LINKS
+======================================== */
+
+.layout-footer-links {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+}
+
+.layout-footer-links button {
+  padding: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: #b1b1b1;
+
+  font-family: inherit;
+  font-size: 9px;
+  line-height: 1.2;
+  font-weight: 400;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    color 0.18s ease;
+}
+
+.layout-footer-links button:hover {
+  color: #666666;
+}
+
+.layout-footer-links button:focus-visible {
+  outline: 2px solid
+    rgba(228, 198, 109, 0.55);
+
+  outline-offset: 3px;
+
+  border-radius: 2px;
+}
+
+/* ========================================
+   SOCIAL ICONS
+======================================== */
+
+.layout-footer-socials {
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+}
+
+/* ========================================
+   SOCIAL BUTTON
+======================================== */
+
+.layout-footer-socials button {
+  width: 15px;
+  height: 15px;
+
+  flex: 0 0 15px;
+
+  padding: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #929292;
+
+  cursor: pointer;
+
+  transition:
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+/* ========================================
+   SOCIAL ICON
+======================================== */
+
+.layout-footer-socials svg {
+  width: 12px;
+  height: 12px;
+
+  display: block;
+}
+
+/* ========================================
+   SOCIAL HOVER
+======================================== */
+
+.layout-footer-socials button:hover {
+  color: #292929;
+
+  transform: translateY(-1px);
+}
+
+.layout-footer-socials button:focus-visible {
+  outline: 2px solid
+    rgba(228, 198, 109, 0.55);
+
+  outline-offset: 3px;
+
+  border-radius: 50%;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+  .layout-footer {
+    margin-top: 12px;
+
+    gap: 16px;
+  }
+
+  .layout-footer-left {
+    gap: 14px;
+  }
+
+  .layout-footer-links {
+    gap: 14px;
+  }
+
+  .layout-footer-socials {
+    gap: 11px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+
+  .layout-footer {
+    min-height: auto;
+
+    margin-top: 10px;
+
+    padding:
+      10px
+      0
+      4px;
+
+    align-items: flex-start;
+
+    flex-wrap: wrap;
+
+    gap:
+      10px
+      16px;
+  }
+
+  .layout-footer-left {
+    min-width: 0;
+
+    flex: 1;
+
+    flex-wrap: wrap;
+
+    gap:
+      7px
+      14px;
+  }
+
+  .layout-footer-links {
+    flex-wrap: wrap;
+
+    gap:
+      7px
+      14px;
+  }
+
+  .layout-footer-copyright,
+  .layout-footer-links button {
+    font-size: 8px;
+  }
+
+  .layout-footer-socials {
+    gap: 10px;
+  }
+
+  .layout-footer-socials button {
+    width: 14px;
+    height: 14px;
+
+    flex-basis: 14px;
+  }
+
+  .layout-footer-socials svg {
+    width: 11px;
+    height: 11px;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+
+  .layout-footer {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .layout-footer-left {
+    width: 100%;
+
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 7px;
+  }
+
+  .layout-footer-socials {
+    width: 100%;
+
+    justify-content: flex-start;
+  }
+}

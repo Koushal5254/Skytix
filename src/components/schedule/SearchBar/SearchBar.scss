@@ -1,0 +1,381 @@
+/* ========================================
+   SEARCH BAR
+======================================== */
+
+.schedule-search-bar {
+  width: 100%;
+  min-width: 0;
+  height: 64px;
+
+  margin: 0 0 22px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(180px, 1.35fr)
+    64px
+    minmax(180px, 1.35fr)
+    minmax(160px, 0.95fr)
+    minmax(130px, 0.8fr)
+    70px;
+
+  background: #ffffff;
+
+  border: 1px solid #eeeeee;
+  border-radius: 16px;
+
+  overflow: hidden;
+}
+
+/* ========================================
+   ITEM
+======================================== */
+
+.schedule-search-item {
+  min-width: 0;
+  height: 100%;
+
+  padding: 0 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-right: 1px solid #eeeeee;
+
+  background: #ffffff;
+}
+
+/* ========================================
+   LABEL
+======================================== */
+
+.schedule-search-label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #9a9a9a;
+
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   CONTROL
+======================================== */
+
+.schedule-search-control {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+}
+
+.schedule-search-control select,
+.schedule-search-control input {
+  width: 100%;
+  min-width: 0;
+
+  padding: 0 22px 0 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: #161616;
+
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+/* ========================================
+   SELECT
+======================================== */
+
+.schedule-search-control select {
+  appearance: none;
+  -webkit-appearance: none;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.schedule-search-control > svg {
+  position: absolute;
+
+  right: 0;
+
+  width: 12px;
+  height: 12px;
+
+  color: #8c8c8c;
+
+  pointer-events: none;
+}
+
+/* ========================================
+   DATE
+======================================== */
+
+.schedule-date-control input {
+  padding-right: 0;
+
+  cursor: pointer;
+}
+
+/*
+  Hide the extra custom calendar icon on
+  browsers that already provide the native
+  date picker indicator.
+*/
+
+.schedule-date-control > svg {
+  display: none;
+}
+
+/* ========================================
+   SWAP BUTTON
+======================================== */
+
+.schedule-swap-btn {
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+
+  border: 0;
+  border-right: 1px solid #eeeeee;
+
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #6d6d6d;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.schedule-swap-btn svg {
+  width: 19px;
+  height: 19px;
+
+  stroke-width: 1.8;
+
+  transition:
+    transform 0.25s ease;
+}
+
+.schedule-swap-btn:hover {
+  background: #fafafa;
+
+  color: #222222;
+}
+
+.schedule-swap-btn:hover svg {
+  transform: rotate(180deg);
+}
+
+/* ========================================
+   SEARCH BUTTON
+======================================== */
+
+.schedule-search-submit {
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+
+  border: 0;
+
+  background: #202020;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease;
+}
+
+.schedule-search-submit svg {
+  width: 21px;
+  height: 21px;
+
+  stroke-width: 1.8;
+}
+
+.schedule-search-submit:hover {
+  background: #111111;
+}
+
+/* ========================================
+   FOCUS
+======================================== */
+
+.schedule-search-item:focus-within {
+  background: #fdfdfd;
+}
+
+.schedule-swap-btn:focus-visible,
+.schedule-search-submit:focus-visible {
+  position: relative;
+
+  outline:
+    2px solid
+    rgba(228, 198, 109, 0.8);
+
+  outline-offset: -3px;
+
+  z-index: 2;
+}
+
+/* ========================================
+   SMALL LAPTOP
+======================================== */
+
+@media (max-width: 1350px) {
+  .schedule-search-bar {
+    grid-template-columns:
+      minmax(150px, 1.2fr)
+      54px
+      minmax(150px, 1.2fr)
+      minmax(140px, 0.95fr)
+      minmax(120px, 0.8fr)
+      64px;
+  }
+
+  .schedule-search-item {
+    padding: 0 15px;
+  }
+
+  .schedule-search-control select,
+  .schedule-search-control input {
+    font-size: 12px;
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 950px) {
+  .schedule-search-bar {
+    height: auto;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      54px
+      minmax(0, 1fr);
+
+    border-radius: 14px;
+  }
+
+  .schedule-search-item {
+    height: 64px;
+  }
+
+  .schedule-search-from {
+    border-bottom:
+      1px solid #eeeeee;
+  }
+
+  .schedule-swap-btn {
+    height: 64px;
+
+    border-bottom:
+      1px solid #eeeeee;
+  }
+
+  .schedule-search-to {
+    border-right: 0;
+
+    border-bottom:
+      1px solid #eeeeee;
+  }
+
+  .schedule-search-date {
+    grid-column: 1;
+
+    border-bottom: 0;
+  }
+
+  .schedule-search-class {
+    grid-column: 2;
+  }
+
+  .schedule-search-submit {
+    grid-column: 3;
+
+    min-height: 64px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+  .schedule-search-bar {
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    margin-bottom: 18px;
+  }
+
+  .schedule-search-item {
+    height: 60px;
+
+    padding: 0 16px;
+
+    border-right: 0;
+    border-bottom:
+      1px solid #eeeeee;
+  }
+
+  .schedule-search-from,
+  .schedule-search-to,
+  .schedule-search-date,
+  .schedule-search-class {
+    grid-column: auto;
+  }
+
+  .schedule-swap-btn {
+    width: 100%;
+    height: 48px;
+
+    border-right: 0;
+    border-bottom:
+      1px solid #eeeeee;
+  }
+
+  .schedule-search-submit {
+    grid-column: auto;
+
+    height: 56px;
+    min-height: 56px;
+  }
+}

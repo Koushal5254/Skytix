@@ -1,0 +1,197 @@
+.dashboard-wrapper {
+  width: 100%;
+  min-width: 0;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    260px;
+
+  gap: 16px;
+  align-items: start;
+}
+
+.dashboard-content {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+.dashboard-sidebar {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+.stats-row {
+  min-width: 0;
+
+  display: grid;
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+.chart-row {
+  min-width: 0;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.37fr)
+    minmax(0, 0.63fr);
+
+  gap: 16px;
+}
+
+.booking-row {
+  min-width: 0;
+
+  display: grid;
+  grid-template-columns:
+    minmax(290px, 0.37fr)
+    minmax(0, 0.63fr);
+
+  gap: 16px;
+}
+
+.stats-row > *,
+.chart-row > *,
+.booking-row > *,
+.dashboard-sidebar > * {
+  min-width: 0;
+  width: 100%;
+}
+
+.chart-row > .custom-card {
+  min-height: 285px;
+}
+
+.booking-row > .custom-card {
+  min-height: 430px;
+}
+
+/* ========================================
+   DESKTOP
+======================================== */
+
+@media (min-width: 1600px) {
+  .dashboard-wrapper {
+    grid-template-columns:
+      minmax(0, 1fr)
+      280px;
+
+    gap: 18px;
+  }
+
+  .dashboard-content,
+  .dashboard-sidebar {
+    gap: 18px;
+  }
+
+  .chart-row,
+  .booking-row {
+    gap: 18px;
+  }
+
+  .stats-row {
+    gap: 14px;
+  }
+}
+
+/* ========================================
+   LAPTOP
+======================================== */
+
+@media (max-width: 1450px) {
+  .dashboard-wrapper {
+    grid-template-columns:
+      minmax(0, 1fr)
+      245px;
+
+    gap: 14px;
+  }
+
+  .dashboard-content,
+  .dashboard-sidebar {
+    gap: 14px;
+  }
+
+  .chart-row,
+  .booking-row {
+    gap: 14px;
+  }
+
+  .stats-row {
+    gap: 10px;
+  }
+}
+
+/* ========================================
+   SMALL LAPTOP
+======================================== */
+
+@media (max-width: 1200px) {
+  .dashboard-wrapper {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dashboard-sidebar {
+    display: grid;
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .stats-row {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .chart-row,
+  .booking-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dashboard-sidebar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .chart-row > .custom-card,
+  .booking-row > .custom-card {
+    min-height: auto;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .dashboard-wrapper,
+  .dashboard-content,
+  .dashboard-sidebar {
+    gap: 12px;
+  }
+
+  .stats-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .chart-row,
+  .booking-row {
+    gap: 12px;
+  }
+}

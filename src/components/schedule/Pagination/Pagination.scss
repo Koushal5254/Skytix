@@ -1,0 +1,301 @@
+/* ========================================
+   PAGINATION
+======================================== */
+
+.schedule-pagination {
+  width: 100%;
+  min-width: 0;
+
+  margin-top: 22px;
+  padding-top: 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+/* ========================================
+   RESULT INFORMATION
+======================================== */
+
+.schedule-pagination-info {
+  min-width: 0;
+
+  color: #999999;
+
+  font-size: 10px;
+  line-height: 1.4;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+.schedule-pagination-info strong {
+  color: #555555;
+
+  font-weight: 600;
+}
+
+/* ========================================
+   CONTROLS
+======================================== */
+
+.schedule-pagination-controls {
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+}
+
+/* ========================================
+   PAGE CONTAINER
+======================================== */
+
+.schedule-pagination-pages {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+}
+
+/* ========================================
+   COMMON BUTTON
+======================================== */
+
+.schedule-pagination-page,
+.schedule-pagination-arrow {
+  width: 32px;
+  height: 32px;
+
+  flex: 0 0 32px;
+
+  padding: 0;
+
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #666666;
+
+  font-family: inherit;
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+/* ========================================
+   PAGE NUMBER
+======================================== */
+
+.schedule-pagination-page:hover:not(.active) {
+  border-color: #e2e2e2;
+
+  background: #fafafa;
+
+  color: #222222;
+
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   ACTIVE PAGE
+======================================== */
+
+.schedule-pagination-page.active {
+  border-color: #e4c66d;
+
+  background: #e4c66d;
+
+  color: #202020;
+
+  font-weight: 700;
+
+  cursor: default;
+}
+
+/* ========================================
+   ARROWS
+======================================== */
+
+.schedule-pagination-arrow svg {
+  width: 13px;
+  height: 13px;
+
+  stroke-width: 2;
+}
+
+.schedule-pagination-arrow:hover:not(:disabled) {
+  border-color: #e4c66d;
+
+  background: #f8f2df;
+
+  color: #292929;
+
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   DISABLED
+======================================== */
+
+.schedule-pagination-arrow:disabled {
+  border-color: #f1f1f1;
+
+  background: #fafafa;
+
+  color: #c8c8c8;
+
+  cursor: not-allowed;
+
+  opacity: 0.7;
+}
+
+/* ========================================
+   ELLIPSIS
+======================================== */
+
+.schedule-pagination-ellipsis {
+  width: 24px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #999999;
+
+  font-size: 10px;
+  line-height: 1;
+
+  user-select: none;
+}
+
+/* ========================================
+   FOCUS
+======================================== */
+
+.schedule-pagination-page:focus-visible,
+.schedule-pagination-arrow:focus-visible {
+  position: relative;
+
+  outline:
+    2px solid
+    rgba(228, 198, 109, 0.65);
+
+  outline-offset: 2px;
+
+  z-index: 2;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 800px) {
+  .schedule-pagination {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+  .schedule-pagination-controls {
+    width: 100%;
+
+    justify-content: flex-end;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 550px) {
+  .schedule-pagination {
+    margin-top: 18px;
+
+    align-items: center;
+  }
+
+  .schedule-pagination-info {
+    width: 100%;
+
+    text-align: center;
+
+    white-space: normal;
+  }
+
+  .schedule-pagination-controls {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+  .schedule-pagination-pages {
+    gap: 4px;
+  }
+
+  .schedule-pagination-page,
+  .schedule-pagination-arrow {
+    width: 30px;
+    height: 30px;
+
+    flex-basis: 30px;
+
+    border-radius: 7px;
+  }
+
+  .schedule-pagination-ellipsis {
+    width: 17px;
+    height: 30px;
+  }
+}
+
+/* ========================================
+   VERY SMALL MOBILE
+======================================== */
+
+@media (max-width: 380px) {
+  .schedule-pagination-controls {
+    gap: 4px;
+  }
+
+  .schedule-pagination-pages {
+    gap: 3px;
+  }
+
+  .schedule-pagination-page,
+  .schedule-pagination-arrow {
+    width: 28px;
+    height: 28px;
+
+    flex-basis: 28px;
+
+    font-size: 8px;
+  }
+
+  .schedule-pagination-ellipsis {
+    width: 12px;
+    height: 28px;
+
+    font-size: 8px;
+  }
+}

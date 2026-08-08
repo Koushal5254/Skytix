@@ -1,0 +1,291 @@
+.add-flight-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  padding: 24px;
+
+  background: rgba(20, 20, 20, 0.32);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow-y: auto;
+}
+
+.add-flight-modal {
+  width: min(760px, 100%);
+  max-height: calc(100vh - 48px);
+
+  padding: 24px;
+
+  overflow-y: auto;
+
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 24px 70px
+    rgba(0, 0, 0, 0.14);
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.add-flight-header {
+  margin-bottom: 24px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.add-flight-header h2 {
+  margin: 0;
+
+  color: #222222;
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.add-flight-header p {
+  margin: 5px 0 0;
+
+  color: #999999;
+
+  font-size: 11px;
+}
+
+.add-flight-close {
+  width: 36px;
+  height: 36px;
+
+  flex: 0 0 36px;
+
+  padding: 0;
+
+  border: 1px solid #eeeeee;
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #555555;
+
+  cursor: pointer;
+}
+
+.add-flight-close:hover {
+  background: #f8f8f8;
+}
+
+/* ========================================
+   SECTION
+======================================== */
+
+.add-flight-section {
+  padding: 20px 0;
+
+  border-top: 1px solid #eeeeee;
+}
+
+.add-flight-section:first-child {
+  padding-top: 0;
+
+  border-top: 0;
+}
+
+.add-flight-section h3 {
+  margin: 0 0 15px;
+
+  color: #292929;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ========================================
+   GRID
+======================================== */
+
+.add-flight-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 15px;
+}
+
+/* ========================================
+   FIELD
+======================================== */
+
+.add-flight-field {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.add-flight-field label {
+  color: #555555;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.add-flight-field input,
+.add-flight-field select {
+  width: 100%;
+  height: 42px;
+
+  padding: 0 12px;
+
+  border: 1px solid #e8e8e8;
+  border-radius: 9px;
+  outline: none;
+
+  background: #ffffff;
+
+  color: #333333;
+
+  font-family: inherit;
+  font-size: 11px;
+
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.add-flight-field input::placeholder {
+  color: #b0b0b0;
+}
+
+.add-flight-field input:focus,
+.add-flight-field select:focus {
+  border-color: #d5b64e;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(228, 198, 109, 0.13);
+}
+
+.add-flight-field input.has-error {
+  border-color: #df6c6c;
+}
+
+.add-flight-error {
+  color: #d94b4b;
+
+  font-size: 9px;
+}
+
+/* ========================================
+   ACTIONS
+======================================== */
+
+.add-flight-actions {
+  padding-top: 20px;
+
+  border-top: 1px solid #eeeeee;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 8px;
+}
+
+.add-flight-actions button {
+  height: 39px;
+
+  padding: 0 16px;
+
+  border-radius: 9px;
+
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.add-flight-cancel {
+  border: 1px solid #e8e8e8;
+
+  background: #ffffff;
+
+  color: #555555;
+}
+
+.add-flight-cancel:hover {
+  background: #f8f8f8;
+}
+
+.add-flight-submit {
+  border: 0;
+
+  background: #e4c66d;
+
+  color: #222222;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+}
+
+.add-flight-submit svg {
+  width: 13px;
+  height: 13px;
+}
+
+.add-flight-submit:hover {
+  background: #d9ba5c;
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .add-flight-overlay {
+    padding: 14px;
+  }
+
+  .add-flight-modal {
+    padding: 20px;
+
+    max-height:
+      calc(100vh - 28px);
+  }
+
+  .add-flight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .add-flight-actions {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .add-flight-actions button {
+    width: 100%;
+  }
+}
