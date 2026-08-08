@@ -1,0 +1,40 @@
+/* ========================================
+   BOOKING HEADER
+======================================== */
+
+.booking-header {
+  width: 100%;
+  min-width: 0;
+}
+
+/*
+ * Header.jsx owns all header styling.
+ * Do not duplicate profile/avatar/action
+ * styles here, otherwise Bookings can
+ * become different from Dashboard.
+ */
+
+.booking-header .layout-header {
+  width: 100%;
+  min-width: 0;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .booking-header {
+    width: 100%;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .booking-header {
+    width: 100%;
+  }
+}

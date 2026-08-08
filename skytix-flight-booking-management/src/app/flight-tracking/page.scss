@@ -1,0 +1,202 @@
+.flight-tracking-page {
+  width: 100%;
+  min-width: 0;
+
+  min-height: calc(100vh - 40px);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+.flight-tracking-page > .layout-header {
+  flex: 0 0 auto;
+}
+
+/* ========================================
+   WORKSPACE
+======================================== */
+
+.flight-tracking-workspace {
+  width: 100%;
+  min-width: 0;
+
+  height: calc(100vh - 180px);
+  min-height: 690px;
+
+  display: grid;
+
+  grid-template-columns:
+    285px
+    minmax(0, 1fr);
+
+  gap: 18px;
+}
+
+/* ========================================
+   LEFT
+======================================== */
+
+.flight-tracking-list-column {
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+}
+
+/* ========================================
+   RIGHT
+======================================== */
+
+.flight-tracking-content {
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+/* ========================================
+   MAP
+======================================== */
+
+.flight-tracking-map-area {
+  width: 100%;
+
+  min-width: 0;
+  min-height: 420px;
+
+  flex: 1 1 0;
+
+  border: 1px solid #e6e6e6;
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  background: #e9edeb;
+}
+
+/* ========================================
+   BOTTOM
+======================================== */
+
+.flight-tracking-bottom {
+  width: 100%;
+  min-width: 0;
+
+  height: 155px;
+  flex: 0 0 155px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(430px, 1fr)
+    145px
+    185px;
+
+  gap: 18px;
+}
+
+.flight-tracking-details-column,
+.flight-tracking-stats-column,
+.flight-tracking-aircraft-column {
+  min-width: 0;
+  min-height: 0;
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.flight-tracking-page > footer {
+  flex: 0 0 auto;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (min-width: 1500px) {
+  .flight-tracking-workspace {
+    grid-template-columns:
+      300px
+      minmax(0, 1fr);
+  }
+
+  .flight-tracking-bottom {
+    grid-template-columns:
+      minmax(480px, 1fr)
+      155px
+      195px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .flight-tracking-workspace {
+    grid-template-columns:
+      270px
+      minmax(0, 1fr);
+  }
+
+  .flight-tracking-bottom {
+    grid-template-columns:
+      minmax(360px, 1fr)
+      140px
+      175px;
+
+    gap: 12px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .flight-tracking-workspace {
+    height: auto;
+    min-height: 700px;
+
+    grid-template-columns:
+      260px
+      minmax(0, 1fr);
+
+    gap: 12px;
+  }
+
+  .flight-tracking-bottom {
+    height: auto;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      150px;
+  }
+
+  .flight-tracking-aircraft-column {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .flight-tracking-workspace {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flight-tracking-list-column {
+    height: 500px;
+  }
+
+  .flight-tracking-content {
+    min-height: 600px;
+  }
+
+  .flight-tracking-bottom {
+    grid-template-columns: 1fr;
+  }
+}

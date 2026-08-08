@@ -1,0 +1,197 @@
+/* ========================================
+   PAYMENTS PAGE
+======================================== */
+
+.payments-page {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+/* ========================================
+   PAYMENT HEADER
+======================================== */
+
+.payments-page
+  .payment-page-header {
+  width: 100%;
+  min-width: 0;
+}
+
+/* ========================================
+   CONTENT CARD
+======================================== */
+
+.payments-content-card {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+
+  background: #ffffff;
+
+  border: 1px solid #eeeeee;
+  border-radius: 16px;
+
+  box-shadow:
+    0 3px 14px
+    rgba(0, 0, 0, 0.025);
+
+  overflow: visible;
+}
+
+/* ========================================
+   TOOLBAR
+======================================== */
+
+.payments-content-card
+  .payment-toolbar {
+  width: 100%;
+
+  border-radius:
+    16px
+    16px
+    0
+    0;
+}
+
+/* ========================================
+   TABLE
+======================================== */
+
+.payments-content-card
+  .payment-table {
+  width: 100%;
+  min-width: 0;
+}
+
+.payments-content-card
+  .payment-table-header {
+  width: 100%;
+}
+
+.payments-content-card
+  .payment-table-body {
+  width: 100%;
+}
+
+/* ========================================
+   PAGINATION
+======================================== */
+
+.payments-content-card
+  .payment-pagination {
+  width: 100%;
+
+  padding-top: 14px;
+  padding-bottom: 14px;
+
+  border-top:
+    1px solid
+    #eeeeee;
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.payments-page
+  .schedule-footer {
+  width: 100%;
+
+  margin-top: 8px;
+}
+
+/* ========================================
+   LARGE DESKTOP
+======================================== */
+
+@media (min-width: 1600px) {
+  .payments-page {
+    gap: 22px;
+  }
+
+  .payments-content-card {
+    border-radius: 18px;
+  }
+
+  .payments-content-card
+    .payment-toolbar {
+    border-radius:
+      18px
+      18px
+      0
+      0;
+  }
+}
+
+/* ========================================
+   LAPTOP
+======================================== */
+
+@media (max-width: 1400px) {
+  .payments-page {
+    gap: 18px;
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 992px) {
+  .payments-page {
+    gap: 16px;
+  }
+
+  .payments-content-card {
+    border-radius: 14px;
+  }
+
+  .payments-content-card
+    .payment-toolbar {
+    border-radius:
+      14px
+      14px
+      0
+      0;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .payments-page {
+    gap: 14px;
+  }
+
+  .payments-content-card {
+    border-radius: 12px;
+  }
+
+  .payments-content-card
+    .payment-toolbar {
+    border-radius:
+      12px
+      12px
+      0
+      0;
+  }
+
+  .payments-content-card
+    .payment-pagination {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .payments-page
+    .schedule-footer {
+    margin-top: 4px;
+  }
+}

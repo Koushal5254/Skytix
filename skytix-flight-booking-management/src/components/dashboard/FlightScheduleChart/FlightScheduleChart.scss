@@ -1,0 +1,169 @@
+.flight-schedule-card {
+  position: relative;
+
+  min-height: 285px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.flight-schedule-header {
+  position: relative;
+  z-index: 10;
+
+  margin-bottom: 8px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 16px;
+}
+
+.flight-schedule-title h5 {
+  margin: 0 0 10px;
+
+  color: #292929;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.flight-schedule-legend {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+}
+
+.flight-schedule-legend span {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  color: #929292;
+
+  font-size: 8px;
+}
+
+.flight-schedule-legend i {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+}
+
+.flight-schedule-legend .completed {
+  background: #e4c66d;
+}
+
+.flight-schedule-legend .pending {
+  background: #292929;
+}
+
+.flight-schedule-filter-wrapper {
+  position: relative;
+}
+
+.flight-schedule-filter {
+  min-width: 82px;
+  height: 30px;
+
+  padding: 0 9px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 6px;
+
+  color: #777777;
+
+  font-family: inherit;
+  font-size: 8px;
+
+  cursor: pointer;
+}
+
+.flight-schedule-filter svg {
+  width: 11px;
+  height: 11px;
+
+  transition: transform 0.2s ease;
+}
+
+.flight-schedule-filter.active {
+  border-color: #e4c66d;
+}
+
+.flight-schedule-filter.active svg {
+  transform: rotate(180deg);
+}
+
+.flight-schedule-dropdown {
+  position: absolute;
+
+  top: calc(100% + 6px);
+  right: 0;
+
+  z-index: 100;
+
+  width: 120px;
+
+  padding: 5px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 10px 30px
+    rgba(0, 0, 0, 0.08);
+}
+
+.flight-schedule-dropdown button {
+  width: 100%;
+  height: 31px;
+
+  padding: 0 8px;
+
+  border: 0;
+  border-radius: 6px;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: #666666;
+
+  font-family: inherit;
+  font-size: 8px;
+
+  cursor: pointer;
+}
+
+.flight-schedule-dropdown button:hover {
+  background: #f8f8f8;
+}
+
+.flight-schedule-dropdown button.selected {
+  background: #faf5e3;
+  color: #80671f;
+}
+
+.flight-schedule-chart {
+  width: 100%;
+  min-width: 0;
+  height: 190px;
+
+  flex: 1;
+}

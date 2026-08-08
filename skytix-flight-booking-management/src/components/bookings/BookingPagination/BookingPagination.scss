@@ -1,0 +1,238 @@
+/* ========================================
+   PAGINATION
+======================================== */
+
+.booking-pagination {
+  width: 100%;
+  min-width: 0;
+
+  min-height: 40px;
+
+  margin: 2px 0 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+/* ========================================
+   RESULT INFO
+======================================== */
+
+.booking-pagination-info {
+  margin: 0;
+
+  color: #999999;
+
+  font-size: 8px;
+  line-height: 1.4;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+.booking-pagination-info strong {
+  color: #555555;
+
+  font-weight: 600;
+}
+
+/* ========================================
+   CONTROLS
+======================================== */
+
+.booking-pagination-controls {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+}
+
+/* ========================================
+   PREVIOUS / NEXT
+======================================== */
+
+.booking-page-navigation {
+  height: 30px;
+
+  padding: 0 9px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 4px;
+
+  color: #555555;
+
+  font-family: inherit;
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.booking-page-navigation svg {
+  width: 10px;
+  height: 10px;
+
+  stroke-width: 1.8;
+}
+
+.booking-page-navigation:hover:not(:disabled) {
+  background: #f7f7f7;
+
+  border-color: #e4e4e4;
+
+  color: #202020;
+}
+
+.booking-page-navigation:disabled {
+  background: #fafafa;
+
+  color: #c4c4c4;
+
+  cursor: not-allowed;
+
+  opacity: 0.7;
+}
+
+/* ========================================
+   PAGE NUMBERS
+======================================== */
+
+.booking-page-numbers {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+}
+
+.booking-page-numbers button {
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+
+  border: 1px solid #eeeeee;
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #555555;
+
+  font-family: inherit;
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.booking-page-numbers button:hover {
+  background: #f7f7f7;
+
+  color: #202020;
+}
+
+/* ========================================
+   ACTIVE
+======================================== */
+
+.booking-page-numbers button.active {
+  border-color: #e4c66d;
+
+  background: #e4c66d;
+
+  color: #202020;
+
+  font-weight: 700;
+}
+
+/* ========================================
+   DOTS
+======================================== */
+
+.booking-page-dots {
+  width: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #999999;
+
+  font-size: 9px;
+  line-height: 1;
+
+  user-select: none;
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .booking-pagination {
+    margin-bottom: 14px;
+
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 10px;
+  }
+
+  .booking-pagination-controls {
+    width: 100%;
+
+    justify-content: center;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+  .booking-page-navigation {
+    width: 30px;
+    height: 28px;
+
+    padding: 0;
+  }
+
+  .booking-page-navigation span {
+    display: none;
+  }
+
+  .booking-page-numbers button {
+    width: 28px;
+    height: 28px;
+  }
+
+  .booking-page-dots {
+    width: 14px;
+  }
+}

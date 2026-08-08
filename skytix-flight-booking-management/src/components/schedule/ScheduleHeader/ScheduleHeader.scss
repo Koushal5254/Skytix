@@ -1,0 +1,52 @@
+/* ========================================
+   SCHEDULE HEADER
+======================================== */
+
+.schedule-page-header {
+  width: 100%;
+  min-width: 0;
+}
+
+.schedule-page-header
+  .layout-header {
+  width: 100%;
+}
+
+/* ========================================
+   TITLE
+======================================== */
+
+.schedule-page-header
+  .layout-header-heading h1 {
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+/* ========================================
+   DESCRIPTION
+======================================== */
+
+.schedule-page-header
+  .layout-header-heading p {
+  color: #999999;
+
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .schedule-page-header
+    .layout-header-heading h1 {
+    font-size: 16px;
+  }
+
+  .schedule-page-header
+    .layout-header-heading p {
+    font-size: 9px;
+  }
+}

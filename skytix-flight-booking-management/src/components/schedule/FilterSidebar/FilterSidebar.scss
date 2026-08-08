@@ -1,0 +1,588 @@
+/* ========================================
+   FILTER SIDEBAR
+======================================== */
+
+.schedule-filter-sidebar {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 22px;
+}
+
+/* ========================================
+   FILTER CARD
+======================================== */
+
+.schedule-filter-card {
+  width: 100%;
+
+  padding: 22px 22px 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #ececec;
+  border-radius: 20px;
+}
+
+/* ========================================
+   TITLE
+======================================== */
+
+.schedule-filter-title {
+  width: 100%;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: #171717;
+
+  cursor: pointer;
+}
+
+.schedule-filter-title h3 {
+  margin: 0;
+
+  font-size: 17px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.schedule-filter-title svg {
+  width: 17px;
+  height: 17px;
+
+  color: #222222;
+
+  transform: rotate(-90deg);
+
+  transition:
+    transform 0.2s ease;
+}
+
+.schedule-filter-title svg.open {
+  transform: rotate(0deg);
+}
+
+/* ========================================
+   BODY
+======================================== */
+
+.schedule-filter-body {
+  margin-top: 22px;
+}
+
+/* ========================================
+   CHECKBOX
+======================================== */
+
+.schedule-checkbox-row {
+  position: relative;
+
+  width: 100%;
+
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  color: #515151;
+
+  font-size: 14px;
+  line-height: 1.25;
+  font-weight: 400;
+
+  cursor: pointer;
+
+  user-select: none;
+}
+
+.schedule-checkbox-row +
+.schedule-checkbox-row {
+  margin-top: 22px;
+}
+
+.schedule-checkbox-row input {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+/* ========================================
+   CUSTOM CHECKBOX
+======================================== */
+
+.schedule-custom-checkbox {
+  position: relative;
+
+  width: 13px;
+  height: 13px;
+
+  flex: 0 0 13px;
+
+  border: 1px solid #a9a9a9;
+  border-radius: 2px;
+
+  background: #ffffff;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.schedule-checkbox-row:hover
+.schedule-custom-checkbox {
+  border-color: #d4b85f;
+}
+
+.schedule-checkbox-row
+input:checked +
+.schedule-custom-checkbox {
+  border-color: #e4c66d;
+
+  background: #e4c66d;
+}
+
+.schedule-checkbox-row
+input:checked +
+.schedule-custom-checkbox::after {
+  content: "";
+
+  position: absolute;
+
+  left: 3px;
+  top: 0px;
+
+  width: 4px;
+  height: 7px;
+
+  border-right:
+    1.5px solid #2b2b2b;
+
+  border-bottom:
+    1.5px solid #2b2b2b;
+
+  transform: rotate(45deg);
+}
+
+.schedule-checkbox-row
+input:focus-visible +
+.schedule-custom-checkbox {
+  box-shadow:
+    0 0 0 3px
+    rgba(228, 198, 109, 0.2);
+}
+
+/* ========================================
+   RANGE
+======================================== */
+
+.schedule-range-wrapper {
+  width: 100%;
+
+  padding: 3px 1px;
+}
+
+.schedule-range-input {
+  --range-progress: 50%;
+
+  width: 100%;
+  height: 18px;
+
+  margin: 0;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+/* CHROME / EDGE / SAFARI */
+
+.schedule-range-input::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      to right,
+      #e4c66d 0%,
+      #e4c66d var(--range-progress),
+      #3d3d3d var(--range-progress),
+      #3d3d3d 100%
+    );
+}
+
+.schedule-range-input::-webkit-slider-thumb {
+  width: 16px;
+  height: 16px;
+
+  margin-top: -5.5px;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: #e4c66d;
+
+  box-shadow:
+    0 1px 4px
+    rgba(0, 0, 0, 0.14);
+
+  cursor: grab;
+}
+
+.schedule-range-input::-webkit-slider-thumb:active {
+  cursor: grabbing;
+}
+
+/* FIREFOX */
+
+.schedule-range-input::-moz-range-track {
+  height: 5px;
+
+  border-radius: 20px;
+
+  background: #3d3d3d;
+}
+
+.schedule-range-input::-moz-range-progress {
+  height: 5px;
+
+  border-radius: 20px;
+
+  background: #e4c66d;
+}
+
+.schedule-range-input::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: #e4c66d;
+
+  cursor: grab;
+}
+
+/* ========================================
+   PRICE BOXES
+======================================== */
+
+.schedule-price-boxes {
+  margin-top: 15px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 14px;
+}
+
+.schedule-price-box {
+  min-width: 0;
+  min-height: 78px;
+
+  padding: 15px 14px;
+
+  background: #fafafa;
+
+  border-radius: 14px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.schedule-price-box span {
+  margin-bottom: 9px;
+
+  color: #9b9b9b;
+
+  font-size: 11px;
+  line-height: 1;
+}
+
+.schedule-price-box strong {
+  color: #111111;
+
+  font-size: 17px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* ========================================
+   DEPARTURE TIME
+======================================== */
+
+.schedule-time-range {
+  margin: 0 0 19px;
+
+  color: #555555;
+
+  font-size: 14px;
+  line-height: 1.2;
+
+  text-align: center;
+}
+
+/* ========================================
+   AIRLINE ACTIONS
+======================================== */
+
+.schedule-airline-actions {
+  width: 100%;
+
+  margin-bottom: 24px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 12px;
+}
+
+.schedule-airline-actions button {
+  height: 43px;
+
+  padding: 0 10px;
+
+  border: 0;
+  border-radius: 13px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: inherit;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease,
+    opacity 0.18s ease;
+}
+
+.schedule-select-all {
+  background: #f7f7f7;
+
+  color: #111111;
+}
+
+.schedule-clear-all {
+  background: #e4c66d;
+
+  color: #111111;
+}
+
+.schedule-airline-actions
+button:hover:not(:disabled) {
+  transform:
+    translateY(-1px);
+}
+
+.schedule-select-all:hover:not(:disabled) {
+  background: #eeeeee;
+}
+
+.schedule-clear-all:hover:not(:disabled) {
+  background: #dabc5c;
+}
+
+.schedule-airline-actions
+button:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+/* ========================================
+   AIRLINE LIST
+======================================== */
+
+.schedule-airline-list {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================================
+   RESET FILTERS
+======================================== */
+
+.schedule-reset-filters {
+  width: 100%;
+  height: 46px;
+
+  padding: 0 16px;
+
+  border:
+    1px solid #e6e6e6;
+
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  color: #555555;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.schedule-reset-filters:hover {
+  background: #fafafa;
+
+  border-color: #dddddd;
+
+  color: #222222;
+
+  transform:
+    translateY(-1px);
+}
+
+/* ========================================
+   FOCUS
+======================================== */
+
+.schedule-filter-title:focus-visible,
+.schedule-airline-actions
+button:focus-visible,
+.schedule-reset-filters:focus-visible {
+  outline:
+    2px solid
+    rgba(
+      228,
+      198,
+      109,
+      0.75
+    );
+
+  outline-offset: 3px;
+}
+
+/* ========================================
+   SMALL LAPTOP
+======================================== */
+
+@media (max-width: 1350px) {
+
+  .schedule-filter-sidebar {
+    gap: 18px;
+  }
+
+  .schedule-filter-card {
+    padding: 20px 18px;
+
+    border-radius: 18px;
+  }
+
+  .schedule-filter-title h3 {
+    font-size: 16px;
+  }
+
+  .schedule-checkbox-row {
+    font-size: 13px;
+  }
+
+  .schedule-checkbox-row +
+  .schedule-checkbox-row {
+    margin-top: 19px;
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1200px) {
+
+  .schedule-filter-sidebar {
+    display: grid;
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    align-items: start;
+  }
+
+  .schedule-reset-filters {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+
+  .schedule-filter-sidebar {
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 14px;
+  }
+
+  .schedule-filter-card {
+    padding: 18px;
+
+    border-radius: 16px;
+  }
+
+  .schedule-reset-filters {
+    grid-column: auto;
+  }
+}

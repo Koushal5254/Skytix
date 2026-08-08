@@ -1,0 +1,357 @@
+.bookings-card {
+  width: 100%;
+  min-width: 0;
+  min-height: 430px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-header {
+  margin-bottom: 13px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.booking-header-title {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+}
+
+.booking-header h5 {
+  margin: 0;
+
+  color: #292929;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.booking-header-title > span {
+  min-width: 19px;
+  height: 19px;
+
+  padding: 0 5px;
+
+  border-radius: 999px;
+
+  background: #faf5e3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #9b812d;
+
+  font-size: 7px;
+  font-weight: 600;
+}
+
+.booking-see-all {
+  border: 0;
+  background: transparent;
+
+  color: #999999;
+
+  font-family: inherit;
+  font-size: 8px;
+
+  cursor: pointer;
+}
+
+.booking-see-all:hover {
+  color: #b49335;
+}
+
+.booking-list {
+  min-width: 0;
+
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.booking-item {
+  min-width: 0;
+  min-height: 66px;
+
+  flex: 1 1 0;
+
+  padding: 9px 12px;
+
+  border: 1px solid #f0f0f0;
+  border-radius: 11px;
+
+  background: #ffffff;
+
+  display: grid;
+  grid-template-columns:
+    minmax(125px, 1.4fr)
+    minmax(70px, 0.7fr)
+    minmax(130px, 1.15fr)
+    minmax(70px, 0.7fr);
+
+  align-items: center;
+
+  gap: 10px;
+
+  cursor: pointer;
+}
+
+.booking-item:hover {
+  border-color: #e5e5e5;
+}
+
+.booking-item-selected {
+  border-color: #ead996;
+  background: #fffdf7;
+}
+
+.booking-airline {
+  min-width: 0;
+}
+
+.booking-airline-title {
+  min-width: 0;
+
+  margin-bottom: 7px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+}
+
+.booking-airline h6 {
+  min-width: 0;
+
+  margin: 0;
+
+  color: #333333;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.booking-row-chevron {
+  width: 10px;
+  height: 10px;
+
+  opacity: 0;
+
+  color: #b5b5b5;
+
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+
+.booking-item:hover
+.booking-row-chevron {
+  opacity: 1;
+}
+
+.booking-item-selected
+.booking-row-chevron {
+  opacity: 1;
+
+  color: #b49335;
+
+  transform: rotate(90deg);
+}
+
+.booking-meta {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.booking-meta span {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+
+  color: #999999;
+
+  font-size: 7px;
+
+  white-space: nowrap;
+}
+
+.booking-meta svg {
+  width: 9px;
+  height: 9px;
+}
+
+.booking-time strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #292929;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.booking-time > span {
+  display: block;
+
+  color: #999999;
+
+  font-size: 8px;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.booking-route small {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #999999;
+
+  font-size: 7px;
+
+  text-align: center;
+}
+
+.route-line {
+  position: relative;
+
+  width: calc(100% - 12px);
+  height: 2px;
+
+  margin: auto;
+
+  background: #e4c66d;
+}
+
+.route-line::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 5px;
+  height: 5px;
+
+  border: 1px solid #e4c66d;
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  transform: translate(-50%, -50%);
+}
+
+.route-line > span {
+  position: absolute;
+
+  top: 50%;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #e4c66d;
+
+  transform: translateY(-50%);
+}
+
+.route-line > span:first-child {
+  left: -1px;
+}
+
+.route-line > span:last-child {
+  right: -1px;
+}
+
+.route-codes {
+  margin-top: 6px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.route-codes span {
+  color: #999999;
+
+  font-size: 7px;
+  font-weight: 500;
+}
+
+.booking-arrival {
+  text-align: right;
+}
+
+.booking-extra-details {
+  grid-column: 1 / -1;
+
+  padding-top: 10px;
+
+  border-top: 1px solid #f0ead6;
+
+  display: grid;
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+.booking-extra-details div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.booking-extra-details span {
+  color: #aaaaaa;
+  font-size: 7px;
+}
+
+.booking-extra-details strong {
+  color: #444444;
+  font-size: 8px;
+}
+
+@media (max-width: 600px) {
+  .booking-item {
+    flex: none;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      auto;
+  }
+
+  .booking-airline,
+  .booking-route,
+  .booking-extra-details {
+    grid-column: 1 / -1;
+  }
+
+  .booking-extra-details {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+}

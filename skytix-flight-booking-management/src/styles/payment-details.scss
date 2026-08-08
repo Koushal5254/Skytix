@@ -1,0 +1,263 @@
+/* ========================================
+   PAYMENT DETAILS PAGE
+======================================== */
+
+.payment-details-page {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.payment-details-page
+.payment-details-header {
+  width: 100%;
+  min-width: 0;
+}
+
+/* ========================================
+   MAIN BODY
+======================================== */
+
+.payment-details-body {
+  width: 100%;
+  min-width: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    340px
+    minmax(0, 1fr);
+
+  align-items: start;
+
+  gap: 24px;
+}
+
+/* ========================================
+   PROFILE CARD
+======================================== */
+
+.payment-details-body
+.member-profile-card {
+  width: 100%;
+  min-width: 0;
+
+  align-self: start;
+}
+
+/* ========================================
+   RIGHT CONTENT
+======================================== */
+
+.payment-details-right {
+  width: 100%;
+  min-width: 0;
+
+  padding: 28px;
+
+  background: #ffffff;
+
+  border: 1px solid #eeeeee;
+  border-radius: 22px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 30px;
+
+  box-sizing: border-box;
+}
+
+/* ========================================
+   BOOKING HISTORY
+======================================== */
+
+.payment-details-right
+.details-bookings {
+  width: 100%;
+  min-width: 0;
+
+  padding: 0;
+
+  border-radius: 0;
+}
+
+/* ========================================
+   PURCHASE HISTORY
+======================================== */
+
+.payment-details-right
+.profile-purchase-history {
+  width: 100%;
+  min-width: 0;
+
+  padding-top: 28px;
+
+  border-top: 1px solid #eeeeee;
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.payment-details-page
+.schedule-footer {
+  width: 100%;
+  min-width: 0;
+
+  margin-top: 8px;
+}
+
+/* ========================================
+   LARGE DESKTOP
+======================================== */
+
+@media (min-width: 1600px) {
+  .payment-details-page {
+    gap: 22px;
+  }
+
+  .payment-details-body {
+    grid-template-columns:
+      360px
+      minmax(0, 1fr);
+
+    gap: 26px;
+  }
+
+  .payment-details-right {
+    padding: 30px;
+
+    border-radius: 24px;
+
+    gap: 32px;
+  }
+}
+
+/* ========================================
+   STANDARD LAPTOP
+======================================== */
+
+@media (max-width: 1400px) {
+  .payment-details-page {
+    gap: 18px;
+  }
+
+  .payment-details-body {
+    grid-template-columns:
+      320px
+      minmax(0, 1fr);
+
+    gap: 20px;
+  }
+
+  .payment-details-right {
+    padding: 24px;
+
+    gap: 26px;
+  }
+}
+
+/* ========================================
+   SMALL LAPTOP
+======================================== */
+
+@media (max-width: 1100px) {
+  .payment-details-body {
+    grid-template-columns:
+      290px
+      minmax(0, 1fr);
+
+    gap: 18px;
+  }
+
+  .payment-details-right {
+    padding: 20px;
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 992px) {
+  .payment-details-page {
+    gap: 16px;
+  }
+
+  .payment-details-body {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .payment-details-body
+  .member-profile-card {
+    width: 100%;
+  }
+
+  .payment-details-right {
+    padding: 22px;
+
+    border-radius: 18px;
+
+    gap: 26px;
+  }
+
+  .payment-details-right
+  .profile-purchase-history {
+    padding-top: 24px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .payment-details-page {
+    gap: 14px;
+  }
+
+  .payment-details-body {
+    gap: 14px;
+  }
+
+  .payment-details-right {
+    padding: 16px;
+
+    border-radius: 14px;
+
+    gap: 22px;
+  }
+
+  .payment-details-right
+  .profile-purchase-history {
+    padding-top: 20px;
+  }
+
+  .payment-details-page
+  .schedule-footer {
+    margin-top: 4px;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+  .payment-details-right {
+    padding: 14px;
+
+    border-radius: 12px;
+  }
+}

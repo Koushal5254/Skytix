@@ -1,0 +1,23 @@
+@import "@/styles/abstracts/variables";
+
+.primary-btn{
+
+height:50px;
+
+padding:0 28px;
+
+background:$primary;
+
+border-radius:14px;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.primary-btn:hover{
+
+background:$primary-dark;
+
+}

@@ -1,0 +1,1049 @@
+/* ========================================
+   FLIGHT CARD
+======================================== */
+
+.flight-card {
+  width: 100%;
+  min-width: 0;
+
+  overflow: hidden;
+
+  border: 1px solid #eeeeee;
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.flight-card:hover {
+  border-color: #e5cf85;
+
+  box-shadow:
+    0 8px 24px
+    rgba(0, 0, 0, 0.04);
+}
+
+/* ========================================
+   TOP
+======================================== */
+
+.card-top {
+  min-height: 112px;
+
+  padding: 14px 16px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(190px, 1.15fr)
+    minmax(105px, 0.65fr)
+    minmax(220px, 1.4fr)
+    minmax(105px, 0.65fr);
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+/* ========================================
+   AIRLINE
+======================================== */
+
+.airline-section {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.airline-info {
+  min-width: 0;
+}
+
+.airline-info h4 {
+  margin: 0 0 5px;
+
+  overflow: hidden;
+
+  color: #171717;
+
+  font-size: 15px;
+  line-height: 1.2;
+  font-weight: 600;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.airline-info span {
+  display: block;
+
+  color: #9b9b9b;
+
+  font-size: 11px;
+  line-height: 1.2;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   AIRLINE LOGO CONTAINER
+======================================== */
+
+.airline-logo {
+  position: relative;
+
+  width: 46px;
+  height: 46px;
+
+  flex: 0 0 46px;
+
+  border-radius: 10px;
+
+  background: #f7f7f8;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.airline-symbol {
+  position: relative;
+
+  width: 30px;
+  height: 30px;
+}
+
+.logo-piece {
+  position: absolute;
+
+  display: block;
+}
+
+/* ========================================
+   SKYHIGH AIRLINES
+======================================== */
+
+.airline-logo-skyhigh
+.logo-piece-1 {
+  width: 23px;
+  height: 10px;
+
+  left: 3px;
+  top: 9px;
+
+  border-radius:
+    3px 13px 3px 13px;
+
+  background: #2856a5;
+
+  transform: rotate(13deg);
+}
+
+.airline-logo-skyhigh
+.logo-piece-2 {
+  width: 15px;
+  height: 9px;
+
+  left: 5px;
+  top: 5px;
+
+  border-radius:
+    12px 3px 12px 3px;
+
+  background: #2856a5;
+
+  transform: rotate(38deg);
+}
+
+.airline-logo-skyhigh
+.logo-piece-3 {
+  width: 18px;
+  height: 7px;
+
+  left: 8px;
+  top: 17px;
+
+  border-radius:
+    2px 12px 3px 12px;
+
+  background: #2856a5;
+
+  transform: rotate(-12deg);
+}
+
+/* ========================================
+   FLYFAST AIRWAYS
+======================================== */
+
+.airline-logo-flyfast
+.logo-piece-1 {
+  width: 25px;
+  height: 8px;
+
+  left: 2px;
+  top: 8px;
+
+  background: #ef4040;
+
+  clip-path: polygon(
+    0 55%,
+    100% 0,
+    70% 100%,
+    18% 100%
+  );
+}
+
+.airline-logo-flyfast
+.logo-piece-2 {
+  width: 21px;
+  height: 7px;
+
+  left: 4px;
+  top: 17px;
+
+  background: #ef4040;
+
+  clip-path: polygon(
+    0 55%,
+    100% 0,
+    67% 100%,
+    15% 100%
+  );
+}
+
+.airline-logo-flyfast
+.logo-piece-3 {
+  display: none;
+}
+
+/* ========================================
+   AEROJET
+======================================== */
+
+.airline-logo-aerojet
+.logo-piece-1 {
+  width: 8px;
+  height: 25px;
+
+  left: 7px;
+  top: 3px;
+
+  border-radius:
+    8px 8px 2px 8px;
+
+  background: #e3c668;
+
+  transform: rotate(24deg);
+}
+
+.airline-logo-aerojet
+.logo-piece-2 {
+  width: 8px;
+  height: 25px;
+
+  right: 7px;
+  top: 3px;
+
+  border-radius:
+    8px 8px 8px 2px;
+
+  background: #e3c668;
+
+  transform: rotate(-24deg);
+}
+
+.airline-logo-aerojet
+.logo-piece-3 {
+  width: 4px;
+  height: 15px;
+
+  left: 13px;
+  top: 6px;
+
+  background: #ffffff;
+
+  clip-path: polygon(
+    50% 0,
+    100% 100%,
+    0 100%
+  );
+}
+
+/* ========================================
+   JETSTREAM AVIATION
+======================================== */
+
+.airline-logo-jetstream
+.logo-piece-1 {
+  width: 26px;
+  height: 8px;
+
+  left: 2px;
+  top: 7px;
+
+  background: #e3c668;
+
+  clip-path: polygon(
+    0 20%,
+    100% 0,
+    55% 100%,
+    36% 100%,
+    61% 38%,
+    8% 60%
+  );
+}
+
+.airline-logo-jetstream
+.logo-piece-2 {
+  width: 19px;
+  height: 7px;
+
+  left: 3px;
+  top: 17px;
+
+  background: #e3c668;
+
+  clip-path: polygon(
+    0 60%,
+    100% 0,
+    65% 100%,
+    22% 100%
+  );
+}
+
+.airline-logo-jetstream
+.logo-piece-3 {
+  display: none;
+}
+
+/* ========================================
+   NIMBUS AIRLINES
+======================================== */
+
+.airline-logo-nimbus
+.logo-piece-1 {
+  width: 8px;
+  height: 24px;
+
+  left: 4px;
+  top: 3px;
+
+  background: #ef4040;
+
+  transform: skewX(-15deg);
+}
+
+.airline-logo-nimbus
+.logo-piece-2 {
+  width: 8px;
+  height: 27px;
+
+  right: 4px;
+  top: 1px;
+
+  background: #ef4040;
+
+  transform: skewX(-15deg);
+}
+
+.airline-logo-nimbus
+.logo-piece-3 {
+  width: 8px;
+  height: 28px;
+
+  left: 11px;
+  top: 1px;
+
+  background: #ef4040;
+
+  transform:
+    rotate(27deg)
+    skewX(-8deg);
+}
+
+/* ========================================
+   CLOUDNINE AIRLINES
+======================================== */
+
+.airline-logo-cloudnine
+.logo-piece-1 {
+  width: 24px;
+  height: 9px;
+
+  left: 3px;
+  top: 9px;
+
+  border-radius:
+    100% 0 100% 0;
+
+  background: #e3c668;
+
+  transform: rotate(-20deg);
+}
+
+.airline-logo-cloudnine
+.logo-piece-2 {
+  width: 17px;
+  height: 7px;
+
+  left: 6px;
+  top: 17px;
+
+  border-radius:
+    100% 0 100% 0;
+
+  background: #e3c668;
+
+  transform: rotate(-10deg);
+}
+
+.airline-logo-cloudnine
+.logo-piece-3 {
+  display: none;
+}
+
+/* ========================================
+   QUICKWING AIR
+======================================== */
+
+.airline-logo-quickwing
+.logo-piece-1 {
+  width: 25px;
+  height: 8px;
+
+  left: 2px;
+  top: 8px;
+
+  background: #dcbf5e;
+
+  clip-path: polygon(
+    0 50%,
+    100% 0,
+    72% 100%,
+    15% 100%
+  );
+}
+
+.airline-logo-quickwing
+.logo-piece-2 {
+  width: 18px;
+  height: 6px;
+
+  left: 6px;
+  top: 17px;
+
+  background: #dcbf5e;
+
+  clip-path: polygon(
+    0 50%,
+    100% 0,
+    65% 100%,
+    12% 100%
+  );
+}
+
+.airline-logo-quickwing
+.logo-piece-3 {
+  display: none;
+}
+
+/* ========================================
+   SUPERJET AIRWAYS
+======================================== */
+
+.airline-logo-superjet
+.logo-piece-1 {
+  width: 24px;
+  height: 8px;
+
+  left: 3px;
+  top: 7px;
+
+  background: #e2c564;
+
+  transform: rotate(-18deg);
+
+  clip-path: polygon(
+    0 40%,
+    100% 0,
+    65% 100%,
+    15% 100%
+  );
+}
+
+.airline-logo-superjet
+.logo-piece-2 {
+  width: 19px;
+  height: 7px;
+
+  left: 5px;
+  top: 17px;
+
+  background: #e2c564;
+
+  transform: rotate(-7deg);
+
+  clip-path: polygon(
+    0 40%,
+    100% 0,
+    65% 100%,
+    15% 100%
+  );
+}
+
+.airline-logo-superjet
+.logo-piece-3 {
+  display: none;
+}
+
+/* ========================================
+   DEFAULT AIRLINE
+======================================== */
+
+.airline-logo-default
+.logo-piece-1 {
+  width: 23px;
+  height: 8px;
+
+  left: 3px;
+  top: 8px;
+
+  border-radius:
+    10px 2px 10px 2px;
+
+  background: #e4c66d;
+
+  transform: rotate(-20deg);
+}
+
+.airline-logo-default
+.logo-piece-2 {
+  width: 18px;
+  height: 7px;
+
+  left: 5px;
+  top: 17px;
+
+  border-radius:
+    10px 2px 10px 2px;
+
+  background: #e4c66d;
+
+  transform: rotate(-5deg);
+}
+
+.airline-logo-default
+.logo-piece-3 {
+  display: none;
+}
+
+/* ========================================
+   DEPARTURE / ARRIVAL
+======================================== */
+
+.time-block {
+  min-width: 0;
+
+  text-align: center;
+}
+
+.time-block h2 {
+  margin: 0 0 6px;
+
+  color: #171717;
+
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.time-block > span {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #777777;
+
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+.time-block > small {
+  display: block;
+
+  overflow: hidden;
+
+  color: #999999;
+
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 400;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* ========================================
+   ROUTE
+======================================== */
+
+.route-block {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.route-airports {
+  width: 100%;
+
+  margin-bottom: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: #999999;
+
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.route-line {
+  width: 100%;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+}
+
+.route-dot {
+  width: 6px;
+  height: 6px;
+
+  flex: 0 0 6px;
+
+  border-radius: 50%;
+
+  background: #e4c66d;
+}
+
+.route-track {
+  height: 1px;
+
+  flex: 1;
+
+  border-top:
+    1px dashed #e4c66d;
+}
+
+.route-plane {
+  width: 25px;
+  height: 25px;
+
+  flex: 0 0 25px;
+
+  border: 1px solid #e4c66d;
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #d8b74f;
+
+  font-size: 12px;
+  line-height: 1;
+
+  transform: rotate(0deg);
+}
+
+.route-block > small {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #999999;
+
+  font-size: 8px;
+  line-height: 1;
+
+  text-align: center;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   BOTTOM
+======================================== */
+
+.card-bottom {
+  min-height: 52px;
+
+  padding: 10px 16px;
+
+  border-top: 1px solid #eeeeee;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+/* ========================================
+   FACILITIES
+======================================== */
+
+.flight-facilities {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+}
+
+.facilities-label {
+  color: #999999;
+
+  font-size: 10px;
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+.flight-facilities > div {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  color: #555555;
+
+  white-space: nowrap;
+}
+
+.flight-facilities > div svg {
+  width: 14px;
+  height: 14px;
+
+  flex: 0 0 14px;
+
+  color: #555555;
+
+  stroke-width: 1.6;
+}
+
+.flight-facilities > div p {
+  margin: 0;
+
+  color: #555555;
+
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   PRICE + BUTTON
+======================================== */
+
+.flight-price-actions {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+}
+
+.price-section {
+  display: flex;
+  align-items: baseline;
+
+  white-space: nowrap;
+}
+
+.price-section strong {
+  color: #b79a42;
+
+  font-size: 19px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.price-section span {
+  margin-left: 3px;
+
+  color: #999999;
+
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+/* ========================================
+   VIEW DETAIL
+======================================== */
+
+.view-detail-btn {
+  min-width: 92px;
+  height: 32px;
+
+  padding: 0 14px;
+
+  border-radius: 7px;
+
+  background: #202020;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease;
+}
+
+.view-detail-btn:hover {
+  background: #111111;
+
+  transform: translateY(-1px);
+}
+
+.view-detail-btn:focus-visible {
+  outline:
+    2px solid
+    rgba(228, 198, 109, 0.85);
+
+  outline-offset: 3px;
+}
+
+/* ========================================
+   SMALL DESKTOP
+======================================== */
+
+@media (max-width: 1350px) {
+  .card-top {
+    grid-template-columns:
+      minmax(170px, 1.1fr)
+      95px
+      minmax(180px, 1.25fr)
+      95px;
+
+    gap: 10px;
+
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .airline-section {
+    gap: 9px;
+  }
+
+  .airline-logo {
+    width: 42px;
+    height: 42px;
+
+    flex-basis: 42px;
+  }
+
+  .airline-info h4 {
+    font-size: 13px;
+  }
+
+  .time-block h2 {
+    font-size: 16px;
+  }
+
+  .flight-facilities {
+    gap: 14px;
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1000px) {
+  .card-top {
+    grid-template-columns:
+      minmax(170px, 1fr)
+      minmax(90px, 0.6fr)
+      minmax(170px, 1.2fr)
+      minmax(90px, 0.6fr);
+  }
+
+  .route-airports {
+    display: none;
+  }
+
+  .card-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 14px;
+  }
+
+  .flight-price-actions {
+    width: 100%;
+
+    justify-content: flex-end;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+  .flight-card {
+    border-radius: 15px;
+  }
+
+  .card-top {
+    min-height: 0;
+
+    padding: 16px;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+
+    gap: 20px 12px;
+  }
+
+  .airline-section {
+    grid-column: 1 / -1;
+  }
+
+  .time-block {
+    text-align: left;
+  }
+
+  .time-block:nth-of-type(2) {
+    text-align: right;
+  }
+
+  .route-block {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+
+  .route-airports {
+    display: flex;
+  }
+
+  .card-bottom {
+    padding: 14px 16px;
+  }
+
+  .flight-facilities {
+    width: 100%;
+
+    flex-wrap: wrap;
+
+    gap: 12px 16px;
+  }
+
+  .facilities-label {
+    width: 100%;
+  }
+
+  .flight-price-actions {
+    justify-content: space-between;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 450px) {
+  .card-top {
+    padding: 14px;
+  }
+
+  .airline-logo {
+    width: 40px;
+    height: 40px;
+
+    flex-basis: 40px;
+  }
+
+  .airline-symbol {
+    transform: scale(0.9);
+  }
+
+  .airline-info h4 {
+    font-size: 13px;
+  }
+
+  .time-block h2 {
+    font-size: 15px;
+  }
+
+  .card-bottom {
+    padding: 13px 14px;
+  }
+
+  .flight-facilities {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+  .facilities-label {
+    width: auto;
+  }
+
+  .flight-price-actions {
+    align-items: stretch;
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+  .price-section {
+    justify-content: flex-end;
+  }
+
+  .view-detail-btn {
+    width: 100%;
+
+    height: 36px;
+  }
+}

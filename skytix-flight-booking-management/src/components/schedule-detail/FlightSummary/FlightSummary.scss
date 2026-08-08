@@ -1,0 +1,505 @@
+/* ========================================
+   FLIGHT SUMMARY
+======================================== */
+
+.detail-summary {
+  width: 100%;
+  min-width: 0;
+  min-height: 86px;
+
+  padding: 16px 20px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(260px, 1fr)
+    1px
+    auto
+    auto
+    auto
+    58px;
+
+  align-items: center;
+
+  column-gap: 24px;
+
+  box-sizing: border-box;
+}
+
+/* ========================================
+   AIRLINE
+======================================== */
+
+.summary-airline {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+}
+
+.summary-airline-content {
+  min-width: 0;
+}
+
+/* ========================================
+   AIRLINE LOGO
+
+   Reference:
+   blue airplane inside light square.
+   No external image/assets.
+======================================== */
+
+.summary-logo {
+  width: 44px;
+  height: 44px;
+
+  flex: 0 0 44px;
+
+  border-radius: 9px;
+
+  background: #f6f6f8;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #1e5da8;
+
+  overflow: hidden;
+}
+
+.summary-logo svg {
+  display: block;
+
+  width: 26px;
+  height: 26px;
+
+  flex: 0 0 26px;
+
+  transform: rotate(-18deg);
+
+  transform-origin: center;
+}
+
+/* ========================================
+   AIRLINE NAME
+======================================== */
+
+.summary-airline h2 {
+  max-width: 100%;
+
+  margin: 0;
+
+  color: #222222;
+
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ========================================
+   AIRLINE META
+======================================== */
+
+.summary-airline-meta {
+  min-width: 0;
+
+  margin-top: 5px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.summary-airline-meta > span {
+  min-width: 0;
+
+  color: #999999;
+
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   STATUS
+======================================== */
+
+.summary-airline-meta strong {
+  min-height: 20px;
+
+  padding: 0 7px;
+
+  border-radius: 5px;
+
+  background: #e4c66d;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #222222;
+
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   DIVIDER
+======================================== */
+
+.summary-divider {
+  width: 1px;
+  height: 48px;
+
+  background: #e8e8e8;
+}
+
+/* ========================================
+   DATE
+======================================== */
+
+.summary-date {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  white-space: nowrap;
+}
+
+.summary-date span,
+.summary-label {
+  color: #999999;
+
+  font-size: 9px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.summary-date strong {
+  color: #333333;
+
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   PASSENGERS
+======================================== */
+
+.summary-passengers {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  white-space: nowrap;
+}
+
+.summary-passenger-value {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+}
+
+/* ========================================
+   PASSENGER AVATARS
+======================================== */
+
+.summary-avatars {
+  display: flex;
+  align-items: center;
+
+  padding-left: 8px;
+}
+
+.summary-avatars i {
+  width: 22px;
+  height: 22px;
+
+  flex: 0 0 22px;
+
+  margin-left: -8px;
+
+  border: 1.5px solid #ffffff;
+  border-radius: 50%;
+
+  background: #ead385;
+
+  box-sizing: border-box;
+}
+
+.summary-avatars i:first-child {
+  margin-left: 0;
+}
+
+.summary-avatars i:nth-child(2) {
+  background: #e9d99f;
+}
+
+.summary-avatars i:nth-child(3) {
+  background: #ead8cf;
+}
+
+.summary-passenger-value strong {
+  color: #292929;
+
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   PRICE
+======================================== */
+
+.summary-price {
+  display: flex;
+  align-items: baseline;
+
+  white-space: nowrap;
+}
+
+.summary-price strong {
+  color: #dcb942;
+
+  font-size: 25px;
+  line-height: 1;
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+}
+
+.summary-price span {
+  margin-left: 3px;
+
+  color: #777777;
+
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+/* ========================================
+   EDIT BUTTON
+======================================== */
+
+.summary-edit {
+  width: 58px;
+  height: 38px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 8px;
+  outline: 0;
+
+  background: #e4c66d;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #222222;
+
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease;
+}
+
+.summary-edit:hover {
+  background: #dabb5d;
+}
+
+.summary-edit:active {
+  transform: scale(0.97);
+}
+
+.summary-edit:focus-visible {
+  outline: 2px solid
+    rgba(228, 198, 109, 0.55);
+
+  outline-offset: 2px;
+}
+
+/* ========================================
+   LAPTOP
+======================================== */
+
+@media (max-width: 1250px) {
+  .detail-summary {
+    padding: 15px 17px;
+
+    grid-template-columns:
+      minmax(210px, 1fr)
+      1px
+      auto
+      auto
+      auto
+      58px;
+
+    column-gap: 16px;
+  }
+
+  .summary-airline {
+    gap: 10px;
+  }
+
+  .summary-passengers {
+    gap: 7px;
+  }
+}
+
+/* ========================================
+   SMALL LAPTOP
+======================================== */
+
+@media (max-width: 1100px) {
+  .detail-summary {
+    grid-template-columns:
+      minmax(220px, 1fr)
+      auto
+      auto
+      58px;
+
+    row-gap: 14px;
+  }
+
+  .summary-divider {
+    display: none;
+  }
+
+  .summary-date {
+    justify-self: end;
+  }
+
+  .summary-passengers {
+    grid-column: 2;
+
+    justify-self: end;
+  }
+
+  .summary-price {
+    grid-column: 3;
+
+    justify-self: end;
+  }
+
+  .summary-edit {
+    grid-column: 4;
+
+    justify-self: end;
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 800px) {
+  .detail-summary {
+    grid-template-columns:
+      minmax(0, 1fr)
+      auto;
+
+    gap: 15px 20px;
+  }
+
+  .summary-airline {
+    grid-column: 1;
+  }
+
+  .summary-date {
+    grid-column: 2;
+
+    justify-self: end;
+  }
+
+  .summary-passengers {
+    grid-column: 1;
+
+    justify-self: start;
+  }
+
+  .summary-price {
+    grid-column: 2;
+
+    justify-self: end;
+  }
+
+  .summary-edit {
+    grid-column: 1 / -1;
+
+    width: 100%;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 550px) {
+  .detail-summary {
+    padding: 15px;
+
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 14px;
+  }
+
+  .summary-airline,
+  .summary-date,
+  .summary-passengers,
+  .summary-price,
+  .summary-edit {
+    grid-column: 1;
+
+    justify-self: stretch;
+  }
+
+  .summary-date,
+  .summary-passengers {
+    justify-content: space-between;
+  }
+
+  .summary-price {
+    justify-self: start;
+  }
+
+  .summary-edit {
+    width: 100%;
+  }
+}

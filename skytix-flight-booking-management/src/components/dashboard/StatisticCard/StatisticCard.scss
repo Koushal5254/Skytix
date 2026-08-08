@@ -1,0 +1,122 @@
+.stat-card {
+  width: 100%;
+  min-width: 0;
+  min-height: 92px;
+
+  padding: 15px 16px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  box-sizing: border-box;
+}
+
+.stat-left {
+  min-width: 0;
+  flex: 1;
+}
+
+.stat-title {
+  margin: 0 0 10px;
+
+  color: #969696;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+.stat-value-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.stat-value {
+  margin: 0;
+
+  color: #202020;
+
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 700;
+
+  letter-spacing: -0.55px;
+}
+
+.stat-badge {
+  padding: 5px 6px;
+
+  border-radius: 6px;
+
+  font-size: 7px;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.stat-badge-positive {
+  background: #faf5e3;
+  color: #9c812c;
+}
+
+.stat-badge-negative {
+  background: #fff0f0;
+  color: #cf6262;
+}
+
+.stat-icon-box {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+
+  border-radius: 11px;
+
+  background: #e4c66d;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+}
+
+.stat-icon-box svg {
+  width: 19px;
+  height: 19px;
+}
+
+@media (max-width: 1450px) {
+  .stat-card {
+    min-height: 88px;
+    padding: 14px;
+  }
+
+  .stat-value {
+    font-size: 20px;
+  }
+
+  .stat-icon-box {
+    width: 39px;
+    height: 39px;
+    flex-basis: 39px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .stat-card {
+    min-height: 92px;
+  }
+
+  .stat-value {
+    font-size: 22px;
+  }
+}
